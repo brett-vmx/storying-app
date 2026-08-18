@@ -1,0 +1,21 @@
+{
+  "name": "storying-app-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pitch page for storying.app. Builds a single self-contained HTML file.",
+  "scripts": {
+    "build": "node build-site.mjs",
+    "assets": "node gen-assets.mjs",
+    "shots": "node shoot-site.mjs",
+    "serve": "npx --yes serve dist"
+  },
+  "dependencies": {
+    "d3-geo": "^3.1.1",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}
