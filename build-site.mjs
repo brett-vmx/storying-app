@@ -968,7 +968,7 @@ const html = `<!DOCTYPE html>
 <meta name="description" content="${DESC}">
 <meta name="theme-color" content="#1C3144">
 <link rel="canonical" href="${OG_URL}">
-<link rel="icon" href="${LOGOSQ}">
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="${LOGOSQ}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="storying.app">
@@ -1038,4 +1038,7 @@ fs.writeFileSync('dist/index.html', html);
 // screenshot). It is a committed file rather than a build step so a normal build needs
 // no browser.
 fs.copyFileSync('assets/og_image.png', 'dist/og_image.png');
+// favicon.ico is served from the root so tools like Google's favicon fetcher, which look
+// for it directly rather than reading <link rel="icon">, can find it.
+fs.copyFileSync('assets/favicon.ico', 'dist/favicon.ico');
 console.log('site:', (html.length / 1024 / 1024).toFixed(2) + 'MB · sections:', (html.match(/<section/g) || []).length);
