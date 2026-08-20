@@ -8,11 +8,12 @@ coordinators, native-speaker reviewers) and advisors.
 
 `node build-site.mjs` reads the data and assets and writes **one self-contained file**,
 `dist/index.html`, with every image base64-inlined. There is no bundler, no framework and
-no external request at runtime. It also copies `assets/share.png` to `dist/`.
+no external request at runtime. It also copies `assets/og_image.png` (the Open Graph /
+Twitter card, a hand-designed asset, not a screenshot) to `dist/`.
 
 ```
 npm install
-npm run build      # -> dist/index.html + dist/share.png
+npm run build      # -> dist/index.html + dist/og_image.png
 npm run serve      # preview at localhost:3000
 ```
 
@@ -27,7 +28,7 @@ npm run serve      # preview at localhost:3000
 | `data/a-world.json` | Pre-projected world map paths, per-language map points, top-10 country shapes, `crop10` viewBox. Generated. |
 | `data/a-cellpaths.json` | Per-country silhouette paths fitted to a 200x150 tile, for the language grid. Generated. |
 | `gen-assets.mjs` | Regenerates the two generated files above from `world-atlas`. Only needed if the language list or map framing changes. |
-| `shoot-site.mjs` | Screenshots the page at 1440 / 834 / 390 px into `site-shots/`, reports any horizontal overflow, and rewrites `assets/share.png`. |
+| `shoot-site.mjs` | Screenshots the page at 1440 / 834 / 390 px into `site-shots/` and reports any horizontal overflow. |
 | `assets/` | Logos, story images, storyboard, hero shot, Lucide icons, the OG card |
 
 ## Editing rules

@@ -27,22 +27,7 @@ for (const [w, name] of WIDTHS) {
   await p.close();
 }
 
-/* ---- OG share card ---- */
-const og = await b.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
-await og.goto(URL, { waitUntil: 'load' });
-await og.evaluate(() => {
-  document.getElementById('top').remove();
-  const h = document.getElementById('hero');
-  document.body.innerHTML = '';
-  document.body.appendChild(h);
-  h.style.cssText = 'padding:0 0 0 0;height:630px;display:flex;align-items:center';
-  h.querySelector('.herobtns').remove();
-  const fn = h.querySelector('.fnref'); if (fn) fn.remove();
-  h.querySelector('.herosub').style.marginTop = '18px';
-});
-await og.waitForTimeout(300);
-await og.screenshot({ path: 'assets/share.png' });
-await og.close();
-console.log('share.png written');
+// The OG/Twitter card is now the hand-designed assets/og_image.png, not an auto-cropped
+// hero screenshot, so it is no longer regenerated here.
 
 await b.close();

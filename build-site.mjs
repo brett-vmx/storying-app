@@ -957,7 +957,7 @@ ${notesBlock}
 };
 
 const OG_URL = 'https://storying.app/';
-const DESC = 'The Bible has been translated into every major language. 739 million people still cannot read it. storying.app is a free library of oral Bible stories in 40 languages.';
+const DESC = 'An audio-based, mobile-first library of oral Bible stories and story sets in 40 major languages for illiterate and oral-preference learners.';
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -975,14 +975,14 @@ const html = `<!DOCTYPE html>
 <meta property="og:url" content="${OG_URL}">
 <meta property="og:title" content="storying.app &middot; Oral Bible stories in 40 languages">
 <meta property="og:description" content="${DESC}">
-<meta property="og:image" content="${OG_URL}share.png">
+<meta property="og:image" content="${OG_URL}og_image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="storying.app: oral Bible stories in 40 languages">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="storying.app &middot; Oral Bible stories in 40 languages">
 <meta name="twitter:description" content="${DESC}">
-<meta name="twitter:image" content="${OG_URL}share.png">
+<meta name="twitter:image" content="${OG_URL}og_image.png">
 <style>${CSS}</style>
 </head>
 <body>
@@ -1034,8 +1034,8 @@ ${S.contact}
 
 fs.mkdirSync('dist', { recursive: true });
 fs.writeFileSync('dist/index.html', html);
-// share.png is the Open Graph card. It is a committed asset rather than a build step so
-// that a normal build needs no browser; regenerate it with `npm run shots` after changing
-// the hero, which rewrites assets/share.png from the rendered page.
-fs.copyFileSync('assets/share.png', 'dist/share.png');
+// og_image.png is the Open Graph / Twitter card, a hand-designed asset (not a hero
+// screenshot). It is a committed file rather than a build step so a normal build needs
+// no browser.
+fs.copyFileSync('assets/og_image.png', 'dist/og_image.png');
 console.log('site:', (html.length / 1024 / 1024).toFixed(2) + 'MB · sections:', (html.match(/<section/g) || []).length);
