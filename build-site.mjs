@@ -10,7 +10,9 @@ const W = JSON.parse(fs.readFileSync('data/a-world.json', 'utf8'));
 // the way a missing file passed to fs.readFileSync used to.
 const ap = f => { if (!fs.existsSync(f)) throw new Error('missing asset: ' + f); return f; };
 const LOGO = ap('assets/logo-tr.png'), LOGOSQ = ap('assets/logo.png');
-const SBOARD = ap('assets/storyboard.jpg'), DESK = ap('assets/c2c-desktop.jpg');
+// WebP at the same visual quality: storyboard.jpg 333KB -> 152KB, c2c-desktop.jpg 196KB ->
+// 76KB, both resized to ~2x their CSS display width for a sharp retina render.
+const SBOARD = ap('assets/storyboard.webp'), DESK = ap('assets/c2c-desktop.webp');
 // hero.jpg is the read-only master photo; hero-web.jpg is a display-sized derivative
 // (the hero is only ever shown at up to 338px CSS wide, so the full-res original is
 // needlessly heavy for the page's LCP element).
