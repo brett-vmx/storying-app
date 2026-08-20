@@ -4,18 +4,27 @@ const langs = JSON.parse(fs.readFileSync('data/languages.json', 'utf8'));
 const cellp = JSON.parse(fs.readFileSync('data/a-cellpaths.json', 'utf8'));
 const W = JSON.parse(fs.readFileSync('data/a-world.json', 'utf8'));
 
-const b64 = f => 'data:image/' + (f.endsWith('.png') ? 'png' : 'jpeg') + ';base64,' + fs.readFileSync(f).toString('base64');
-const LOGO = b64('assets/logo-tr.png'), LOGOSQ = b64('assets/logo.png');
-const SBOARD = b64('assets/storyboard.jpg'), DESK = b64('assets/c2c-desktop.jpg'), HERO = b64('assets/hero.jpg');
-const C2CLOGO = b64('assets/c2c-app-logo-icon.png');
+// Images are referenced by path, not inlined: the browser can then paint text
+// immediately and fetch these in parallel, instead of blocking on one giant document.
+// ap() (asset path) just checks the file exists so a typo still fails the build loudly,
+// the way a missing file passed to fs.readFileSync used to.
+const ap = f => { if (!fs.existsSync(f)) throw new Error('missing asset: ' + f); return f; };
+const LOGO = ap('assets/logo-tr.png'), LOGOSQ = ap('assets/logo.png');
+const SBOARD = ap('assets/storyboard.jpg'), DESK = ap('assets/c2c-desktop.jpg');
+// hero.jpg is the read-only master photo; hero-web.jpg is a display-sized derivative
+// (the hero is only ever shown at up to 338px CSS wide, so the full-res original is
+// needlessly heavy for the page's LCP element).
+const HERO = ap('assets/hero-web.jpg');
+const C2CLOGO = ap('assets/c2c-app-logo-icon.png');
 const COPYICON = (size = 20, color = 'currentColor', sw = 1.9) =>
   `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
-const L = n => b64(`assets/logos/${n}.png`);
-const AV = n => b64(`assets/adv/${n}.png`);
-const SI = n => b64(`assets/stories/${n}.jpg`);
+const L = n => ap(`assets/logos/${n}.png`);
+const AV = n => ap(`assets/adv/${n}.png`);
+const SI = n => ap(`assets/stories/thumbs/${n}.jpg`);
+// These five are only ever shown at 34x34 CSS px (search results, playlist rows), so they
+// load from pre-cropped 160x160 thumbnails rather than the full source photos.
 const IMG = {
-  creation: SI('1-Creation-of-the-Physical-World'), sin: SI('2-The-Man-And-Woman-Sin'),
-  storm: SI('5-Jesus-Calms-The-Storm'), well: SI('9-The-Woman-at-the-Well'),
+  creation: SI('1-Creation-of-the-Physical-World'),
   res: SI('13-Resurrection'), zac: SI('11-Zaccheaus'), feed: SI('8-Jesus-Feeds-5000'),
   blind: SI('10-The-Blind-Man'),
 };
@@ -86,10 +95,10 @@ const SETS = [
   ['jesus-parables', 'Parables of Jesus', ''],
   ['jesus-miracles', 'Miracles of Jesus', 'miraclesofjesus.app'],
 ];
-const SETIC = n => b64(`assets/story-set-icons/${n}.png`);
+const SETIC = n => ap(`assets/story-set-icons/${n}.png`);
 const setTiles = SETS.map(([icon, name, dom, live]) => {
   const src = icon === 'C2CLOGO' ? C2CLOGO : SETIC(icon);
-  const body = `<img src="${src}" alt=""><div><div class="sn">${name}</div>`
+  const body = `<img src="${src}" alt="" loading="lazy"><div><div class="sn">${name}</div>`
     + `<div class="sd${dom ? '' : ' tbd'}">${dom || 'domain to come'}</div></div>`
     + (live ? '<em class="livetag"><i class="livedot"></i>live</em>' : '');
   return live
@@ -674,7 +683,7 @@ const S = {
           <a class="btn ghost" href="#languages">See the 40 languages</a>
         </div>
       </div>
-      <div class="heroshot"><img src="${HERO}" alt="A story from the storying.app library, with audio to listen to" width="1204" height="1594"></div>
+      <div class="heroshot"><img src="${HERO}" alt="A story from the storying.app library, with audio to listen to" width="900" height="1165" fetchpriority="high"></div>
     </div>
   </div>
 </section>`,
@@ -701,7 +710,7 @@ const S = {
     <div class="setgrid">${setTiles}</div>
     <div class="c2cband">
       <div class="c2ctext">
-        <img src="${C2CLOGO}" class="c2clogo" alt="">
+        <img src="${C2CLOGO}" class="c2clogo" alt="" loading="lazy">
         <div class="kicker"><i class="livedot"></i>Live now</div>
         <h3 class="c2ctitle">Creation to Christ</h3>
         <p class="sub">A mobile-first web app of 13 simple, audio-based stories from Creation to Christ, with storyboards.</p>
@@ -710,7 +719,7 @@ const S = {
       <a class="browser" href="https://www.creationtochrist.app/" target="_blank" rel="noopener"
          aria-label="Open creationtochrist.app, the one story set that is already live">
         <div class="bbar"><i></i><i></i><i></i><span>creationtochrist.app</span></div>
-        <img src="${DESK}" alt="The Creation to Christ website, already live">
+        <img src="${DESK}" alt="The Creation to Christ website, already live" loading="lazy">
       </a>
     </div>
     <h3 class="h3s" style="margin-top:clamp(90px,10vw,140px)">The Buildout</h3>
@@ -800,11 +809,11 @@ const S = {
         <div class="sbar">${ic('search', 17, '#2E8FA8', 2.2)}<span>money</span></div>
         <div class="srule"></div>
         <div class="reslist">
-          <div class="res"><img src="${IMG.zac}" alt=""><div><b>Zacchaeus</b><div class="rs">&ldquo;I will give half my <mark>money</mark> to the poor&rdquo;</div></div><div class="rm">Luke 19<br>1:30</div></div>
-          <div class="res"><img src="${IMG.blind}" alt=""><div><b>The Rich Young Ruler</b><div class="rs">&ldquo;Sell everything and give the <mark>money</mark> away&rdquo;</div></div><div class="rm">Mark 10<br>1:45</div></div>
-          <div class="res"><img src="${IMG.feed}" alt=""><div><b>The Widow's Offering</b><div class="rs">&ldquo;She gave all the <mark>money</mark> she had&rdquo;</div></div><div class="rm">Mark 12<br>1:12</div></div>
-          <div class="res"><img src="${IMG.res}" alt=""><div><b>The Rich Fool</b><div class="rs">Theme: <mark>money</mark> and greed</div></div><div class="rm">Luke 12<br>1:38</div></div>
-          <div class="res"><img src="${IMG.creation}" alt=""><div><b>Treasure in Heaven</b><div class="rs">&ldquo;Do not store up <mark>money</mark> for yourselves on earth&rdquo;</div></div><div class="rm">Matthew 6<br>1:20</div></div>
+          <div class="res"><img src="${IMG.zac}" alt="" loading="lazy"><div><b>Zacchaeus</b><div class="rs">&ldquo;I will give half my <mark>money</mark> to the poor&rdquo;</div></div><div class="rm">Luke 19<br>1:30</div></div>
+          <div class="res"><img src="${IMG.blind}" alt="" loading="lazy"><div><b>The Rich Young Ruler</b><div class="rs">&ldquo;Sell everything and give the <mark>money</mark> away&rdquo;</div></div><div class="rm">Mark 10<br>1:45</div></div>
+          <div class="res"><img src="${IMG.feed}" alt="" loading="lazy"><div><b>The Widow's Offering</b><div class="rs">&ldquo;She gave all the <mark>money</mark> she had&rdquo;</div></div><div class="rm">Mark 12<br>1:12</div></div>
+          <div class="res"><img src="${IMG.res}" alt="" loading="lazy"><div><b>The Rich Fool</b><div class="rs">Theme: <mark>money</mark> and greed</div></div><div class="rm">Luke 12<br>1:38</div></div>
+          <div class="res"><img src="${IMG.creation}" alt="" loading="lazy"><div><b>Treasure in Heaven</b><div class="rs">&ldquo;Do not store up <mark>money</mark> for yourselves on earth&rdquo;</div></div><div class="rm">Matthew 6<br>1:20</div></div>
         </div>
       </div>
     </div>
@@ -823,11 +832,11 @@ const S = {
           </div>
           <div class="plm">Nepali &middot; 5 stories</div>
         </div>
-        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.blind}" alt=""><span class="t">The Rich Young Ruler</span><span class="m">1:45</span></div>
-        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.zac}" alt=""><span class="t">Zacchaeus</span><span class="m">1:30</span></div>
-        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.feed}" alt=""><span class="t">The Widow's Offering</span><span class="m">1:12</span></div>
-        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.res}" alt=""><span class="t">The Rich Fool</span><span class="m">1:38</span></div>
-        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.creation}" alt=""><span class="t">Treasure in Heaven</span><span class="m">1:20</span></div>
+        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.blind}" alt="" loading="lazy"><span class="t">The Rich Young Ruler</span><span class="m">1:45</span></div>
+        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.zac}" alt="" loading="lazy"><span class="t">Zacchaeus</span><span class="m">1:30</span></div>
+        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.feed}" alt="" loading="lazy"><span class="t">The Widow's Offering</span><span class="m">1:12</span></div>
+        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.res}" alt="" loading="lazy"><span class="t">The Rich Fool</span><span class="m">1:38</span></div>
+        <div class="plrow"><span class="h">&#8801;</span><img src="${IMG.creation}" alt="" loading="lazy"><span class="t">Treasure in Heaven</span><span class="m">1:20</span></div>
         <div class="plrow add"><span class="h">+</span><span></span><span class="t">Add another story</span><span class="m"></span></div>
       </div>
     </div>
@@ -835,7 +844,7 @@ const S = {
     <p class="sub">Drawn once. Used by all 40 languages.</p>
     <div class="navypanel">
     <div class="sbgrid">
-      <div class="sbimg"><img src="${SBOARD}" alt="Jesus Calms the Storm storyboard"></div>
+      <div class="sbimg"><img src="${SBOARD}" alt="Jesus Calms the Storm storyboard" loading="lazy"></div>
       <div>
         <p class="ptext sbwhyhead">Benefits of storyboards</p>
         <div class="why"><div class="ico">${ic('zap', 17, '#75D4E6')}</div>
@@ -892,15 +901,15 @@ const S = {
     <p class="sub">World-class tools for a world-changing project.</p>
     <div class="stack">
       <div class="scol"><div class="scolh">${STACK[0][0]}</div>
-        ${STACK[0][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt=""><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
+        ${STACK[0][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt="" loading="lazy"><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
       </div>
       <div class="scol"><div class="scolh">${STACK[1][0]}</div>
-        ${STACK[1][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt=""><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
+        ${STACK[1][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt="" loading="lazy"><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
       </div>
       <div class="scol"><div class="scolh">${STACK[2][0]}</div>
-        ${STACK[2][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt=""><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
+        ${STACK[2][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt="" loading="lazy"><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
         <div class="scolh later">${STACK[3][0]}</div>
-        ${STACK[3][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt=""><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
+        ${STACK[3][1].map(([f, n, d]) => `<div class="stile"><img src="${L(f)}" alt="" loading="lazy"><div><div class="sn">${n}</div><div class="sd">${d}</div></div></div>`).join('')}
       </div>
     </div>
     <p class="ptext stacknote"><b>Version tracking:</b> every story text and audio file carries a content hash, so the system always knows which translations and recordings have gone stale and need redoing. Nothing is tracked by hand.</p>
@@ -930,7 +939,7 @@ const S = {
     <div class="advgrid">
       ${[['storytelling', 'Storying practitioners'], ['movement', 'Movement practitioners'],
          ['ai', 'Technology professionals'], ['translation', 'Translation experts']]
-        .map(([f, n]) => `<div class="acard"><img src="${AV(f)}" alt=""><div class="an">${n}</div></div>`).join('')}
+        .map(([f, n]) => `<div class="acard"><img src="${AV(f)}" alt="" loading="lazy"><div class="an">${n}</div></div>`).join('')}
     </div>
   </div>
 </section>`,
@@ -949,7 +958,7 @@ const S = {
 ${notesBlock}
 <footer>
   <div class="wrap fbar">
-    <div class="fm"><img src="${LOGOSQ}" alt=""><b>storying<span>.app</span></b></div>
+    <div class="fm"><img src="${LOGOSQ}" alt="" loading="lazy"><b>storying<span>.app</span></b></div>
     <div>An audio-based, mobile-first library of oral Bible stories in 40+ languages.</div>
     <div><a href="mailto:brett@vmx.media">brett@vmx.media</a></div>
   </div>
@@ -970,6 +979,7 @@ const html = `<!DOCTYPE html>
 <link rel="canonical" href="${OG_URL}">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="${LOGOSQ}">
+<link rel="preload" as="image" href="${HERO}" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="storying.app">
 <meta property="og:url" content="${OG_URL}">
@@ -1041,4 +1051,16 @@ fs.copyFileSync('assets/og_image.png', 'dist/og_image.png');
 // favicon.ico is served from the root so tools like Google's favicon fetcher, which look
 // for it directly rather than reading <link rel="icon">, can find it.
 fs.copyFileSync('assets/favicon.ico', 'dist/favicon.ico');
+// Every other image is referenced by path (see ap() above) rather than inlined, so the
+// browser can paint text immediately and fetch these afterward instead of blocking on one
+// giant document. Copy the whole tree so dist/assets/<path> matches every ap() reference.
+function copyDir(src, dest) {
+  fs.mkdirSync(dest, { recursive: true });
+  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
+    if (entry.name === '.DS_Store') continue;
+    const s = `${src}/${entry.name}`, d = `${dest}/${entry.name}`;
+    if (entry.isDirectory()) copyDir(s, d); else fs.copyFileSync(s, d);
+  }
+}
+copyDir('assets', 'dist/assets');
 console.log('site:', (html.length / 1024 / 1024).toFixed(2) + 'MB · sections:', (html.match(/<section/g) || []).length);

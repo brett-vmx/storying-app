@@ -6,14 +6,16 @@ coordinators, native-speaker reviewers) and advisors.
 
 ## How this builds
 
-`node build-site.mjs` reads the data and assets and writes **one self-contained file**,
-`dist/index.html`, with every image base64-inlined. There is no bundler, no framework and
-no external request at runtime. It also copies `assets/og_image.png` (the Open Graph /
-Twitter card, a hand-designed asset, not a screenshot) to `dist/`.
+`node build-site.mjs` reads the data and assets and writes `dist/index.html`. There is no
+bundler, no framework. Images are referenced by path (see `ap()` in `build-site.mjs`), not
+inlined as base64: this lets the browser paint text immediately and fetch images
+afterward, which matters a lot for first paint on the throttled mobile connections a
+Lighthouse/PageSpeed audit simulates. The whole `assets/` folder is copied to `dist/assets/`
+to match.
 
 ```
 npm install
-npm run build      # -> dist/index.html + dist/og_image.png
+npm run build      # -> dist/index.html + dist/assets/
 npm run serve      # preview at localhost:3000
 ```
 
@@ -29,16 +31,17 @@ npm run serve      # preview at localhost:3000
 | `data/a-cellpaths.json` | Per-country silhouette paths fitted to a 200x150 tile, for the language grid. Generated. |
 | `gen-assets.mjs` | Regenerates the two generated files above from `world-atlas`. Only needed if the language list or map framing changes. |
 | `shoot-site.mjs` | Screenshots the page at 1440 / 834 / 390 px into `site-shots/` and reports any horizontal overflow. |
-| `assets/` | Logos, story images, storyboard, hero shot, Lucide icons, the OG card |
+| `assets/` | Logos, story images, storyboard, hero shot, Lucide icons, the OG card. `hero.jpg` is the read-only master photo; `hero-web.jpg` is the display-sized derivative actually used on the page. `stories/thumbs/` holds the cropped-down versions of the story photos used at thumbnail size. |
 
 ## Editing rules
 
-**Never hand-edit `dist/index.html`.** It is generated and 4 MB of base64. Every change
-goes in `build-site.mjs` and is rebuilt.
+**Never hand-edit `dist/index.html`.** It is generated. Every change goes in
+`build-site.mjs` and is rebuilt.
 
 Inside `build-site.mjs` the structure is:
 
-1. Asset loaders and helpers (`b64`, `ic` for icons, `fmt` / `fmtWord` for populations)
+1. Asset loaders and helpers (`ap` for image paths, `ic` for icon SVGs, `fmt` / `fmtWord`
+   for populations)
 2. Derived data: Venn geometry, language grid cells, map dots, story sets, process steps
 3. `NOTES` and the footnote helpers
 4. `CSS` — one template string, commented by section
@@ -84,7 +87,20 @@ deck. Nothing may scroll horizontally.
 - After any layout change run `npm run shots` and check it reports `OVERFLOW: none` at all
   three widths.
 
+## Performance, worth keeping in mind when adding images
+
+The hero image is the page's LCP element: it's preloaded (`<link rel="preload" ... fetchpriority="high">`
+in `<head>`) and its `<img>` also carries `fetchpriority="high"`. Every other image should
+carry `loading="lazy"` so it doesn't compete with the hero for bandwidth. Size source
+images to their actual display size before adding them (check the CSS, not just the
+original file) — the story thumbnails and hero were originally full-resolution photos
+shown at a fraction of that size, which was most of the page's weight for zero visual
+benefit. If a source file is read-only (a protected master asset), save a resized copy
+alongside it (e.g. `hero-web.jpg`) rather than overwriting the original.
+
 ## Deploying
 
-Cloudflare Pages, connected to this repo. Build command `npm run build`, output directory
-`dist`. Pushing to the default branch deploys. See `DEPLOY.md`.
+Cloudflare Workers (static assets), connected to this repo via GitHub. Build command
+`npm run build`, output directory `dist`. Pushing to the default branch deploys. See
+`DEPLOY.md` (written for Cloudflare Pages; the underlying build/output settings are the
+same, but the Cloudflare dashboard now defaults new static sites to Workers).

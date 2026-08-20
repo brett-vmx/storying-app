@@ -11,7 +11,17 @@ const b = await chromium.launch();
 for (const [w, name] of WIDTHS) {
   const p = await b.newPage({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1 });
   await p.goto(URL, { waitUntil: 'load' });
-  await p.waitForTimeout(500);
+  await p.waitForTimeout(300);
+  // Images now load lazily as the page scrolls. A real visitor scrolling down triggers
+  // them fine, but Playwright's fullPage screenshot does not reliably do the same, so
+  // scroll through by hand first or the capture below shows blank boxes that aren't real.
+  const fullH = await p.evaluate(() => document.body.scrollHeight);
+  for (let y = 0; y < fullH; y += 700) {
+    await p.evaluate((yy) => window.scrollTo(0, yy), y);
+    await p.waitForTimeout(120);
+  }
+  await p.evaluate(() => window.scrollTo(0, 0));
+  await p.waitForTimeout(300);
   const overflow = await p.evaluate(() => {
     const de = document.documentElement;
     const bad = [];
