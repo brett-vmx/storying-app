@@ -444,10 +444,10 @@ a.settile:hover{transform:translateY(-3px);border-color:#63CBE0;box-shadow:0 14p
   .fnode .st em{display:block;white-space:normal;margin-top:2px}
   .ffan{height:52px}.fnode.fan{padding:18px 16px}}
 /* The Nubri proof point: the stat leads, the story follows as plain body copy. */
-.nubri{margin:68px auto 0;max-width:82ch;text-align:center}
+.nubri{margin:clamp(90px,10vw,140px) auto 0;max-width:82ch;text-align:center}
 .nubri .nstat{font-size:15px;font-weight:660;line-height:1.3}
 .nubri .nstat b{display:block;font-size:54px;color:var(--pinkL);letter-spacing:-.02em;line-height:1;margin-bottom:2px}
-.nubri .ptext{margin-top:16px;color:#e6eef2;text-align:left}
+.nubri .ptext{margin-top:36px;color:#e6eef2;text-align:left}
 .nubri .ptext b{color:var(--pinkL);font-weight:700}
 .nubri .ptext a{color:var(--tealL);font-weight:700;text-decoration:none}
 
