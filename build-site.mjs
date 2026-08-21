@@ -970,11 +970,20 @@ ${notesBlock}
 
 const OG_URL = 'https://storying.app/';
 const DESC = 'An audio-based, mobile-first library of oral Bible stories and story sets in 40 major languages for illiterate and oral-preference learners.';
+const GA_ID = 'G-QVHW91KSL2';
 
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${GA_ID}');
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>storying.app &middot; Oral Bible stories in 40 languages</title>
 <meta name="description" content="${DESC}">
