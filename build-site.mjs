@@ -680,7 +680,7 @@ const S = {
         <h1 class="bigclaim">The Bible is in every major language in the world.
           <span class="cl-pink">739 million people still cannot read it.</span>
           <span class="cl-teal">5.7 billion people would prefer not to.${ref('need')}</span></h1>
-        <p class="herosub">Storying.app will be an audio-based, mobile-first library of oral Bible stories and story sets in 40 major languages for <span class="cl-pink">illiterate</span> and <span class="cl-teal">oral-preference</span> learners.</p>
+        <p class="herosub">Storying.app will be an audio-based, mobile-first library of oral Bible stories and story sets in 40 major languages for <span class="cl-pink"><b>illiterate</b></span> and <span class="cl-teal"><b>oral-preference</b></span> learners.</p>
         <div class="herobtns">
           <a class="btn primary" href="#contact">Get involved</a>
           <a class="btn ghost" href="#languages">See the 40 languages</a>
