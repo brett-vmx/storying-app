@@ -449,6 +449,7 @@ a.settile:hover{transform:translateY(-3px);border-color:#63CBE0;box-shadow:0 14p
 .nubri .nstat b{display:block;font-size:54px;color:#F2A7C2;letter-spacing:-.02em;line-height:1;margin-bottom:2px}
 .nubri .ptext{margin-top:16px;color:#e6eef2}
 .nubri .ptext b{color:var(--pinkL);font-weight:700}
+.nubri .ptext a{color:var(--tealL);font-weight:700;text-decoration:none}
 
 /* ---- the live site shot ---- */
 .browser{display:block;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.2);
@@ -778,8 +779,8 @@ const S = {
       </div>
     </div>
     <div class="nubri">
-      <div class="nstat"><b>1</b>Nubri believer</div>
-      <p class="ptext"><b>The Nubri Story</b> - The Creation to Christ stories were translated into Nepali. From Nepali, local speakers translated them into Nubri and Gurung. The stories are now the only known gospel resource in Nubri! And the first known Nubri believer came to faith after hearing the Creation to Christ composite story!</p>
+      <div class="nstat"><b>4</b>Nubri believers</div>
+      <p class="ptext"><b>The Nubri Story</b> - At a recent Storying training, 10 stories were developed in only 5 days in 2 different minority languages using the Nepal trade language. All trainees confidently knew the 10 stories and began sharing them immediately, as well as training other believers to share the stories. In just 2 months, 10 people have believed from 3 different Tibetan Buddhist peoples! 4 are from the <a href="https://joshuaproject.net/people_groups/20782/NP" target="_blank" rel="noopener">Nubri</a> frontier people group.</p>
     </div>
   </div>
 </section>`,
