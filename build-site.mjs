@@ -780,7 +780,7 @@ const S = {
     </div>
     <div class="nubri">
       <div class="nstat"><b>4</b>Nubri believers</div>
-      <p class="ptext"><b>The Nubri Story</b> - At a recent Storying training, 10 stories were developed in only 5 days in 2 different minority languages using the Nepal trade language. All trainees confidently knew the 10 stories and began sharing them immediately, as well as training other believers to share the stories. In just 2 months, 10 people have believed from 3 different Tibetan Buddhist peoples! 4 are from the <a href="https://joshuaproject.net/people_groups/20782/NP" target="_blank" rel="noopener">Nubri</a> frontier people group.</p>
+      <p class="ptext"><b>The Nubri Story</b> - At a recent Storying training, 10 stories were developed in only 5 days in 2 different minority languages using the Nepali trade language. All trainees confidently knew the 10 stories and began sharing them immediately, as well as training other believers to share the stories. In just 2 months, 10 people have believed from 3 different Tibetan Buddhist peoples! 4 are from the <a href="https://joshuaproject.net/people_groups/20782/NP" target="_blank" rel="noopener">Nubri</a> frontier people group.</p>
     </div>
   </div>
 </section>`,
