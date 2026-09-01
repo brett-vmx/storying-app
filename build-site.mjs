@@ -171,7 +171,7 @@ const notesBlock = `<section class="sec paper lt" id="notes">
 </section>`;
 
 const NAV = [
-  ['need', 'Need'], ['sets', 'Story Sets'], ['languages', 'Languages'],
+  ['need', 'Need'], ['solution', 'Solution'], ['sets', 'Story Sets'], ['languages', 'Languages'],
   ['features', 'Features'], ['process', 'Process'], ['team', 'Team'],
 ];
 
@@ -695,13 +695,27 @@ const S = {
 <section class="sec white lt" id="need">
   <div class="wrap">
     <h2>The Need</h2>
-    <p class="sub">More than half of the world's illiterate adults live in ten countries.
+    <p class="sub">Even though the Bible has been translated into hundreds of languages, hundreds of millions of people still cannot read it.</p>
+    <p class="sub" style="margin-top:28px">More than half of the world's illiterate adults live in ten countries.
       <span class="cl-pink">Nine will be covered by storying.app.</span>
       <span class="cl-teal">Eight are in the 10/40 Window.${ref('ten')}</span></p>
     <svg class="mapsvg t10map" viewBox="0 0 ${W.w} ${W.h}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="World map highlighting the ten countries with the most illiterate adults">
       <path class="land" d="${W.world}"/>${t10shapes}<g class="t10labels">${t10labels}</g></svg>
     <ol class="t10list">${W.top10.map(t => `<li><span class="tn">${t.name}</span><span class="tv">${t.m}M</span></li>`).join('')}
       <li class="ttot"><span class="tn">Total</span><span class="tv">${W.top10.reduce((a, b) => a + b.m, 0)}M</span></li></ol>
+  </div>
+</section>`,
+
+  solution: `
+<section class="sec" id="solution">
+  <div class="wrap">
+    <h2>The Solution</h2>
+    <p class="sub">A library of Bible stories crafted specifically for illiterate and oral-preference learners in 40 major languages and organized by story sets.</p>
+    <div class="bignums">
+      <div class="bignum b-teal"><div class="bnico">${ic('globe', 23, '#fff')}</div><div><div class="bn">12</div><div class="bl">story sets</div></div></div>
+      <div class="bignum b-lav"><div class="bnico">${ic('book-open', 23, '#fff')}</div><div><div class="bn">183</div><div class="bl">stories</div></div></div>
+      <div class="bignum b-pink"><div class="bnico">${ic('languages', 23, '#fff')}</div><div><div class="bn">40</div><div class="bl">languages</div></div></div>
+    </div>
   </div>
 </section>`,
 
@@ -724,12 +738,6 @@ const S = {
         <div class="bbar"><i></i><i></i><i></i><span>creationtochrist.app</span></div>
         <img src="${DESK}" alt="The Creation to Christ website, already live" loading="lazy">
       </a>
-    </div>
-    <h3 class="h3s" style="margin-top:clamp(90px,10vw,140px)">The Buildout</h3>
-    <div class="bignums">
-      <div class="bignum b-teal"><div class="bnico">${ic('globe', 23, '#fff')}</div><div><div class="bn">12</div><div class="bl">story sets</div></div></div>
-      <div class="bignum b-lav"><div class="bnico">${ic('book-open', 23, '#fff')}</div><div><div class="bn">183</div><div class="bl">stories</div></div></div>
-      <div class="bignum b-pink"><div class="bnico">${ic('languages', 23, '#fff')}</div><div><div class="bn">40</div><div class="bl">languages</div></div></div>
     </div>
   </div>
 </section>`,
@@ -1021,6 +1029,7 @@ const html = `<!DOCTYPE html>
 <main>
 ${S.hero}
 ${S.where}
+${S.solution}
 ${S.sets}
 ${S.langs}
 ${S.find}
