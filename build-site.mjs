@@ -17,7 +17,7 @@ const SBOARD = ap('assets/storyboard.webp'), DESK = ap('assets/c2c-desktop.webp'
 // (the hero is only ever shown at up to 338px CSS wide, so the full-res original is
 // needlessly heavy for the page's LCP element).
 const HERO = ap('assets/hero-web.jpg');
-const C2CLOGO = ap('assets/c2c-app-logo-icon.png');
+const C2CLOGO = ap('assets/c2c-app-logo-icon.webp');
 const COPYICON = (size = 20, color = 'currentColor', sw = 1.9) =>
   `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
 const L = n => ap(`assets/logos/${n}.png`);
@@ -85,19 +85,19 @@ const t10labels = W.top10.map(t => {
    secured yet), and whether the set is live. */
 const SETS = [
   ['C2CLOGO', 'Creation to Christ', 'creationtochrist.app', true],
-  ['7-commands', '7 Commands', '7commands.app'],
-  ['stories-of-hope', 'Stories of Hope', 'storiesofhope.app'],
-  ['acts', 'Acts', ''],
-  ['old-testament', 'Old Testament Stories', ''],
-  ['sacrifice-stories-2', 'Sacrifice Stories', 'sacrificestories.app'],
-  ['prophet-stories', 'Prophet Stories', 'prophetstories.app'],
-  ['pauls-journeys', "Paul's Journeys", 'paulsjourneys.app'],
-  ['baptism-hammer', 'Baptism Hammer', 'baptismhammer.app'],
-  ['jesus-teaching', 'Teachings of Jesus', ''],
-  ['jesus-parables', 'Parables of Jesus', ''],
-  ['jesus-miracles', 'Miracles of Jesus', 'miraclesofjesus.app'],
+  ['7-commands.webp', '7 Commands', '7commands.app'],
+  ['stories-of-hope.webp', 'Stories of Hope', 'storiesofhope.app'],
+  ['acts.webp', 'Acts', ''],
+  ['old-testament.webp', 'Old Testament Stories', ''],
+  ['sacrifice-stories-2.webp', 'Sacrifice Stories', 'sacrificestories.app'],
+  ['prophet-stories.webp', 'Prophet Stories', 'prophetstories.app'],
+  ['pauls-journeys.webp', "Paul's Journeys", 'paulsjourneys.app'],
+  ['baptism-hammer.webp', 'Baptism Hammer', 'baptismhammer.app'],
+  ['jesus-teaching.webp', 'Teachings of Jesus', ''],
+  ['jesus-parables.webp', 'Parables of Jesus', ''],
+  ['jesus-miracles.webp', 'Miracles of Jesus', 'miraclesofjesus.app'],
 ];
-const SETIC = n => ap(`assets/story-set-icons/${n}.png`);
+const SETIC = n => ap(`assets/story-set-icons/${n}`);
 const setTiles = SETS.map(([icon, name, dom, live]) => {
   const src = icon === 'C2CLOGO' ? C2CLOGO : SETIC(icon);
   const body = `<img src="${src}" alt="" loading="lazy"><div><div class="sn">${name}</div>`
