@@ -221,6 +221,8 @@ h3.h3s{font-size:clamp(21px,3vw,28px);font-weight:680;letter-spacing:-.01em;line
 .sub + .sub{margin-top:6px}
 .sub span.cl-pink,.sub span.cl-teal{display:block;font-weight:700}
 .lt .sub{color:var(--ink-s)}
+#need .sub{max-width:640px}
+#need .sub b{color:var(--ink)}
 .ptext{font-size:clamp(16px,2vw,18px);line-height:1.6}
 .src{font-size:12px;line-height:1.6;color:#8CA5B4;margin-top:22px;max-width:100ch}
 .lt .src{color:#7E8F99}
