@@ -241,31 +241,45 @@ h3.h3s{font-size:clamp(21px,3vw,28px);font-weight:680;letter-spacing:-.01em;line
 .bigstat.left{text-align:center;margin:44px auto 48px}
 
 
-/* ---- sticky nav ---- */
+/* ---- sticky nav ----
+   The bar never wraps (default flex nowrap). A small script measures whether the mark +
+   links + CTA actually fit the available width and, if not, adds #top.collapsed, which
+   swaps the inline links/CTA for a hamburger button and a dropdown panel. This reacts to
+   the real rendered width of whatever NAV contains, not a hardcoded breakpoint, so it
+   keeps working correctly if nav items are ever added or removed. */
 #top{position:sticky;top:0;z-index:60;background:rgba(21,40,56,.9);backdrop-filter:saturate(150%) blur(14px);
   -webkit-backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid rgba(255,255,255,.1)}
 #top .bar{display:flex;align-items:center;gap:20px;min-height:66px;padding:9px 0}
 #top .mk{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;flex-shrink:0}
+#top.collapsed .mk{flex:1;min-width:0}
 #top .mk img{width:42px;height:42px;flex-shrink:0}
 #top .mktext{display:block;line-height:1.2}
 #top .mk b{display:block;font-size:19px;font-weight:700;letter-spacing:-.01em}
 #top .mk b span{color:var(--tealL)}
 #top .mk em{display:block;font-style:normal;font-size:11.5px;color:var(--mut);margin-top:2px;font-weight:500}
-#top nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
-#top nav::-webkit-scrollbar{display:none}
+#top nav{display:flex;gap:4px;margin-left:auto;flex-shrink:0}
 #top nav a{font-size:13.5px;color:#bcd0dc;text-decoration:none;padding:7px 11px;border-radius:8px;white-space:nowrap}
 #top nav a:hover{background:rgba(255,255,255,.09);color:#fff}
 #top nav a.cur{color:#fff;background:rgba(99,203,224,.18)}
 #top .navcta{flex-shrink:0;background:var(--teal);color:#fff;font-size:13.5px;font-weight:700;text-decoration:none;
-  padding:9px 16px;border-radius:9px;white-space:nowrap}
+  padding:9px 16px;border-radius:9px;white-space:nowrap;transition:background .15s}
 #top .navcta:hover{background:#1789A1}
-/* Narrow screens: the mark and its tagline take the first row on their own, then the
-   section links and the CTA share the second. Keeps the tagline readable at phone width. */
-/* Narrow screens: mark and CTA share the top row, section links get the full row below. */
-@media (max-width:900px){#top .bar{padding:10px 0;flex-wrap:wrap;gap:9px 12px}
-  #top .mk{order:1;flex:1;min-width:0}
-  #top .navcta{order:2;padding:8px 14px;font-size:13px}
-  #top nav{order:3;width:100%;margin-left:0}}
+#top.collapsed .bar>nav,#top.collapsed .bar>.navcta{display:none}
+#top .navburger{display:none;flex-shrink:0;width:38px;height:38px;border-radius:9px;border:none;
+  background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+#top .navburger:hover{background:rgba(255,255,255,.09)}
+#top.collapsed .navburger{display:flex}
+#top .navburger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;
+  transition:transform .2s,opacity .2s}
+#top.open .navburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#top.open .navburger span:nth-child(2){opacity:0}
+#top.open .navburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.navmobile{max-height:0;overflow:hidden;transition:max-height .25s ease}
+#top.open .navmobile{max-height:420px}
+.navmobile nav{display:flex;flex-direction:column;gap:2px;padding:8px 0 20px}
+.navmobile nav a{color:#dce8ee;text-decoration:none;font-size:15px;font-weight:600;padding:11px 4px;border-radius:8px}
+.navmobile nav a:hover,.navmobile nav a.cur{background:rgba(255,255,255,.08);color:#fff}
+.navmobile .navcta{margin-top:10px;text-align:center;display:block}
 @media (max-width:520px){#top .mk img{width:38px;height:38px}
   #top .mk b{font-size:17.5px}#top .mk em{font-size:10.5px;line-height:1.35}}
 
@@ -1024,6 +1038,15 @@ const html = `<!DOCTYPE html>
     </a>
     <nav>${NAV.map(([id, label]) => `<a href="#${id}">${label}</a>`).join('')}</nav>
     <a class="navcta" href="#contact">Get involved</a>
+    <button class="navburger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="navmobile" id="navMobile">
+    <div class="wrap">
+      <nav>${NAV.map(([id, label]) => `<a href="#${id}">${label}</a>`).join('')}
+        <a class="navcta" href="#contact">Get involved</a></nav>
+    </div>
   </div>
 </header>
 <main>
@@ -1059,6 +1082,28 @@ ${S.contact}
     });
   },{rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(function(s){io.observe(s)});
+})();
+/* Collapses the nav into a hamburger once the mark, links and CTA no longer fit one row,
+   measured directly rather than at a fixed viewport width, so it still works correctly if
+   nav items are ever added or removed. */
+(function(){
+  var top=document.getElementById('top'),bar=top.querySelector('.bar');
+  var burger=document.getElementById('navBurger'),mobile=document.getElementById('navMobile');
+  function close(){top.classList.remove('open');burger.setAttribute('aria-expanded','false')}
+  function fit(){
+    top.classList.remove('collapsed');
+    var overflow=bar.scrollWidth>bar.clientWidth+1;
+    top.classList.toggle('collapsed',overflow);
+    if(!overflow)close();
+  }
+  fit();
+  var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(fit,120)},{passive:true});
+  burger.addEventListener('click',function(){
+    var open=top.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });
+  mobile.addEventListener('click',function(e){if(e.target.tagName==='A')close()});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close()});
 })();
 </script>
 </body></html>`;
