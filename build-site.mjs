@@ -710,9 +710,9 @@ const S = {
   <div class="wrap">
     <h2>The Need</h2>
     <p class="sub">Even though the Bible has been translated into hundreds of languages, hundreds of millions of people still cannot read it.</p>
-    <p class="sub" style="margin-top:28px">More than half of the world's illiterate adults live in ten countries.
-      <span class="cl-pink">Nine will be covered by storying.app.</span>
-      <span class="cl-teal">Eight are in the 10/40 Window.${ref('ten')}</span></p>
+    <p class="sub" style="margin-top:28px"><b>More than half of the world's illiterate adults live in the 10 countries below.</b>
+      <span class="cl-pink">8 are in the 10/40 Window.${ref('ten')}</span>
+      <span class="cl-teal">9 will be covered by storying.app.</span></p>
     <svg class="mapsvg t10map" viewBox="0 0 ${W.w} ${W.h}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="World map highlighting the ten countries with the most illiterate adults">
       <path class="land" d="${W.world}"/>${t10shapes}<g class="t10labels">${t10labels}</g></svg>
     <ol class="t10list">${W.top10.map(t => `<li><span class="tn">${t.name}</span><span class="tv">${t.m}M</span></li>`).join('')}
@@ -972,7 +972,7 @@ const S = {
   contact: `
 <section class="sec" id="contact">
   <div class="wrap">
-    <h2>Interested? Let's talk.</h2>
+    <h2>Wanna help? Let's talk.</h2>
     <p>Whether you want to draw, coordinate a language, review stories in your own tongue, advise the plan, or reuse the content in your own work, there is a place for you here.</p>
     <div class="ctabtns">
       <a class="btn solid" href="mailto:brett@vmx.media?subject=storying.app">${ic('mail', 18, '#12657A')} brett@vmx.media</a>
