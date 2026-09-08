@@ -1,6 +1,8 @@
 import fs from 'fs';
+import { storiesPage } from './build-stories.mjs';
 
 const langs = JSON.parse(fs.readFileSync('data/languages.json', 'utf8'));
+const storyData = JSON.parse(fs.readFileSync('data/stories.json', 'utf8'));
 const cellp = JSON.parse(fs.readFileSync('data/a-cellpaths.json', 'utf8'));
 const W = JSON.parse(fs.readFileSync('data/a-world.json', 'utf8'));
 
@@ -699,7 +701,7 @@ const S = {
         <p class="herosub">Storying.app will be an audio-based, mobile-first library of oral Bible stories and story sets in 40 major languages for <span class="cl-pink"><b>illiterate</b></span> and <span class="cl-teal"><b>oral-preference</b></span> learners.</p>
         <div class="herobtns">
           <a class="btn primary" href="#contact">Get involved</a>
-          <a class="btn ghost" href="#languages">See the 40 languages</a>
+          <a class="btn ghost" href="stories/">See the Stories</a>
         </div>
       </div>
       <div class="heroshot"><img src="${HERO}" alt="A story from the storying.app library, with audio to listen to" width="900" height="1165" fetchpriority="high"></div>
@@ -1127,8 +1129,21 @@ function copyDir(src, dest) {
   for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
     if (entry.name === '.DS_Store') continue;
     const s = `${src}/${entry.name}`, d = `${dest}/${entry.name}`;
-    if (entry.isDirectory()) copyDir(s, d); else fs.copyFileSync(s, d);
+    // Some masters are read-only (hero.jpg), and copyFileSync cannot overwrite a
+    // read-only destination, so a second build would fail. Clear the target first.
+    if (entry.isDirectory()) copyDir(s, d);
+    else { fs.rmSync(d, { force: true }); fs.copyFileSync(s, d); }
   }
 }
 copyDir('assets', 'dist/assets');
 console.log('site:', (html.length / 1024 / 1024).toFixed(2) + 'MB · sections:', (html.match(/<section/g) || []).length);
+
+/* The library browse page at /stories. It shares this file's CSS and nav so the two pages
+   cannot drift apart; its own markup and behaviour live in build-stories.mjs. */
+const stories = storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data: storyData, ic });
+fs.mkdirSync('dist/stories', { recursive: true });
+fs.writeFileSync('dist/stories/index.html', stories);
+console.log('stories:', (stories.length / 1024).toFixed(0) + 'KB ·',
+  storyData.stories.filter(s => !s.som).length, 'stories +',
+  storyData.stories.filter(s => s.som).length, 'Sermon on the Mount ·',
+  storyData.dups.length, 'parallel references');

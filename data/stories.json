@@ -1,0 +1,3591 @@
+{
+"vocab": {
+"Story Type": [
+"Parables",
+"Teachings",
+"Miracles",
+"Healings",
+"Exorcisms",
+"Resurrections",
+"Nature",
+"Provision"
+],
+"Following Jesus": [
+"Forgiveness",
+"Faith",
+"Love",
+"Obedience",
+"Perseverance",
+"Money",
+"Giving",
+"Courage",
+"Peace",
+"Humility",
+"Worship",
+"Prayer",
+"Leadership",
+"Mission"
+],
+"Hard Things": [
+"Spiritual Warfare",
+"Idolatry",
+"Persecution",
+"Pain and Suffering",
+"Grief"
+],
+"God": [
+"Father",
+"Son",
+"Holy Spirit",
+"3 in 1",
+"Kingdom of God",
+"God's Word"
+],
+"Women of the Bible": [
+"Women"
+]
+},
+"sets": [
+"Creation to Christ",
+"7 Commands",
+"Stories of Hope",
+"Acts",
+"OT Stories",
+"Sacrifice Stories",
+"Baptism Hammer",
+"Paul's Journeys"
+],
+"stories": [
+{
+"id": "B4",
+"t": "Creation",
+"b": "Genesis",
+"r": "1-2:3",
+"par": [],
+"s": [
+"Creation to Christ"
+],
+"g": [
+"Nature",
+"Father",
+"Worship"
+],
+"som": false
+},
+{
+"id": "B5",
+"t": "The First People",
+"b": "Genesis",
+"r": "2:4-25",
+"par": [],
+"s": [],
+"g": [
+"Father",
+"Nature"
+],
+"som": false
+},
+{
+"id": "B6",
+"t": "The First Sin",
+"b": "Genesis",
+"r": "3",
+"par": [],
+"s": [
+"Creation to Christ",
+"Sacrifice Stories"
+],
+"g": [
+"Obedience",
+"Forgiveness"
+],
+"som": false
+},
+{
+"id": "B7",
+"t": "Cain and Abel",
+"b": "Genesis",
+"r": "4:1-16",
+"par": [],
+"s": [
+"Sacrifice Stories"
+],
+"g": [
+"Worship",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "B8",
+"t": "Noah and the Flood",
+"b": "Genesis",
+"r": "6:9\u20139:17",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Obedience",
+"Faith",
+"Nature"
+],
+"som": false
+},
+{
+"id": "B9",
+"t": "The Tower of Babel",
+"b": "Genesis",
+"r": "11:1-9",
+"par": [],
+"s": [],
+"g": [
+"Mission",
+"Humility"
+],
+"som": false
+},
+{
+"id": "B10",
+"t": "God's Promise to Abraham",
+"b": "Genesis",
+"r": "12:1-5,15:1-6,17,21:1-7",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Faith",
+"Mission"
+],
+"som": false
+},
+{
+"id": "B11",
+"t": "Hagar and Ishmael",
+"b": "Genesis",
+"r": "16",
+"par": [],
+"s": [],
+"g": [
+"Faith",
+"Women",
+"Grief"
+],
+"som": false
+},
+{
+"id": "B12",
+"t": "Sodom and Gomorrah",
+"b": "Genesis",
+"r": "18:16-33,19:1-29",
+"par": [],
+"s": [],
+"g": [
+"Prayer",
+"Courage"
+],
+"som": false
+},
+{
+"id": "B13",
+"t": "Abraham Sacrifices His Son",
+"b": "Genesis",
+"r": "22:1-18",
+"par": [],
+"s": [
+"Sacrifice Stories"
+],
+"g": [
+"Faith",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "B14",
+"t": "Jacob and Esau",
+"b": "Genesis",
+"r": "25:19-34, 27:1-45",
+"par": [],
+"s": [],
+"g": [
+"Forgiveness"
+],
+"som": false
+},
+{
+"id": "B15",
+"t": "Jacob Wrestles with God",
+"b": "Genesis",
+"r": "32-33",
+"par": [],
+"s": [],
+"g": [
+"Perseverance",
+"Faith",
+"Prayer"
+],
+"som": false
+},
+{
+"id": "B16",
+"t": "Joseph",
+"b": "Genesis",
+"r": "37-50",
+"par": [],
+"s": [],
+"g": [
+"Forgiveness",
+"Perseverance",
+"Pain and Suffering"
+],
+"som": false
+},
+{
+"id": "B17",
+"t": "Moses and the Burning Bush",
+"b": "Exodus",
+"r": "3",
+"par": [],
+"s": [],
+"g": [
+"Mission",
+"Obedience",
+"Courage"
+],
+"som": false
+},
+{
+"id": "B18",
+"t": "The Plagues",
+"b": "Exodus",
+"r": "7:14\u201312:30",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Nature",
+"Courage",
+"Idolatry"
+],
+"som": false
+},
+{
+"id": "B19",
+"t": "The Passover",
+"b": "Exodus",
+"r": "12:1-30",
+"par": [],
+"s": [
+"Sacrifice Stories"
+],
+"g": [
+"Obedience",
+"Faith"
+],
+"som": false
+},
+{
+"id": "B20",
+"t": "Crossing the Red Sea",
+"b": "Exodus",
+"r": "13:17\u201314:31",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Nature",
+"Faith",
+"Courage"
+],
+"som": false
+},
+{
+"id": "B21",
+"t": "Manna",
+"b": "Exodus",
+"r": "16:1-36",
+"par": [],
+"s": [],
+"g": [
+"Provision",
+"Money",
+"Faith"
+],
+"som": false
+},
+{
+"id": "B22",
+"t": "Hands Held High",
+"b": "Exodus",
+"r": "17:8-16",
+"par": [],
+"s": [],
+"g": [
+"Spiritual Warfare",
+"Prayer",
+"Perseverance"
+],
+"som": false
+},
+{
+"id": "B23",
+"t": "The Ten Commandments",
+"b": "Exodus",
+"r": "20:1-21",
+"par": [],
+"s": [],
+"g": [
+"Obedience",
+"God's Word"
+],
+"som": false
+},
+{
+"id": "B24",
+"t": "The Golden Calf",
+"b": "Exodus",
+"r": "32:1-35",
+"par": [],
+"s": [],
+"g": [
+"Idolatry",
+"Worship"
+],
+"som": false
+},
+{
+"id": "B25",
+"t": "Building God's Holy Tent",
+"b": "Exodus",
+"r": "35:4\u201336:7",
+"par": [],
+"s": [],
+"g": [
+"Giving",
+"Worship"
+],
+"som": false
+},
+{
+"id": "B26",
+"t": "Unintentional Sin",
+"b": "Leviticus",
+"r": "5:17-19",
+"par": [],
+"s": [
+"Sacrifice Stories"
+],
+"g": [
+"Forgiveness",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "B27",
+"t": "The 12 Spies",
+"b": "Numbers",
+"r": "13:1\u201314:38",
+"par": [],
+"s": [],
+"g": [
+"Faith",
+"Courage"
+],
+"som": false
+},
+{
+"id": "B28",
+"t": "The Walls of Jericho",
+"b": "Joshua",
+"r": "6:1-21",
+"par": [],
+"s": [],
+"g": [
+"Faith",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "B29",
+"t": "Achan Steals Some Treasure",
+"b": "Joshua",
+"r": "7:1-26",
+"par": [],
+"s": [],
+"g": [
+"Obedience",
+"Money"
+],
+"som": false
+},
+{
+"id": "B30",
+"t": "Gideon's Army",
+"b": "Judges",
+"r": "7:1-25",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Faith",
+"Courage",
+"Humility"
+],
+"som": false
+},
+{
+"id": "B31",
+"t": "Samson the Strong Man",
+"b": "Judges",
+"r": "13:1\u201316:31",
+"par": [],
+"s": [],
+"g": [
+"Obedience",
+"Perseverance"
+],
+"som": false
+},
+{
+"id": "B32",
+"t": "Ruth and Naomi",
+"b": "Ruth",
+"r": "1:1\u20134:22",
+"par": [],
+"s": [],
+"g": [
+"Love",
+"Faith",
+"Women"
+],
+"som": false
+},
+{
+"id": "B33",
+"t": "Hannah's Prayer",
+"b": "1 Samuel",
+"r": "1:1\u20132:11",
+"par": [],
+"s": [],
+"g": [
+"Prayer",
+"Faith",
+"Women",
+"Grief"
+],
+"som": false
+},
+{
+"id": "B34",
+"t": "The Choosing of David",
+"b": "1 Samuel",
+"r": "16:1-13",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Humility",
+"Leadership"
+],
+"som": false
+},
+{
+"id": "B35",
+"t": "David and Goliath",
+"b": "1 Samuel",
+"r": "17:1-58",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Faith",
+"Courage"
+],
+"som": false
+},
+{
+"id": "B36",
+"t": "David Sins",
+"b": "2 Samuel",
+"r": "11:1\u201312:25",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Forgiveness",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "B37",
+"t": "Elijah and the False Prophets",
+"b": "1 Kings",
+"r": "18:16-46",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Idolatry",
+"Faith",
+"Courage"
+],
+"som": false
+},
+{
+"id": "B38",
+"t": "God Provides for Elijah",
+"b": "1 Kings",
+"r": "17:1-16",
+"par": [],
+"s": [],
+"g": [
+"Provision",
+"Money",
+"Women",
+"Faith"
+],
+"som": false
+},
+{
+"id": "B39",
+"t": "Hezekiah is Healed",
+"b": "2 Kings",
+"r": "20:1-11",
+"par": [],
+"s": [],
+"g": [
+"Healings",
+"Prayer",
+"Faith"
+],
+"som": false
+},
+{
+"id": "B40",
+"t": "Josiah, the boy King",
+"b": "2 Kings",
+"r": "22:1\u201323:25",
+"par": [],
+"s": [],
+"g": [
+"Leadership",
+"God's Word",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "B41",
+"t": "Jehoshaphat",
+"b": "2 Chronicles",
+"r": "20:1-30",
+"par": [],
+"s": [
+"OT Stories"
+],
+"g": [
+"Prayer",
+"Faith",
+"Worship",
+"Leadership"
+],
+"som": false
+},
+{
+"id": "B42",
+"t": "Rebuilding the Wall (Nehemiah)",
+"b": "Nehemiah",
+"r": "1:1\u20136:16",
+"par": [],
+"s": [],
+"g": [
+"Leadership",
+"Perseverance",
+"Prayer"
+],
+"som": false
+},
+{
+"id": "B43",
+"t": "Esther",
+"b": "Esther",
+"r": "2:1\u20139:17",
+"par": [],
+"s": [],
+"g": [
+"Courage",
+"Women",
+"Leadership"
+],
+"som": false
+},
+{
+"id": "B44",
+"t": "Job",
+"b": "Job",
+"r": "1:1\u20132:13, 42:1-17",
+"par": [],
+"s": [],
+"g": [
+"Pain and Suffering",
+"Perseverance",
+"Grief"
+],
+"som": false
+},
+{
+"id": "B45",
+"t": "A New Heart for God's People (The Exile)",
+"b": "Ezekiel",
+"r": "36:22-38",
+"par": [],
+"s": [],
+"g": [
+"Holy Spirit",
+"Forgiveness"
+],
+"som": false
+},
+{
+"id": "B46",
+"t": "Jonah and the Whale",
+"b": "Jonah",
+"r": "1:1\u20134:11",
+"par": [],
+"s": [],
+"g": [
+"Obedience",
+"Mission",
+"Forgiveness"
+],
+"som": false
+},
+{
+"id": "B47",
+"t": "The Gold Statue",
+"b": "Daniel",
+"r": "3:1-30",
+"par": [],
+"s": [],
+"g": [
+"Idolatry",
+"Courage",
+"Faith",
+"Persecution"
+],
+"som": false
+},
+{
+"id": "B48",
+"t": "Daniel in the Lion's Den",
+"b": "Daniel",
+"r": "6:1-28",
+"par": [],
+"s": [],
+"g": [
+"Faith",
+"Courage",
+"Prayer",
+"Persecution"
+],
+"som": false
+},
+{
+"id": "F4",
+"t": "Genealogy of Jesus",
+"b": "Matthew",
+"r": "1:1-17",
+"par": [
+"Luke 3:23-38"
+],
+"s": [],
+"g": [
+"Son"
+],
+"som": false
+},
+{
+"id": "F5",
+"t": "Birth of Jesus",
+"b": "Matthew",
+"r": "1:18-25",
+"par": [
+"Luke 2:1-7"
+],
+"s": [
+"Creation to Christ"
+],
+"g": [
+"Son",
+"Faith"
+],
+"som": false
+},
+{
+"id": "F6",
+"t": "The Wise Men",
+"b": "Matthew",
+"r": "2:1-12",
+"par": [],
+"s": [],
+"g": [
+"Worship",
+"Son"
+],
+"som": false
+},
+{
+"id": "F7",
+"t": "John the Baptist",
+"b": "Matthew",
+"r": "3:1-12",
+"par": [
+"Mark 1:1-8",
+"Luke 3:1-20"
+],
+"s": [],
+"g": [
+"Obedience",
+"Forgiveness"
+],
+"som": false
+},
+{
+"id": "F8",
+"t": "Baptism of Jesus",
+"b": "Matthew",
+"r": "3:13-17",
+"par": [
+"Mark 1:9-11",
+"Luke 3:21-22"
+],
+"s": [],
+"g": [
+"3 in 1",
+"Holy Spirit",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "F9",
+"t": "Temptation of Jesus",
+"b": "Matthew",
+"r": "4:1-11",
+"par": [
+"Mark 1:12-13"
+],
+"s": [],
+"g": [
+"Spiritual Warfare",
+"Obedience",
+"God's Word"
+],
+"som": false
+},
+{
+"id": "F10",
+"t": "Follow and Fish",
+"b": "Matthew",
+"r": "4:18-22",
+"par": [
+"Mark 1:16-20"
+],
+"s": [],
+"g": [
+"Mission",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "F11",
+"t": "The Beatitudes",
+"b": "Matthew",
+"r": "5:1\u201312",
+"par": [
+"Luke 6:20\u201323"
+],
+"s": [],
+"g": [
+"Teachings",
+"Humility",
+"Persecution"
+],
+"som": true
+},
+{
+"id": "F12",
+"t": "Salt and Light",
+"b": "Matthew",
+"r": "5:13\u201316",
+"par": [
+"Mark 9:50",
+"Luke 14:34\u201335"
+],
+"s": [],
+"g": [
+"Teachings",
+"Mission"
+],
+"som": true
+},
+{
+"id": "F13",
+"t": "Jesus and the Law",
+"b": "Matthew",
+"r": "5:17\u201320",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"God's Word",
+"Obedience"
+],
+"som": true
+},
+{
+"id": "F14",
+"t": "Murder in the Heart",
+"b": "Matthew",
+"r": "5:21\u201326",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Forgiveness"
+],
+"som": true
+},
+{
+"id": "F15",
+"t": "Adultery in the Heart",
+"b": "Matthew",
+"r": "5:27\u201330",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Obedience"
+],
+"som": true
+},
+{
+"id": "F16",
+"t": "Divorce and Remarriage",
+"b": "Matthew",
+"r": "5:31\u201332",
+"par": [
+"Matthew 19:3\u20139",
+"Mark 10:2\u201312",
+"Luke 16:18"
+],
+"s": [],
+"g": [
+"Teachings",
+"Obedience"
+],
+"som": true
+},
+{
+"id": "F17",
+"t": "Keeping Your Word",
+"b": "Matthew",
+"r": "5:33\u201337",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Obedience"
+],
+"som": true
+},
+{
+"id": "F18",
+"t": "Turn the Other Cheek",
+"b": "Matthew",
+"r": "5:38\u201342",
+"par": [
+"Luke 6:29\u201330"
+],
+"s": [],
+"g": [
+"Teachings",
+"Love",
+"Humility"
+],
+"som": true
+},
+{
+"id": "F19",
+"t": "Love Your Enemies",
+"b": "Matthew",
+"r": "5:43\u201348",
+"par": [
+"Luke 6:27\u201336"
+],
+"s": [
+"7 Commands"
+],
+"g": [
+"Teachings",
+"Love",
+"Forgiveness"
+],
+"som": true
+},
+{
+"id": "F20",
+"t": "Giving to the Needy",
+"b": "Matthew",
+"r": "6:1\u20134",
+"par": [],
+"s": [
+"7 Commands"
+],
+"g": [
+"Teachings",
+"Giving",
+"Money"
+],
+"som": true
+},
+{
+"id": "F21",
+"t": "The Lord's Prayer",
+"b": "Matthew",
+"r": "6:5\u201315",
+"par": [
+"Luke 11:1\u20134"
+],
+"s": [
+"7 Commands"
+],
+"g": [
+"Teachings",
+"Prayer",
+"Forgiveness"
+],
+"som": true
+},
+{
+"id": "F22",
+"t": "Fasting",
+"b": "Matthew",
+"r": "6:16\u201318",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Worship",
+"Humility"
+],
+"som": true
+},
+{
+"id": "F23",
+"t": "Treasures in Heaven",
+"b": "Matthew",
+"r": "6:19\u201324",
+"par": [
+"Luke 12:32\u201334"
+],
+"s": [],
+"g": [
+"Teachings",
+"Money"
+],
+"som": true
+},
+{
+"id": "F24",
+"t": "Do Not Worry",
+"b": "Matthew",
+"r": "6:25\u201334",
+"par": [
+"Luke 12:22\u201331"
+],
+"s": [],
+"g": [
+"Teachings",
+"Peace",
+"Faith",
+"Provision"
+],
+"som": true
+},
+{
+"id": "F25",
+"t": "Judging Others",
+"b": "Matthew",
+"r": "7:1\u20136",
+"par": [
+"Mark 4:24",
+"Luke 6:37\u201342"
+],
+"s": [],
+"g": [
+"Teachings",
+"Humility",
+"Love"
+],
+"som": true
+},
+{
+"id": "F26",
+"t": "Ask, Seek, Knock",
+"b": "Matthew",
+"r": "7:7\u201312",
+"par": [
+"Luke 11:9\u201313"
+],
+"s": [],
+"g": [
+"Teachings",
+"Prayer",
+"Faith"
+],
+"som": true
+},
+{
+"id": "F27",
+"t": "Entering the Kingdom",
+"b": "Matthew",
+"r": "7:13\u201323",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Obedience"
+],
+"som": true
+},
+{
+"id": "F28",
+"t": "Build Your House on the Rock",
+"b": "Matthew",
+"r": "7:24\u201329",
+"par": [
+"Luke 6:46\u201349"
+],
+"s": [],
+"g": [
+"Teachings",
+"Parables",
+"Obedience"
+],
+"som": true
+},
+{
+"id": "F33",
+"t": "The Paralytic Man",
+"b": "Matthew",
+"r": "9:1-8",
+"par": [
+"Mark 2:1-12"
+],
+"s": [
+"Creation to Christ",
+"Stories of Hope"
+],
+"g": [
+"Miracles",
+"Healings",
+"Forgiveness",
+"Faith"
+],
+"som": false
+},
+{
+"id": "F39",
+"t": "The Weeds",
+"b": "Matthew",
+"r": "13:24-30,36-43",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "F40",
+"t": "The Mustard Seed",
+"b": "Matthew",
+"r": "13:31\u201332",
+"par": [
+"Mark 4:30-32",
+"Luke 13:18-19"
+],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God",
+"Faith"
+],
+"som": false
+},
+{
+"id": "F41",
+"t": "The Hidden Treasure",
+"b": "Matthew",
+"r": "13:44",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "F42",
+"t": "The Pearl of Great Price",
+"b": "Matthew",
+"r": "13:45-46",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "F43",
+"t": "The Fishing Net",
+"b": "Matthew",
+"r": "13:47-50",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "F45",
+"t": "Jesus Walks on Water",
+"b": "Matthew",
+"r": "14:22-33",
+"par": [
+"Mark 6:45-52",
+"John 6:16-21"
+],
+"s": [],
+"g": [
+"Miracles",
+"Nature",
+"Faith"
+],
+"som": false
+},
+{
+"id": "F47",
+"t": "Who did people say Jesus was?",
+"b": "Matthew",
+"r": "16:13-20",
+"par": [
+"Mark 8:27-30",
+"Luke 9:18-21"
+],
+"s": [],
+"g": [
+"Son",
+"Teachings"
+],
+"som": false
+},
+{
+"id": "F48",
+"t": "Jesus Shines in Glorious Light",
+"b": "Matthew",
+"r": "17:1-13",
+"par": [
+"Mark 9:2-13"
+],
+"s": [],
+"g": [
+"Son",
+"Worship",
+"Father"
+],
+"som": false
+},
+{
+"id": "F49",
+"t": "Boy with an Unclean Spirit",
+"b": "Matthew",
+"r": "17:14-20",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Exorcisms",
+"Spiritual Warfare",
+"Faith"
+],
+"som": false
+},
+{
+"id": "F50",
+"t": "Finding a Coin in the Mouth of a Fish",
+"b": "Matthew",
+"r": "17:24-27",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Provision",
+"Money"
+],
+"som": false
+},
+{
+"id": "F52",
+"t": "The Unforgiving Slave",
+"b": "Matthew",
+"r": "18:21-35",
+"par": [],
+"s": [
+"Stories of Hope"
+],
+"g": [
+"Parables",
+"Forgiveness",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "F56",
+"t": "The Vineyard Workers",
+"b": "Matthew",
+"r": "20:1-16",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "F59",
+"t": "The Two Sons",
+"b": "Matthew",
+"r": "21:28\u201332",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "F60",
+"t": "The Vineyard Owner",
+"b": "Matthew",
+"r": "21:33\u201346",
+"par": [
+"Mark 12:1-12",
+"Luke 20:9-19"
+],
+"s": [],
+"g": [
+"Parables"
+],
+"som": false
+},
+{
+"id": "F61",
+"t": "The Great Banquet",
+"b": "Matthew",
+"r": "22:1-14",
+"par": [
+"Luke 14:15-24"
+],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "F62",
+"t": "The Greatest Commandment",
+"b": "Matthew",
+"r": "22:34-40",
+"par": [
+"Mark 12:28-34"
+],
+"s": [
+"7 Commands"
+],
+"g": [
+"Teachings",
+"Love",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "F64",
+"t": "The Ten Virgins",
+"b": "Matthew",
+"r": "25:1\u201313",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God",
+"Perseverance"
+],
+"som": false
+},
+{
+"id": "F65",
+"t": "The Talents",
+"b": "Matthew",
+"r": "25:14\u201330",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Obedience",
+"Money"
+],
+"som": false
+},
+{
+"id": "F66",
+"t": "The Sheep and the Goats",
+"b": "Matthew",
+"r": "25:31-46",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Love",
+"Giving"
+],
+"som": false
+},
+{
+"id": "F68",
+"t": "Jesus in the Garden",
+"b": "Matthew",
+"r": "26:36-56",
+"par": [
+"Luke 22:39-53"
+],
+"s": [],
+"g": [
+"Prayer",
+"Obedience",
+"Pain and Suffering"
+],
+"som": false
+},
+{
+"id": "F69",
+"t": "The Death of Jesus",
+"b": "Matthew",
+"r": "27:32-66",
+"par": [
+"Mark 15:21-47",
+"Luke 23:26-56",
+"John 19:17-42"
+],
+"s": [
+"Creation to Christ",
+"Stories of Hope"
+],
+"g": [
+"Son",
+"Forgiveness",
+"Pain and Suffering"
+],
+"som": false
+},
+{
+"id": "F70",
+"t": "The Resurrection",
+"b": "Matthew",
+"r": "28:1-10",
+"par": [
+"Mark 16:1-8",
+"Luke 24:1-12",
+"John 20:1-10"
+],
+"s": [
+"Creation to Christ",
+"Stories of Hope"
+],
+"g": [
+"Resurrections",
+"Son",
+"Faith",
+"Women"
+],
+"som": false
+},
+{
+"id": "F71",
+"t": "The Great Commission",
+"b": "Matthew",
+"r": "28:16-20",
+"par": [
+"Mark 16:14-18",
+"John 20:19-23"
+],
+"s": [
+"7 Commands",
+"Baptism Hammer"
+],
+"g": [
+"Mission",
+"Obedience",
+"3 in 1"
+],
+"som": false
+},
+{
+"id": "I11",
+"t": "The Man with the Paralyzed Hand",
+"b": "Mark",
+"r": "3:1-6",
+"par": [
+"Matthew 12:9-14",
+"Luke 6:6-11"
+],
+"s": [],
+"g": [
+"Miracles",
+"Healings"
+],
+"som": false
+},
+{
+"id": "I12",
+"t": "True Relationships",
+"b": "Mark",
+"r": "3:31-35",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "I13",
+"t": "The Sower",
+"b": "Mark",
+"r": "4:1-20",
+"par": [
+"Matthew 13:1-23",
+"Luke 8:4-15"
+],
+"s": [],
+"g": [
+"Parables",
+"God's Word"
+],
+"som": false
+},
+{
+"id": "I15",
+"t": "The Growing Seed",
+"b": "Mark",
+"r": "4:26-29",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Kingdom of God"
+],
+"som": false
+},
+{
+"id": "I17",
+"t": "Jesus Calms the Storm",
+"b": "Mark",
+"r": "4:35-41",
+"par": [
+"Matthew 8:23-27",
+"Luke 8:22-25"
+],
+"s": [
+"Creation to Christ"
+],
+"g": [
+"Miracles",
+"Nature",
+"Faith",
+"Peace"
+],
+"som": false
+},
+{
+"id": "I18",
+"t": "The Demoniac",
+"b": "Mark",
+"r": "5:1-20",
+"par": [
+"Matthew 8:28-34",
+"Luke 8:26-39"
+],
+"s": [
+"Creation to Christ"
+],
+"g": [
+"Miracles",
+"Exorcisms",
+"Spiritual Warfare"
+],
+"som": false
+},
+{
+"id": "I19",
+"t": "Jairus' Daughter and the Bleeding Woman",
+"b": "Mark",
+"r": "5:21-43",
+"par": [
+"Matthew 9:18-26",
+"Luke 8:40-56"
+],
+"s": [
+"Creation to Christ"
+],
+"g": [
+"Miracles",
+"Healings",
+"Resurrections",
+"Faith",
+"Women"
+],
+"som": false
+},
+{
+"id": "I21",
+"t": "Feeding the 5,000",
+"b": "Mark",
+"r": "6:30-44",
+"par": [
+"Matthew 14:13-21",
+"John 6:1-15"
+],
+"s": [
+"Creation to Christ"
+],
+"g": [
+"Miracles",
+"Provision",
+"Faith"
+],
+"som": false
+},
+{
+"id": "I23",
+"t": "A Gentile Mother's Faith",
+"b": "Mark",
+"r": "7:24-30",
+"par": [
+"Matthew 15:21-28"
+],
+"s": [],
+"g": [
+"Miracles",
+"Exorcisms",
+"Faith",
+"Perseverance",
+"Women"
+],
+"som": false
+},
+{
+"id": "I35",
+"t": "The Widow's Offering",
+"b": "Mark",
+"r": "12:41-44",
+"par": [
+"Luke 21:1-4"
+],
+"s": [
+"7 Commands"
+],
+"g": [
+"Giving",
+"Money",
+"Women",
+"Teachings"
+],
+"som": false
+},
+{
+"id": "L4",
+"t": "The Annunciation",
+"b": "Luke",
+"r": "1:26-38",
+"par": [],
+"s": [],
+"g": [
+"Faith",
+"Obedience",
+"Women",
+"Son"
+],
+"som": false
+},
+{
+"id": "L6",
+"t": "The Shepherds and the Angels",
+"b": "Luke",
+"r": "2:8-20",
+"par": [],
+"s": [],
+"g": [
+"Son",
+"God's Word"
+],
+"som": false
+},
+{
+"id": "L7",
+"t": "Young Jesus",
+"b": "Luke",
+"r": "2:41-52",
+"par": [],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L11",
+"t": "The Unclean Demonic Spirit",
+"b": "Luke",
+"r": "4:31-37",
+"par": [
+"Mark 1:21-28"
+],
+"s": [],
+"g": [
+"Miracles",
+"Provision",
+"Mission",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "L12",
+"t": "Miraculous Catch of Fish",
+"b": "Luke",
+"r": "5:1\u201311",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Healings",
+"Faith"
+],
+"som": false
+},
+{
+"id": "L13",
+"t": "Cleansing a Leper",
+"b": "Luke",
+"r": "5:12-16",
+"par": [
+"Matthew 8:1-4",
+"Mark 1:40-45"
+],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L21",
+"t": "The Faith of a Roman Military Official",
+"b": "Luke",
+"r": "7:1-10",
+"par": [
+"Matthew 8:5-13"
+],
+"s": [],
+"g": [
+"Miracles",
+"Resurrections",
+"Grief",
+"Women"
+],
+"som": false
+},
+{
+"id": "L22",
+"t": "Widow's Son Raised",
+"b": "Luke",
+"r": "7:11-17",
+"par": [],
+"s": [
+"Stories of Hope"
+],
+"g": [
+"Forgiveness",
+"Love",
+"Worship",
+"Women"
+],
+"som": false
+},
+{
+"id": "L23",
+"t": "The Woman Who Wept at the Feet of Jesus",
+"b": "Luke",
+"r": "7:36-50",
+"par": [],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L30",
+"t": "Take up Your Cross",
+"b": "Luke",
+"r": "9:23-27",
+"par": [
+"Matthew 10:37-39",
+"Mark 8:34-38"
+],
+"s": [],
+"g": [
+"Teachings",
+"Mission"
+],
+"som": false
+},
+{
+"id": "L31",
+"t": "Jesus Sends Out His Disciples",
+"b": "Luke",
+"r": "10:1-12",
+"par": [
+"Matthew 10:5-15",
+"Mark 6:7-13",
+"Luke 9:1-6"
+],
+"s": [
+"7 Commands"
+],
+"g": [
+"Parables",
+"Love",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "L32",
+"t": "The Good Samaritan",
+"b": "Luke",
+"r": "10:25-37",
+"par": [],
+"s": [],
+"g": [
+"Worship",
+"Women",
+"Teachings"
+],
+"som": false
+},
+{
+"id": "L33",
+"t": "Mary and Martha",
+"b": "Luke",
+"r": "10:38-42",
+"par": [],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L36",
+"t": "The Rich Fool",
+"b": "Luke",
+"r": "12:13\u201321",
+"par": [],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L39",
+"t": "Ready for the Master's Return",
+"b": "Luke",
+"r": "12:35\u201340",
+"par": [
+"Matthew 24:45-51"
+],
+"s": [],
+"g": [
+"Miracles",
+"Healings",
+"Women"
+],
+"som": false
+},
+{
+"id": "L40",
+"t": "Healing a Disabled Woman",
+"b": "Luke",
+"r": "13:10-17",
+"par": [],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L43",
+"t": "Counting the Cost",
+"b": "Luke",
+"r": "14:25-33",
+"par": [],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L45",
+"t": "The Lost Sheep",
+"b": "Luke",
+"r": "15:1-7",
+"par": [
+"Matthew 18:10-14"
+],
+"s": [],
+"g": [
+"Parables",
+"Love",
+"Forgiveness",
+"Women"
+],
+"som": false
+},
+{
+"id": "L46",
+"t": "The Lost Coin",
+"b": "Luke",
+"r": "15:8-10",
+"par": [],
+"s": [
+"Stories of Hope"
+],
+"g": [
+"Parables",
+"Forgiveness",
+"Love",
+"Father"
+],
+"som": false
+},
+{
+"id": "L47",
+"t": "The Lost Son",
+"b": "Luke",
+"r": "15:11-32",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Money"
+],
+"som": false
+},
+{
+"id": "L48",
+"t": "The Dishonest Manager",
+"b": "Luke",
+"r": "16:1-13",
+"par": [],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L50",
+"t": "The Rich Man and Lazarus",
+"b": "Luke",
+"r": "16:19\u201331",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Healings",
+"Worship",
+"Faith"
+],
+"som": false
+},
+{
+"id": "L51",
+"t": "Ten Lepers Healed",
+"b": "Luke",
+"r": "17:11-19",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Prayer",
+"Perseverance",
+"Women"
+],
+"som": false
+},
+{
+"id": "L52",
+"t": "The Persistent Widow",
+"b": "Luke",
+"r": "18:1-8",
+"par": [],
+"s": [
+"Stories of Hope"
+],
+"g": [
+"Parables",
+"Humility",
+"Prayer"
+],
+"som": false
+},
+{
+"id": "L53",
+"t": "The Pharisee and the Tax Collector",
+"b": "Luke",
+"r": "18:9\u201314",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Humility"
+],
+"som": false
+},
+{
+"id": "L54",
+"t": "Jesus and the Children",
+"b": "Luke",
+"r": "18:15-17",
+"par": [
+"Matthew 19:13-15",
+"Mark 10:13-16"
+],
+"s": [],
+"g": [
+"Money",
+"Obedience",
+"Teachings"
+],
+"som": false
+},
+{
+"id": "L55",
+"t": "The Rich Young Ruler",
+"b": "Luke",
+"r": "18:18-23",
+"par": [
+"Matthew 19:16-22",
+"Mark 10:17-22"
+],
+"s": [],
+"g": [
+"Miracles",
+"Healings",
+"Faith"
+],
+"som": false
+},
+{
+"id": "L56",
+"t": "Blind Bartimaeus",
+"b": "Luke",
+"r": "18:35-43",
+"par": [
+"Matthew 20:29-34",
+"Mark 10:46-52"
+],
+"s": [
+"Creation to Christ",
+"7 Commands",
+"Stories of Hope"
+],
+"g": [
+"Forgiveness",
+"Money",
+"Giving"
+],
+"som": false
+},
+{
+"id": "L57",
+"t": "Zacchaeus",
+"b": "Luke",
+"r": "19:1-10",
+"par": [],
+"s": [],
+"g": [
+"Parables",
+"Obedience",
+"Money"
+],
+"som": false
+},
+{
+"id": "L58",
+"t": "The Bags of Gold",
+"b": "Luke",
+"r": "19:11-27",
+"par": [],
+"s": [],
+"g": [
+"Worship",
+"Son"
+],
+"som": false
+},
+{
+"id": "L59",
+"t": "Jesus Enters Jerusalem",
+"b": "Luke",
+"r": "19:28-44",
+"par": [
+"Matthew 21:1-11",
+"Mark 21:1-11",
+"John 12:12-19"
+],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L62",
+"t": "The Last Supper",
+"b": "Luke",
+"r": "22:7-20",
+"par": [
+"Matthew 26:26-29",
+"Mark 14:22-25"
+],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "L66",
+"t": "Jesus Appears to Men on the Road",
+"b": "Luke",
+"r": "24:13-35",
+"par": [
+"Mark 16:12-13"
+],
+"s": [],
+"g": [
+"Resurrections",
+"Faith",
+"Son"
+],
+"som": false
+},
+{
+"id": "L67",
+"t": "The Risen Jesus",
+"b": "Luke",
+"r": "24:36-49",
+"par": [],
+"s": [
+"Acts"
+],
+"g": [
+"Mission",
+"Son"
+],
+"som": false
+},
+{
+"id": "L68",
+"t": "Jesus Ascends to Heaven",
+"b": "Luke",
+"r": "24:50-53",
+"par": [
+"Mark 16:19-20"
+],
+"s": [],
+"g": [],
+"som": false
+},
+{
+"id": "O4",
+"t": "The Lamb of God",
+"b": "John",
+"r": "1:19-36",
+"par": [],
+"s": [
+"Sacrifice Stories"
+],
+"g": [
+"Son",
+"Forgiveness"
+],
+"som": false
+},
+{
+"id": "O5",
+"t": "Water Into Wine",
+"b": "John",
+"r": "2:1-11",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Provision",
+"Nature"
+],
+"som": false
+},
+{
+"id": "O6",
+"t": "Cleansing the Temple",
+"b": "John",
+"r": "2:13-25",
+"par": [],
+"s": [],
+"g": [
+"Worship"
+],
+"som": false
+},
+{
+"id": "O7",
+"t": "Jesus and Nicodemus",
+"b": "John",
+"r": "3:1-21",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Holy Spirit",
+"3 in 1"
+],
+"som": false
+},
+{
+"id": "O8",
+"t": "The Samaritan Woman",
+"b": "John",
+"r": "4:1-42",
+"par": [],
+"s": [
+"Creation to Christ",
+"7 Commands",
+"Baptism Hammer"
+],
+"g": [
+"Worship",
+"Mission",
+"Forgiveness",
+"Women"
+],
+"som": false
+},
+{
+"id": "O9",
+"t": "Healing an Official's Son",
+"b": "John",
+"r": "4:46-54",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Healings",
+"Faith"
+],
+"som": false
+},
+{
+"id": "O10",
+"t": "Man Healed After 38 Years",
+"b": "John",
+"r": "5:1-15",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Healings"
+],
+"som": false
+},
+{
+"id": "O13",
+"t": "An Adulteress Forgiven",
+"b": "John",
+"r": "8:1-11",
+"par": [],
+"s": [],
+"g": [
+"Forgiveness",
+"Humility",
+"Women"
+],
+"som": false
+},
+{
+"id": "O14",
+"t": "Man Born Blind",
+"b": "John",
+"r": "9:1-41",
+"par": [],
+"s": [
+"Creation to Christ"
+],
+"g": [
+"Miracles",
+"Healings",
+"Faith"
+],
+"som": false
+},
+{
+"id": "O15",
+"t": "The Good Shepherd",
+"b": "John",
+"r": "10:1-18",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Love",
+"Son"
+],
+"som": false
+},
+{
+"id": "O16",
+"t": "Lazarus Raised from the Dead",
+"b": "John",
+"r": "11:1-44",
+"par": [],
+"s": [],
+"g": [
+"Miracles",
+"Resurrections",
+"Grief",
+"Faith"
+],
+"som": false
+},
+{
+"id": "O17",
+"t": "Oil Poured on Jesus's Feet",
+"b": "John",
+"r": "12:1-8",
+"par": [],
+"s": [],
+"g": [
+"Worship",
+"Love",
+"Giving",
+"Women"
+],
+"som": false
+},
+{
+"id": "O19",
+"t": "Grain of Wheat",
+"b": "John",
+"r": "12:23-28",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "O20",
+"t": "Jesus Washes His Disciples Feet",
+"b": "John",
+"r": "13:1-20",
+"par": [],
+"s": [],
+"g": [
+"Humility",
+"Love",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "O21",
+"t": "The Way to the Father",
+"b": "John",
+"r": "14:1-6",
+"par": [],
+"s": [],
+"g": [
+"Teachings",
+"Father",
+"Son"
+],
+"som": false
+},
+{
+"id": "O22",
+"t": "The Promise of the Holy Spirit",
+"b": "John",
+"r": "14:15-26",
+"par": [],
+"s": [],
+"g": [
+"Holy Spirit",
+"3 in 1",
+"Teachings"
+],
+"som": false
+},
+{
+"id": "O23",
+"t": "The Vine and the Branches",
+"b": "John",
+"r": "15:1-17",
+"par": [],
+"s": [
+"7 Commands"
+],
+"g": [
+"Teachings",
+"Obedience",
+"Love"
+],
+"som": false
+},
+{
+"id": "O27",
+"t": "Doubting Thomas",
+"b": "John",
+"r": "20:24-29",
+"par": [],
+"s": [],
+"g": [
+"Faith",
+"Resurrections",
+"Son"
+],
+"som": false
+},
+{
+"id": "R4",
+"t": "The Holy Spirit",
+"b": "Acts",
+"r": "1:4-8",
+"par": [],
+"s": [
+"Acts"
+],
+"g": [
+"Holy Spirit",
+"Mission"
+],
+"som": false
+},
+{
+"id": "R5",
+"t": "Pentecost",
+"b": "Acts",
+"r": "2:1-41",
+"par": [],
+"s": [
+"Acts",
+"Baptism Hammer"
+],
+"g": [
+"Holy Spirit",
+"Mission",
+"3 in 1"
+],
+"som": false
+},
+{
+"id": "R6",
+"t": "The Early Church",
+"b": "Acts",
+"r": "2:42-47",
+"par": [],
+"s": [
+"7 Commands"
+],
+"g": [
+"Giving",
+"Love",
+"Worship"
+],
+"som": false
+},
+{
+"id": "R7",
+"t": "Healing a Lame Man",
+"b": "Acts",
+"r": "3:1\u201326",
+"par": [],
+"s": [
+"Acts"
+],
+"g": [
+"Miracles",
+"Healings"
+],
+"som": false
+},
+{
+"id": "R8",
+"t": "Before the Jewish Leadership",
+"b": "Acts",
+"r": "4:1-31",
+"par": [],
+"s": [
+"Acts"
+],
+"g": [
+"Courage",
+"Persecution"
+],
+"som": false
+},
+{
+"id": "R9",
+"t": "Lying to the Holy Spirit",
+"b": "Acts",
+"r": "5:1-11",
+"par": [],
+"s": [],
+"g": [
+"Holy Spirit",
+"Money",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "R10",
+"t": "A Growing Church",
+"b": "Acts",
+"r": "5:12-16",
+"par": [],
+"s": [],
+"g": [
+"Healings",
+"Mission"
+],
+"som": false
+},
+{
+"id": "R11",
+"t": "The Apostles Persecuted",
+"b": "Acts",
+"r": "5:17-42",
+"par": [],
+"s": [
+"7 Commands"
+],
+"g": [
+"Courage",
+"Persecution",
+"Perseverance"
+],
+"som": false
+},
+{
+"id": "R12",
+"t": "Stephen is Martyred",
+"b": "Acts",
+"r": "6:8\u20137:60",
+"par": [],
+"s": [
+"Acts"
+],
+"g": [
+"Courage",
+"Persecution",
+"Forgiveness",
+"3 in 1"
+],
+"som": false
+},
+{
+"id": "R13",
+"t": "Philip and the Ethiopian",
+"b": "Acts",
+"r": "8:26\u201340",
+"par": [],
+"s": [
+"7 Commands",
+"Acts",
+"Baptism Hammer"
+],
+"g": [
+"Mission",
+"God's Word",
+"Obedience"
+],
+"som": false
+},
+{
+"id": "R14",
+"t": "Paul's Conversion",
+"b": "Acts",
+"r": "9:1\u201331",
+"par": [],
+"s": [
+"Acts",
+"Baptism Hammer"
+],
+"g": [
+"Mission",
+"Forgiveness"
+],
+"som": false
+},
+{
+"id": "R15",
+"t": "Cornelius's Family is Saved",
+"b": "Acts",
+"r": "10:1-48",
+"par": [],
+"s": [
+"Acts",
+"Baptism Hammer"
+],
+"g": [
+"Mission",
+"Holy Spirit"
+],
+"som": false
+},
+{
+"id": "R16",
+"t": "The Church at Antioch Begins",
+"b": "Acts",
+"r": "11:19-30",
+"par": [],
+"s": [
+"Acts"
+],
+"g": [
+"Mission",
+"Giving"
+],
+"som": false
+},
+{
+"id": "R17",
+"t": "Paul and Barnabus Sent Out",
+"b": "Acts",
+"r": "13:1-3",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission",
+"Holy Spirit"
+],
+"som": false
+},
+{
+"id": "R18",
+"t": "Paul makes a Sorcerer Blind",
+"b": "Acts",
+"r": "13:4-12",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Spiritual Warfare",
+"Miracles"
+],
+"som": false
+},
+{
+"id": "R19",
+"t": "Paul's Sermon to the Jews",
+"b": "Acts",
+"r": "13:13-52",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission",
+"God's Word"
+],
+"som": false
+},
+{
+"id": "R20",
+"t": "Growth and Persecution",
+"b": "Acts",
+"r": "14:1-7",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Persecution",
+"Perseverance",
+"Mission"
+],
+"som": false
+},
+{
+"id": "R21",
+"t": "Mistaken for Gods",
+"b": "Acts",
+"r": "14:8-20",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Idolatry",
+"Humility",
+"Persecution"
+],
+"som": false
+},
+{
+"id": "R22",
+"t": "Completing the Mission",
+"b": "Acts",
+"r": "14:21-28",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission",
+"Perseverance"
+],
+"som": false
+},
+{
+"id": "R23",
+"t": "A Fight in the Church",
+"b": "Acts",
+"r": "15:1-35",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Humility",
+"Leadership"
+],
+"som": false
+},
+{
+"id": "R24",
+"t": "Paul and Barnabus Part Ways",
+"b": "Acts",
+"r": "15:36-41",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Leadership",
+"Mission"
+],
+"som": false
+},
+{
+"id": "R25",
+"t": "Paul Selects Timothy",
+"b": "Acts",
+"r": "16:1-5",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission",
+"Leadership"
+],
+"som": false
+},
+{
+"id": "R26",
+"t": "A Call to New Ministry",
+"b": "Acts",
+"r": "16:6-10",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission",
+"Holy Spirit"
+],
+"som": false
+},
+{
+"id": "R27",
+"t": "Lydia's Conversion",
+"b": "Acts",
+"r": "16:11-15",
+"par": [],
+"s": [
+"Baptism Hammer",
+"Paul's Journeys"
+],
+"g": [
+"Mission",
+"Faith",
+"Women"
+],
+"som": false
+},
+{
+"id": "R28",
+"t": "The Fortune Teller",
+"b": "Acts",
+"r": "16:16-24",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Spiritual Warfare",
+"Exorcisms",
+"Persecution"
+],
+"som": false
+},
+{
+"id": "R29",
+"t": "Paul and Silas Escape from Prison",
+"b": "Acts",
+"r": "16:16-40",
+"par": [],
+"s": [
+"Baptism Hammer",
+"Paul's Journeys"
+],
+"g": [
+"Courage",
+"Worship",
+"Persecution"
+],
+"som": false
+},
+{
+"id": "R30",
+"t": "The Attack of Jason's House",
+"b": "Acts",
+"r": "17:1-9",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Persecution",
+"Courage"
+],
+"som": false
+},
+{
+"id": "R31",
+"t": "The Bereans Love the Bible!",
+"b": "Acts",
+"r": "17:10-16",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"God's Word",
+"Faith"
+],
+"som": false
+},
+{
+"id": "R32",
+"t": "Paul's Sermon to the Gentiles",
+"b": "Acts",
+"r": "17:16-34",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission",
+"Idolatry"
+],
+"som": false
+},
+{
+"id": "R33",
+"t": "\"I have many people in this city\"",
+"b": "Acts",
+"r": "18:1\u201317",
+"par": [],
+"s": [
+"Baptism Hammer",
+"Paul's Journeys"
+],
+"g": [
+"Courage",
+"Mission"
+],
+"som": false
+},
+{
+"id": "R34",
+"t": "Paul Returns to Antioch",
+"b": "Acts",
+"r": "18:18-23",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission"
+],
+"som": false
+},
+{
+"id": "R35",
+"t": "The Eloquent Apollos",
+"b": "Acts",
+"r": "18:24-28",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"God's Word",
+"Humility"
+],
+"som": false
+},
+{
+"id": "R36",
+"t": "Baptism of the Holy Spirit",
+"b": "Acts",
+"r": "19:1-7",
+"par": [],
+"s": [
+"Baptism Hammer",
+"Paul's Journeys"
+],
+"g": [
+"Holy Spirit"
+],
+"som": false
+},
+{
+"id": "R37",
+"t": "All of Asia Hears",
+"b": "Acts",
+"r": "19:8-10",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission"
+],
+"som": false
+},
+{
+"id": "R38",
+"t": "Demons Defeated",
+"b": "Acts",
+"r": "19:11-20",
+"par": [],
+"s": [
+"Acts",
+"Paul's Journeys"
+],
+"g": [
+"Spiritual Warfare",
+"Exorcisms"
+],
+"som": false
+},
+{
+"id": "R39",
+"t": "The Riot",
+"b": "Acts",
+"r": "19:21-41",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Idolatry",
+"Persecution",
+"Courage"
+],
+"som": false
+},
+{
+"id": "R40",
+"t": "Paul in Macedonia",
+"b": "Acts",
+"r": "20:1-6",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Mission"
+],
+"som": false
+},
+{
+"id": "R41",
+"t": "A Midnight Resurrection",
+"b": "Acts",
+"r": "20:7-12",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Miracles",
+"Resurrections"
+],
+"som": false
+},
+{
+"id": "R42",
+"t": "Paul's Goodbye to the Elders",
+"b": "Acts",
+"r": "20:13-38",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Love",
+"Leadership",
+"Perseverance"
+],
+"som": false
+},
+{
+"id": "R43",
+"t": "Paul's Return to Jerusalem",
+"b": "Acts",
+"r": "21:1-19",
+"par": [],
+"s": [
+"Paul's Journeys"
+],
+"g": [
+"Obedience",
+"Courage"
+],
+"som": false
+},
+{
+"id": "T4",
+"t": "The Second Coming",
+"b": "Revelation",
+"r": "19:11-16",
+"par": [],
+"s": [],
+"g": [
+"Son",
+"Perseverance"
+],
+"som": false
+},
+{
+"id": "T5",
+"t": "Satan Bound",
+"b": "Revelation",
+"r": "20:1-3",
+"par": [],
+"s": [],
+"g": [
+"Spiritual Warfare"
+],
+"som": false
+},
+{
+"id": "T6",
+"t": "The 1,000 Year Reign",
+"b": "Revelation",
+"r": "20:4-6",
+"par": [],
+"s": [],
+"g": [
+"Son",
+"Peace"
+],
+"som": false
+},
+{
+"id": "T7",
+"t": "The Great White Throne Judgment",
+"b": "Revelation",
+"r": "20:11-15",
+"par": [],
+"s": [],
+"g": [
+"Obedience",
+"Son"
+],
+"som": false
+},
+{
+"id": "T8",
+"t": "The New Creation",
+"b": "Revelation",
+"r": "21:1-27,22:1-5",
+"par": [],
+"s": [],
+"g": [
+"Peace",
+"Worship",
+"Nature"
+],
+"som": false
+}
+],
+"dups": [
+{
+"t": "Cleansing a Leper",
+"b": "Matthew",
+"r": "8:1-4",
+"of": "L13"
+},
+{
+"t": "The Faith of a Roman Military Official",
+"b": "Matthew",
+"r": "8:5-13",
+"of": "L21"
+},
+{
+"t": "Jesus Calms the Storm",
+"b": "Matthew",
+"r": "8:23-27",
+"of": "I17"
+},
+{
+"t": "The Demoniac",
+"b": "Matthew",
+"r": "8:28-34",
+"of": "I18"
+},
+{
+"t": "Jairus' Daughter and the Bleeding Woman",
+"b": "Matthew",
+"r": "9:18-26",
+"of": "I19"
+},
+{
+"t": "Jesus Sends Out His Disciples",
+"b": "Matthew",
+"r": "10:5-15",
+"of": "L31"
+},
+{
+"t": "Take up Your Cross",
+"b": "Matthew",
+"r": "10:37-39",
+"of": "L30"
+},
+{
+"t": "Man with the Paralyzed Hand",
+"b": "Matthew",
+"r": "12:9-14",
+"of": "I11"
+},
+{
+"t": "The Sower",
+"b": "Matthew",
+"r": "13:1-23",
+"of": "I13"
+},
+{
+"t": "Feeding the 5,000",
+"b": "Matthew",
+"r": "14:13-21",
+"of": "I21"
+},
+{
+"t": "A Gentile Mother's Faith",
+"b": "Matthew",
+"r": "15:21-28",
+"of": "I23"
+},
+{
+"t": "The Lost Sheep",
+"b": "Matthew",
+"r": "18:10-14",
+"of": "L45"
+},
+{
+"t": "Divorce and Remarriage",
+"b": "Matthew",
+"r": "19:3\u20139",
+"of": "F16"
+},
+{
+"t": "Jesus and the Children",
+"b": "Matthew",
+"r": "19:13-15",
+"of": "L54"
+},
+{
+"t": "The Rich Young Ruler",
+"b": "Matthew",
+"r": "19:16-22",
+"of": "L55"
+},
+{
+"t": "Blind Bartimaeus",
+"b": "Matthew",
+"r": "20:29-34",
+"of": "L56"
+},
+{
+"t": "Jesus Enters Jerusalem",
+"b": "Matthew",
+"r": "21:1-11",
+"of": "L59"
+},
+{
+"t": "Ready for the Master's Return",
+"b": "Matthew",
+"r": "24:45-51",
+"of": "L39"
+},
+{
+"t": "The Last Supper",
+"b": "Matthew",
+"r": "26:26-29",
+"of": "L62"
+},
+{
+"t": "John the Baptist",
+"b": "Mark",
+"r": "1:1-8",
+"of": "F7"
+},
+{
+"t": "Baptism of Jesus",
+"b": "Mark",
+"r": "1:9-11",
+"of": "F8"
+},
+{
+"t": "Temptation of Jesus",
+"b": "Mark",
+"r": "1:12-13",
+"of": "F9"
+},
+{
+"t": "Follow and Fish",
+"b": "Mark",
+"r": "1:16-20",
+"of": "F10"
+},
+{
+"t": "The Unclean Demonic Spirit",
+"b": "Mark",
+"r": "1:21-28",
+"of": "L11"
+},
+{
+"t": "Cleansing a Leper",
+"b": "Mark",
+"r": "1:40-45",
+"of": "L13"
+},
+{
+"t": "The Paralytic Man",
+"b": "Mark",
+"r": "2:1-12",
+"of": "F33"
+},
+{
+"t": "Judging Others",
+"b": "Mark",
+"r": "4:24",
+"of": "F25"
+},
+{
+"t": "The Mustard Seed",
+"b": "Mark",
+"r": "4:30-32",
+"of": "F40"
+},
+{
+"t": "Jesus Sends Out His Disciples",
+"b": "Mark",
+"r": "6:7-13",
+"of": "L31"
+},
+{
+"t": "Jesus Walks on Water",
+"b": "Mark",
+"r": "6:45-52",
+"of": "F45"
+},
+{
+"t": "Who did people say Jesus was?",
+"b": "Mark",
+"r": "8:27-30",
+"of": "F47"
+},
+{
+"t": "Take up Your Cross",
+"b": "Mark",
+"r": "8:34-38",
+"of": "L30"
+},
+{
+"t": "Jesus Shines in Glorious Light",
+"b": "Mark",
+"r": "9:2-13",
+"of": "F48"
+},
+{
+"t": "Salt and Light",
+"b": "Mark",
+"r": "9:50",
+"of": "F12"
+},
+{
+"t": "Divorce and Remarriage",
+"b": "Mark",
+"r": "10:2\u201312",
+"of": "F16"
+},
+{
+"t": "Jesus and the Children",
+"b": "Mark",
+"r": "10:13-16",
+"of": "L54"
+},
+{
+"t": "The Rich Young Ruler",
+"b": "Mark",
+"r": "10:17-22",
+"of": "L55"
+},
+{
+"t": "Blind Bartimaeus",
+"b": "Mark",
+"r": "10:46-52",
+"of": "L56"
+},
+{
+"t": "Jesus Enters Jerusalem",
+"b": "Mark",
+"r": "21:1-11",
+"of": "L59"
+},
+{
+"t": "The Greatest Commandment",
+"b": "Mark",
+"r": "12:28-34",
+"of": "F62"
+},
+{
+"t": "The Vineyard Owner",
+"b": "Mark",
+"r": "12:1-12",
+"of": "F60"
+},
+{
+"t": "Be Ready",
+"b": "Mark",
+"r": "13:32-37",
+"of": null
+},
+{
+"t": "The Last Supper",
+"b": "Mark",
+"r": "14:22-25",
+"of": "L62"
+},
+{
+"t": "The Death of Jesus",
+"b": "Mark",
+"r": "15:21-47",
+"of": "F69"
+},
+{
+"t": "The Resurrection",
+"b": "Mark",
+"r": "16:1-8",
+"of": "F70"
+},
+{
+"t": "Jesus Appears to Men on the Road",
+"b": "Mark",
+"r": "16:12-13",
+"of": "L66"
+},
+{
+"t": "The Great Commission",
+"b": "Mark",
+"r": "16:14-18",
+"of": "F71"
+},
+{
+"t": "Jesus Ascends to Heaven",
+"b": "Mark",
+"r": "16:19-20",
+"of": "L68"
+},
+{
+"t": "Birth of Jesus",
+"b": "Luke",
+"r": "2:1-7",
+"of": "F5"
+},
+{
+"t": "John the Baptist",
+"b": "Luke",
+"r": "3:1-20",
+"of": "F7"
+},
+{
+"t": "Baptism of Jesus",
+"b": "Luke",
+"r": "3:21-22",
+"of": "F8"
+},
+{
+"t": "Genealogy of Jesus",
+"b": "Luke",
+"r": "3:23-38",
+"of": "F4"
+},
+{
+"t": "The Man with the Paralyzed Hand",
+"b": "Luke",
+"r": "6:6-11",
+"of": "I11"
+},
+{
+"t": "The Beatitudes",
+"b": "Luke",
+"r": "6:20\u201323",
+"of": "F11"
+},
+{
+"t": "Love Your Enemies",
+"b": "Luke",
+"r": "6:27\u201336",
+"of": "F19"
+},
+{
+"t": "Turn the Other Cheek",
+"b": "Luke",
+"r": "6:29\u201330",
+"of": "F18"
+},
+{
+"t": "Judging Others",
+"b": "Luke",
+"r": "6:37\u201342",
+"of": "F25"
+},
+{
+"t": "A Tree and Its Fruit",
+"b": "Luke",
+"r": "6:43\u201345",
+"of": null
+},
+{
+"t": "Build Your House on the Rock",
+"b": "Luke",
+"r": "6:46\u201349",
+"of": "F28"
+},
+{
+"t": "The Sower",
+"b": "Luke",
+"r": "8:4-15",
+"of": "I13"
+},
+{
+"t": "Jesus Calms the Storm",
+"b": "Luke",
+"r": "8:22-25",
+"of": "I17"
+},
+{
+"t": "The Demoniac",
+"b": "Luke",
+"r": "8:26-39",
+"of": "I18"
+},
+{
+"t": "Jairus' Daughter and the Bleeding Woman",
+"b": "Luke",
+"r": "8:40-56",
+"of": "I19"
+},
+{
+"t": "Jesus Sends Out His Disciples",
+"b": "Luke",
+"r": "9:1-6",
+"of": "L31"
+},
+{
+"t": "Who did people say Jesus was?",
+"b": "Luke",
+"r": "9:18-21",
+"of": "F47"
+},
+{
+"t": "The Lord's Prayer",
+"b": "Luke",
+"r": "11:1\u20134",
+"of": "F21"
+},
+{
+"t": "Ask, Seek, Knock",
+"b": "Luke",
+"r": "11:9\u201313",
+"of": "F26"
+},
+{
+"t": "Do Not Worry",
+"b": "Luke",
+"r": "12:22\u201331",
+"of": "F24"
+},
+{
+"t": "Treasures in Heaven",
+"b": "Luke",
+"r": "12:32\u201334",
+"of": "F23"
+},
+{
+"t": "The Mustard Seed",
+"b": "Luke",
+"r": "13:18-19",
+"of": "F40"
+},
+{
+"t": "The Great Banquet",
+"b": "Luke",
+"r": "14:15-24",
+"of": "F61"
+},
+{
+"t": "Salt and Light",
+"b": "Luke",
+"r": "14:34\u201335",
+"of": "F12"
+},
+{
+"t": "Divorce and Remarriage",
+"b": "Luke",
+"r": "16:18",
+"of": "F16"
+},
+{
+"t": "The Vineyard Owner",
+"b": "Luke",
+"r": "20:9-19",
+"of": "F60"
+},
+{
+"t": "The Widow's Offering",
+"b": "Luke",
+"r": "21:1-4",
+"of": "I35"
+},
+{
+"t": "Jesus in the Garden",
+"b": "Luke",
+"r": "22:39-53",
+"of": "F68"
+},
+{
+"t": "The Death of Jesus",
+"b": "Luke",
+"r": "23:26-56",
+"of": "F69"
+},
+{
+"t": "The Resurrection",
+"b": "Luke",
+"r": "24:1-12",
+"of": "F70"
+},
+{
+"t": "Feeding the 5,000",
+"b": "John",
+"r": "6:1-15",
+"of": "I21"
+},
+{
+"t": "Jesus Walks on Water",
+"b": "John",
+"r": "6:16-21",
+"of": "F45"
+},
+{
+"t": "Jesus Enters Jerusalem",
+"b": "John",
+"r": "12:12-19",
+"of": "L59"
+},
+{
+"t": "The Death of Jesus",
+"b": "John",
+"r": "19:17-42",
+"of": "F69"
+},
+{
+"t": "The Resurrection",
+"b": "John",
+"r": "20:1-10",
+"of": "F70"
+},
+{
+"t": "The Great Commission",
+"b": "John",
+"r": "20:19-23",
+"of": "F71"
+}
+]
+}

@@ -6,16 +6,16 @@ coordinators, native-speaker reviewers) and advisors.
 
 ## How this builds
 
-`node build-site.mjs` reads the data and assets and writes `dist/index.html`. There is no
-bundler, no framework. Images are referenced by path (see `ap()` in `build-site.mjs`), not
-inlined as base64: this lets the browser paint text immediately and fetch images
-afterward, which matters a lot for first paint on the throttled mobile connections a
-Lighthouse/PageSpeed audit simulates. The whole `assets/` folder is copied to `dist/assets/`
-to match.
+`node build-site.mjs` reads the data and assets and writes **two pages**: the pitch page at
+`dist/index.html` and the story library at `dist/stories/index.html`. There is no bundler,
+no framework. Images are referenced by path (see `ap()` in `build-site.mjs`), not inlined
+as base64: this lets the browser paint text immediately and fetch images afterward, which
+matters a lot for first paint on the throttled mobile connections a Lighthouse/PageSpeed
+audit simulates. The whole `assets/` folder is copied to `dist/assets/` to match.
 
 ```
 npm install
-npm run build      # -> dist/index.html + dist/assets/
+npm run build      # -> dist/index.html + dist/stories/index.html + dist/assets/
 npm run serve      # preview at localhost:3000
 ```
 
@@ -25,8 +25,10 @@ npm run serve      # preview at localhost:3000
 
 | Path | What it is |
 |---|---|
-| `build-site.mjs` | The whole page. Content, CSS and markup all live here. **Edit this, never `dist/index.html`.** |
-| `data/languages.json` | The 40 languages: name, native speakers, country, ISO code, `w1040` (10/40 Window), `sr` (StoryRunners covers it) |
+| `build-site.mjs` | The pitch page. Content, CSS and markup all live here, and it owns the shared CSS both pages use. **Edit this, never `dist/index.html`.** |
+| `build-stories.mjs` | The `/stories` library page: book groupings, its own CSS block, and all the browse/filter/edit behaviour. It is handed the shared CSS and nav by `build-site.mjs` so the two pages cannot drift on palette or typography. |
+| `data/stories.json` | Every story: book, reference, parallel references, story sets, tags. **Generated from `Misc/Story-Sets.xlsx` (the "Master List" tab), not hand-edited.** Regenerate it when the spreadsheet changes. |
+| `data/languages.json` | The 40 languages: name, native speakers, country, ISO code, `w1040` (10/40 Window), `sr` (StoryRunners covers it, retained but currently unused) |
 | `data/a-world.json` | Pre-projected world map paths, per-language map points, top-10 country shapes, `crop10` viewBox. Generated. |
 | `data/a-cellpaths.json` | Per-country silhouette paths fitted to a 200x150 tile, for the language grid. Generated. |
 | `gen-assets.mjs` | Regenerates the two generated files above from `world-atlas`. Only needed if the language list or map framing changes. |
@@ -65,13 +67,22 @@ To change a section's copy, find its key in `S`. To change its styling, find the
 
 Changing one of these usually means changing several. They are cross-checked:
 
-- 15 shared + 25 ours-only = **40** languages; 83 theirs-only + 15 shared = **98** StoryRunners languages
-- 2.6B shared + 2.15B ours-only = **4.75B**, which is also the sum of `native` across `languages.json`
-- 32 languages with `w1040: true` + 8 trade languages = 40
-- Priorities 23 + 49 + 111 = **183** stories; 183 x 40 = **7,320** translations
+- `languages.json` has **40** records; 32 carry `w1040: true`, and the copy claims the
+  other 8 are trade languages. The map legend and the "of 40" counts are derived from the
+  data, but that 32/8 split is asserted in prose, so check it if the list changes.
 - The ten-country list sums to **441M**
+- **183** stories, 183 x 40 = **7,320** translations. This number is expected to drift as
+  the story and set lists get reviewed with others, and it is deliberately *not* kept in
+  sync with the folder count in `storying-content/stories/` (164 at last check, after
+  merges). Treat the page figure as the public planning number, not a repo invariant.
 - Sources for all figures are in the `NOTES` array, rendered as the "Notes and sources"
   section. If you change a figure, check its note.
+
+The `sr` field (StoryRunners coverage) is still on all 40 language records but is no longer
+read by the build. The comparison section that used it is archived at
+`Misc/ARCHIVED-storyrunners-comparison-section.md`. Keep the field: it is deliberately
+retained in case that section comes back, and it is not identifying information, just a
+record of where coverage overlapped.
 
 ## Responsive behaviour worth knowing before you touch it
 
@@ -86,6 +97,20 @@ deck. Nothing may scroll horizontally.
   with step numbers in the left gutter.
 - After any layout change run `npm run shots` and check it reports `OVERFLOW: none` at all
   three widths.
+
+## The /stories library page
+
+`build-stories.mjs` renders every story three ways off one dataset: **books** (horizontal
+scroll, one column per book of the Bible, groups collapsible), **list**, and a four-column
+**grid**. The books view shows gospel-parallel duplicates as dimmed, non-clickable tiles so
+the coverage picture from the spreadsheet survives; list and grid show only the main
+account, with the parallels in parentheses after the reference.
+
+Tag and set editing is deliberately client-side only: edits live in `localStorage` under
+`storying-story-edits-v1` and leave via the Export button as JSON. No accounts, no backend,
+nothing written server-side. That keeps the page static and keeps the no-reader-accounts
+rule intact. Edits are per-browser, so they are a review tool, not shared state, and the
+JSON export is how a round of review comes back to be folded into the spreadsheet.
 
 ## Performance, worth keeping in mind when adding images
 
