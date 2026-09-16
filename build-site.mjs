@@ -3,6 +3,7 @@ import { storiesPage } from './build-stories.mjs';
 
 const langs = JSON.parse(fs.readFileSync('data/languages.json', 'utf8'));
 const storyData = JSON.parse(fs.readFileSync('data/stories.json', 'utf8'));
+const storyText = JSON.parse(fs.readFileSync('data/story-text.json', 'utf8'));
 const cellp = JSON.parse(fs.readFileSync('data/a-cellpaths.json', 'utf8'));
 const W = JSON.parse(fs.readFileSync('data/a-world.json', 'utf8'));
 
@@ -1140,7 +1141,7 @@ console.log('site:', (html.length / 1024 / 1024).toFixed(2) + 'MB · sections:',
 
 /* The library browse page at /stories. It shares this file's CSS and nav so the two pages
    cannot drift apart; its own markup and behaviour live in build-stories.mjs. */
-const stories = storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data: storyData, ic });
+const stories = storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data: storyData, text: storyText, ic, ap });
 fs.mkdirSync('dist/stories', { recursive: true });
 fs.writeFileSync('dist/stories/index.html', stories);
 console.log('stories:', (stories.length / 1024).toFixed(0) + 'KB ·',

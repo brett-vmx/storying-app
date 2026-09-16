@@ -1,11 +1,15 @@
 /* storying.app/stories -- the library browse page.
    Reads data/stories.json (generated from Misc/Story-Sets.xlsx) and renders three views of
-   the same list: books (horizontal scroll, one column per book of the Bible), list, and a
-   four-column grid. Filtering, search and tag/set editing all happen client side; edits are
-   kept in localStorage and exported as JSON, so the page stays static and account-free.
+   the same list: books (one horizontal scroll rail, one column per book of the Bible, with
+   two levels of collapsible grouping), list, and a four-column grid. Filtering, search and
+   tag/set editing all happen client side; edits are kept in localStorage and exported as
+   JSON, so the page stays static and account-free.
 
    This file only builds the page. It is handed the shared CSS and asset paths by
-   build-site.mjs so the two pages cannot drift apart on palette or typography. */
+   build-site.mjs so the two pages cannot drift apart on palette or typography. Note that
+   the shared CSS is the pitch page's, and it styles some very generic selectors: anything
+   here that could collide (.chips and its descendant spans, for instance) is deliberately
+   namespaced with an f- or t- prefix rather than reusing the shared name. */
 
 const OT = [
   ['Pentateuch', ['Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy']],
@@ -53,6 +57,33 @@ const SET_ICON = {
   'Baptism Hammer': 'story-set-icons/baptism-hammer.webp',
 };
 
+/* The only real story art that exists today: the 13 covers running on creationtochrist.app,
+   resized to 560px WebP in assets/stories/lib/. Keyed by "Book|Title" rather than by the
+   spreadsheet's row id, since those ids move whenever the sheet is regenerated. Every key
+   here is checked against the data at build time, so a retitled story fails loudly instead
+   of quietly dropping its picture. */
+const STORY_IMG = {
+  'Genesis|Creation': '1-creation-of-the-physical-world.webp',
+  'Genesis|The First Sin': '2-the-man-and-woman-sin.webp',
+  'Matthew|Birth of Jesus': '3-the-birth-of-jesus.webp',
+  'Matthew|The Paralytic Man': '4-paralytic-man.webp',
+  'Mark|Jesus Calms the Storm': '5-jesus-calms-the-storm.webp',
+  'Mark|The Demoniac': '6-the-man-with-many-demons.webp',
+  "Mark|Jairus' Daughter and the Bleeding Woman": '7-jairus-daughter-bleeding-woman.webp',
+  'Mark|Feeding the 5,000': '8-jesus-feeds-5000.webp',
+  'John|The Samaritan Woman': '9-the-woman-at-the-well.webp',
+  'John|Man Born Blind': '10-the-blind-man.webp',
+  'Luke|Zacchaeus': '11-zaccheaus.webp',
+  'Matthew|The Death of Jesus': '12-the-death-of-jesus.webp',
+  'Matthew|The Resurrection': '13-resurrection.webp',
+};
+
+/* Alternate titles. Search matches them, the editor exposes them, and a tile only shows
+   one when the search hit it, so the extra name stays out of the way the rest of the time. */
+const ALT_NAMES = {
+  'Genesis|The First Sin': ['The Fall of Man'],
+};
+
 export const STORIES_CSS = `
 /* ---- stories library ---- */
 .lib{background:var(--paper);color:var(--ink);min-height:100vh}
@@ -61,106 +92,224 @@ export const STORIES_CSS = `
 .libcount{font-size:15px;color:var(--ink-s);margin-top:8px}
 .libcount b{color:var(--teal);font-weight:700}
 
-/* controls */
-.ctrls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:22px 0 0}
-.srch{position:relative;flex:1;min-width:220px}
-.srch input{width:100%;font:inherit;font-size:15px;padding:11px 14px 11px 38px;border-radius:10px;
+/* controls: three labelled groups, search / filter / view. Every control inside is 44px
+   tall, so the row stays level however it wraps. */
+.ctrls{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:flex-start;margin:22px 0 0}
+.cgrp{display:flex;flex-direction:column;gap:8px}
+.cgrp.csearch{flex:1 1 260px;min-width:230px;max-width:440px}
+.cgrp.cview{margin-left:auto}
+.crow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+/* Left aligned above its controls, on every width: a label sitting after its buttons reads
+   backwards, and above keeps the buttons themselves flush left, which is the point. */
+.eyebrow{display:flex;align-items:center;gap:9px;font-size:10.5px;font-weight:700;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--teal);min-height:19px}
+/* .scount, not .cnum: the pitch page's .cnum is an absolutely positioned overlay label,
+   which threw this count into the corner of the page. */
+.eyebrow .scount{color:#8fa4b0;letter-spacing:.04em}
+/* The clear control lives on the label, not in the button row, so a Languages button can
+   join that row without the row growing a fourth thing to scan past. */
+.cpill{display:inline-flex;align-items:center;gap:4px;font:inherit;font-size:9.5px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--teal);background:#e7f5f8;
+  border:1px solid #b6dee7;border-radius:20px;padding:3px 9px 3px 7px;cursor:pointer;line-height:1.4}
+.cpill:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.cpill[hidden]{display:none}
+/* Stacked, the container's main axis is vertical, so csearch's flex-basis would become a
+   260px tall search panel. Reset it. */
+/* padding, not margin: #view has no border or padding of its own, so a margin here would
+   simply collapse with the view's own 18-20px margin-top and change nothing. */
+@media (max-width:820px){.ctrls{flex-direction:column;gap:15px}
+  .cgrp{width:100%}.cgrp.csearch{flex:0 0 auto;max-width:none}.cgrp.cview{margin-left:0}
+  #view{padding-top:12px}}
+.srch{position:relative;width:100%;height:44px}
+.srch input{width:100%;height:44px;font:inherit;font-size:15px;padding:0 14px 0 38px;border-radius:10px;
   border:1px solid #d5dee2;background:#fff;color:var(--ink)}
 .srch input:focus{outline:2px solid var(--teal);outline-offset:-1px;border-color:transparent}
 .srch svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#8fa4b0}
-.fbtn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;
-  padding:10px 14px;border-radius:10px;border:1px solid #d5dee2;background:#fff;color:var(--ink);cursor:pointer}
-.fbtn:hover{border-color:#9fb3bd}
+/* margin:0 is load bearing. The pitch page's own .fbtn carries margin-bottom:10px, which
+   otherwise makes the filter row 10px taller than the view row sitting beside it. */
+.fbtn{display:inline-flex;align-items:center;gap:8px;height:44px;margin:0;font:inherit;font-size:14px;
+  font-weight:600;padding:0 15px;border-radius:10px;border:1px solid #d5dee2;background:#fff;
+  color:var(--ink);cursor:pointer}
+.fbtn:hover{border-color:#9fb3bd;background:#f4f9fa}
 .fbtn.on{background:var(--navy);border-color:var(--navy);color:#fff}
-.fbtn .n{background:var(--teal);color:#fff;border-radius:20px;font-size:11.5px;padding:1px 7px}
-.views{display:inline-flex;border:1px solid #d5dee2;border-radius:10px;overflow:hidden;background:#fff}
-.views button{font:inherit;font-size:13.5px;font-weight:600;padding:10px 13px;border:0;background:none;
+.fbtn.on:hover{background:#25455f}
+.fbtn .n{background:var(--teal);color:#fff;border-radius:20px;font-size:11.5px;font-weight:700;padding:1px 7px}
+.fbtn[hidden]{display:none}
+.fbtn.clr{color:var(--teal);border-color:#bcdde5}
+.fbtn.clr:hover{background:#eaf6f9;border-color:var(--teal)}
+.views{display:inline-flex;height:44px;border:1px solid #d5dee2;border-radius:10px;overflow:hidden;background:#fff}
+.views button{font:inherit;font-size:13.5px;font-weight:600;padding:0 14px;border:0;background:none;
   color:var(--ink-s);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.views button:hover{background:#f4f9fa;color:var(--ink)}
 .views button+button{border-left:1px solid #e3eaed}
-.views button.on{background:var(--navy);color:#fff}
+.views button.on,.views button.on:hover{background:var(--navy);color:#fff}
 
 /* filter drawers */
 .drawer{display:none;background:#fff;border:1px solid #e0e7ea;border-radius:12px;padding:16px 18px;margin-top:12px}
 .drawer.open{display:block}
 .dgrp+.dgrp{margin-top:14px;padding-top:14px;border-top:1px solid #eef2f4}
 .dgrp h4{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7E8F99;margin:0 0 9px}
-.chips{display:flex;flex-wrap:wrap;gap:7px}
-.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:6px 11px;
-  border-radius:20px;border:1px solid #d9e1e5;background:#fff;color:var(--ink);cursor:pointer;line-height:1.3}
-.chip:hover{border-color:#9fb3bd}
-.chip img{width:18px;height:18px;border-radius:5px;object-fit:cover}
+/* .fchips, not .chips: the pitch page's shared CSS styles ".chips span" as a pink pill */
+.fchips{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px}
+.fchips.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.fchips.g4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.fchips.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:8px 12px;
+  border-radius:20px;border:1px solid #d9e1e5;background:#fff;color:var(--ink);cursor:pointer;line-height:1.3;
+  text-align:left;font-family:inherit;transition:background .13s,border-color .13s,color .13s}
+.chip:hover{background:#eef7f9;border-color:#9fd2de}
+.chip img{width:18px;height:18px;border-radius:5px;object-fit:cover;flex:none}
 .chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
-.chip .c{opacity:.6;font-weight:500;font-size:11.5px}
+.chip.on:hover{background:#178ca4;border-color:#178ca4}
+.fchips.g4 .chip{justify-content:flex-start}
+.chip .cnt{margin-left:auto;padding-left:6px;background:none;border:0;font-size:12px;font-weight:700;
+  font-variant-numeric:tabular-nums;color:var(--teal)}
+.chip:hover .cnt{color:#127e94}
+.chip.on .cnt{color:#fff}
+.dnote{font-size:12px;color:#8fa4b0;margin:10px 0 0}
 .clearall{font:inherit;font-size:13px;font-weight:600;color:var(--teal);background:none;border:0;cursor:pointer;padding:6px 2px}
 
-/* tiles */
-.tile{background:#fff;border:1px solid #e2e8ea;border-radius:12px;padding:11px;display:block;position:relative;
+/* tiles. .tile is a <button>, and a button taller than its content centres that content
+   vertically, which knocked the grid view's images out of line. Flex column pins them up.
+   Books and grid follow the mobile list row: set icons ride inline after the title like
+   emoji, and the tag row is behind the button in the bottom right corner. */
+.tile{background:#fff;border:1px solid #e2e8ea;border-radius:12px;padding:11px;position:relative;
+  display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
   text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer}
 .tile:hover{border-color:#9fb3bd;box-shadow:0 2px 10px rgba(28,49,68,.07)}
-.tph{aspect-ratio:16/10;border-radius:8px;background:linear-gradient(135deg,#e8eef1,#dbe5ea);
+.trow{display:flex;align-items:flex-end;gap:8px;width:100%}
+.tmain{flex:1;min-width:0}
+.tinline{display:inline-flex;gap:3px;vertical-align:-3px;margin-left:5px}
+.tinline img{width:15px;height:15px;border-radius:4px;object-fit:cover}
+.ttagb,.ltagb{display:inline-flex;align-items:center;justify-content:center;flex:none;
+  width:26px;height:26px;border-radius:7px;color:#9fb3bd;background:#f2f6f8}
+.showtags .ttagb{background:var(--teal);color:#fff}
+.tph{aspect-ratio:16/10;flex:none;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,#e8eef1,#dbe5ea);
   display:flex;align-items:center;justify-content:center;color:#a8bcc7;margin-bottom:9px}
+.tph img{width:100%;height:100%;object-fit:cover;display:block}
 /* Compact variant for the book columns, where a full-width image would make a 13-story
-   column about 1800px tall. The grid view keeps the large card. */
-.tile.cmp{display:grid;grid-template-columns:42px 1fr;gap:10px;padding:9px}
-.tile.cmp .tph{aspect-ratio:1;width:42px;height:42px;margin:0;grid-row:1/span 3}
-.tile.cmp .tph svg{width:17px;height:17px}
-.tile.cmp .tt,.tile.cmp .tr,.tile.cmp .tsets,.tile.cmp .ttags{grid-column:2}
-.tile.cmp .tsets{margin-top:6px}.tile.cmp .ttags{margin-top:5px}
+   column about 1800px tall. Image and set icons stack in the left rail; title, reference
+   and tags run down the right. The grid view keeps the large card. */
+.tile.cmp{display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px 10px;padding:9px;align-items:start}
+.tile.cmp .tph{aspect-ratio:1;width:46px;height:46px;margin:0}
+.tile.cmp .tph svg{width:18px;height:18px}
+.tile.cmp .trow{grid-column:2}
+.tile.cmp .ttags,.tile.cmp .tctx{grid-column:1/-1;margin-top:0}
+.tile.cmp .tr{margin-top:2px}
 .tt{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
 .tr{font-size:12px;color:var(--ink-s);margin-top:3px;font-variant-numeric:tabular-nums}
 .tr .alsoref{color:#93a7b2}
 .tsets{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
 .tsets img{width:20px;height:20px;border-radius:5px;object-fit:cover}
-/* Two rows of tags, then clip. 19px row + 4px gap, so the cut never lands mid-row. */
-.ttags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;max-height:42px;overflow:hidden}
+/* Two rows of tags, then clip. 19px row + 4px gap, so the cut never lands mid-row.
+   Hidden until the tag button is on, or a tag filter is active. */
+.ttags{display:none;flex-wrap:wrap;gap:4px;margin-top:7px;max-height:42px;overflow:hidden}
+.showtags .ttags{display:flex}
 .ttag{font-size:10.5px;font-weight:600;background:#eef3f5;color:#5E727C;border-radius:5px;padding:2px 6px;white-space:nowrap}
-.tile .som{position:absolute;top:9px;right:9px;background:var(--sandL);color:#6b5f3c;font-size:9.5px;
-  font-weight:700;letter-spacing:.04em;border-radius:4px;padding:2px 5px}
+.ttag.on{background:var(--teal);color:#fff}
+/* Distinct from .on: a search landed on this tag's name, it is not filtering by it. */
+.ttag.hit{background:#cdeef5;color:var(--ink)}
+.talt{display:block;font-size:11.5px;color:#7E8F99;margin-top:2px;font-style:italic}
+.tctx{font-size:11.5px;line-height:1.45;color:#5E727C;margin-top:7px;padding-left:8px;border-left:2px solid #cfe6ec}
+mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
+/* The badge is styled on its own, positioned only inside a tile: the list row carries one
+   too, and scoping the whole rule to .tile left it as bare bold text there. */
+.som{background:var(--sandL);color:#6b5f3c;font-size:9.5px;font-weight:700;letter-spacing:.04em;
+  border-radius:4px;padding:2px 5px;white-space:nowrap}
+.tile .som{position:absolute;top:9px;right:9px}
 
-/* books view */
+/* books view: one rail, 66 book columns, two levels of collapsible grouping */
 .books{margin-top:20px;overflow-x:auto;padding-bottom:22px}
-.tgroup{margin-bottom:10px}
-.thead{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:#7E8F99;padding:9px 0;cursor:pointer;background:none;border:0;font-family:inherit}
-.thead:hover{color:var(--teal)}
-.thead .car{transition:transform .18s}
-.tgroup.shut .car{transform:rotate(-90deg)}
-.tgroup.shut .brow{display:none}
+.brail{display:flex;align-items:flex-start;gap:18px;width:max-content;padding-top:2px}
+.btest{display:flex;flex-direction:column;align-items:stretch;gap:9px}
+.tgrps{display:flex;align-items:flex-start;gap:14px}
+.tgroup{display:flex;flex-direction:column;align-items:stretch;gap:7px}
+.thead{display:flex;align-items:center;font-family:inherit;font-size:12px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;border:0;border-radius:9px;padding:0 13px;height:36px;
+  cursor:pointer;white-space:nowrap}
+/* The rail is ~10,000px wide, so a label sitting at the far left of its group would scroll
+   out of sight almost immediately. Pin it to the left edge of the scrollport instead. */
+.thead .hin{position:sticky;left:13px;display:inline-flex;align-items:center;gap:8px}
+.thead .gn{opacity:.62;letter-spacing:0;text-transform:none;font-weight:600;font-size:11.5px}
+.thead.t1{background:var(--navy);color:#fff}
+.thead.t1:hover{background:#27465f}
+.thead.t2{background:var(--teal);color:#fff}
+.thead.t2:hover{background:#178ca4}
+/* The whole bar toggles; this is just the affordance that says so. */
+.thead .gtog{display:inline-flex;align-items:center;margin-right:1px;opacity:.72}
+.thead:hover .gtog{opacity:1}
+.btest.shut .tgrps,.tgroup.shut .brow{display:none}
+/* Collapsed, a group turns into a narrow vertical spine, Glide style */
+.btest.shut>.thead,.tgroup.shut>.thead{writing-mode:vertical-rl;height:250px;width:36px;padding:13px 0;justify-content:flex-start}
+.btest.shut>.thead .hin,.tgroup.shut>.thead .hin{position:static}
+.tgroup.shut>.thead{height:216px;width:34px}
 .brow{display:flex;gap:12px;align-items:flex-start}
-.bcol{flex:0 0 210px;min-width:210px}
+.bcol{flex:0 0 212px;min-width:212px}
 .bcol.empty{flex:0 0 96px;min-width:96px;opacity:.42}
-.bname{font-size:13px;font-weight:700;letter-spacing:-.01em;padding:7px 9px;border-radius:8px 8px 0 0;
+.bname{font-size:13px;font-weight:700;letter-spacing:-.01em;padding:7px 9px;border-radius:8px;
   background:var(--navy);color:#fff;display:flex;justify-content:space-between;gap:6px;align-items:baseline}
 .bcol.empty .bname{background:#dfe7ea;color:#7E8F99}
 .bname .bn{font-size:11px;font-weight:600;opacity:.62}
-.bstack{display:flex;flex-direction:column;gap:8px;padding:8px;background:#eaeff2;border-radius:0 0 8px 8px;min-height:34px}
-.bcol.empty .bstack{background:#f0f4f6}
-.dup{background:#f4f7f8;border-style:dashed;cursor:default}
+/* No tray behind the tiles: at 212px a column has no width to spare. */
+.bstack{display:flex;flex-direction:column;gap:8px;padding:8px 0 0;min-height:20px}
+.dup{background:#f4f7f8;border-style:dashed;cursor:default;padding:9px}
 .dup:hover{box-shadow:none;border-color:#d7e0e4}
 .dup .tt{font-weight:600;color:#7E8F99}
 .dupof{font-size:10.5px;color:#93a7b2;margin-top:3px}
 
-/* list view */
+/* list view. Desktop is a six column table; below 860px the same markup is re-laid-out as
+   a compact card, so there is only one row of HTML to keep in step. */
 .listv{margin-top:18px;background:#fff;border:1px solid #e2e8ea;border-radius:12px;overflow:hidden}
-.lrow{display:grid;grid-template-columns:34px 1.6fr 1fr 1.1fr 1.4fr;gap:14px;align-items:center;
+.lrow{display:grid;grid-template-columns:34px 52px 1.6fr 1fr 1.1fr 1.4fr;gap:14px;align-items:center;
   padding:10px 14px;border-bottom:1px solid #eef2f4;width:100%;background:none;border-left:0;border-right:0;
-  border-top:0;font:inherit;text-align:left;color:inherit;cursor:pointer}
+  border-top:0;font:inherit;text-align:left;color:inherit;cursor:pointer;position:relative}
 .lrow:last-child{border-bottom:0}
 .lrow:hover{background:#f7fafb}
 .lrow.h{background:#f4f8f9;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
   color:#7E8F99;cursor:default;position:sticky;top:0;z-index:2}
 .lrow.h:hover{background:#f4f8f9}
-.lnum{font-size:11.5px;color:#a8bcc7;font-variant-numeric:tabular-nums}
+/* A circle at one or two digits, a pill at three: 202 will not fit in 22px. */
+.lnum{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;
+  padding:0 6px;border-radius:999px;background:var(--teal);color:#fff;font-size:11px;font-weight:700;
+  font-variant-numeric:tabular-nums}
+.lrow.h .lnum{background:none;color:inherit;padding:0;min-width:0;height:auto;font-size:inherit;font-weight:inherit}
 .lt2{font-size:14px;font-weight:700;letter-spacing:-.01em}
 .lref{font-size:12.5px;color:var(--ink-s);font-variant-numeric:tabular-nums}
-@media (max-width:860px){.lrow{grid-template-columns:28px 1fr;row-gap:5px}
-  .lrow>:nth-child(n+3){grid-column:2}.lrow.h{display:none}}
+.lph{aspect-ratio:1;width:52px;border-radius:7px;overflow:hidden;background:linear-gradient(135deg,#e8eef1,#dbe5ea);
+  display:flex;align-items:center;justify-content:center;color:#a8bcc7}
+.lph img{width:100%;height:100%;object-fit:cover;display:block}
+.lph svg{width:16px;height:16px}
+/* Inline set icons and the tag button are the mobile card's business only. */
+.lsets,.ltagb{display:none}
+.lrow .ttags{display:flex}
+.ltags{display:flex;flex-wrap:wrap;gap:4px}
+.lrow .tctx{grid-column:1/-1;margin-top:2px}
+
+@media (max-width:860px){
+  .lrow{grid-template-columns:52px minmax(0,1fr) auto;gap:4px 11px;align-items:start;padding:11px 13px}
+  .lrow.h{display:none}
+  .lph{grid-column:1;grid-row:1/span 2;align-self:start}
+  .lt2{grid-column:2;grid-row:1}
+  .lnum{grid-column:3;grid-row:1;justify-self:end;padding-top:2px}
+  .lref{grid-column:2;grid-row:2}
+  .lsetcol{display:none}
+  .lsets{display:inline-flex;gap:3px;vertical-align:-3px;margin-left:5px}
+  .lsets img{width:15px;height:15px;border-radius:4px;object-fit:cover}
+  .ltagb{display:inline-flex;grid-column:3;grid-row:2;justify-self:end;align-self:end}
+  .showtags .ltagb{background:var(--teal);color:#fff}
+  .lrow .ltags{grid-column:1/-1;grid-row:3;margin-top:7px;display:none}
+  .showtags .lrow .ltags{display:flex}
+  .lrow .tctx{grid-row:4}
+}
 
 /* grid view */
 .gridv{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gridv .tph{aspect-ratio:1}
 @media (max-width:1100px){.gridv{grid-template-columns:repeat(3,1fr)}}
+/* Two columns all the way down. One column on a phone wastes most of the screen on a card
+   that is mostly a square image. */
 @media (max-width:820px){.gridv{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.gridv{grid-template-columns:1fr}}
+@media (max-width:520px){.gridv{gap:10px}.gridv .tile{padding:9px}.gridv .trow{gap:6px}}
 
 .none{padding:44px 0;text-align:center;color:var(--ink-s);font-size:15px}
 
@@ -170,8 +319,18 @@ export const STORIES_CSS = `
 .edp{background:#fff;width:min(680px,100%);max-height:86vh;overflow-y:auto;border-radius:16px 16px 0 0;padding:22px}
 @media (min-width:700px){.ed{align-items:center}.edp{border-radius:16px}}
 .edh{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
-.edh h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em}
+/* The shared stylesheet colours bare h3 for a dark section, which is near white. */
+.edh h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
 .edh .r{font-size:13px;color:var(--ink-s);margin-top:3px}
+.edf{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+.edf label{display:flex;flex-direction:column;gap:5px;font-size:11.5px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:#7E8F99}
+.edf label.wide{grid-column:1/-1}
+.edf input{font:inherit;font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink);
+  padding:9px 11px;border:1px solid #d5dee2;border-radius:9px;background:#fff;width:100%}
+.edf input:focus{outline:2px solid var(--teal);outline-offset:-1px;border-color:transparent}
+.edf .hint{font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;color:#9fb3bd}
+@media (max-width:560px){.edf{grid-template-columns:1fr}}
 .edx{font:inherit;font-size:22px;line-height:1;background:none;border:0;cursor:pointer;color:#8fa4b0;padding:2px 6px}
 .edsave{margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .edsave .note{font-size:12.5px;color:#7E8F99}
@@ -180,13 +339,26 @@ export const STORIES_CSS = `
 .expbar .note{font-size:12.5px;color:var(--ink-s);flex:1;min-width:200px}
 `;
 
-const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, ic }) {
+export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap }) {
   const counted = data.stories.filter(s => !s.som).length;
   const withSom = data.stories.length;
-  const payload = JSON.stringify({ ...data, groups: TESTAMENTS, abbr: ABBR, seticon: SET_ICON })
-    .replace(/</g, '\\u003c');
+  /* Fail the build on a stale key rather than shipping a silently pictureless or
+     unsearchable story. All three maps are keyed "Book|Title". */
+  const known = new Set(data.stories.map(s => s.b + '|' + s.t));
+  const art = {};
+  for (const [key, file] of Object.entries(STORY_IMG)) {
+    if (!known.has(key)) throw new Error('story art key matches no story: ' + key);
+    ap(`assets/stories/lib/${file}`);
+    art[key] = file;
+  }
+  for (const key of Object.keys(ALT_NAMES)) {
+    if (!known.has(key)) throw new Error('alternate name key matches no story: ' + key);
+  }
+  for (const key of Object.keys(text)) {
+    if (!known.has(key)) throw new Error('story text key matches no story: ' + key);
+  }
+  const payload = JSON.stringify({ ...data, groups: TESTAMENTS, abbr: ABBR, seticon: SET_ICON,
+    art, alt: ALT_NAMES, txt: text }).replace(/</g, '\\u003c');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -232,24 +404,41 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, ic }) {
   <div class="wrap">
     <div class="libhead">
       <h1>Stories</h1>
-      <p class="libcount"><b id="cShown">${counted}</b> stories<span id="cFilt"></span> &middot; <b>${withSom}</b> including the Sermon on the Mount</p>
+      <p class="libcount"><b>${counted}</b> stories &middot; <b>${withSom}</b> including the Sermon on the Mount</p>
     </div>
 
     <div class="ctrls">
-      <div class="srch">
-        ${ic('search', 17, '#8fa4b0')}
-        <input id="q" type="search" placeholder="Search stories, references, books" autocomplete="off" aria-label="Search stories">
+      <div class="cgrp csearch">
+        <span class="eyebrow" id="lblSearch">Search<span class="scount" id="nShown" hidden></span></span>
+        <div class="srch">
+          ${ic('search', 17, '#8fa4b0')}
+          <input id="q" type="search" placeholder="Search stories, text, references, books" autocomplete="off" aria-labelledby="lblSearch">
+        </div>
       </div>
-      <button class="fbtn" id="bSets" aria-expanded="false">${ic('globe', 15)} Story Sets <span class="n" id="nSets" hidden>0</span></button>
-      <button class="fbtn" id="bTags" aria-expanded="false">${ic('list-filter', 15)} Tags <span class="n" id="nTags" hidden>0</span></button>
-      <div class="views" role="group" aria-label="View">
-        <button data-v="books" class="on">${ic('book-open', 15)} Books</button>
-        <button data-v="list">${ic('list-filter', 15)} List</button>
-        <button data-v="grid">${ic('globe', 15)} Grid</button>
+      <div class="cgrp cfilter">
+        <span class="eyebrow" id="lblFilter">Filter
+          <button class="cpill" id="clearFilters" hidden>${ic('x', 11, 'currentColor', 2.6)} Clear</button>
+        </span>
+        <div class="crow" role="group" aria-labelledby="lblFilter">
+          <button class="fbtn" id="bSets" aria-expanded="false">${ic('playing-cards-fan', 15)} Story Sets <span class="n" id="nSets" hidden>0</span></button>
+          <button class="fbtn" id="bTags" aria-expanded="false">${ic('tag', 15)} Tags <span class="n" id="nTags" hidden>0</span></button>
+          <button class="fbtn" id="bLangs" aria-expanded="false">${ic('languages', 15)} Languages <span class="n" id="nLangs" hidden>0</span></button>
+        </div>
+      </div>
+      <div class="cgrp cview">
+        <span class="eyebrow" id="lblView">View</span>
+        <div class="crow">
+          <div class="views" role="group" aria-labelledby="lblView">
+            <button data-v="books" class="on">${ic('book-open', 15)} Books</button>
+            <button data-v="list">${ic('list', 15)} List</button>
+            <button data-v="grid">${ic('layout-grid', 15)} Grid</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="drawer" id="dSets"></div>
     <div class="drawer" id="dTags"></div>
+    <div class="drawer" id="dLangs"></div>
 
     <div id="view"></div>
 
@@ -274,27 +463,71 @@ const LS = 'storying-story-edits-v1';
 let edits = {};
 try { edits = JSON.parse(localStorage.getItem(LS) || '{}'); } catch (e) { edits = {}; }
 
-/* A story's live sets/tags = what the build shipped, unless this browser has edited it. */
+/* A story's live fields = what the build shipped, unless this browser has edited it.
+   Edits are stored under the ORIGINAL book|title key, so art, alt names and text keep
+   resolving after someone retitles a story in the editor. */
 function sets(s){ return (edits[s.id] && edits[s.id].s) || s.s; }
 function tags(s){ return (edits[s.id] && edits[s.id].g) || s.g; }
+function title(s){ const e = edits[s.id]; return (e && e.nt) || s.t; }
+function ref(s){ const e = edits[s.id]; return (e && e.nr) || s.r; }
+function alts(s){ const e = edits[s.id]; return (e && e.alt) || D.alt[key(s)] || []; }
+function body(s){ return D.txt[key(s)] || ''; }
+const key = s => s.b + '|' + s.t;
 function edited(s){ return !!edits[s.id]; }
 
-const state = { v:'books', q:'', sets:new Set(), tags:new Set(), shut:new Set() };
+const state = { v:'books', q:'', sets:new Set(), tags:new Set(), langs:new Set(),
+                shut:new Set(), shutT:new Set(), showTags:false };
+/* Only English exists today. The filter is wired up properly so adding the other 39 is a
+   data change, not a code change; selecting English matches everything, as it should. */
+const LANGS = ['English'];
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const abbr = b => D.abbr[b] || b;
 const seticon = n => D.seticon[n] ? '../assets/' + D.seticon[n] : '';
+const filtering = () => !!(state.q || state.sets.size || state.tags.size || state.langs.size);
+const anyFilter = () => !!(state.sets.size || state.tags.size || state.langs.size);
+/* A search term counts as a hit on a tag if either contains the other, so "money",
+   "mone" and "money stories" all light up the Money tag. */
+function tagHit(t){
+  if (!state.q) return false;
+  const a = t.toLowerCase();
+  return a.includes(state.q) || state.q.includes(a);
+}
 
 function match(s){
   if (state.sets.size) { const has = sets(s); if (![...state.sets].every(x => has.includes(x))) return false; }
   if (state.tags.size) { const has = tags(s); if (![...state.tags].every(x => has.includes(x))) return false; }
   if (state.q) {
-    const hay = (s.t + ' ' + s.b + ' ' + s.r + ' ' + s.par.join(' ') + ' ' + sets(s).join(' ') + ' ' + tags(s).join(' ')).toLowerCase();
+    const hay = (title(s) + ' ' + alts(s).join(' ') + ' ' + s.b + ' ' + ref(s) + ' ' + s.par.join(' ') +
+      ' ' + sets(s).join(' ') + ' ' + tags(s).join(' ') + ' ' + body(s)).toLowerCase();
     if (!hay.includes(state.q)) return false;
   }
   return true;
 }
 const shown = () => D.stories.filter(match);
+
+/* Where a search landed, when it did not land somewhere already on the tile. Only the 13
+   Creation to Christ stories have any English text yet, so this stays quiet elsewhere. */
+function context(s){
+  if (!state.q) return '';
+  const q = state.q;
+  if (title(s).toLowerCase().includes(q)) return '';
+  if (alts(s).some(a => a.toLowerCase().includes(q))) return '';
+  const t = body(s); if (!t) return '';
+  const i = t.toLowerCase().indexOf(q); if (i < 0) return '';
+  let a = Math.max(0, i - 55), b = Math.min(t.length, i + q.length + 75);
+  if (a > 0) a = t.indexOf(' ', a) + 1;
+  if (b < t.length) { const c = t.lastIndexOf(' ', b); if (c > i + q.length) b = c; }
+  return '<div class="tctx">' + (a > 0 ? '&hellip;' : '') + esc(t.slice(a, i)) +
+    '<mark>' + esc(t.slice(i, i + q.length)) + '</mark>' + esc(t.slice(i + q.length, b)) +
+    (b < t.length ? '&hellip;' : '') + '</div>';
+}
+/* An alternate name only earns a line when it is why the story matched. */
+function altLine(s){
+  if (!state.q) return '';
+  const hit = alts(s).find(a => a.toLowerCase().includes(state.q));
+  return hit ? '<span class="talt">also: ' + esc(hit) + '</span>' : '';
+}
 
 function setPills(s){
   const v = sets(s); if (!v.length) return '';
@@ -302,35 +535,67 @@ function setPills(s){
     ? '<img src="' + seticon(n) + '" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">'
     : '<span class="ttag">' + esc(n) + '</span>').join('') + '</div>';
 }
-function tagPills(s){
+function tagPills(s, cls){
   const v = tags(s); if (!v.length) return '';
-  return '<div class="ttags">' + v.map(t => '<span class="ttag">' + esc(t) + '</span>').join('') + '</div>';
+  return '<div class="' + (cls || 'ttags') + '">' + v.map(t =>
+    '<span class="ttag' + (state.tags.has(t) ? ' on' : tagHit(t) ? ' hit' : '') + '">' +
+    esc(t) + '</span>').join('') + '</div>';
 }
+const NOART = ${JSON.stringify(ic('book-open', 22, 'currentColor'))};
+const TAGIC = ${JSON.stringify(ic('tag', 14, 'currentColor', 2.1))};
+const TOG = { shut: ${JSON.stringify(ic('expand', 14, 'currentColor', 2.2))},
+              open: ${JSON.stringify(ic('chevrons-right-left', 14, 'currentColor', 2.2))} };
+const tog = isShut => '<span class="gtog">' + (isShut ? TOG.shut : TOG.open) + '</span>';
+function art(s, cls){
+  const f = D.art[key(s)];
+  return '<div class="' + (cls || 'tph') + '">' + (f
+    ? '<img src="../assets/stories/lib/' + f + '" alt="" loading="lazy" decoding="async">'
+    : NOART) + '</div>';
+}
+/* Set icons inline after a title, like emoji. Shared by tiles and the mobile list row. */
+function inlineSets(s, cls){
+  const v = sets(s).filter(n => seticon(n)); if (!v.length) return '';
+  return '<span class="' + (cls || 'tinline') + '">' + v.map(n => '<img src="' + seticon(n) +
+    '" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">').join('') + '</span>';
+}
+const tagBtn = (s, cls) => tags(s).length ? '<span class="' + (cls || 'ttagb') + '">' + TAGIC + '</span>' : '';
+
+/* One markup for both tile shapes; .cmp re-lays it out for the narrow book columns. */
 function tile(s, showPar, compact){
   const par = (showPar && s.par.length) ? ' <span class="alsoref">(' + s.par.map(p => esc(p)).join('; ') + ')</span>' : '';
   return '<button class="tile' + (compact ? ' cmp' : '') + '" data-id="' + s.id + '">' +
-    (s.som ? '<span class="som">SERMON</span>' : '') +
-    '<div class="tph">' + ${JSON.stringify(ic('book-open', 22, 'currentColor'))} + '</div>' +
-    '<div class="tt">' + esc(s.t) + '</div>' +
-    '<div class="tr">' + esc(abbr(s.b) + ' ' + s.r) + par + '</div>' +
-    setPills(s) + tagPills(s) + '</button>';
+    (s.som ? '<span class="som">SERMON</span>' : '') + art(s) +
+    '<div class="trow"><div class="tmain">' +
+      '<div class="tt">' + esc(title(s)) + inlineSets(s) + '</div>' + altLine(s) +
+      '<div class="tr">' + esc(abbr(s.b) + ' ' + ref(s)) + par + '</div>' +
+    '</div>' + tagBtn(s) + '</div>' +
+    tagPills(s) + context(s) + '</button>';
 }
 
-/* ---- books view: every book of the Bible, duplicates shown but dimmed ---- */
+/* ---- books view: every book of the Bible on one rail, duplicates shown but dimmed ---- */
 function renderBooks(){
   const keep = new Set(shown().map(s => s.id));
+  const filt = filtering();
   const byBook = {}; const dupsBy = {};
   D.stories.forEach(s => { if (keep.has(s.id)) (byBook[s.b] = byBook[s.b] || []).push(s); });
-  D.dups.forEach(d => { if (!d.of || keep.has(d.of)) (dupsBy[d.b] = dupsBy[d.b] || []).push(d); });
+  /* A duplicate rides along with the story it parallels. The two that have no main to
+     point at are coverage notes, not stories, so they only belong in the unfiltered view. */
+  D.dups.forEach(d => { if (d.of ? keep.has(d.of) : !filt) (dupsBy[d.b] = dupsBy[d.b] || []).push(d); });
   const mainOf = {}; D.stories.forEach(s => mainOf[s.id] = s);
   let h = '';
   D.groups.forEach(([test, groups]) => {
+    const tn = groups.reduce((a, g) => a + g[1].reduce((x, b) => x + (byBook[b] || []).length, 0), 0);
+    const tShut = state.shutT.has(test);
+    h += '<section class="btest' + (tShut ? ' shut' : '') + '" data-t="' + esc(test) + '">' +
+      '<button class="thead t1" aria-expanded="' + !tShut + '"><span class="hin">' + tog(tShut) +
+      '<span class="lbl">' + esc(test) + '</span><span class="gn">' + tn + '</span></span></button><div class="tgrps">';
     groups.forEach(([gname, books]) => {
       const key = test + '/' + gname;
       const n = books.reduce((a, b) => a + (byBook[b] || []).length, 0);
-      h += '<div class="tgroup' + (state.shut.has(key) ? ' shut' : '') + '" data-g="' + esc(key) + '">' +
-        '<button class="thead"><span class="car">▾</span>' + esc(test) + ' &middot; ' + esc(gname) +
-        ' <span style="opacity:.6;letter-spacing:0;text-transform:none;font-weight:600">' + n + '</span></button><div class="brow">';
+      const gShut = state.shut.has(key);
+      h += '<div class="tgroup' + (gShut ? ' shut' : '') + '" data-g="' + esc(key) + '">' +
+        '<button class="thead t2" aria-expanded="' + !gShut + '"><span class="hin">' + tog(gShut) +
+        '<span class="lbl">' + esc(gname) + '</span><span class="gn">' + n + '</span></span></button><div class="brow">';
       books.forEach(b => {
         const items = byBook[b] || []; const dp = dupsBy[b] || [];
         const empty = !items.length && !dp.length;
@@ -346,21 +611,29 @@ function renderBooks(){
       });
       h += '</div></div>';
     });
+    h += '</div></section>';
   });
-  return '<div class="books">' + h + '</div>';
+  return '<div class="books" id="books"><div class="brail">' + h + '</div></div>';
 }
 
 function renderList(){
   const rows = shown();
   if (!rows.length) return '<p class="none">No stories match those filters.</p>';
-  let h = '<div class="listv"><div class="lrow h"><span>#</span><span>Story</span><span>Reference</span><span>Story Sets</span><span>Tags</span></div>';
+  /* The image column is deliberately unlabelled. */
+  let h = '<div class="listv"><div class="lrow h"><span class="lnum">#</span><span></span><span>Story</span>' +
+    '<span>Reference</span><span>Story Sets</span><span>Tags</span></div>';
   rows.forEach((s, i) => {
     const par = s.par.length ? ' <span class="alsoref">(' + s.par.map(esc).join('; ') + ')</span>' : '';
+    /* Set icons ride inline after the title on narrow screens, like emoji, and sit in
+       their own column on desktop. Same markup, two layouts. */
     h += '<button class="lrow" data-id="' + s.id + '"><span class="lnum">' + (i + 1) + '</span>' +
-      '<span class="lt2">' + esc(s.t) + (s.som ? ' <span class="som" style="position:static">SERMON</span>' : '') + '</span>' +
-      '<span class="lref">' + esc(abbr(s.b) + ' ' + s.r) + par + '</span>' +
-      '<span>' + (setPills(s) || '<span class="lref">&mdash;</span>') + '</span>' +
-      '<span>' + (tagPills(s) || '') + '</span></button>';
+      art(s, 'lph') +
+      '<span class="lt2">' + esc(title(s)) + (s.som ? ' <span class="som">SERMON</span>' : '') +
+        inlineSets(s, 'lsets') + altLine(s) + '</span>' +
+      '<span class="lref">' + esc(abbr(s.b) + ' ' + ref(s)) + par + '</span>' +
+      '<span class="lsetcol">' + (setPills(s) || '<span class="lref">&mdash;</span>') + '</span>' +
+      (tagPills(s, 'ltags') || '<span class="ltags"></span>') + tagBtn(s, 'ltagb') +
+      context(s) + '</button>';
   });
   return h + '</div>';
 }
@@ -374,28 +647,42 @@ function drawers(){
   const setCount = {}, tagCount = {};
   D.stories.forEach(s => { sets(s).forEach(x => setCount[x] = (setCount[x] || 0) + 1);
                            tags(s).forEach(x => tagCount[x] = (tagCount[x] || 0) + 1); });
-  $('dSets').innerHTML = '<div class="dgrp"><h4>Story Sets</h4><div class="chips">' +
+  $('dSets').innerHTML = '<div class="dgrp"><h4>Story Sets</h4><div class="fchips g4">' +
     D.sets.map(n => '<button class="chip' + (state.sets.has(n) ? ' on' : '') + '" data-set="' + esc(n) + '">' +
       (seticon(n) ? '<img src="' + seticon(n) + '" alt="" loading="lazy">' : '') + esc(n) +
-      ' <span class="c">' + (setCount[n] || 0) + '</span></button>').join('') +
+      '<span class="cnt">' + (setCount[n] || 0) + '</span></button>').join('') +
     '</div></div><div style="margin-top:12px"><button class="clearall" data-clear="sets">Clear story sets</button></div>';
+  $('dLangs').innerHTML = '<div class="dgrp"><h4>Languages</h4><div class="fchips">' +
+    LANGS.map(n => '<button class="chip' + (state.langs.has(n) ? ' on' : '') + '" data-lang="' + esc(n) + '">' +
+      esc(n) + '<span class="cnt">' + D.stories.length + '</span></button>').join('') +
+    '</div><p class="dnote">The other 39 languages land here as they are produced.</p></div>' +
+    '<div style="margin-top:12px"><button class="clearall" data-clear="langs">Clear languages</button></div>';
   $('dTags').innerHTML = Object.entries(D.vocab).map(([g, list]) =>
-    '<div class="dgrp"><h4>' + esc(g) + '</h4><div class="chips">' + list.map(t =>
+    '<div class="dgrp"><h4>' + esc(g) + '</h4><div class="fchips">' + list.map(t =>
       '<button class="chip' + (state.tags.has(t) ? ' on' : '') + '" data-tag="' + esc(t) + '">' + esc(t) +
-      ' <span class="c">' + (tagCount[t] || 0) + '</span></button>').join('') + '</div></div>').join('') +
+      '<span class="cnt">' + (tagCount[t] || 0) + '</span></button>').join('') + '</div></div>').join('') +
     '<div style="margin-top:12px"><button class="clearall" data-clear="tags">Clear tags</button></div>';
 }
 
 function render(){
+  /* Collapsing a group re-renders the whole rail, so hold the scroll position or the
+     view snaps back to Genesis every time. */
+  const old = $('books'); const sx = old ? old.scrollLeft : 0;
   $('view').innerHTML = state.v === 'books' ? renderBooks() : state.v === 'list' ? renderList() : renderGrid();
-  const n = shown().filter(s => !s.som).length;
-  const filtered = state.q || state.sets.size || state.tags.size;
-  $('cShown').textContent = filtered ? shown().length : ${counted};
-  $('cFilt').textContent = filtered ? ' shown' : '';
-  $('nSets').hidden = !state.sets.size; $('nSets').textContent = state.sets.size;
-  $('nTags').hidden = !state.tags.size; $('nTags').textContent = state.tags.size;
-  $('bSets').classList.toggle('on', !!state.sets.size);
-  $('bTags').classList.toggle('on', !!state.tags.size);
+  const rail = $('books'); if (rail && sx) rail.scrollLeft = sx;
+  /* Filtering by a tag always shows the tag rows: hiding the thing being filtered on
+     would be perverse. Otherwise it is the tag button's shared toggle, which is shared
+     across all three views on purpose. */
+  $('view').classList.toggle('showtags', state.showTags || !!state.tags.size);
+  const filtered = filtering();
+  $('nShown').hidden = !filtered;
+  $('nShown').textContent = '(' + shown().length + ')';
+  const badge = (n, b, set) => { $(n).hidden = !set.size; $(n).textContent = set.size;
+    $(b).classList.toggle('on', !!set.size); };
+  badge('nSets', 'bSets', state.sets);
+  badge('nTags', 'bTags', state.tags);
+  badge('nLangs', 'bLangs', state.langs);
+  $('clearFilters').hidden = !anyFilter();
   const ne = Object.keys(edits).length;
   $('editnote').textContent = ne
     ? ne + (ne === 1 ? ' story edited' : ' stories edited') + ' in this browser. Export to send the changes on.'
@@ -403,43 +690,92 @@ function render(){
   drawers();
 }
 
+/* ---- filter drawers ---- */
+const DRAWERS = { bSets: 'dSets', bTags: 'dTags', bLangs: 'dLangs' };
+function closeDrawers(){
+  Object.entries(DRAWERS).forEach(([b, d]) => {
+    $(d).classList.remove('open'); $(b).setAttribute('aria-expanded', 'false');
+  });
+}
+function toggleDrawer(which){
+  const mine = DRAWERS[which];
+  const open = !$(mine).classList.contains('open');
+  closeDrawers();
+  if (open) { $(mine).classList.add('open'); $(which).setAttribute('aria-expanded', 'true'); }
+}
+
 /* ---- editor ---- */
 let cur = null;
 function openEd(id){
   cur = D.stories.find(s => s.id === id); if (!cur) return;
   const mySets = sets(cur), myTags = tags(cur);
-  $('edp').innerHTML = '<div class="edh"><div><h3 id="edTitle">' + esc(cur.t) + '</h3>' +
-    '<div class="r">' + esc(cur.b + ' ' + cur.r) + (cur.par.length ? ' &middot; also ' + cur.par.map(esc).join('; ') : '') + '</div></div>' +
+  $('edp').innerHTML = '<div class="edh"><div><h3 id="edTitle">' + esc(title(cur)) + '</h3>' +
+    '<div class="r">' + esc(cur.b) + (cur.par.length ? ' &middot; also ' + cur.par.map(esc).join('; ') : '') + '</div></div>' +
     '<button class="edx" id="edClose" aria-label="Close">&times;</button></div>' +
-    '<div class="dgrp"><h4>Story Sets</h4><div class="chips">' + D.sets.map(n =>
+    '<div class="dgrp"><h4>Details</h4><div class="edf">' +
+      '<label>Title<input id="fTitle" value="' + esc(title(cur)) + '"></label>' +
+      '<label>Reference<input id="fRef" value="' + esc(ref(cur)) + '"></label>' +
+      '<label class="wide">Alternate names<input id="fAlt" value="' + esc(alts(cur).join(', ')) + '">' +
+      '<span class="hint">Separate several with commas. Searched, but only shown on a tile when a search matches one.</span></label>' +
+    '</div></div>' +
+    '<div class="dgrp"><h4>Story Sets</h4><div class="fchips g4">' + D.sets.map(n =>
       '<button class="chip' + (mySets.includes(n) ? ' on' : '') + '" data-eset="' + esc(n) + '">' +
       (seticon(n) ? '<img src="' + seticon(n) + '" alt="" loading="lazy">' : '') + esc(n) + '</button>').join('') + '</div></div>' +
-    Object.entries(D.vocab).map(([g, list]) => '<div class="dgrp"><h4>' + esc(g) + '</h4><div class="chips">' +
+    Object.entries(D.vocab).map(([g, list]) => '<div class="dgrp"><h4>' + esc(g) + '</h4><div class="fchips">' +
       list.map(t => '<button class="chip' + (myTags.includes(t) ? ' on' : '') + '" data-etag="' + esc(t) + '">' + esc(t) + '</button>').join('') +
       '</div></div>').join('') +
     '<div class="edsave"><button class="btn primary sm" id="edDone">Done</button>' +
     (edited(cur) ? '<button class="fbtn" id="edRevert">Revert this story</button>' : '') +
     '<span class="note">Saved in this browser as you click.</span></div>';
+  const commit = () => saveCur({
+    nt: $('fTitle').value.trim() || cur.t,
+    nr: $('fRef').value.trim() || cur.r,
+    alt: $('fAlt').value.split(',').map(x => x.trim()).filter(Boolean),
+  });
+  ['fTitle', 'fRef', 'fAlt'].forEach(id => $(id).addEventListener('change', commit));
   $('ed').classList.add('open');
 }
-function closeEd(){ $('ed').classList.remove('open'); cur = null; render(); }
-function saveCur(s, g){
-  edits[cur.id] = { t: cur.t, s: s, g: g };
+function closeEd(){
+  if (cur && $('fTitle')) $('fTitle').blur(), $('fRef').blur(), $('fAlt').blur();
+  $('ed').classList.remove('open'); cur = null; render();
+}
+/* One record per story: original title for readability, then whatever differs from the
+   build. A record that matches the build in every field is deleted, so the edit count and
+   the export only ever carry real changes. */
+function saveCur(patch){
   const o = D.stories.find(x => x.id === cur.id);
-  if (JSON.stringify(o.s) === JSON.stringify(s) && JSON.stringify(o.g) === JSON.stringify(g)) delete edits[cur.id];
+  const rec = Object.assign({ t: o.t, s: sets(cur), g: tags(cur), nt: title(cur), nr: ref(cur), alt: alts(cur) },
+    edits[cur.id], patch);
+  const baseAlt = D.alt[key(o)] || [];
+  const same = JSON.stringify(rec.s) === JSON.stringify(o.s) && JSON.stringify(rec.g) === JSON.stringify(o.g)
+    && rec.nt === o.t && rec.nr === o.r && JSON.stringify(rec.alt) === JSON.stringify(baseAlt);
+  if (same) delete edits[cur.id]; else edits[cur.id] = rec;
   try { localStorage.setItem(LS, JSON.stringify(edits)); } catch (e) {}
 }
 
 document.addEventListener('click', e => {
+  /* Anywhere outside a drawer or its own toggle closes the open drawer. */
+  if (!e.target.closest('.drawer') && !e.target.closest('#bSets') && !e.target.closest('#bTags')
+      && !e.target.closest('#bLangs') && !e.target.closest('.ed')) closeDrawers();
+  /* The tag button lives inside the row button, so it has to be caught before the row is.
+     It is a span rather than a nested <button>, which browsers will not nest. */
+  const tg = e.target.closest('.ltagb, .ttagb');
+  if (tg) { state.showTags = !state.showTags; render(); e.stopPropagation(); return; }
   const t = e.target.closest('button'); if (!t) return;
   if (t.dataset.v) { state.v = t.dataset.v; document.querySelectorAll('.views button').forEach(b => b.classList.toggle('on', b === t)); render(); return; }
-  if (t.id === 'bSets' || t.id === 'bTags') { const d = $(t.id === 'bSets' ? 'dSets' : 'dTags');
-    const open = d.classList.toggle('open'); t.setAttribute('aria-expanded', open); return; }
+  if (DRAWERS[t.id]) { toggleDrawer(t.id); return; }
   if (t.dataset.set) { state.sets.has(t.dataset.set) ? state.sets.delete(t.dataset.set) : state.sets.add(t.dataset.set); render(); return; }
   if (t.dataset.tag) { state.tags.has(t.dataset.tag) ? state.tags.delete(t.dataset.tag) : state.tags.add(t.dataset.tag); render(); return; }
+  if (t.dataset.lang) { state.langs.has(t.dataset.lang) ? state.langs.delete(t.dataset.lang) : state.langs.add(t.dataset.lang); render(); return; }
   if (t.dataset.clear) { state[t.dataset.clear].clear(); render(); return; }
-  if (t.classList.contains('thead')) { const g = t.closest('.tgroup').dataset.g;
-    state.shut.has(g) ? state.shut.delete(g) : state.shut.add(g); render(); return; }
+  if (t.id === 'clearFilters') { state.sets.clear(); state.tags.clear(); state.langs.clear(); closeDrawers(); render(); return; }
+  if (t.classList.contains('thead')) {
+    if (t.classList.contains('t1')) { const k = t.closest('.btest').dataset.t;
+      state.shutT.has(k) ? state.shutT.delete(k) : state.shutT.add(k); }
+    else { const g = t.closest('.tgroup').dataset.g;
+      state.shut.has(g) ? state.shut.delete(g) : state.shut.add(g); }
+    render(); return;
+  }
   if (t.classList.contains('tile') && !t.classList.contains('dup')) { openEd(t.dataset.id); return; }
   if (t.classList.contains('lrow') && t.dataset.id) { openEd(t.dataset.id); return; }
   if (t.id === 'edClose' || t.id === 'edDone') { closeEd(); return; }
@@ -448,11 +784,11 @@ document.addEventListener('click', e => {
     const s = sets(cur).slice(), g = tags(cur).slice();
     if (t.dataset.eset) { const i = s.indexOf(t.dataset.eset); i < 0 ? s.push(t.dataset.eset) : s.splice(i, 1); }
     else { const i = g.indexOf(t.dataset.etag); i < 0 ? g.push(t.dataset.etag) : g.splice(i, 1); }
-    saveCur(s, g); t.classList.toggle('on'); return;
+    saveCur({ s: s, g: g }); t.classList.toggle('on'); return;
   }
   if (t.id === 'export') {
-    const out = D.stories.map(s => ({ id: s.id, story: s.t, book: s.b, reference: s.r,
-      sets: sets(s), tags: tags(s), changed: edited(s) }));
+    const out = D.stories.map(s => ({ id: s.id, story: title(s), originalStory: s.t, book: s.b,
+      reference: ref(s), altNames: alts(s), sets: sets(s), tags: tags(s), changed: edited(s) }));
     const blob = new Blob([JSON.stringify({ exported: new Date().toISOString(), changed: Object.keys(edits).length, stories: out }, null, 2)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
     a.download = 'storying-stories-' + new Date().toISOString().slice(0, 10) + '.json';
@@ -462,7 +798,7 @@ document.addEventListener('click', e => {
     edits = {}; try { localStorage.removeItem(LS); } catch (e) {} render(); } return; }
 });
 $('ed').addEventListener('click', e => { if (e.target.id === 'ed') closeEd(); });
-addEventListener('keydown', e => { if (e.key === 'Escape' && cur) closeEd(); });
+addEventListener('keydown', e => { if (e.key !== 'Escape') return; if (cur) closeEd(); else closeDrawers(); });
 let qt; $('q').addEventListener('input', e => { clearTimeout(qt);
   qt = setTimeout(() => { state.q = e.target.value.trim().toLowerCase(); render(); }, 140); });
 render();
