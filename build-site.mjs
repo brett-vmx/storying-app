@@ -498,7 +498,21 @@ a.settile:hover{transform:translateY(-3px);border-color:#63CBE0;box-shadow:0 14p
   padding:9px 13px;font-size:14px;font-weight:660;color:var(--ink);margin-bottom:10px}
 .fbtn b{background:var(--teal);color:#fff;font-size:10.5px;width:18px;height:18px;border-radius:50%;
   display:flex;align-items:center;justify-content:center}
+/* Column two stacks two panels, so Filter and View each read as their own screen. */
+.fsstack{display:flex;flex-direction:column;gap:clamp(20px,2.6vw,28px)}
+/* Stacked, the three panels need more separating them than they do side by side. */
+@media (max-width:860px){.fsgrid,.fsstack{gap:30px}}
+/* Under both columns rather than under one, so it stays on the section's centre line at
+   every width. */
+.fscta{display:flex;justify-content:center;margin-top:clamp(22px,2.6vw,30px)}
 .fcard{background:#fff;border:1px solid #dde3e6;border-radius:13px;padding:6px 18px 18px;box-shadow:0 3px 14px rgba(28,49,68,.08)}
+/* The real controls, rather than a list standing in for them. */
+.fcard.fcrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:16px}
+.fcrow .fbtn{margin:0}
+.vseg{display:inline-flex;border:1px solid #cfd8dc;border-radius:10px;overflow:hidden;background:#fff}
+.vseg span{display:inline-flex;align-items:center;gap:7px;padding:10px 14px;font-size:14px;font-weight:660;color:#5E727C}
+.vseg span+span{border-left:1px solid #e3eaed}
+.vseg span.on{background:var(--navy);color:#fff}
 .uirow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px;font-size:15px;font-weight:660;border-bottom:1px solid #e6ebee}
 .uirow:last-child{border-bottom:0}
 .uirow small{font-weight:400;color:#8A99A2;font-size:12px;margin-left:7px}
@@ -816,37 +830,46 @@ const S = {
 <section class="sec paper lt" id="features">
   <div class="wrap">
     <h2>Features</h2>
-    <h3 class="h3s" style="margin-top:clamp(38px,4.5vw,58px)">Filter &amp; Search</h3>
+    <h3 class="h3s" style="margin-top:clamp(38px,4.5vw,58px)">Search, Filter and View</h3>
     <p class="sub">Easily navigate over 7,000 stories.</p>
     <div class="fsgrid">
-      <div class="fscol">
-        <h4 class="fsh">Filter</h4>
-        <p class="fsdesc">Drill down quickly to find the stories you need.</p>
-        <div class="fbtn">${ic('list-filter', 15, '#1C3144', 2.2)} Filter <b>2</b></div>
-        <div class="fcard">
-          <div class="uirow">Language <span class="chev">&#8250;</span></div>
-          <div class="uirow">Story set <span class="chev">&#8250;</span></div>
-          <div class="uirow">Book of the Bible <span class="chev">&#8250;</span></div>
-          <div class="uirow"><span>Theme <small>sacrifice, money, healing</small></span> <span class="chev">&#8250;</span></div>
-          <div class="uirow">Has a storyboard <span class="tog on"></span></div>
-          <div class="uirow">Has audio in Nepali <span class="tog on"></span></div>
-          <div class="uifoot"><span>Clear all</span><span class="pri">Done</span></div>
-        </div>
-      </div>
       <div class="fscol">
         <h4 class="fsh">Search</h4>
         <p class="fsdesc">Search for any word in any story in any language.</p>
         <div class="sbar">${ic('search', 17, '#2E8FA8', 2.2)}<span>money</span></div>
         <div class="srule"></div>
         <div class="reslist">
-          <div class="res"><img src="${IMG.zac}" alt="" loading="lazy"><div><b>Zacchaeus</b><div class="rs">&ldquo;I will give half my <mark>money</mark> to the poor&rdquo;</div></div><div class="rm">Luke 19<br>1:30</div></div>
-          <div class="res"><img src="${IMG.blind}" alt="" loading="lazy"><div><b>The Rich Young Ruler</b><div class="rs">&ldquo;Sell everything and give the <mark>money</mark> away&rdquo;</div></div><div class="rm">Mark 10<br>1:45</div></div>
-          <div class="res"><img src="${IMG.feed}" alt="" loading="lazy"><div><b>The Widow's Offering</b><div class="rs">&ldquo;She gave all the <mark>money</mark> she had&rdquo;</div></div><div class="rm">Mark 12<br>1:12</div></div>
-          <div class="res"><img src="${IMG.res}" alt="" loading="lazy"><div><b>The Rich Fool</b><div class="rs">Theme: <mark>money</mark> and greed</div></div><div class="rm">Luke 12<br>1:38</div></div>
-          <div class="res"><img src="${IMG.creation}" alt="" loading="lazy"><div><b>Treasure in Heaven</b><div class="rs">&ldquo;Do not store up <mark>money</mark> for yourselves on earth&rdquo;</div></div><div class="rm">Matthew 6<br>1:20</div></div>
+          <div class="res"><img src="${IMG.zac}" alt="" loading="lazy"><div><b>Zacchaeus</b><div class="rs">&ldquo;I will give half my <mark>money</mark> to the poor&rdquo;</div></div></div>
+          <div class="res"><img src="${IMG.blind}" alt="" loading="lazy"><div><b>The Rich Young Ruler</b><div class="rs">&ldquo;Sell everything and give the <mark>money</mark> away&rdquo;</div></div></div>
+          <div class="res"><img src="${IMG.feed}" alt="" loading="lazy"><div><b>The Widow's Offering</b><div class="rs">&ldquo;She gave all the <mark>money</mark> she had&rdquo;</div></div></div>
+          <div class="res"><img src="${IMG.res}" alt="" loading="lazy"><div><b>The Rich Fool</b><div class="rs">Theme: <mark>money</mark> and greed</div></div></div>
+          <div class="res"><img src="${IMG.creation}" alt="" loading="lazy"><div><b>Treasure in Heaven</b><div class="rs">&ldquo;Do not store up <mark>money</mark> for yourselves on earth&rdquo;</div></div></div>
+        </div>
+      </div>
+      <div class="fsstack">
+        <div class="fscol">
+          <h4 class="fsh">Filter</h4>
+          <p class="fsdesc">Drill down quickly to find the stories you need.</p>
+          <div class="fcard fcrow">
+            <div class="fbtn">${ic('playing-cards-fan', 15, '#1C3144', 2.2)} Story Sets</div>
+            <div class="fbtn">${ic('tag', 15, '#1C3144', 2.2)} Tags <b>2</b></div>
+            <div class="fbtn">${ic('languages', 15, '#1C3144', 2.2)} Languages</div>
+          </div>
+        </div>
+        <div class="fscol">
+          <h4 class="fsh">View</h4>
+          <p class="fsdesc">View by book of the Bible, a list, or a grid.</p>
+          <div class="fcard fcrow">
+            <div class="vseg">
+              <span class="on">${ic('book-open', 15, '#fff', 2.2)} Books</span>
+              <span>${ic('list', 15, '#5E727C', 2.2)} List</span>
+              <span>${ic('layout-grid', 15, '#5E727C', 2.2)} Grid</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="fscta"><a class="btn primary" href="stories/">${ic('book-open', 18, '#fff', 2.2)} Browse the story library</a></div>
     <h3 class="h3s" style="margin-top:clamp(56px,7vw,90px)">Playlists</h3>
     <p class="sub">Build and customize your own story sets.</p>
     <div class="plwrap">
