@@ -167,6 +167,34 @@ export const STORIES_CSS = `
 .chip:hover .cnt{color:#127e94}
 .chip.on .cnt{color:#fff}
 .dnote{font-size:12px;color:#8fa4b0;margin:10px 0 0}
+/* A switch, not a chip. Everything else in this drawer is a filter you pick from a set;
+   this is one persistent on/off that changes the whole page, and it should not look like
+   another tag. .swt rather than .tog: the pitch page already owns that name. */
+/* Switch first, then the label: stretched across a 1180px drawer, a trailing switch ends
+   up an inch from the words it belongs to. */
+.swrow{display:inline-flex;align-items:center;gap:11px;background:none;border:0;padding:2px 0;
+  font:inherit;color:var(--ink);cursor:pointer;text-align:left}
+.swlbl{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600}
+.swlbl svg{color:#9fb3bd;fill:none}
+.swrow[aria-checked="true"] .swlbl svg{color:var(--teal);fill:currentColor}
+.swrow[aria-checked="true"] .swlbl svg circle{fill:#fff}
+.swt{position:relative;flex:none;width:40px;height:23px;border-radius:99px;background:#d3dade;
+  transition:background .16s}
+.swt:after{content:"";position:absolute;top:2.5px;left:2.5px;width:18px;height:18px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 2px rgba(28,49,68,.28);transition:transform .16s}
+.swrow:hover .swt{background:#c3ccd2}
+.swrow[aria-checked="true"] .swt{background:var(--teal)}
+.swrow[aria-checked="true"]:hover .swt{background:#178ca4}
+.swrow[aria-checked="true"] .swt:after{transform:translateX(17px)}
+/* Parallel passages only exist in the Gospels, so the control rides on that group's own
+   header rather than taking a line in the controls bar. Sticky right, because the Gospels
+   bar is about 900px wide and its right end scrolls out of view otherwise. */
+.dupsw{position:sticky;right:11px;margin-left:auto;display:inline-flex;align-items:center;gap:6px;
+  padding:4px 10px 4px 8px;border-radius:99px;font-size:11.5px;font-weight:600;letter-spacing:0;
+  text-transform:none;background:rgba(255,255,255,.17);color:#fff;cursor:pointer;white-space:nowrap}
+.dupsw:hover{background:rgba(255,255,255,.3)}
+.dupsw[aria-checked="true"]{background:#fff;color:var(--teal)}
+.tgroup.shut .dupsw{display:none}
 .clearall{font:inherit;font-size:13px;font-weight:600;color:var(--teal);background:none;border:0;cursor:pointer;padding:6px 2px}
 
 /* tiles. .tile is a <button>, and a button taller than its content centres that content
@@ -177,13 +205,10 @@ export const STORIES_CSS = `
   display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
   text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer}
 .tile:hover{border-color:#9fb3bd;box-shadow:0 2px 10px rgba(28,49,68,.07)}
-.trow{display:flex;align-items:flex-end;gap:8px;width:100%}
-.tmain{flex:1;min-width:0}
+.tmain{min-width:0}
 .tinline{display:inline-flex;gap:3px;vertical-align:-3px;margin-left:5px}
 .tinline img{width:15px;height:15px;border-radius:4px;object-fit:cover}
-.ttagb,.ltagb{display:inline-flex;align-items:center;justify-content:center;flex:none;
-  width:26px;height:26px;border-radius:7px;color:#9fb3bd;background:#f2f6f8}
-.showtags .ttagb{background:var(--teal);color:#fff}
+
 .tph{aspect-ratio:16/10;flex:none;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,#e8eef1,#dbe5ea);
   display:flex;align-items:center;justify-content:center;color:#a8bcc7;margin-bottom:9px}
 .tph img{width:100%;height:100%;object-fit:cover;display:block}
@@ -193,7 +218,7 @@ export const STORIES_CSS = `
 .tile.cmp{display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px 10px;padding:9px;align-items:start}
 .tile.cmp .tph{aspect-ratio:1;width:46px;height:46px;margin:0}
 .tile.cmp .tph svg{width:18px;height:18px}
-.tile.cmp .trow{grid-column:2}
+.tile.cmp .tmain{grid-column:2}
 .tile.cmp .ttags,.tile.cmp .tctx{grid-column:1/-1;margin-top:0}
 .tile.cmp .tr{margin-top:2px}
 .tt{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
@@ -212,11 +237,13 @@ export const STORIES_CSS = `
 .talt{display:block;font-size:11.5px;color:#7E8F99;margin-top:2px;font-style:italic}
 .tctx{font-size:11.5px;line-height:1.45;color:#5E727C;margin-top:7px;padding-left:8px;border-left:2px solid #cfe6ec}
 mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
-/* The badge is styled on its own, positioned only inside a tile: the list row carries one
-   too, and scoping the whole rule to .tile left it as bare bold text there. */
-.som{background:var(--sandL);color:#6b5f3c;font-size:9.5px;font-weight:700;letter-spacing:.04em;
+/* Sermon on the Mount. On a tile it is a teal outline rather than a badge: 18 of them sit
+   consecutively in Matthew, and a badge on every one was more noise than signal. The list
+   row, which shows one story per line, keeps the words. */
+.tile.issom{border-color:#6fc4d7}
+.tile.issom:hover{border-color:var(--teal)}
+.som{background:#e3f4f8;color:var(--teal);font-size:9.5px;font-weight:700;letter-spacing:.04em;
   border-radius:4px;padding:2px 5px;white-space:nowrap}
-.tile .som{position:absolute;top:9px;right:9px}
 
 /* books view: one rail, 66 book columns, two levels of collapsible grouping */
 .books{margin-top:20px;overflow-x:auto;padding-bottom:22px}
@@ -247,11 +274,16 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
 .bcol{flex:0 0 212px;min-width:212px}
 .bcol.empty{flex:0 0 96px;min-width:96px;opacity:.42}
 .bname{font-size:13px;font-weight:700;letter-spacing:-.01em;padding:7px 9px;border-radius:8px;
-  background:var(--navy);color:#fff;display:flex;justify-content:space-between;gap:6px;align-items:baseline}
+  background:var(--navy);color:#fff;display:flex;gap:9px;align-items:baseline}
 .bcol.empty .bname{background:#dfe7ea;color:#7E8F99}
+/* Beside the name, the way a group header carries its count. */
 .bname .bn{font-size:11px;font-weight:600;opacity:.62}
-/* No tray behind the tiles: at 212px a column has no width to spare. */
-.bstack{display:flex;flex-direction:column;gap:8px;padding:8px 0 0;min-height:20px}
+/* No tray behind the tiles: at 212px a column has no width to spare. A hairline runs down
+   the middle of the column instead, and the tiles sit on top of it. */
+.bstack{position:relative;display:flex;flex-direction:column;gap:14px;padding:10px 0 0;min-height:20px}
+.bstack:not(:empty):before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;
+  margin-left:-.5px;background:#d3dee3}
+.bstack>*{position:relative}
 .dup{background:#f4f7f8;border-style:dashed;cursor:default;padding:9px}
 .dup:hover{box-shadow:none;border-color:#d7e0e4}
 .dup .tt{font-weight:600;color:#7E8F99}
@@ -268,19 +300,16 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
 .lrow.h{background:#f4f8f9;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
   color:#7E8F99;cursor:default;position:sticky;top:0;z-index:2}
 .lrow.h:hover{background:#f4f8f9}
-/* A circle at one or two digits, a pill at three: 202 will not fit in 22px. */
-.lnum{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;
-  padding:0 6px;border-radius:999px;background:var(--teal);color:#fff;font-size:11px;font-weight:700;
-  font-variant-numeric:tabular-nums}
-.lrow.h .lnum{background:none;color:inherit;padding:0;min-width:0;height:auto;font-size:inherit;font-weight:inherit}
+.lnum{font-size:11.5px;font-weight:600;color:var(--teal);font-variant-numeric:tabular-nums}
+.lrow.h .lnum{color:inherit;font-size:inherit;font-weight:inherit}
 .lt2{font-size:14px;font-weight:700;letter-spacing:-.01em}
 .lref{font-size:12.5px;color:var(--ink-s);font-variant-numeric:tabular-nums}
 .lph{aspect-ratio:1;width:52px;border-radius:7px;overflow:hidden;background:linear-gradient(135deg,#e8eef1,#dbe5ea);
   display:flex;align-items:center;justify-content:center;color:#a8bcc7}
 .lph img{width:100%;height:100%;object-fit:cover;display:block}
 .lph svg{width:16px;height:16px}
-/* Inline set icons and the tag button are the mobile card's business only. */
-.lsets,.ltagb{display:none}
+/* Inline set icons are the mobile card's business only. */
+.lsets{display:none}
 .lrow .ttags{display:flex}
 .ltags{display:flex;flex-wrap:wrap;gap:4px}
 .lrow .tctx{grid-column:1/-1;margin-top:2px}
@@ -295,21 +324,20 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
   .lsetcol{display:none}
   .lsets{display:inline-flex;gap:3px;vertical-align:-3px;margin-left:5px}
   .lsets img{width:15px;height:15px;border-radius:4px;object-fit:cover}
-  .ltagb{display:inline-flex;grid-column:3;grid-row:2;justify-self:end;align-self:end}
-  .showtags .ltagb{background:var(--teal);color:#fff}
   .lrow .ltags{grid-column:1/-1;grid-row:3;margin-top:7px;display:none}
   .showtags .lrow .ltags{display:flex}
   .lrow .tctx{grid-row:4}
 }
 
-/* grid view */
-.gridv{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+/* grid view. auto-fill rather than a ladder of fixed column counts: the tile has an ideal
+   width of about 175px, and letting the row fill gives 6 at the 1180px wrap and then 5, 4,
+   3, 2 on the way down, with no width where the tiles balloon to fill a missing column. */
+.gridv{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:14px}
 .gridv .tph{aspect-ratio:1}
-@media (max-width:1100px){.gridv{grid-template-columns:repeat(3,1fr)}}
-/* Two columns all the way down. One column on a phone wastes most of the screen on a card
-   that is mostly a square image. */
-@media (max-width:820px){.gridv{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.gridv{gap:10px}.gridv .tile{padding:9px}.gridv .trow{gap:6px}}
+/* Below about 405px auto-fill would drop to one column, which wastes most of a phone
+   screen on a square image. Hold it at two. */
+@media (max-width:440px){.gridv{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .gridv .tile{padding:9px}}
 
 .none{padding:44px 0;text-align:center;color:var(--ink-s);font-size:15px}
 
@@ -476,7 +504,7 @@ const key = s => s.b + '|' + s.t;
 function edited(s){ return !!edits[s.id]; }
 
 const state = { v:'books', q:'', sets:new Set(), tags:new Set(), langs:new Set(),
-                shut:new Set(), shutT:new Set(), showTags:false };
+                shut:new Set(), shutT:new Set(), showTags:false, showDups:true };
 /* Only English exists today. The filter is wired up properly so adding the other 39 is a
    data change, not a code change; selecting English matches everything, as it should. */
 const LANGS = ['English'];
@@ -485,6 +513,9 @@ const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 const abbr = b => D.abbr[b] || b;
 const seticon = n => D.seticon[n] ? '../assets/' + D.seticon[n] : '';
 const filtering = () => !!(state.q || state.sets.size || state.tags.size || state.langs.size);
+/* Filtering by a tag always shows the tag rows: hiding what you are filtering on would be
+   perverse. Otherwise it is the drawer's toggle. */
+const showingTags = () => state.showTags || !!state.tags.size;
 const anyFilter = () => !!(state.sets.size || state.tags.size || state.langs.size);
 /* A search term counts as a hit on a tag if either contains the other, so "money",
    "mone" and "money stories" all light up the Money tag. */
@@ -543,6 +574,9 @@ function tagPills(s, cls){
 }
 const NOART = ${JSON.stringify(ic('book-open', 22, 'currentColor'))};
 const TAGIC = ${JSON.stringify(ic('tag', 14, 'currentColor', 2.1))};
+/* Empty dashed square when off, the same square with a check in it when on. */
+const DASH = { off: ${JSON.stringify(ic('square-dashed', 13, 'currentColor', 2.3))},
+               on: ${JSON.stringify(ic('square-dashed-check', 13, 'currentColor', 2.3))} };
 const TOG = { shut: ${JSON.stringify(ic('expand', 14, 'currentColor', 2.2))},
               open: ${JSON.stringify(ic('chevrons-right-left', 14, 'currentColor', 2.2))} };
 const tog = isShut => '<span class="gtog">' + (isShut ? TOG.shut : TOG.open) + '</span>';
@@ -558,20 +592,26 @@ function inlineSets(s, cls){
   return '<span class="' + (cls || 'tinline') + '">' + v.map(n => '<img src="' + seticon(n) +
     '" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">').join('') + '</span>';
 }
-const tagBtn = (s, cls) => tags(s).length ? '<span class="' + (cls || 'ttagb') + '">' + TAGIC + '</span>' : '';
-
 /* One markup for both tile shapes; .cmp re-lays it out for the narrow book columns. */
 function tile(s, showPar, compact){
   const par = (showPar && s.par.length) ? ' <span class="alsoref">(' + s.par.map(p => esc(p)).join('; ') + ')</span>' : '';
-  return '<button class="tile' + (compact ? ' cmp' : '') + '" data-id="' + s.id + '">' +
-    (s.som ? '<span class="som">SERMON</span>' : '') + art(s) +
-    '<div class="trow"><div class="tmain">' +
+  return '<button class="tile' + (compact ? ' cmp' : '') + (s.som ? ' issom' : '') + '" data-id="' + s.id + '">' +
+    art(s) +
+    '<div class="tmain">' +
       '<div class="tt">' + esc(title(s)) + inlineSets(s) + '</div>' + altLine(s) +
       '<div class="tr">' + esc(abbr(s.b) + ' ' + ref(s)) + par + '</div>' +
-    '</div>' + tagBtn(s) + '</div>' +
-    tagPills(s) + context(s) + '</button>';
+    '</div>' + tagPills(s) + context(s) + '</button>';
 }
 
+/* First chapter and verse in a reference, for ordering a book column. Handles "3",
+   "1-2:3", "7:14-12:30" and "12:1-5,15:1-6,17,21:1-7" alike: the first number is the
+   chapter, and a colon straight after it means the next number is the verse. */
+function refKey(r){
+  /* [0-9] rather than \\d: this whole script is inside a template literal, which eats a
+     single backslash before it ever reaches the browser. */
+  const m = String(r).match(/([0-9]+)(?::([0-9]+))?/);
+  return m ? [+m[1], m[2] ? +m[2] : 0] : [999, 0];
+}
 /* ---- books view: every book of the Bible on one rail, duplicates shown but dimmed ---- */
 function renderBooks(){
   const keep = new Set(shown().map(s => s.id));
@@ -580,7 +620,7 @@ function renderBooks(){
   D.stories.forEach(s => { if (keep.has(s.id)) (byBook[s.b] = byBook[s.b] || []).push(s); });
   /* A duplicate rides along with the story it parallels. The two that have no main to
      point at are coverage notes, not stories, so they only belong in the unfiltered view. */
-  D.dups.forEach(d => { if (d.of ? keep.has(d.of) : !filt) (dupsBy[d.b] = dupsBy[d.b] || []).push(d); });
+  if (state.showDups) D.dups.forEach(d => { if (d.of ? keep.has(d.of) : !filt) (dupsBy[d.b] = dupsBy[d.b] || []).push(d); });
   const mainOf = {}; D.stories.forEach(s => mainOf[s.id] = s);
   let h = '';
   D.groups.forEach(([test, groups]) => {
@@ -595,16 +635,25 @@ function renderBooks(){
       const gShut = state.shut.has(key);
       h += '<div class="tgroup' + (gShut ? ' shut' : '') + '" data-g="' + esc(key) + '">' +
         '<button class="thead t2" aria-expanded="' + !gShut + '"><span class="hin">' + tog(gShut) +
-        '<span class="lbl">' + esc(gname) + '</span><span class="gn">' + n + '</span></span></button><div class="brow">';
+        '<span class="lbl">' + esc(gname) + '</span><span class="gn">' + n + '</span></span>' +
+        (gname === 'Gospels' ? '<span class="dupsw" role="switch" aria-checked="' + state.showDups +
+          '" data-showdups>' + (state.showDups ? DASH.on : DASH.off) + 'Show parallel stories</span>' : '') +
+        '</button><div class="brow">';
       books.forEach(b => {
         const items = byBook[b] || []; const dp = dupsBy[b] || [];
         const empty = !items.length && !dp.length;
         h += '<div class="bcol' + (empty ? ' empty' : '') + '"><div class="bname"><span>' + esc(empty ? abbr(b) : b) + '</span>' +
           (items.length ? '<span class="bn">' + items.length + '</span>' : '') + '</div><div class="bstack">';
-        items.forEach(s => h += tile(s, false, true));
-        dp.forEach(d => {
-          const m = d.of ? mainOf[d.of] : null;
-          h += '<div class="tile dup"><div class="tt">' + esc(d.t) + '</div><div class="tr">' + esc(abbr(d.b) + ' ' + d.r) + '</div>' +
+        /* Mains and parallels in one list, ordered by where they fall in the book. The
+           original index breaks ties, so equal references keep the spreadsheet's order
+           and a main always precedes a parallel that starts at the same verse. */
+        const col = items.map((s, i) => ({ s: s, k: refKey(ref(s)), i: i }))
+          .concat(dp.map((d, i) => ({ d: d, k: refKey(d.r), i: 1000 + i })))
+          .sort((a, z) => a.k[0] - z.k[0] || a.k[1] - z.k[1] || a.i - z.i);
+        col.forEach(x => {
+          if (x.s) { h += tile(x.s, false, true); return; }
+          const m = x.d.of ? mainOf[x.d.of] : null;
+          h += '<div class="tile dup"><div class="tt">' + esc(x.d.t) + '</div><div class="tr">' + esc(abbr(x.d.b) + ' ' + x.d.r) + '</div>' +
             '<div class="dupof">' + (m ? 'told from ' + esc(abbr(m.b) + ' ' + m.r) : 'parallel passage') + '</div></div>';
         });
         h += '</div></div>';
@@ -632,7 +681,7 @@ function renderList(){
         inlineSets(s, 'lsets') + altLine(s) + '</span>' +
       '<span class="lref">' + esc(abbr(s.b) + ' ' + ref(s)) + par + '</span>' +
       '<span class="lsetcol">' + (setPills(s) || '<span class="lref">&mdash;</span>') + '</span>' +
-      (tagPills(s, 'ltags') || '<span class="ltags"></span>') + tagBtn(s, 'ltagb') +
+      (tagPills(s, 'ltags') || '<span class="ltags"></span>') +
       context(s) + '</button>';
   });
   return h + '</div>';
@@ -657,7 +706,13 @@ function drawers(){
       esc(n) + '<span class="cnt">' + D.stories.length + '</span></button>').join('') +
     '</div><p class="dnote">The other 39 languages land here as they are produced.</p></div>' +
     '<div style="margin-top:12px"><button class="clearall" data-clear="langs">Clear languages</button></div>';
-  $('dTags').innerHTML = Object.entries(D.vocab).map(([g, list]) =>
+  /* One control for the whole page, rather than the same button repeated on 202 cards. */
+  $('dTags').innerHTML = '<div class="dgrp">' +
+    '<button class="swrow" role="switch" aria-checked="' + showingTags() + '" data-showtags>' +
+      '<span class="swt"></span><span class="swlbl">Show tags on stories' + TAGIC + '</span></button>' +
+    (state.tags.size ? '<p class="dnote">Shown automatically while a tag filter is on.</p>' : '') +
+    '</div>' +
+    Object.entries(D.vocab).map(([g, list]) =>
     '<div class="dgrp"><h4>' + esc(g) + '</h4><div class="fchips">' + list.map(t =>
       '<button class="chip' + (state.tags.has(t) ? ' on' : '') + '" data-tag="' + esc(t) + '">' + esc(t) +
       '<span class="cnt">' + (tagCount[t] || 0) + '</span></button>').join('') + '</div></div>').join('') +
@@ -670,10 +725,7 @@ function render(){
   const old = $('books'); const sx = old ? old.scrollLeft : 0;
   $('view').innerHTML = state.v === 'books' ? renderBooks() : state.v === 'list' ? renderList() : renderGrid();
   const rail = $('books'); if (rail && sx) rail.scrollLeft = sx;
-  /* Filtering by a tag always shows the tag rows: hiding the thing being filtered on
-     would be perverse. Otherwise it is the tag button's shared toggle, which is shared
-     across all three views on purpose. */
-  $('view').classList.toggle('showtags', state.showTags || !!state.tags.size);
+  $('view').classList.toggle('showtags', showingTags());
   const filtered = filtering();
   $('nShown').hidden = !filtered;
   $('nShown').textContent = '(' + shown().length + ')';
@@ -757,11 +809,14 @@ document.addEventListener('click', e => {
   /* Anywhere outside a drawer or its own toggle closes the open drawer. */
   if (!e.target.closest('.drawer') && !e.target.closest('#bSets') && !e.target.closest('#bTags')
       && !e.target.closest('#bLangs') && !e.target.closest('.ed')) closeDrawers();
-  /* The tag button lives inside the row button, so it has to be caught before the row is.
-     It is a span rather than a nested <button>, which browsers will not nest. */
-  const tg = e.target.closest('.ltagb, .ttagb');
-  if (tg) { state.showTags = !state.showTags; render(); e.stopPropagation(); return; }
+  /* Inside the group header button, so it has to be caught first. A span rather than a
+     nested <button>, which browsers will not nest. */
+  const dw = e.target.closest('.dupsw');
+  if (dw) { state.showDups = !state.showDups; render(); e.stopPropagation(); return; }
   const t = e.target.closest('button'); if (!t) return;
+  /* Set from the effective value, so the first click after a tag filter forces it open
+     does the thing the label promises rather than silently flipping a hidden flag. */
+  if (t.dataset.showtags !== undefined) { state.showTags = !showingTags(); render(); return; }
   if (t.dataset.v) { state.v = t.dataset.v; document.querySelectorAll('.views button').forEach(b => b.classList.toggle('on', b === t)); render(); return; }
   if (DRAWERS[t.id]) { toggleDrawer(t.id); return; }
   if (t.dataset.set) { state.sets.has(t.dataset.set) ? state.sets.delete(t.dataset.set) : state.sets.add(t.dataset.set); render(); return; }

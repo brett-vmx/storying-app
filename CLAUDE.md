@@ -153,22 +153,50 @@ tile grows a context row showing the sentence around it, with the term marked. O
 stories with text can produce one; everything else in the library is still `not-started`.
 
 All three views share one card idiom: story art, then the title with its set icons inline
-after it like emoji, then the reference, with a tag button in the bottom right corner that
-reveals the tag row. Tag rows are hidden by default. The button toggles `state.showTags` for
-every card in every view at once, not for its own card, and filtering by a tag forces the
-rows open regardless, since hiding what you are filtering on would be perverse. `#view`
-carries the `showtags` class; nothing else decides it.
-
-Those buttons are `<span>`s, not nested `<button>`s, because browsers will not nest buttons;
-the click handler catches them before the card. That also means they are not keyboard
-focusable.
+after it like emoji, then the reference. Tag rows are hidden by default and revealed by a
+single **Show tags on stories** switch at the top of the Tags drawer. It is a switch rather
+than another chip on purpose: everything else in that drawer is a filter you pick from a set,
+and this is one persistent on/off that changes the whole page. That control used to be
+a tag button on every card; at 202 cards it was noise for something with one global effect,
+and in the book columns it cost enough width to push the set icons onto a second line.
+`showingTags()` is the only thing that decides, `#view` carries the `showtags` class, and
+filtering by a tag forces the rows open regardless, since hiding what you are filtering on
+would be perverse.
 
 The list view is one row of markup laid out two ways: a six column table on desktop (the
 image column is deliberately unlabelled), and below 860px the same compact card as the other
 views, with the row number added in the top right corner.
 
+The grid uses `repeat(auto-fill, minmax(175px, 1fr))` rather than a ladder of fixed column
+counts. The tile wants about 175px, the wrap caps at 1180px, and the result is 6 columns at
+full width then 5, 4, 3, 2 on the way down with the tile never straying outside 180-253px.
+A fixed ladder leaves widths where tiles balloon to fill a column that is not there. The one
+media query holds it at two columns below 440px, where auto-fill would otherwise drop to one
+and spend a whole phone screen on a square image.
+
+Sermon on the Mount stories are marked by a teal tile outline in the books and grid views
+rather than a badge: 18 of them sit consecutively in Matthew, and a badge on each was more
+noise than signal. The list view, one story per line, keeps the word in a light teal pill.
+
 The book columns have no tray behind their tiles. At 212px a column has no width to spare,
-so the tiles run the full column width and the book name sits above them as its own pill.
+so the tiles run the full column width and the book name sits above them as its own pill,
+carrying its count beside it the way a group header does. A hairline runs down the middle of
+each column behind the tiles, so a column reads as one thread rather than loose cards.
+
+Each column is ordered by reference, with the parallel passages interleaved among the main
+stories rather than dumped at the end: `refKey()` pulls the first chapter and verse out of a
+reference, and the original index breaks ties so equal references keep the spreadsheet's
+order. Note that `refKey`'s regex uses `[0-9]` rather than `\d` on purpose. The whole client
+script lives inside a template literal, which eats a lone backslash before it ever reaches
+the browser; `\d` silently became `d`, every key came back as the not-found fallback, and
+the sort quietly did nothing. Anything regex-shaped in this file needs the same care.
+
+The **Parallels** pill on the Gospels group header toggles the duplicate tiles. Every
+duplicate in the data is a Gospel parallel, so the control sits on the one group it affects
+rather than taking a line in the controls bar. It is sticky to the right of the scrollport,
+because the Gospels bar is about 900px wide and its right end would otherwise scroll away,
+and it hides when the group is collapsed. Like the other in-card controls it is a `<span>`
+inside the header button, caught by the click handler before the header.
 
 Title, reference, sets, tags and alternate names are all editable in the modal. Editing is
 deliberately client-side only: edits live in `localStorage` under
