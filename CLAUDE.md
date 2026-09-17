@@ -102,18 +102,75 @@ deck. Nothing may scroll horizontally.
 
 ## The /stories library page
 
-`build-stories.mjs` renders every story three ways off one dataset: **books**, **list**, and
-a four-column **grid**.
+`build-stories.mjs` renders every story four ways off one dataset: **grid**, **list**, and
+books either **side by side** or **stacked**.
 
-The books view is a single horizontal rail, all 66 books of the Bible in canonical order,
-with two levels of collapsible grouping: testament (Old / New) wrapping section (Pentateuch,
-Historical, Wisdom, Prophets / Gospels, Acts, Epistles, Revelation). Collapsing either turns
-it into a narrow vertical spine rather than hiding it, so you can always get it back. Group
-headers keep their label pinned to the left edge of the scrollport (`.thead .hin` is
-`position:sticky`), because the rail is about 10,000px wide and an unpinned label scrolls out
-of sight almost at once. Re-rendering preserves `scrollLeft` for the same reason.
+**The page opens on the grid, filtered to Creation to Christ.** Both defaults come from
+review: opening on 202 stories in one fully expanded horizontal rail was the single biggest
+source of overwhelm, and a horizontal layout read as less natural than a vertical one. The
+filter chrome shows the filter is on and offers to clear it, so the other 189 stories are one
+click away rather than hidden. Don't "fix" either default back without that conversation.
 
-The books view shows gospel-parallel duplicates as dimmed, non-clickable tiles so the
+Both books views share their data prep (`bookData`) and their column contents
+(`bookColumn`), so a change to how a book's stories are ordered or drawn lands in both.
+
+**Side by side** is a single horizontal rail, all 66 books in canonical order, with two levels
+of collapsible grouping: testament (Old / New) wrapping section (Pentateuch, Historical,
+Wisdom, Prophets / Gospels, Acts, Epistles, Revelation). Collapsing either turns it into a
+narrow vertical spine rather than hiding it, so you can always get it back. Group headers keep
+their label pinned to the left edge of the scrollport (`.thead .hin` is `position:sticky`),
+because the rail is about 10,000px wide and an unpinned label scrolls out of sight almost at
+once. Re-rendering preserves `scrollLeft` for the same reason.
+
+That rail runs to the right edge of the window rather than stopping at the 1180px wrap, so it
+reads as content continuing off the page. The negative margin is computed against `--vw`, a
+custom property the nav script sets to `document.documentElement.clientWidth`: plain `100vw`
+includes the vertical scrollbar and overshoots by its width. Its scrollbar sits **above** the
+group headers, not at the bottom of a very tall rail, and `mountHscroll` draws the thumb
+rather than using a real one. That is deliberate: a native scrollbar is positioned by the
+platform, and on macOS it renders as an overlay pinned to the bottom edge of its box whatever
+`::-webkit-scrollbar` says, which put the thumb under the hairline instead of on it. Drawing
+it keeps the thumb centred on the line everywhere, at the cost of about 25 lines handling drag
+and click-on-track. The rail itself still scrolls natively; the bar only mirrors it and drives
+it. `mountHscrolls` (plural) wires up every `.btop` bar found on the page this way — today
+that is only this one, but nothing about it assumes there is exactly one.
+
+**Stacked** is the same content as an outline: navy testament bars over teal section bars,
+sections closed on first load, and an open section lists its books down the page with each
+book's stories running right on a connected hairline. Sections stay horizontal headings in
+both states here; the vertical spine exists in the side-by-side view because a closed group
+has to fit in a narrow column, and that reason does not apply to a full width bar. Its
+collapse state (`state.shutV`) is deliberately separate from the rail's: a rail of eight
+narrow spines is not a useful first impression, whereas a stack of headings is.
+
+Each open section is one native horizontal scroller (`.vbooks`) with the book name frozen at
+the left, so a section's books line up, but it carries **no visible scrollbar** — review
+called the drawn one here one too many bars on screen when several sections are open at once.
+A story tile cropped at the right edge is the cue that there is more to scroll to instead.
+
+Both `.vhead` levels are capped at 440px, the same as the search bar, rather than stretching
+across the full 1180px wrap: full width read as a slab of colour with the label lost at the
+left edge, where a heading-sized bar over the full-width rows below it reads more like a
+table of contents entry. The level 2 (teal) bar is indented 20px to show it is nested under
+level 1, and is capped 20px narrower (420px) for exactly that reason — indented on the left
+but the same width would run 20px past level 1's right edge instead of lining up with it.
+Both levels use a plain plus/minus for their own expand toggle (`vtog`, distinct from the
+side-by-side view's `tog`), since a stacked bar is never squeezed into a narrow spine the way
+a closed side-by-side column is, so the "expand" icon's spine metaphor does not apply here.
+
+A testament bar also carries an **Expand all / Collapse all** pill (`expandAllPill`), styled
+like the Gospels-only parallels pill below it. Its label and icon reflect the aggregate state
+of every section under that testament, not a state of their own: "Expand all" with a plus
+while anything underneath is shut, "Collapse all" with a minus once everything is open.
+
+The **Show parallel stories** pill on the Gospels section only appears once that section is
+actually open — it has nothing to do until then, so it does not clutter the closed bar.
+
+Parallel references are not printed after the reference on list and grid tiles. They are
+already visible as their own dimmed tiles in the books views, and in a list they read as
+clutter on every Gospel row.
+
+The books views show gospel-parallel duplicates as dimmed, non-clickable tiles so the
 coverage picture from the spreadsheet survives; list and grid show only the main account,
 with the parallels in parentheses after the reference. Two duplicates have no main story to
 point at (Be Ready, Mark 13:32-37 and A Tree and Its Fruit, Luke 6:43-45): those are coverage

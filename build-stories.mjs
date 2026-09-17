@@ -195,6 +195,14 @@ export const STORIES_CSS = `
 .dupsw:hover{background:rgba(255,255,255,.3)}
 .dupsw[aria-checked="true"]{background:#fff;color:var(--teal)}
 .tgroup.shut .dupsw{display:none}
+/* Same pill language for bulk expand/collapse on a testament bar in the stacked view.
+   Not sticky like .dupsw: a .vhead never scrolls, it is already exactly as wide as its
+   button, so there is no edge for the pill to run off. */
+.expsw{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;
+  border-radius:99px;font-size:11.5px;font-weight:600;letter-spacing:0;text-transform:none;
+  background:rgba(255,255,255,.17);color:#fff;cursor:pointer;white-space:nowrap}
+.expsw:hover{background:rgba(255,255,255,.3)}
+.vtest.shut .expsw{display:none}
 .clearall{font:inherit;font-size:13px;font-weight:600;color:var(--teal);background:none;border:0;cursor:pointer;padding:6px 2px}
 
 /* tiles. .tile is a <button>, and a button taller than its content centres that content
@@ -223,7 +231,6 @@ export const STORIES_CSS = `
 .tile.cmp .tr{margin-top:2px}
 .tt{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
 .tr{font-size:12px;color:var(--ink-s);margin-top:3px;font-variant-numeric:tabular-nums}
-.tr .alsoref{color:#93a7b2}
 .tsets{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
 .tsets img{width:20px;height:20px;border-radius:5px;object-fit:cover}
 /* Two rows of tags, then clip. 19px row + 4px gap, so the cut never lands mid-row.
@@ -245,9 +252,27 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
 .som{background:#e3f4f8;color:var(--teal);font-size:9.5px;font-weight:700;letter-spacing:.04em;
   border-radius:4px;padding:2px 5px;white-space:nowrap}
 
-/* books view: one rail, 66 book columns, two levels of collapsible grouping */
-.books{margin-top:20px;overflow-x:auto;padding-bottom:22px}
-.brail{display:flex;align-items:flex-start;gap:18px;width:max-content;padding-top:2px}
+/* books view: one rail, 66 book columns, two levels of collapsible grouping.
+   The rail runs to the right edge of the window rather than stopping at the 1180px wrap,
+   so it reads as content continuing off the page rather than a box that happens to
+   scroll. --vw is the document's client width, set by script: plain 100vw includes the
+   vertical scrollbar and would overshoot by its width. */
+.booksout{margin-top:20px;margin-right:calc(50% - var(--vw,100vw) / 2)}
+/* The scrollbar sits above the group headers, where it is visible without scrolling to
+   the bottom of a very tall rail. The thumb is drawn here rather than being a real
+   scrollbar on a proxy element: a native bar is positioned by the platform, and on macOS
+   it renders as an overlay pinned to the bottom edge of its box no matter what
+   ::-webkit-scrollbar says, which left the thumb sitting under the line instead of on it.
+   Drawing it means the thumb is centred on the line on every platform. */
+.btop{position:relative;height:16px;margin-bottom:12px;cursor:pointer;touch-action:none}
+.btop[hidden]{display:none}
+.btop:before{content:"";position:absolute;left:0;right:0;top:50%;margin-top:-.5px;height:1px;background:#d5dfe4}
+.bthumb{position:absolute;top:50%;left:0;margin-top:-3.5px;height:7px;min-width:36px;
+  border-radius:99px;background:#9fb3bd}
+.btop:hover .bthumb,.bthumb.drag{background:#7e96a3}
+.books{overflow-x:auto;padding-bottom:22px;scrollbar-width:none}
+.books::-webkit-scrollbar{display:none}
+.brail{display:flex;align-items:flex-start;gap:18px;width:max-content;padding:2px 26px 0 0}
 .btest{display:flex;flex-direction:column;align-items:stretch;gap:9px}
 .tgrps{display:flex;align-items:flex-start;gap:14px}
 .tgroup{display:flex;flex-direction:column;align-items:stretch;gap:7px}
@@ -288,6 +313,49 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
 .dup:hover{box-shadow:none;border-color:#d7e0e4}
 .dup .tt{font-weight:600;color:#7E8F99}
 .dupof{font-size:10.5px;color:#93a7b2;margin-top:3px}
+
+/* stacked books view: an outline you can open, rather than a wall you have to scroll.
+   Sections stay horizontal headings whether open or shut; the vertical spine in the
+   side-by-side view exists because a shut group there has to fit in a narrow column, and
+   that reason does not apply to a full width bar. */
+.vbooksv{margin-top:20px}
+.vtest{margin-bottom:16px}
+/* Capped at the same 440px as .csearch: full width made these bars read as a single huge
+   slab of colour with the label lost at the left edge. A short heading-sized bar over the
+   full width story rows below it reads more like a table of contents entry. */
+.vhead{display:flex;align-items:center;gap:9px;width:100%;max-width:440px;font-family:inherit;
+  font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border:0;
+  border-radius:9px;padding:0 13px;height:38px;cursor:pointer;text-align:left}
+.vhead .gn{opacity:.62;letter-spacing:0;text-transform:none;font-weight:600;font-size:11.5px}
+.vhead .gtog{display:inline-flex;align-items:center;opacity:.72}
+.vhead:hover .gtog{opacity:1}
+.vhead.v1{background:var(--navy);color:#fff}
+.vhead.v1:hover{background:#27465f}
+/* Indented 20px on the left by .vgroup's margin, so it is 20px narrower on the right too:
+   without this it would run 20px past the testament bar and the search bar above it. */
+.vhead.v2{background:var(--teal);color:#fff;height:34px;margin-top:9px;max-width:420px}
+.vhead.v2:hover{background:#178ca4}
+.vtest.shut .vgroup,.vgroup.shut .vbooks{display:none}
+/* Indented under the testament bar above it, so the nesting is visible even though both
+   are full width bars rather than a literal tree. */
+.vgroup{margin-left:20px}
+@media (max-width:640px){.vgroup{margin-left:12px}}
+/* One scroller per section with the book name frozen at the left, so every book's stories
+   line up. No visible scrollbar: a story tile cut off at the right edge is itself the cue
+   that there is more to scroll to, and a bar here would be one of nine on screen at once
+   whenever every section is open. */
+.vbooks{overflow-x:auto;margin-top:9px;scrollbar-width:none}
+.vbooks::-webkit-scrollbar{display:none}
+.vbook{display:flex;align-items:stretch;width:max-content;min-width:100%}
+.vbname{position:sticky;left:0;z-index:2;flex:0 0 156px;display:flex;align-items:center;gap:8px;
+  background:var(--paper);padding:12px 14px 12px 2px;font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+.vbname .bn{font-size:11px;font-weight:600;color:#93a7b2}
+.vbook.empty{opacity:.45}
+.vbook.empty .vbname{font-weight:600}
+.vrow{position:relative;display:flex;gap:14px;align-items:center;padding:11px 26px 11px 0}
+.vrow:not(:empty):before{content:"";position:absolute;left:-14px;right:20px;top:50%;height:1px;background:#d3dee3}
+.vrow>*{position:relative;flex:0 0 212px;width:212px}
+@media (max-width:640px){.vbname{flex-basis:118px;font-size:12.5px}}
 
 /* list view. Desktop is a six column table; below 860px the same markup is re-laid-out as
    a compact card, so there is only one row of HTML to keep in step. */
@@ -457,9 +525,10 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap
         <span class="eyebrow" id="lblView">View</span>
         <div class="crow">
           <div class="views" role="group" aria-labelledby="lblView">
-            <button data-v="books" class="on">${ic('book-open', 15)} Books</button>
+            <button data-v="grid" class="on">${ic('layout-grid', 15)} Grid</button>
             <button data-v="list">${ic('list', 15)} List</button>
-            <button data-v="grid">${ic('layout-grid', 15)} Grid</button>
+            <button data-v="books" title="Books side by side">${ic('arrow-right', 15)} Books</button>
+            <button data-v="vbooks" title="Books stacked">${ic('arrow-down', 15)} Books</button>
           </div>
         </div>
       </div>
@@ -503,8 +572,16 @@ function body(s){ return D.txt[key(s)] || ''; }
 const key = s => s.b + '|' + s.t;
 function edited(s){ return !!edits[s.id]; }
 
-const state = { v:'books', q:'', sets:new Set(), tags:new Set(), langs:new Set(),
+/* Opening on all 202 stories in one expanded horizontal rail was the single biggest
+   source of overwhelm in review. The page now starts on the grid, filtered to Creation to
+   Christ, with the filter chrome showing that a filter is on and offering to clear it. */
+const state = { v:'grid', q:'', sets:new Set(['Creation to Christ']), tags:new Set(), langs:new Set(),
                 shut:new Set(), shutT:new Set(), showTags:false, showDups:true };
+/* Stacked books open with the sections closed, so the first thing you see is an outline.
+   Kept separate from the side-by-side view's collapse state: a rail of eight narrow
+   vertical spines is not a useful first impression, whereas a stack of headings is. */
+state.shutV = new Set();
+D.groups.forEach(([test, groups]) => groups.forEach(([g]) => state.shutV.add(test + '/' + g)));
 /* Only English exists today. The filter is wired up properly so adding the other 39 is a
    data change, not a code change; selecting English matches everything, as it should. */
 const LANGS = ['English'];
@@ -580,6 +657,11 @@ const DASH = { off: ${JSON.stringify(ic('square-dashed', 13, 'currentColor', 2.3
 const TOG = { shut: ${JSON.stringify(ic('expand', 14, 'currentColor', 2.2))},
               open: ${JSON.stringify(ic('chevrons-right-left', 14, 'currentColor', 2.2))} };
 const tog = isShut => '<span class="gtog">' + (isShut ? TOG.shut : TOG.open) + '</span>';
+/* The stacked view's headers are plain full-width bars, not narrow spines the way a shut
+   side-by-side column is, so a natural plus/minus reads better there than the expand icon. */
+const VTOG = { shut: ${JSON.stringify(ic('plus', 13, 'currentColor', 2.3))},
+               open: ${JSON.stringify(ic('minus', 13, 'currentColor', 2.3))} };
+const vtog = isShut => '<span class="gtog">' + (isShut ? VTOG.shut : VTOG.open) + '</span>';
 function art(s, cls){
   const f = D.art[key(s)];
   return '<div class="' + (cls || 'tph') + '">' + (f
@@ -593,13 +675,12 @@ function inlineSets(s, cls){
     '" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">').join('') + '</span>';
 }
 /* One markup for both tile shapes; .cmp re-lays it out for the narrow book columns. */
-function tile(s, showPar, compact){
-  const par = (showPar && s.par.length) ? ' <span class="alsoref">(' + s.par.map(p => esc(p)).join('; ') + ')</span>' : '';
+function tile(s, compact){
   return '<button class="tile' + (compact ? ' cmp' : '') + (s.som ? ' issom' : '') + '" data-id="' + s.id + '">' +
     art(s) +
     '<div class="tmain">' +
       '<div class="tt">' + esc(title(s)) + inlineSets(s) + '</div>' + altLine(s) +
-      '<div class="tr">' + esc(abbr(s.b) + ' ' + ref(s)) + par + '</div>' +
+      '<div class="tr">' + esc(abbr(s.b) + ' ' + ref(s)) + '</div>' +
     '</div>' + tagPills(s) + context(s) + '</button>';
 }
 
@@ -612,8 +693,8 @@ function refKey(r){
   const m = String(r).match(/([0-9]+)(?::([0-9]+))?/);
   return m ? [+m[1], m[2] ? +m[2] : 0] : [999, 0];
 }
-/* ---- books view: every book of the Bible on one rail, duplicates shown but dimmed ---- */
-function renderBooks(){
+/* ---- books: the same data, laid out side by side or stacked ---- */
+function bookData(){
   const keep = new Set(shown().map(s => s.id));
   const filt = filtering();
   const byBook = {}; const dupsBy = {};
@@ -622,6 +703,36 @@ function renderBooks(){
      point at are coverage notes, not stories, so they only belong in the unfiltered view. */
   if (state.showDups) D.dups.forEach(d => { if (d.of ? keep.has(d.of) : !filt) (dupsBy[d.b] = dupsBy[d.b] || []).push(d); });
   const mainOf = {}; D.stories.forEach(s => mainOf[s.id] = s);
+  return { byBook: byBook, dupsBy: dupsBy, mainOf: mainOf };
+}
+/* Mains and parallels in one list, ordered by where they fall in the book. The original
+   index breaks ties, so equal references keep the spreadsheet's order and a main always
+   precedes a parallel that starts at the same verse. */
+function bookColumn(items, dp, mainOf){
+  return items.map((s, i) => ({ s: s, k: refKey(ref(s)), i: i }))
+    .concat(dp.map((d, i) => ({ d: d, k: refKey(d.r), i: 1000 + i })))
+    .sort((a, z) => a.k[0] - z.k[0] || a.k[1] - z.k[1] || a.i - z.i)
+    .map(x => x.s ? tile(x.s, true) : dupTile(x.d, mainOf)).join('');
+}
+function dupTile(d, mainOf){
+  const m = d.of ? mainOf[d.of] : null;
+  return '<div class="tile dup"><div class="tt">' + esc(d.t) + '</div><div class="tr">' +
+    esc(abbr(d.b) + ' ' + d.r) + '</div><div class="dupof">' +
+    (m ? 'told from ' + esc(abbr(m.b) + ' ' + m.r) : 'parallel passage') + '</div></div>';
+}
+const dupPill = () => '<span class="dupsw" role="switch" aria-checked="' + state.showDups +
+  '" data-showdups>' + (state.showDups ? DASH.on : DASH.off) + 'Show parallel stories</span>';
+/* One button that flips between opening and closing every section under a testament,
+   depending on whether any of them is currently shut. Icon and verb both follow that: the
+   plus/"Expand all" pairing means the same thing an individual section's own plus does. */
+function expandAllPill(test, groups){
+  const allOpen = groups.every(([gname]) => !state.shutV.has(test + '/' + gname));
+  return '<span class="expsw" data-expandall="' + esc(test) + '">' +
+    (allOpen ? VTOG.open : VTOG.shut) + (allOpen ? 'Collapse all' : 'Expand all') + '</span>';
+}
+
+function renderBooks(){
+  const D2 = bookData(); const byBook = D2.byBook, dupsBy = D2.dupsBy, mainOf = D2.mainOf;
   let h = '';
   D.groups.forEach(([test, groups]) => {
     const tn = groups.reduce((a, g) => a + g[1].reduce((x, b) => x + (byBook[b] || []).length, 0), 0);
@@ -636,33 +747,55 @@ function renderBooks(){
       h += '<div class="tgroup' + (gShut ? ' shut' : '') + '" data-g="' + esc(key) + '">' +
         '<button class="thead t2" aria-expanded="' + !gShut + '"><span class="hin">' + tog(gShut) +
         '<span class="lbl">' + esc(gname) + '</span><span class="gn">' + n + '</span></span>' +
-        (gname === 'Gospels' ? '<span class="dupsw" role="switch" aria-checked="' + state.showDups +
-          '" data-showdups>' + (state.showDups ? DASH.on : DASH.off) + 'Show parallel stories</span>' : '') +
-        '</button><div class="brow">';
+        (gname === 'Gospels' ? dupPill() : '') + '</button><div class="brow">';
       books.forEach(b => {
         const items = byBook[b] || []; const dp = dupsBy[b] || [];
         const empty = !items.length && !dp.length;
         h += '<div class="bcol' + (empty ? ' empty' : '') + '"><div class="bname"><span>' + esc(empty ? abbr(b) : b) + '</span>' +
-          (items.length ? '<span class="bn">' + items.length + '</span>' : '') + '</div><div class="bstack">';
-        /* Mains and parallels in one list, ordered by where they fall in the book. The
-           original index breaks ties, so equal references keep the spreadsheet's order
-           and a main always precedes a parallel that starts at the same verse. */
-        const col = items.map((s, i) => ({ s: s, k: refKey(ref(s)), i: i }))
-          .concat(dp.map((d, i) => ({ d: d, k: refKey(d.r), i: 1000 + i })))
-          .sort((a, z) => a.k[0] - z.k[0] || a.k[1] - z.k[1] || a.i - z.i);
-        col.forEach(x => {
-          if (x.s) { h += tile(x.s, false, true); return; }
-          const m = x.d.of ? mainOf[x.d.of] : null;
-          h += '<div class="tile dup"><div class="tt">' + esc(x.d.t) + '</div><div class="tr">' + esc(abbr(x.d.b) + ' ' + x.d.r) + '</div>' +
-            '<div class="dupof">' + (m ? 'told from ' + esc(abbr(m.b) + ' ' + m.r) : 'parallel passage') + '</div></div>';
-        });
-        h += '</div></div>';
+          (items.length ? '<span class="bn">' + items.length + '</span>' : '') + '</div><div class="bstack">' +
+          bookColumn(items, dp, mainOf) + '</div></div>';
       });
       h += '</div></div>';
     });
     h += '</div></section>';
   });
-  return '<div class="books" id="books"><div class="brail">' + h + '</div></div>';
+  return '<div class="booksout"><div class="btop"><div class="bthumb"></div></div>' +
+    '<div class="books" id="books"><div class="brail">' + h + '</div></div></div>';
+}
+
+/* ---- books, stacked: testament over section over book, stories running right ---- */
+function renderVBooks(){
+  const D2 = bookData(); const byBook = D2.byBook, dupsBy = D2.dupsBy, mainOf = D2.mainOf;
+  let h = '';
+  D.groups.forEach(([test, groups]) => {
+    const tn = groups.reduce((a, g) => a + g[1].reduce((x, b) => x + (byBook[b] || []).length, 0), 0);
+    const tShut = state.shutT.has(test);
+    h += '<section class="vtest' + (tShut ? ' shut' : '') + '" data-t="' + esc(test) + '">' +
+      '<button class="vhead v1" aria-expanded="' + !tShut + '">' + vtog(tShut) +
+      '<span class="lbl">' + esc(test) + '</span><span class="gn">' + tn + '</span>' +
+      expandAllPill(test, groups) + '</button>';
+    groups.forEach(([gname, books]) => {
+      const key = test + '/' + gname;
+      const gShut = state.shutV.has(key);
+      const n = books.reduce((a, b) => a + (byBook[b] || []).length, 0);
+      /* Parallels only matters once there is something to look at, so it waits for the
+         group it belongs to to actually be open rather than sitting on the closed bar. */
+      h += '<div class="vgroup' + (gShut ? ' shut' : '') + '" data-g="' + esc(key) + '">' +
+        '<button class="vhead v2" aria-expanded="' + !gShut + '">' + vtog(gShut) +
+        '<span class="lbl">' + esc(gname) + '</span><span class="gn">' + n + '</span>' +
+        (gname === 'Gospels' && !gShut ? dupPill() : '') + '</button><div class="vbooks">';
+      books.forEach(b => {
+        const items = byBook[b] || []; const dp = dupsBy[b] || [];
+        const empty = !items.length && !dp.length;
+        h += '<div class="vbook' + (empty ? ' empty' : '') + '"><div class="vbname"><span>' + esc(b) + '</span>' +
+          (items.length ? '<span class="bn">' + items.length + '</span>' : '') + '</div>' +
+          '<div class="vrow">' + bookColumn(items, dp, mainOf) + '</div></div>';
+      });
+      h += '</div></div>';
+    });
+    h += '</section>';
+  });
+  return '<div class="vbooksv">' + h + '</div>';
 }
 
 function renderList(){
@@ -672,14 +805,13 @@ function renderList(){
   let h = '<div class="listv"><div class="lrow h"><span class="lnum">#</span><span></span><span>Story</span>' +
     '<span>Reference</span><span>Story Sets</span><span>Tags</span></div>';
   rows.forEach((s, i) => {
-    const par = s.par.length ? ' <span class="alsoref">(' + s.par.map(esc).join('; ') + ')</span>' : '';
     /* Set icons ride inline after the title on narrow screens, like emoji, and sit in
        their own column on desktop. Same markup, two layouts. */
     h += '<button class="lrow" data-id="' + s.id + '"><span class="lnum">' + (i + 1) + '</span>' +
       art(s, 'lph') +
       '<span class="lt2">' + esc(title(s)) + (s.som ? ' <span class="som">SERMON</span>' : '') +
         inlineSets(s, 'lsets') + altLine(s) + '</span>' +
-      '<span class="lref">' + esc(abbr(s.b) + ' ' + ref(s)) + par + '</span>' +
+      '<span class="lref">' + esc(abbr(s.b) + ' ' + ref(s)) + '</span>' +
       '<span class="lsetcol">' + (setPills(s) || '<span class="lref">&mdash;</span>') + '</span>' +
       (tagPills(s, 'ltags') || '<span class="ltags"></span>') +
       context(s) + '</button>';
@@ -689,7 +821,7 @@ function renderList(){
 function renderGrid(){
   const rows = shown();
   if (!rows.length) return '<p class="none">No stories match those filters.</p>';
-  return '<div class="gridv">' + rows.map(s => tile(s, true)).join('') + '</div>';
+  return '<div class="gridv">' + rows.map(s => tile(s)).join('') + '</div>';
 }
 
 function drawers(){
@@ -723,8 +855,12 @@ function render(){
   /* Collapsing a group re-renders the whole rail, so hold the scroll position or the
      view snaps back to Genesis every time. */
   const old = $('books'); const sx = old ? old.scrollLeft : 0;
-  $('view').innerHTML = state.v === 'books' ? renderBooks() : state.v === 'list' ? renderList() : renderGrid();
-  const rail = $('books'); if (rail && sx) rail.scrollLeft = sx;
+  $('view').innerHTML = state.v === 'books' ? renderBooks()
+    : state.v === 'vbooks' ? renderVBooks()
+    : state.v === 'list' ? renderList() : renderGrid();
+  const rail = $('books');
+  if (rail && sx) rail.scrollLeft = sx;
+  mountHscrolls();
   $('view').classList.toggle('showtags', showingTags());
   const filtered = filtering();
   $('nShown').hidden = !filtered;
@@ -740,6 +876,53 @@ function render(){
     ? ne + (ne === 1 ? ' story edited' : ' stories edited') + ' in this browser. Export to send the changes on.'
     : 'Tap any story to edit its sets and tags. Changes are saved in this browser only.';
   drawers();
+}
+
+/* The side-by-side rail's drawn scrollbar is mounted the same way any number of these
+   could be: a .btop bar immediately followed by the scrollable element it controls.
+   Rebuilt on every render, since #view's DOM is replaced wholesale; one resize listener
+   redraws whichever bars currently exist. */
+let hbarDraws = [];
+addEventListener('resize', () => hbarDraws.forEach(d => d()), { passive: true });
+
+function mountHscrolls(){
+  hbarDraws = [...document.querySelectorAll('.btop')].map(bar => mountHscroll(bar, bar.nextElementSibling));
+}
+
+function mountHscroll(bar, rail){
+  const thumb = bar.firstElementChild;
+  const room = () => rail.scrollWidth - rail.clientWidth;
+  function draw(){
+    if (room() < 1) { bar.hidden = true; return; }
+    bar.hidden = false;
+    const track = bar.clientWidth;
+    const w = Math.max(36, Math.round(track * rail.clientWidth / rail.scrollWidth));
+    thumb.style.width = w + 'px';
+    thumb.style.transform = 'translateX(' + (track - w) * (rail.scrollLeft / room()) + 'px)';
+  }
+  /* grab is where in the thumb the pointer took hold, so it does not jump on mousedown. */
+  function seek(clientX, grab){
+    const track = bar.clientWidth, w = thumb.offsetWidth;
+    const x = clientX - bar.getBoundingClientRect().left - grab;
+    rail.scrollLeft = room() * Math.min(1, Math.max(0, x / (track - w)));
+  }
+  thumb.addEventListener('pointerdown', e => {
+    e.preventDefault(); e.stopPropagation();
+    const grab = e.clientX - thumb.getBoundingClientRect().left;
+    thumb.classList.add('drag');
+    const move = ev => seek(ev.clientX, grab);
+    const up = () => { thumb.classList.remove('drag');
+      removeEventListener('pointermove', move); removeEventListener('pointerup', up); };
+    addEventListener('pointermove', move); addEventListener('pointerup', up);
+  });
+  /* Clicking the track jumps the thumb to the pointer and keeps dragging from there. */
+  bar.addEventListener('pointerdown', e => {
+    seek(e.clientX, thumb.offsetWidth / 2);
+    thumb.dispatchEvent(new PointerEvent('pointerdown', { clientX: e.clientX, bubbles: false }));
+  });
+  rail.addEventListener('scroll', draw, { passive: true });
+  draw();
+  return draw;
 }
 
 /* ---- filter drawers ---- */
@@ -813,6 +996,15 @@ document.addEventListener('click', e => {
      nested <button>, which browsers will not nest. */
   const dw = e.target.closest('.dupsw');
   if (dw) { state.showDups = !state.showDups; render(); e.stopPropagation(); return; }
+  const ea = e.target.closest('.expsw');
+  if (ea) {
+    const test = ea.dataset.expandall;
+    const groups = D.groups.find(g => g[0] === test)[1];
+    const allOpen = groups.every(([gname]) => !state.shutV.has(test + '/' + gname));
+    groups.forEach(([gname]) => { const key = test + '/' + gname;
+      allOpen ? state.shutV.add(key) : state.shutV.delete(key); });
+    render(); e.stopPropagation(); return;
+  }
   const t = e.target.closest('button'); if (!t) return;
   /* Set from the effective value, so the first click after a tag filter forces it open
      does the thing the label promises rather than silently flipping a hidden flag. */
@@ -824,6 +1016,13 @@ document.addEventListener('click', e => {
   if (t.dataset.lang) { state.langs.has(t.dataset.lang) ? state.langs.delete(t.dataset.lang) : state.langs.add(t.dataset.lang); render(); return; }
   if (t.dataset.clear) { state[t.dataset.clear].clear(); render(); return; }
   if (t.id === 'clearFilters') { state.sets.clear(); state.tags.clear(); state.langs.clear(); closeDrawers(); render(); return; }
+  if (t.classList.contains('vhead')) {
+    if (t.classList.contains('v1')) { const k = t.closest('.vtest').dataset.t;
+      state.shutT.has(k) ? state.shutT.delete(k) : state.shutT.add(k); }
+    else { const g = t.closest('.vgroup').dataset.g;
+      state.shutV.has(g) ? state.shutV.delete(g) : state.shutV.add(g); }
+    render(); return;
+  }
   if (t.classList.contains('thead')) {
     if (t.classList.contains('t1')) { const k = t.closest('.btest').dataset.t;
       state.shutT.has(k) ? state.shutT.delete(k) : state.shutT.add(k); }
@@ -863,6 +1062,10 @@ render();
   var top=document.getElementById('top'),bar=top.querySelector('.bar');
   var burger=document.getElementById('navBurger'),mobile=document.getElementById('navMobile');
   function close(){top.classList.remove('open');burger.setAttribute('aria-expanded','false')}
+  /* The books rail bleeds to the window edge off this, and 100vw would include the
+     vertical scrollbar. */
+  function vw(){document.documentElement.style.setProperty('--vw',document.documentElement.clientWidth+'px')}
+  vw();addEventListener('resize',vw,{passive:true});
   function fit(){top.classList.remove('collapsed');
     var o=bar.scrollWidth>bar.clientWidth+1;top.classList.toggle('collapsed',o);if(!o)close()}
   fit();
