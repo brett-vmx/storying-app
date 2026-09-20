@@ -78,6 +78,13 @@ const STORY_IMG = {
   'Luke|Zacchaeus': '11-zaccheaus.webp',
   'Matthew|The Death of Jesus': '12-the-death-of-jesus.webp',
   'Matthew|The Resurrection': '13-resurrection.webp',
+  'Exodus|The Ten Commandments': 'exodus-ten-commandments.webp',
+  'Genesis|The First People': 'genesis-the-first-people.webp',
+  'John|Lazarus Raised from the Dead': 'john-lazarus-raised.webp',
+  'Luke|The Lost Son': 'luke-the-lost-son.webp',
+  'Acts|The Apostles Persecuted': 'acts-apostles-persecuted.webp',
+  'Acts|Philip and the Ethiopian': 'acts-philip-and-the-ethiopian.webp',
+  'Mark|The Widow\'s Offering': 'mark-the-widows-offering.webp',
 };
 
 /* Alternate titles. Search matches them, the editor exposes them, and a tile only shows
