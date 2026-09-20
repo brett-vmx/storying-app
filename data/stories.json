@@ -53,7 +53,9 @@
 "OT Stories",
 "Sacrifice Stories",
 "Baptism Hammer",
-"Paul's Journeys"
+"Paul's Journeys",
+"Sermon on the Mount",
+"C2C Full"
 ],
 "stories": [
 {
@@ -63,7 +65,8 @@
 "r": "1-2:3",
 "par": [],
 "s": [
-"Creation to Christ"
+"Creation to Christ",
+"C2C Full"
 ],
 "g": [
 "Nature",
@@ -93,7 +96,8 @@
 "par": [],
 "s": [
 "Creation to Christ",
-"Sacrifice Stories"
+"Sacrifice Stories",
+"C2C Full"
 ],
 "g": [
 "Obedience",
@@ -725,7 +729,8 @@
 "Luke 2:1-7"
 ],
 "s": [
-"Creation to Christ"
+"Creation to Christ",
+"C2C Full"
 ],
 "g": [
 "Son",
@@ -818,7 +823,9 @@
 "par": [
 "Luke 6:20\u201323"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Humility",
@@ -835,7 +842,9 @@
 "Mark 9:50",
 "Luke 14:34\u201335"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Mission"
@@ -848,7 +857,9 @@
 "b": "Matthew",
 "r": "5:17\u201320",
 "par": [],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "God's Word",
@@ -862,7 +873,9 @@
 "b": "Matthew",
 "r": "5:21\u201326",
 "par": [],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Forgiveness"
@@ -875,7 +888,9 @@
 "b": "Matthew",
 "r": "5:27\u201330",
 "par": [],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Obedience"
@@ -892,7 +907,9 @@
 "Mark 10:2\u201312",
 "Luke 16:18"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Obedience"
@@ -905,7 +922,9 @@
 "b": "Matthew",
 "r": "5:33\u201337",
 "par": [],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Obedience"
@@ -920,7 +939,9 @@
 "par": [
 "Luke 6:29\u201330"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Love",
@@ -937,7 +958,8 @@
 "Luke 6:27\u201336"
 ],
 "s": [
-"7 Commands"
+"7 Commands",
+"Sermon on the Mount"
 ],
 "g": [
 "Teachings",
@@ -953,7 +975,8 @@
 "r": "6:1\u20134",
 "par": [],
 "s": [
-"7 Commands"
+"7 Commands",
+"Sermon on the Mount"
 ],
 "g": [
 "Teachings",
@@ -971,7 +994,8 @@
 "Luke 11:1\u20134"
 ],
 "s": [
-"7 Commands"
+"7 Commands",
+"Sermon on the Mount"
 ],
 "g": [
 "Teachings",
@@ -986,7 +1010,9 @@
 "b": "Matthew",
 "r": "6:16\u201318",
 "par": [],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Worship",
@@ -1002,7 +1028,9 @@
 "par": [
 "Luke 12:32\u201334"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Money"
@@ -1017,7 +1045,9 @@
 "par": [
 "Luke 12:22\u201331"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Peace",
@@ -1035,7 +1065,9 @@
 "Mark 4:24",
 "Luke 6:37\u201342"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Humility",
@@ -1051,7 +1083,9 @@
 "par": [
 "Luke 11:9\u201313"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Prayer",
@@ -1065,7 +1099,9 @@
 "b": "Matthew",
 "r": "7:13\u201323",
 "par": [],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Obedience"
@@ -1080,7 +1116,9 @@
 "par": [
 "Luke 6:46\u201349"
 ],
-"s": [],
+"s": [
+"Sermon on the Mount"
+],
 "g": [
 "Teachings",
 "Parables",
@@ -1098,7 +1136,8 @@
 ],
 "s": [
 "Creation to Christ",
-"Stories of Hope"
+"Stories of Hope",
+"C2C Full"
 ],
 "g": [
 "Miracles",
@@ -1415,7 +1454,8 @@
 ],
 "s": [
 "Creation to Christ",
-"Stories of Hope"
+"Stories of Hope",
+"C2C Full"
 ],
 "g": [
 "Son",
@@ -1436,7 +1476,8 @@
 ],
 "s": [
 "Creation to Christ",
-"Stories of Hope"
+"Stories of Hope",
+"C2C Full"
 ],
 "g": [
 "Resurrections",
@@ -1534,7 +1575,8 @@
 "Luke 8:22-25"
 ],
 "s": [
-"Creation to Christ"
+"Creation to Christ",
+"C2C Full"
 ],
 "g": [
 "Miracles",
@@ -1554,7 +1596,8 @@
 "Luke 8:26-39"
 ],
 "s": [
-"Creation to Christ"
+"Creation to Christ",
+"C2C Full"
 ],
 "g": [
 "Miracles",
@@ -1573,7 +1616,8 @@
 "Luke 8:40-56"
 ],
 "s": [
-"Creation to Christ"
+"Creation to Christ",
+"C2C Full"
 ],
 "g": [
 "Miracles",
@@ -1594,7 +1638,8 @@
 "John 6:1-15"
 ],
 "s": [
-"Creation to Christ"
+"Creation to Christ",
+"C2C Full"
 ],
 "g": [
 "Miracles",
@@ -2034,7 +2079,8 @@
 "s": [
 "Creation to Christ",
 "7 Commands",
-"Stories of Hope"
+"Stories of Hope",
+"C2C Full"
 ],
 "g": [
 "Forgiveness",
@@ -2204,7 +2250,8 @@
 "s": [
 "Creation to Christ",
 "7 Commands",
-"Baptism Hammer"
+"Baptism Hammer",
+"C2C Full"
 ],
 "g": [
 "Worship",
@@ -2262,7 +2309,8 @@
 "r": "9:1-41",
 "par": [],
 "s": [
-"Creation to Christ"
+"Creation to Christ",
+"C2C Full"
 ],
 "g": [
 "Miracles",

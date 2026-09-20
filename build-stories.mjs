@@ -55,6 +55,8 @@ const SET_ICON = {
   'Sacrifice Stories': 'story-set-icons/sacrifice-stories-2.webp',
   "Paul's Journeys": 'story-set-icons/pauls-journeys.webp',
   'Baptism Hammer': 'story-set-icons/baptism-hammer.webp',
+  'Sermon on the Mount': 'story-set-icons/sermon-on-the-mount.webp',
+  'C2C Full': 'story-set-icons/c2c-full.webp',
 };
 
 /* The only real story art that exists today: the 13 covers running on creationtochrist.app,
