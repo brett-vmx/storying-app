@@ -264,6 +264,36 @@ because the Gospels bar is about 900px wide and its right end would otherwise sc
 and it hides when the group is collapsed. Like the other in-card controls it is a `<span>`
 inside the header button, caught by the click handler before the header.
 
+**List and Grid have a display order layered on top of filtering**, in `orderedForDisplay()`.
+When exactly one Story Set filter is active and that set has a curated sequence in
+`SET_ORDER` (Creation to Christ, C2C Full, 7 Commands, Stories of Hope today), the stories
+show in that sequence rather than book order -- these are sets someone actually reads or
+tells start to finish, and the library's book/reference order cannot express that. Otherwise,
+the library's default order applies, except inside the Gospels: `GOSPEL_ORDER` gives every
+Matthew/Mark/Luke/John story a harmonized chronological position, spaced by 10 so a newly
+added Gospel story can be slotted in without renumbering the rest (a tighter insertion can
+fall back to a decimal). Without it, the Death and Resurrection (told from Matthew) sorted
+ahead of any Mark, Luke or John story that happened earlier in Jesus's ministry, purely
+because Matthew's block precedes theirs in the book order -- `defaultKey()` anchors the whole
+harmonized block at the index the Gospels already occupy (they are contiguous there, since
+the data is sorted by book), so it reorders the block internally without moving Matthew
+through John relative to Genesis before them or Acts after. The Books views are unaffected:
+they already order each book's own column by reference (`bookColumn`/`refKey`), which does
+not have this problem since it never mixes stories from different books.
+
+Both maps are validated at build time in both directions: a `SET_ORDER` list and a set's
+actual membership must be the exact same ids, and every Gospel story needs a `GOSPEL_ORDER`
+entry while every entry needs a real Gospel story. A story added to or dropped from one of
+these four sets, or a Gospel story added to the library, fails the build immediately instead
+of silently sorting into an undefined position.
+
+`SET_ORDER`'s Creation to Christ and C2C Full come straight from `Misc/Story-Sets.xlsx`'s
+"Stories By Set" tab, an exact match for those sets' current 13 members. 7 Commands and
+Stories of Hope have grown past that tab's own snapshot, so only part of each order is
+sourced from the sheet; the rest is Claude's thematic judgement call, called out in comments
+next to the arrays. Worth a second look against Brett's actual intent, and worth updating if
+the intent turns out to differ.
+
 Title, reference, sets, tags and alternate names are all editable in the modal. Editing is
 deliberately client-side only: edits live in `localStorage` under
 `storying-story-edits-v1` and leave via the Export button as JSON. No accounts, no backend,

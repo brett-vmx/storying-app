@@ -93,6 +93,69 @@ const ALT_NAMES = {
   'Genesis|The First Sin': ['The Fall of Man'],
 };
 
+/* A handful of story sets have a real intended sequence -- a set someone reads or tells
+   start to finish, not just a bag of stories -- so List and Grid show them in this order
+   instead of the library's default book order whenever exactly one of these sets is the
+   active filter. Keyed by id, not "Book|Title": within one set, id is unique and stable
+   even across a title edit, and it is what orderedForDisplay() looks up by.
+   Creation to Christ and C2C Full come straight from Misc/Story-Sets.xlsx's "Stories By
+   Set" tab, an exact 1:1 match with these sets' current 13 members. 7 Commands and
+   Stories of Hope have grown past that tab's own snapshot (13 members there now vs. 11
+   distinct stories on the sheet's 10 command rows, and 8 vs. 5): members the sheet lists
+   keep the sheet's order, and the rest are interleaved by theme, a judgment call flagged
+   to Brett rather than made silently -- worth a second look against his actual intent. */
+const SET_ORDER = {
+  'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
+  'C2C Full': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
+  /* Sheet order: Zacchaeus, Philip & the Ethiopian, The Apostles Persecuted, The Lord's
+     Prayer, The Samaritan Woman, Love Your Enemies, The Vine and the Branches, The Early
+     Church, The Widow's Offering -- nine of the ten command rows have a site match (the
+     tenth, "Abide"'s companion "The Last Supper", isn't a set member). The other four are
+     paired with the command each best illustrates: Sends Out His Disciples next to Go and
+     Tell's Samaritan Woman; the Greatest Commandment ahead of Love Your Enemies, both
+     under Love; Giving to the Needy ahead of the Widow's Offering, both under Give; the
+     Great Commission last, as the set's own closing send-off rather than squeezed into
+     the Be Baptized slot its reference happens to share. */
+  '7 Commands': ['L57', 'R13', 'R11', 'F21', 'O8', 'L31', 'F62', 'F19', 'O23', 'R6', 'F20', 'I35', 'F71'],
+  /* Sheet order for the five that match (Zacchaeus, the Paralytic Man, the Unforgiving
+     Slave, the Death of Jesus, the Resurrection). The other three aren't on the sheet's
+     eight-row list at all: Widow's Son Raised is placed first as its own "hope amid grief"
+     opening; the Persistent Widow beside Hope Helps Others / Hope Forgives, a story about
+     hope enduring hardship; the Lost Coin last, standing in for the sheet's closing "Hope
+     is Waiting for You" theme (the Prodigal Son, which actually carries that theme, isn't
+     a set member here). */
+  'Stories of Hope': ['L22', 'L57', 'F33', 'L52', 'F52', 'F69', 'F70', 'L46'],
+};
+
+/* A harmonized chronological position for every story in the four Gospels, so Grid and
+   List can show them in the order the events actually happened rather than in whichever
+   Gospel the site's chosen "main" account happens to file them under -- the Death and
+   Resurrection, told from Matthew, were sorting ahead of a Mark or Luke story that
+   happened earlier in Jesus's ministry, purely because Matthew precedes Mark and Luke in
+   the library's book order. Standard Gospel-harmony sequence (birth and childhood ->
+   preparation -> early Judean ministry, John 1-4 -> Galilean ministry -> the road to
+   Jerusalem, Luke's travel narrative interleaved with John's feast visits -> Passion week
+   -> resurrection), spaced by 10 so a newly added Gospel story can be slotted in without
+   renumbering the rest; a tighter insertion can fall back to a decimal. Applies only
+   inside the Gospels block's own position in the default order -- see orderedForDisplay. */
+const GOSPEL_ORDER = {
+  F4: 10, L4: 20, F5: 30, L6: 40, F6: 50, L7: 60, O4: 70, F7: 80, F8: 90, F9: 100,
+  O5: 110, O6: 120, O7: 130, O8: 140, O9: 150, F10: 160, L12: 170, L11: 180, L13: 190,
+  F33: 200, L21: 210, L22: 220, O10: 230, I11: 240,
+  F11: 250, F12: 260, F13: 270, F14: 280, F15: 290, F16: 300, F17: 310, F18: 320,
+  F19: 330, F20: 340, F21: 350, F22: 360, F23: 370, F24: 380, F25: 390, F26: 400,
+  F27: 410, F28: 420,
+  L23: 430, I12: 440, F39: 450, I13: 460, I15: 470, F40: 480, F41: 490, F42: 500,
+  F43: 510, I17: 520, I18: 530, I19: 540, L31: 550, I21: 560, F45: 570, I23: 580,
+  F47: 590, L30: 600, F48: 610, F49: 620, F50: 630, F52: 640, L32: 650, L33: 660,
+  O13: 670, O14: 680, O15: 690, L36: 700, L39: 710, L40: 720, L43: 730, L45: 740,
+  L46: 750, L47: 760, L48: 770, L50: 780, L51: 790, L52: 800, L53: 810, L54: 820,
+  L55: 830, F56: 840, O16: 850, L56: 860, L57: 870, L58: 880, O17: 890, L59: 900,
+  O19: 910, F59: 920, F60: 930, F61: 940, F62: 950, I35: 960, F64: 970, F65: 980,
+  F66: 990, O20: 1000, L62: 1010, O21: 1020, O22: 1030, O23: 1040, F68: 1050,
+  F69: 1060, F70: 1070, L66: 1080, L67: 1090, O27: 1100, F71: 1110, L68: 1120,
+};
+
 export const STORIES_CSS = `
 /* ---- stories library ---- */
 .lib{background:var(--paper);color:var(--ink);min-height:100vh}
@@ -462,8 +525,24 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap
   for (const key of Object.keys(text)) {
     if (!known.has(key)) throw new Error('story text key matches no story: ' + key);
   }
+  /* A SET_ORDER list and the set's actual membership must be the exact same set of ids in
+     both directions -- one story added or removed from a set without updating its order
+     here would either silently vanish from an ordered view or sort into an undefined
+     position, and neither should happen quietly. */
+  for (const [setName, order] of Object.entries(SET_ORDER)) {
+    const actual = new Set(data.stories.filter(s => s.s.includes(setName)).map(s => s.id));
+    const listed = new Set(order);
+    for (const id of order) if (!actual.has(id)) throw new Error(`SET_ORDER["${setName}"] lists ${id}, which is not in that set`);
+    for (const id of actual) if (!listed.has(id)) throw new Error(`SET_ORDER["${setName}"] is missing ${id}, a member of that set`);
+  }
+  /* Same in both directions for the Gospels: every Matthew/Mark/Luke/John story needs a
+     position, and every position needs a real story, or a stale id would silently sort
+     nothing while a real story silently fell back to unordered. */
+  const gospelIds = new Set(data.stories.filter(s => ['Matthew', 'Mark', 'Luke', 'John'].includes(s.b)).map(s => s.id));
+  for (const id of Object.keys(GOSPEL_ORDER)) if (!gospelIds.has(id)) throw new Error('GOSPEL_ORDER has ' + id + ', which is not a Gospel story');
+  for (const id of gospelIds) if (!(id in GOSPEL_ORDER)) throw new Error('GOSPEL_ORDER is missing Gospel story ' + id);
   const payload = JSON.stringify({ ...data, groups: TESTAMENTS, abbr: ABBR, seticon: SET_ICON,
-    art, alt: ALT_NAMES, txt: text }).replace(/</g, '\\u003c');
+    art, alt: ALT_NAMES, txt: text, setOrder: SET_ORDER, gospelOrder: GOSPEL_ORDER }).replace(/</g, '\\u003c');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -622,6 +701,31 @@ function match(s){
   return true;
 }
 const shown = () => D.stories.filter(match);
+
+/* List and Grid's display order, on top of shown()'s filtering. Both stay separate from
+   shown() itself: bookData()'s callers only need the filtered set, not an order, and the
+   Books views do their own per-book ordering (bookColumn/refKey) regardless. */
+const BASE_IDX = new Map(D.stories.map((s, i) => [s.id, i]));
+/* The whole Gospels block sits at one contiguous stretch of the library's default order
+   (Matthew's rows, then Mark's, then Luke's, then John's, back to back) because the data
+   is sorted by book. Anchoring the harmonized order at that stretch's own starting index,
+   as a fraction small enough never to reach the next index, reorders the block internally
+   without moving it relative to everything else -- no re-deriving where "the Gospels" sit
+   among Genesis through Revelation, just re-sequencing what is already there. */
+const GOSPEL_START = Math.min(...Object.keys(D.gospelOrder).map(id => BASE_IDX.get(id)));
+function defaultKey(s){
+  const g = D.gospelOrder[s.id];
+  return g === undefined ? BASE_IDX.get(s.id) : GOSPEL_START + g / 1e6;
+}
+function orderedForDisplay(rows){
+  const activeSet = state.sets.size === 1 ? [...state.sets][0] : null;
+  const order = activeSet && D.setOrder[activeSet];
+  if (order) {
+    const pos = new Map(order.map((id, i) => [id, i]));
+    return rows.slice().sort((a, z) => pos.get(a.id) - pos.get(z.id));
+  }
+  return rows.slice().sort((a, z) => defaultKey(a) - defaultKey(z));
+}
 
 /* Where a search landed, when it did not land somewhere already on the tile. Only the 13
    Creation to Christ stories have any English text yet, so this stays quiet elsewhere. */
@@ -808,7 +912,7 @@ function renderVBooks(){
 }
 
 function renderList(){
-  const rows = shown();
+  const rows = orderedForDisplay(shown());
   if (!rows.length) return '<p class="none">No stories match those filters.</p>';
   /* The image column is deliberately unlabelled. */
   let h = '<div class="listv"><div class="lrow h"><span class="lnum">#</span><span></span><span>Story</span>' +
@@ -828,7 +932,7 @@ function renderList(){
   return h + '</div>';
 }
 function renderGrid(){
-  const rows = shown();
+  const rows = orderedForDisplay(shown());
   if (!rows.length) return '<p class="none">No stories match those filters.</p>';
   return '<div class="gridv">' + rows.map(s => tile(s)).join('') + '</div>';
 }
