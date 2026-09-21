@@ -183,9 +183,21 @@ rather than by the spreadsheet's row id, because those ids move when the sheet i
 regenerated. Every key is checked against the data at build time, and every image file
 through `ap()`, so a retitled story fails the build instead of quietly losing its picture.
 Edits made in the browser are stored against the story's ORIGINAL book and title, so all
-three maps keep resolving after someone renames a story in the editor. The 13 images in
-`assets/stories/lib/` are the live creationtochrist.app covers, resized to 560px WebP; they
-are the only real story art that exists. Stories without art fall back to the book icon.
+three maps keep resolving after someone renames a story in the editor. `assets/stories/lib/`
+holds every cover, all resized to 560px WebP; raw source images Brett drops in
+`assets/stories/` are converted from there and left in place rather than deleted, so the
+originals stay available if a cover needs a redo. Two generations of art exist side by side:
+the original 13 creationtochrist.app covers (numbered filenames, e.g. `5-jesus-calms-the-storm.webp`,
+a pink/gray "stained-glass" medallion style) and a newer flat-illustration style with a shape
+motif behind the circle (descriptive filenames, e.g. `exodus-ten-commandments.webp`), which
+Brett is gradually using to both add new covers and replace old ones — three of the original
+13 (`Luke|The Paralyzed Man`, `Mark|Jairus' Daughter and the Bleeding Woman`,
+`John|Man Born Blind`) have already been swapped to the new style, freeing up their old
+numbered files, which were deleted since nothing referenced them (check before deleting one:
+`build-site.mjs`'s pitch-page thumbnails pull from the separate `assets/stories/thumbs/`
+folder, keyed by different, capitalized filenames — a numbered `lib/` file and a same-numbered
+`thumbs/` file are unrelated and only one may be safe to remove). Stories without art fall
+back to the book icon.
 
 **Watch for CSS collisions with the pitch page.** `build-stories.mjs` is handed the pitch
 page's whole CSS block, which styles some very generic selectors. `.chips span` there is a

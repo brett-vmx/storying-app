@@ -70,15 +70,17 @@ const STORY_IMG = {
   'Matthew|Birth of Jesus': '3-the-birth-of-jesus.webp',
   /* Was 'Matthew|The Paralytic Man' until the Stories By Set sheet's own reference for
      this event (Luke 5:17-26) became this story's primary account instead of Matthew
-     9:1-8, per Brett; Matthew and Mark are now its parallels. The file name is unchanged
-     since the cover art itself did not change. */
-  'Luke|The Paralyzed Man': '4-paralytic-man.webp',
+     9:1-8, per Brett; Matthew and Mark are now its parallels. Cover art was later
+     replaced too, to match the newer flat-illustration style. */
+  'Luke|The Paralyzed Man': 'the-paralyzed-man.webp',
   'Mark|Jesus Calms the Storm': '5-jesus-calms-the-storm.webp',
   'Mark|The Demoniac': '6-the-man-with-many-demons.webp',
-  "Mark|Jairus' Daughter and the Bleeding Woman": '7-jairus-daughter-bleeding-woman.webp',
+  /* Replaced the original numbered cover with a new one in the flat-illustration style. */
+  "Mark|Jairus' Daughter and the Bleeding Woman": 'jairus-daughter-bleeding-woman.webp',
   'Mark|Feeding the 5,000': '8-jesus-feeds-5000.webp',
   'John|The Samaritan Woman': '9-the-woman-at-the-well.webp',
-  'John|Man Born Blind': '10-the-blind-man.webp',
+  /* Replaced the original numbered cover with a new one in the flat-illustration style. */
+  'John|Man Born Blind': 'the-man-born-blind.webp',
   'Luke|Zacchaeus': '11-zaccheaus.webp',
   'Matthew|The Death of Jesus': '12-the-death-of-jesus.webp',
   'Matthew|The Resurrection': '13-resurrection.webp',
