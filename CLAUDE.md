@@ -287,12 +287,28 @@ entry while every entry needs a real Gospel story. A story added to or dropped f
 these four sets, or a Gospel story added to the library, fails the build immediately instead
 of silently sorting into an undefined position.
 
-`SET_ORDER`'s Creation to Christ and C2C Full come straight from `Misc/Story-Sets.xlsx`'s
-"Stories By Set" tab, an exact match for those sets' current 13 members. 7 Commands and
-Stories of Hope have grown past that tab's own snapshot, so only part of each order is
-sourced from the sheet; the rest is Claude's thematic judgement call, called out in comments
-next to the arrays. Worth a second look against Brett's actual intent, and worth updating if
-the intent turns out to differ.
+`SET_ORDER`'s Creation to Christ, C2C Full and Stories of Hope come straight from
+`Misc/Story-Sets.xlsx`'s "Stories By Set" tab, an exact match for each set's current
+membership. 7 Commands is the one exception: it carries 3 extra members past the sheet's own
+10 command rows (Jesus Sends Out His Disciples, the Greatest Commandment, the Great
+Commission), placed by Claude's thematic judgement rather than sourced from the sheet,
+called out in a comment next to the array. Worth a second look against Brett's actual
+intent. The set used to also include 3 Sermon on the Mount stories the sheet's own command
+rows pointed at (The Lord's Prayer, Love Your Enemies, Giving to the Needy); Brett had those
+removed deliberately, to keep the two sets from overlapping, so their absence from both the
+set and this order is not an oversight.
+
+**The Paralyzed Man (id F33) had its primary account changed from Matthew to Luke**, per
+Brett: the sheet's own Stories of Hope reference for this event is Luke 5:17-26, and the
+site's chosen main had been Matthew 9:1-8. Matthew and Mark are now its `par` entries and
+dimmed duplicate tiles; the story kept its id, its `s` membership and its cover art (the
+file didn't change, only `STORY_IMG`'s key), and its old title lives on as an `ALT_NAMES`
+entry so a search for "paralytic" still finds it. This is the pattern for any future
+main-account swap: change `b`/`r`/`t` on the story, move the old book+reference into `par`,
+add or update the `dups` entry pointing `of` back at the same id, and update every
+`"Book|Title"`-keyed map (`STORY_IMG`, `ALT_NAMES`, `data/story-text.json`) to the new key.
+The id-keyed maps (`SET_ORDER`, `GOSPEL_ORDER`) need no change, which is the reason those
+two are keyed by id rather than by book and title in the first place.
 
 Title, reference, sets, tags and alternate names are all editable in the modal. Editing is
 deliberately client-side only: edits live in `localStorage` under

@@ -68,7 +68,11 @@ const STORY_IMG = {
   'Genesis|Creation': '1-creation-of-the-physical-world.webp',
   'Genesis|The First Sin': '2-the-man-and-woman-sin.webp',
   'Matthew|Birth of Jesus': '3-the-birth-of-jesus.webp',
-  'Matthew|The Paralytic Man': '4-paralytic-man.webp',
+  /* Was 'Matthew|The Paralytic Man' until the Stories By Set sheet's own reference for
+     this event (Luke 5:17-26) became this story's primary account instead of Matthew
+     9:1-8, per Brett; Matthew and Mark are now its parallels. The file name is unchanged
+     since the cover art itself did not change. */
+  'Luke|The Paralyzed Man': '4-paralytic-man.webp',
   'Mark|Jesus Calms the Storm': '5-jesus-calms-the-storm.webp',
   'Mark|The Demoniac': '6-the-man-with-many-demons.webp',
   "Mark|Jairus' Daughter and the Bleeding Woman": '7-jairus-daughter-bleeding-woman.webp',
@@ -91,6 +95,7 @@ const STORY_IMG = {
    one when the search hit it, so the extra name stays out of the way the rest of the time. */
 const ALT_NAMES = {
   'Genesis|The First Sin': ['The Fall of Man'],
+  'Luke|The Paralyzed Man': ['The Paralytic Man'],
 };
 
 /* A handful of story sets have a real intended sequence -- a set someone reads or tells
@@ -107,24 +112,24 @@ const ALT_NAMES = {
 const SET_ORDER = {
   'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
   'C2C Full': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
-  /* Sheet order: Zacchaeus, Philip & the Ethiopian, The Apostles Persecuted, The Lord's
-     Prayer, The Samaritan Woman, Love Your Enemies, The Vine and the Branches, The Early
-     Church, The Widow's Offering -- nine of the ten command rows have a site match (the
-     tenth, "Abide"'s companion "The Last Supper", isn't a set member). The other four are
+  /* Sheet order for the 7 command rows with a site match: Zacchaeus, Philip & the
+     Ethiopian, The Apostles Persecuted, The Samaritan Woman, The Vine and the Branches,
+     The Early Church, The Widow's Offering. (The sheet's Pray-and-Forgive and Love rows
+     point at The Lord's Prayer and Love Your Enemies, and its Give row's companion is
+     Giving to the Needy -- all three are Sermon on the Mount stories, deliberately not
+     members of this set, so those rows have no match here.) The other three members are
      paired with the command each best illustrates: Sends Out His Disciples next to Go and
-     Tell's Samaritan Woman; the Greatest Commandment ahead of Love Your Enemies, both
-     under Love; Giving to the Needy ahead of the Widow's Offering, both under Give; the
-     Great Commission last, as the set's own closing send-off rather than squeezed into
-     the Be Baptized slot its reference happens to share. */
-  '7 Commands': ['L57', 'R13', 'R11', 'F21', 'O8', 'L31', 'F62', 'F19', 'O23', 'R6', 'F20', 'I35', 'F71'],
-  /* Sheet order for the five that match (Zacchaeus, the Paralytic Man, the Unforgiving
-     Slave, the Death of Jesus, the Resurrection). The other three aren't on the sheet's
-     eight-row list at all: Widow's Son Raised is placed first as its own "hope amid grief"
-     opening; the Persistent Widow beside Hope Helps Others / Hope Forgives, a story about
-     hope enduring hardship; the Lost Coin last, standing in for the sheet's closing "Hope
-     is Waiting for You" theme (the Prodigal Son, which actually carries that theme, isn't
-     a set member here). */
-  'Stories of Hope': ['L22', 'L57', 'F33', 'L52', 'F52', 'F69', 'F70', 'L46'],
+     Tell's Samaritan Woman; the Greatest Commandment carries Love on its own now that Love
+     Your Enemies is gone; the Great Commission last, as the set's own closing send-off
+     rather than squeezed into the Be Baptized slot its reference happens to share. */
+  '7 Commands': ['L57', 'R13', 'R11', 'O8', 'L31', 'F62', 'O23', 'R6', 'I35', 'F71'],
+  /* The sheet's exact 8 rows, no judgment calls: Weeping Woman at Jesus' Feet, Pharisee &
+     Tax Collector, Zacchaeus, Healing a Paralytic & Forgiving (Luke 5:17-26 -- the
+     reference that made The Paralyzed Man's primary account Luke's rather than Matthew's,
+     see STORY_IMG's note), The Unforgiving Slave, the Crucifixion, the Resurrection, the
+     Prodigal Son. An earlier version of this array guessed at three different members for
+     the gaps in a stale draft of the set; this is the corrected list. */
+  'Stories of Hope': ['L23', 'L53', 'L57', 'F33', 'F52', 'F69', 'F70', 'L47'],
 };
 
 /* A harmonized chronological position for every story in the four Gospels, so Grid and
@@ -135,25 +140,27 @@ const SET_ORDER = {
    the library's book order. Standard Gospel-harmony sequence (birth and childhood ->
    preparation -> early Judean ministry, John 1-4 -> Galilean ministry -> the road to
    Jerusalem, Luke's travel narrative interleaved with John's feast visits -> Passion week
-   -> resurrection), spaced by 10 so a newly added Gospel story can be slotted in without
-   renumbering the rest; a tighter insertion can fall back to a decimal. Applies only
-   inside the Gospels block's own position in the default order -- see orderedForDisplay. */
+   -> resurrection), checked section by section against A.T. Robertson's "A Harmony of the
+   Gospels" and corrected once where it disagreed: the Centurion's Servant and the Widow of
+   Nain's Son (Luke 7) belong after the Sermon on the Mount, not before it -- Luke's own
+   text places them right after the Sermon on the Plain (Luke 6), alongside the Woman Who
+   Wept at Jesus's Feet (Luke 7:36-50), which was already correctly ordered there. Spaced by
+   10 so a newly added Gospel story can be slotted in without renumbering the rest; a
+   tighter insertion can fall back to a decimal. Applies only inside the Gospels block's own
+   position in the default order -- see orderedForDisplay. */
 const GOSPEL_ORDER = {
   F4: 10, L4: 20, F5: 30, L6: 40, F6: 50, L7: 60, O4: 70, F7: 80, F8: 90, F9: 100,
-  O5: 110, O6: 120, O7: 130, O8: 140, O9: 150, F10: 160, L12: 170, L11: 180, L13: 190,
-  F33: 200, L21: 210, L22: 220, O10: 230, I11: 240,
-  F11: 250, F12: 260, F13: 270, F14: 280, F15: 290, F16: 300, F17: 310, F18: 320,
-  F19: 330, F20: 340, F21: 350, F22: 360, F23: 370, F24: 380, F25: 390, F26: 400,
-  F27: 410, F28: 420,
-  L23: 430, I12: 440, F39: 450, I13: 460, I15: 470, F40: 480, F41: 490, F42: 500,
-  F43: 510, I17: 520, I18: 530, I19: 540, L31: 550, I21: 560, F45: 570, I23: 580,
-  F47: 590, L30: 600, F48: 610, F49: 620, F50: 630, F52: 640, L32: 650, L33: 660,
-  O13: 670, O14: 680, O15: 690, L36: 700, L39: 710, L40: 720, L43: 730, L45: 740,
-  L46: 750, L47: 760, L48: 770, L50: 780, L51: 790, L52: 800, L53: 810, L54: 820,
-  L55: 830, F56: 840, O16: 850, L56: 860, L57: 870, L58: 880, O17: 890, L59: 900,
-  O19: 910, F59: 920, F60: 930, F61: 940, F62: 950, I35: 960, F64: 970, F65: 980,
-  F66: 990, O20: 1000, L62: 1010, O21: 1020, O22: 1030, O23: 1040, F68: 1050,
-  F69: 1060, F70: 1070, L66: 1080, L67: 1090, O27: 1100, F71: 1110, L68: 1120,
+  O5: 110, O6: 120, O7: 130, O8: 140, O9: 150, F10: 160, L12: 170, L11: 180, L13: 190, F33: 200,
+  O10: 210, I11: 220, F11: 230, F12: 240, F13: 250, F14: 260, F15: 270, F16: 280, F17: 290, F18: 300,
+  F19: 310, F20: 320, F21: 330, F22: 340, F23: 350, F24: 360, F25: 370, F26: 380, F27: 390, F28: 400,
+  L21: 410, L22: 420, L23: 430, I12: 440, F39: 450, I13: 460, I15: 470, F40: 480, F41: 490, F42: 500,
+  F43: 510, I17: 520, I18: 530, I19: 540, L31: 550, I21: 560, F45: 570, I23: 580, F47: 590, L30: 600,
+  F48: 610, F49: 620, F50: 630, F52: 640, L32: 650, L33: 660, O13: 670, O14: 680, O15: 690, L36: 700,
+  L39: 710, L40: 720, L43: 730, L45: 740, L46: 750, L47: 760, L48: 770, L50: 780, L51: 790, L52: 800,
+  L53: 810, L54: 820, L55: 830, F56: 840, O16: 850, L56: 860, L57: 870, L58: 880, O17: 890, L59: 900,
+  O19: 910, F59: 920, F60: 930, F61: 940, F62: 950, I35: 960, F64: 970, F65: 980, F66: 990, O20: 1000,
+  L62: 1010, O21: 1020, O22: 1030, O23: 1040, F68: 1050, F69: 1060, F70: 1070, L66: 1080, L67: 1090, O27: 1100,
+  F71: 1110, L68: 1120,
 };
 
 export const STORIES_CSS = `

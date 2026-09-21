@@ -958,7 +958,6 @@
 "Luke 6:27\u201336"
 ],
 "s": [
-"7 Commands",
 "Sermon on the Mount"
 ],
 "g": [
@@ -975,7 +974,6 @@
 "r": "6:1\u20134",
 "par": [],
 "s": [
-"7 Commands",
 "Sermon on the Mount"
 ],
 "g": [
@@ -994,7 +992,6 @@
 "Luke 11:1\u20134"
 ],
 "s": [
-"7 Commands",
 "Sermon on the Mount"
 ],
 "g": [
@@ -1128,10 +1125,11 @@
 },
 {
 "id": "F33",
-"t": "The Paralytic Man",
-"b": "Matthew",
-"r": "9:1-8",
+"t": "The Paralyzed Man",
+"b": "Luke",
+"r": "5:17-26",
 "par": [
+"Matthew 9:1-8",
 "Mark 2:1-12"
 ],
 "s": [
@@ -1790,9 +1788,7 @@
 "b": "Luke",
 "r": "7:11-17",
 "par": [],
-"s": [
-"Stories of Hope"
-],
+"s": [],
 "g": [
 "Forgiveness",
 "Love",
@@ -1807,7 +1803,9 @@
 "b": "Luke",
 "r": "7:36-50",
 "par": [],
-"s": [],
+"s": [
+"Stories of Hope"
+],
 "g": [],
 "som": false
 },
@@ -1940,9 +1938,7 @@
 "b": "Luke",
 "r": "15:8-10",
 "par": [],
-"s": [
-"Stories of Hope"
-],
+"s": [],
 "g": [
 "Parables",
 "Forgiveness",
@@ -1957,7 +1953,9 @@
 "b": "Luke",
 "r": "15:11-32",
 "par": [],
-"s": [],
+"s": [
+"Stories of Hope"
+],
 "g": [
 "Parables",
 "Money"
@@ -2010,9 +2008,7 @@
 "b": "Luke",
 "r": "18:1-8",
 "par": [],
-"s": [
-"Stories of Hope"
-],
+"s": [],
 "g": [
 "Parables",
 "Humility",
@@ -2026,7 +2022,9 @@
 "b": "Luke",
 "r": "18:9\u201314",
 "par": [],
-"s": [],
+"s": [
+"Stories of Hope"
+],
 "g": [
 "Teachings",
 "Humility"
@@ -3282,9 +3280,15 @@
 "of": "L13"
 },
 {
-"t": "The Paralytic Man",
+"t": "The Paralyzed Man",
 "b": "Mark",
 "r": "2:1-12",
+"of": "F33"
+},
+{
+"t": "The Paralyzed Man",
+"b": "Matthew",
+"r": "9:1-8",
 "of": "F33"
 },
 {

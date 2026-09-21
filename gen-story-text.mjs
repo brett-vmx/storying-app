@@ -21,7 +21,7 @@ const MAP = {
   'Genesis|Creation': 'creation-of-the-physical-world.md',
   'Genesis|The First Sin': 'the-man-and-woman-sin.md',
   'Matthew|Birth of Jesus': 'the-birth-of-jesus.md',
-  'Matthew|The Paralytic Man': 'the-paralytic-man.md',
+  'Luke|The Paralyzed Man': 'the-paralytic-man.md',
   'Mark|Jesus Calms the Storm': 'jesus-calms-the-storm.md',
   'Mark|The Demoniac': 'the-man-with-many-demons.md',
   "Mark|Jairus' Daughter and the Bleeding Woman": 'jairus-daughter-and-the-bleeding-woman.md',
