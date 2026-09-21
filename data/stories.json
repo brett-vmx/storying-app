@@ -47,6 +47,7 @@
 },
 "sets": [
 "Creation to Christ",
+"C2C Full",
 "7 Commands",
 "Stories of Hope",
 "Acts",
@@ -54,8 +55,7 @@
 "Sacrifice Stories",
 "Baptism Hammer",
 "Paul's Journeys",
-"Sermon on the Mount",
-"C2C Full"
+"Sermon on the Mount"
 ],
 "stories": [
 {
@@ -81,10 +81,30 @@
 "b": "Genesis",
 "r": "2:4-25",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Father",
 "Nature"
+],
+"som": false
+},
+{
+"id": "B100",
+"t": "Satan's Rebellion",
+"b": "Revelation",
+"r": "12:7-9",
+"par": [
+"Isaiah 14:12-15",
+"Ezekiel 28:12-19",
+"Luke 10:18"
+],
+"s": [
+"C2C Full"
+],
+"g": [
+"Spiritual Warfare"
 ],
 "som": false
 },
@@ -127,7 +147,8 @@
 "r": "6:9\u20139:17",
 "par": [],
 "s": [
-"OT Stories"
+"OT Stories",
+"C2C Full"
 ],
 "g": [
 "Obedience",
@@ -142,7 +163,9 @@
 "b": "Genesis",
 "r": "11:1-9",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Mission",
 "Humility"
@@ -156,7 +179,8 @@
 "r": "12:1-5,15:1-6,17,21:1-7",
 "par": [],
 "s": [
-"OT Stories"
+"OT Stories",
+"C2C Full"
 ],
 "g": [
 "Faith",
@@ -198,7 +222,8 @@
 "r": "22:1-18",
 "par": [],
 "s": [
-"Sacrifice Stories"
+"Sacrifice Stories",
+"C2C Full"
 ],
 "g": [
 "Faith",
@@ -238,7 +263,9 @@
 "b": "Genesis",
 "r": "37-50",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Forgiveness",
 "Perseverance",
@@ -252,7 +279,9 @@
 "b": "Exodus",
 "r": "3",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Mission",
 "Obedience",
@@ -267,7 +296,8 @@
 "r": "7:14\u201312:30",
 "par": [],
 "s": [
-"OT Stories"
+"OT Stories",
+"C2C Full"
 ],
 "g": [
 "Nature",
@@ -278,31 +308,19 @@
 },
 {
 "id": "B19",
-"t": "The Passover",
+"t": "The Passover + Escape Through the Sea",
 "b": "Exodus",
-"r": "12:1-30",
+"r": "12:1-30, 13:17\u201314:31",
 "par": [],
 "s": [
-"Sacrifice Stories"
+"Sacrifice Stories",
+"OT Stories",
+"C2C Full"
 ],
 "g": [
 "Obedience",
-"Faith"
-],
-"som": false
-},
-{
-"id": "B20",
-"t": "Crossing the Red Sea",
-"b": "Exodus",
-"r": "13:17\u201314:31",
-"par": [],
-"s": [
-"OT Stories"
-],
-"g": [
-"Nature",
 "Faith",
+"Nature",
 "Courage"
 ],
 "som": false
@@ -341,7 +359,9 @@
 "b": "Exodus",
 "r": "20:1-21",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Obedience",
 "God's Word"
@@ -354,7 +374,9 @@
 "b": "Exodus",
 "r": "32:1-35",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Idolatry",
 "Worship"
@@ -493,7 +515,8 @@
 "r": "16:1-13",
 "par": [],
 "s": [
-"OT Stories"
+"OT Stories",
+"C2C Full"
 ],
 "g": [
 "Humility",
@@ -508,7 +531,8 @@
 "r": "17:1-58",
 "par": [],
 "s": [
-"OT Stories"
+"OT Stories",
+"C2C Full"
 ],
 "g": [
 "Faith",
@@ -538,7 +562,8 @@
 "r": "18:16-46",
 "par": [],
 "s": [
-"OT Stories"
+"OT Stories",
+"C2C Full"
 ],
 "g": [
 "Idolatry",
@@ -668,7 +693,9 @@
 "b": "Jonah",
 "r": "1:1\u20134:11",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Obedience",
 "Mission",
@@ -682,7 +709,9 @@
 "b": "Daniel",
 "r": "3:1-30",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Idolatry",
 "Courage",
@@ -697,7 +726,9 @@
 "b": "Daniel",
 "r": "6:1-28",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Faith",
 "Courage",
@@ -776,7 +807,9 @@
 "Mark 1:9-11",
 "Luke 3:21-22"
 ],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "3 in 1",
 "Holy Spirit",
@@ -792,7 +825,9 @@
 "par": [
 "Mark 1:12-13"
 ],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Spiritual Warfare",
 "Obedience",
@@ -1432,7 +1467,9 @@
 "par": [
 "Luke 22:39-53"
 ],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Prayer",
 "Obedience",
@@ -1496,7 +1533,8 @@
 ],
 "s": [
 "7 Commands",
-"Baptism Hammer"
+"Baptism Hammer",
+"C2C Full"
 ],
 "g": [
 "Mission",
@@ -1543,7 +1581,9 @@
 "Matthew 13:1-23",
 "Luke 8:4-15"
 ],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Parables",
 "God's Word"
@@ -1673,7 +1713,8 @@
 "Luke 21:1-4"
 ],
 "s": [
-"7 Commands"
+"7 Commands",
+"C2C Full"
 ],
 "g": [
 "Giving",
@@ -1954,7 +1995,8 @@
 "r": "15:11-32",
 "par": [],
 "s": [
-"Stories of Hope"
+"Stories of Hope",
+"C2C Full"
 ],
 "g": [
 "Parables",
@@ -1978,7 +2020,9 @@
 "b": "Luke",
 "r": "16:19\u201331",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Miracles",
 "Healings",
@@ -2124,7 +2168,9 @@
 "Mark 21:1-11",
 "John 12:12-19"
 ],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [],
 "som": false
 },
@@ -2137,7 +2183,9 @@
 "Matthew 26:26-29",
 "Mark 14:22-25"
 ],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [],
 "som": false
 },
@@ -2191,7 +2239,8 @@
 "r": "1:19-36",
 "par": [],
 "s": [
-"Sacrifice Stories"
+"Sacrifice Stories",
+"C2C Full"
 ],
 "g": [
 "Son",
@@ -2231,7 +2280,9 @@
 "b": "John",
 "r": "3:1-21",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Teachings",
 "Holy Spirit",
@@ -2337,7 +2388,9 @@
 "b": "John",
 "r": "11:1-44",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Miracles",
 "Resurrections",
@@ -2448,12 +2501,13 @@
 },
 {
 "id": "R4",
-"t": "The Holy Spirit",
+"t": "The Holy Spirit + Ascension",
 "b": "Acts",
-"r": "1:4-8",
+"r": "1:4-11",
 "par": [],
 "s": [
-"Acts"
+"Acts",
+"C2C Full"
 ],
 "g": [
 "Holy Spirit",
@@ -2469,7 +2523,8 @@
 "par": [],
 "s": [
 "Acts",
-"Baptism Hammer"
+"Baptism Hammer",
+"C2C Full"
 ],
 "g": [
 "Holy Spirit",
@@ -2485,7 +2540,8 @@
 "r": "2:42-47",
 "par": [],
 "s": [
-"7 Commands"
+"7 Commands",
+"C2C Full"
 ],
 "g": [
 "Giving",
@@ -3066,9 +3122,11 @@
 "id": "T4",
 "t": "The Second Coming",
 "b": "Revelation",
-"r": "19:11-16",
+"r": "19:11-21",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Son",
 "Perseverance"
@@ -3077,24 +3135,15 @@
 },
 {
 "id": "T5",
-"t": "Satan Bound",
+"t": "The 1,000 Year Reign + Satan Crushed",
 "b": "Revelation",
-"r": "20:1-3",
+"r": "20:1-10",
 "par": [],
-"s": [],
-"g": [
-"Spiritual Warfare"
+"s": [
+"C2C Full"
 ],
-"som": false
-},
-{
-"id": "T6",
-"t": "The 1,000 Year Reign",
-"b": "Revelation",
-"r": "20:4-6",
-"par": [],
-"s": [],
 "g": [
+"Spiritual Warfare",
 "Son",
 "Peace"
 ],
@@ -3119,7 +3168,9 @@
 "b": "Revelation",
 "r": "21:1-27,22:1-5",
 "par": [],
-"s": [],
+"s": [
+"C2C Full"
+],
 "g": [
 "Peace",
 "Worship",

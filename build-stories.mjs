@@ -66,6 +66,17 @@ const SET_ICON = {
    of quietly dropping its picture. */
 const STORY_IMG = {
   'Genesis|Creation': '1-creation-of-the-physical-world.webp',
+  /* A composite of Isaiah 14:12-15, Ezekiel 28:12-19, Luke 10:18 and Revelation 12:7-9 --
+     filed under Revelation 12:7-9 as its primary account (the other three as par[]) since
+     that is the only one of the four that is an actual narrated event rather than a poetic
+     oracle or a single aside, even though the story's narrative POSITION is meant to be
+     right before The First Sin (see its id's placement in SET_ORDER's 'C2C Full' array and
+     in the data/stories.json array itself, both independent of this `b`/`r` choice) -- so it
+     shows up in Books view under Revelation, not Genesis, on purpose. Brett's own addition,
+     not sourced from Misc/Story-Sets.xlsx's Master List tab like every other story in this
+     file (hence the hand-picked id, B100, well clear of the real sheet's B4-B48 range) and
+     still pending Todd's review as of when this was added -- see CLAUDE.md. */
+  "Revelation|Satan's Rebellion": 'satans-rebellion.webp',
   'Genesis|The First Sin': '2-the-man-and-woman-sin.webp',
   'Matthew|Birth of Jesus': '3-the-birth-of-jesus.webp',
   /* Was 'Matthew|The Paralytic Man' until the Stories By Set sheet's own reference for
@@ -78,10 +89,12 @@ const STORY_IMG = {
   /* Replaced the original numbered cover with a new one in the flat-illustration style. */
   "Mark|Jairus' Daughter and the Bleeding Woman": 'jairus-daughter-bleeding-woman.webp',
   'Mark|Feeding the 5,000': '8-jesus-feeds-5000.webp',
-  'John|The Samaritan Woman': '9-the-woman-at-the-well.webp',
+  /* Replaced the original numbered cover with a new one in the flat-illustration style. */
+  'John|The Samaritan Woman': 'the-samaritan-woman.webp',
   /* Replaced the original numbered cover with a new one in the flat-illustration style. */
   'John|Man Born Blind': 'the-man-born-blind.webp',
-  'Luke|Zacchaeus': '11-zaccheaus.webp',
+  /* Replaced the original numbered cover with a new one in the flat-illustration style. */
+  'Luke|Zacchaeus': 'zacchaeus.webp',
   'Matthew|The Death of Jesus': '12-the-death-of-jesus.webp',
   'Matthew|The Resurrection': '13-resurrection.webp',
   'Exodus|The Ten Commandments': 'exodus-ten-commandments.webp',
@@ -105,15 +118,29 @@ const ALT_NAMES = {
    instead of the library's default book order whenever exactly one of these sets is the
    active filter. Keyed by id, not "Book|Title": within one set, id is unique and stable
    even across a title edit, and it is what orderedForDisplay() looks up by.
-   Creation to Christ and C2C Full come straight from Misc/Story-Sets.xlsx's "Stories By
-   Set" tab, an exact 1:1 match with these sets' current 13 members. 7 Commands and
-   Stories of Hope have grown past that tab's own snapshot (13 members there now vs. 11
-   distinct stories on the sheet's 10 command rows, and 8 vs. 5): members the sheet lists
-   keep the sheet's order, and the rest are interleaved by theme, a judgment call flagged
-   to Brett rather than made silently -- worth a second look against his actual intent. */
+   Creation to Christ comes straight from Misc/Story-Sets.xlsx's "Stories By Set" tab, an
+   exact 1:1 match with that set's 13 members. C2C Full is the "Stories in Order" tab's own
+   C2C Full? column, currently a 50-story sweep from Creation through the New Creation --
+   listed here in that tab's own OT-then-Matthew-then-Mark-then-Luke-then-John-then-Acts-
+   then-Revelation block order, not Creation to Christ's order, so the two arrays diverge
+   past their shared first few ids on purpose. Expect this array to keep changing as Brett
+   and Todd keep working through that column. 7 Commands and Stories of Hope have grown past
+   that tab's own snapshot too (13 members there now vs. 11 distinct stories on the sheet's
+   10 command rows, and 8 vs. 5): members the sheet lists keep the sheet's order, and the
+   rest are interleaved by theme, a judgment call flagged to Brett rather than made silently
+   -- worth a second look against his actual intent. */
 const SET_ORDER = {
   'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
-  'C2C Full': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
+  'C2C Full': [
+    'B4', 'B5', 'B100', 'B6', 'B8', 'B9', 'B10', 'B13', 'B16', 'B17', 'B18', 'B19', 'B23', 'B24',
+    'B34', 'B35', 'B37', 'B46', 'B47', 'B48',
+    'F5', 'F8', 'F9', 'F68', 'F69', 'F70', 'F71',
+    'I13', 'I17', 'I18', 'I19', 'I21', 'I35',
+    'F33', 'L47', 'L50', 'L57', 'L59', 'L62',
+    'O4', 'O7', 'O8', 'O14', 'O16',
+    'R4', 'R5', 'R6',
+    'T4', 'T5', 'T8',
+  ],
   /* Sheet order for the 7 command rows with a site match: Zacchaeus, Philip & the
      Ethiopian, The Apostles Persecuted, The Samaritan Woman, The Vine and the Branches,
      The Early Church, The Widow's Offering. (The sheet's Pray-and-Forgive and Love rows
@@ -255,10 +282,17 @@ export const STORIES_CSS = `
    up an inch from the words it belongs to. */
 .swrow{display:inline-flex;align-items:center;gap:11px;background:none;border:0;padding:2px 0;
   font:inherit;color:var(--ink);cursor:pointer;text-align:left}
+/* Two switches sharing a line rather than each taking its own -- wraps on a narrow drawer. */
+.swrowset{display:flex;flex-wrap:wrap;column-gap:28px;row-gap:8px}
 .swlbl{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600}
 .swlbl svg{color:#9fb3bd;fill:none}
-.swrow[aria-checked="true"] .swlbl svg{color:var(--teal);fill:currentColor}
-.swrow[aria-checked="true"] .swlbl svg circle{fill:#fff}
+.swrow[aria-checked="true"] .swlbl svg{color:var(--teal)}
+/* The tag glyph reads better solid than outlined once it is "on"; its dot is hard-coded
+   filled already, so it has to flip to white or it disappears into the now-solid tag. Scoped
+   to .tagwrap rather than every swrow icon, since the same trick would turn the image icon
+   into a solid teal square. */
+.swrow[aria-checked="true"] .tagwrap svg{fill:currentColor}
+.swrow[aria-checked="true"] .tagwrap svg circle{fill:#fff}
 .swt{position:relative;flex:none;width:40px;height:23px;border-radius:99px;background:#d3dade;
   transition:background .16s}
 .swt:after{content:"";position:absolute;top:2.5px;left:2.5px;width:18px;height:18px;border-radius:50%;
@@ -325,13 +359,19 @@ export const STORIES_CSS = `
 .talt{display:block;font-size:11.5px;color:#7E8F99;margin-top:2px;font-style:italic}
 .tctx{font-size:11.5px;line-height:1.45;color:#5E727C;margin-top:7px;padding-left:8px;border-left:2px solid #cfe6ec}
 mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
-/* Sermon on the Mount. On a tile it is a teal outline rather than a badge: 18 of them sit
+/* Sermon on the Mount. On a tile it is an outline rather than a badge: 18 of them sit
    consecutively in Matthew, and a badge on every one was more noise than signal. The list
-   row, which shows one story per line, keeps the words. */
-.tile.issom{border-color:#6fc4d7}
-.tile.issom:hover{border-color:var(--teal)}
+   row, which shows one story per line, keeps the words. Border color is a lighter tint of
+   the Sermon on the Mount set icon's own maroon background (assets/story-set-icons/
+   sermon-on-the-mount.webp), so the tile reads as "belongs to that set" at a glance. */
+.tile.issom{border-color:#c48483}
+.tile.issom:hover{border-color:#a44140}
 .som{background:#e3f4f8;color:var(--teal);font-size:9.5px;font-weight:700;letter-spacing:.04em;
   border-radius:4px;padding:2px 5px;white-space:nowrap}
+/* Paul's Journeys: same tile-outline treatment as Sermon on the Mount, tinted to that set
+   icon's own navy background (assets/story-set-icons/pauls-journeys.webp) instead. */
+.tile.ispj{border-color:#638bab}
+.tile.ispj:hover{border-color:#0f4d7e}
 
 /* books view: one rail, 66 book columns, two levels of collapsible grouping.
    The rail runs to the right edge of the window rather than stopping at the 1180px wrap,
@@ -673,7 +713,7 @@ function edited(s){ return !!edits[s.id]; }
    source of overwhelm in review. The page now starts on the grid, filtered to Creation to
    Christ, with the filter chrome showing that a filter is on and offering to clear it. */
 const state = { v:'grid', q:'', sets:new Set(['Creation to Christ']), tags:new Set(), langs:new Set(),
-                shut:new Set(), shutT:new Set(), showTags:false, showDups:true };
+                shut:new Set(), shutT:new Set(), showTags:false, showDups:true, hasImg:false };
 /* Stacked books open with the sections closed, so the first thing you see is an outline.
    Kept separate from the side-by-side view's collapse state: a rail of eight narrow
    vertical spines is not a useful first impression, whereas a stack of headings is. */
@@ -686,11 +726,11 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const abbr = b => D.abbr[b] || b;
 const seticon = n => D.seticon[n] ? '../assets/' + D.seticon[n] : '';
-const filtering = () => !!(state.q || state.sets.size || state.tags.size || state.langs.size);
+const filtering = () => !!(state.q || state.sets.size || state.tags.size || state.langs.size || state.hasImg);
 /* Filtering by a tag always shows the tag rows: hiding what you are filtering on would be
    perverse. Otherwise it is the drawer's toggle. */
 const showingTags = () => state.showTags || !!state.tags.size;
-const anyFilter = () => !!(state.sets.size || state.tags.size || state.langs.size);
+const anyFilter = () => !!(state.sets.size || state.tags.size || state.langs.size || state.hasImg);
 /* A search term counts as a hit on a tag if either contains the other, so "money",
    "mone" and "money stories" all light up the Money tag. */
 function tagHit(t){
@@ -700,6 +740,7 @@ function tagHit(t){
 }
 
 function match(s){
+  if (state.hasImg && !D.art[key(s)]) return false;
   if (state.sets.size) { const has = sets(s); if (![...state.sets].every(x => has.includes(x))) return false; }
   if (state.tags.size) { const has = tags(s); if (![...state.tags].every(x => has.includes(x))) return false; }
   if (state.q) {
@@ -773,6 +814,7 @@ function tagPills(s, cls){
 }
 const NOART = ${JSON.stringify(ic('book-open', 22, 'currentColor'))};
 const TAGIC = ${JSON.stringify(ic('tag', 14, 'currentColor', 2.1))};
+const IMGIC = ${JSON.stringify(ic('image', 14, 'currentColor', 2.1))};
 /* Empty dashed square when off, the same square with a check in it when on. */
 const DASH = { off: ${JSON.stringify(ic('square-dashed', 13, 'currentColor', 2.3))},
                on: ${JSON.stringify(ic('square-dashed-check', 13, 'currentColor', 2.3))} };
@@ -798,7 +840,8 @@ function inlineSets(s, cls){
 }
 /* One markup for both tile shapes; .cmp re-lays it out for the narrow book columns. */
 function tile(s, compact){
-  return '<button class="tile' + (compact ? ' cmp' : '') + (s.som ? ' issom' : '') + '" data-id="' + s.id + '">' +
+  return '<button class="tile' + (compact ? ' cmp' : '') + (s.som ? ' issom' : '') +
+    (sets(s).includes("Paul's Journeys") ? ' ispj' : '') + '" data-id="' + s.id + '">' +
     art(s) +
     '<div class="tmain">' +
       '<div class="tt">' + esc(title(s)) + inlineSets(s) + '</div>' + altLine(s) +
@@ -961,9 +1004,12 @@ function drawers(){
     '</div><p class="dnote">The other 39 languages land here as they are produced.</p></div>' +
     '<div style="margin-top:12px"><button class="clearall" data-clear="langs">Clear languages</button></div>';
   /* One control for the whole page, rather than the same button repeated on 202 cards. */
-  $('dTags').innerHTML = '<div class="dgrp">' +
+  $('dTags').innerHTML = '<div class="dgrp"><div class="swrowset">' +
     '<button class="swrow" role="switch" aria-checked="' + showingTags() + '" data-showtags>' +
-      '<span class="swt"></span><span class="swlbl">Show tags on stories' + TAGIC + '</span></button>' +
+      '<span class="swt"></span><span class="swlbl">Show tags on stories<span class="tagwrap">' + TAGIC + '</span></span></button>' +
+    '<button class="swrow" role="switch" aria-checked="' + state.hasImg + '" data-hasimg>' +
+      '<span class="swt"></span><span class="swlbl">Has story image' + IMGIC + '</span></button>' +
+    '</div>' +
     (state.tags.size ? '<p class="dnote">Shown automatically while a tag filter is on.</p>' : '') +
     '</div>' +
     Object.entries(D.vocab).map(([g, list]) =>
@@ -990,7 +1036,12 @@ function render(){
   const badge = (n, b, set) => { $(n).hidden = !set.size; $(n).textContent = set.size;
     $(b).classList.toggle('on', !!set.size); };
   badge('nSets', 'bSets', state.sets);
-  badge('nTags', 'bTags', state.tags);
+  /* Not a Set: the Has Story Image switch lives in this same drawer and counts as an
+     active filter too, so it rides on the Tags button's own badge rather than going
+     unrepresented there. */
+  const tagN = state.tags.size + (state.hasImg ? 1 : 0);
+  $('nTags').hidden = !tagN; $('nTags').textContent = tagN;
+  $('bTags').classList.toggle('on', !!tagN);
   badge('nLangs', 'bLangs', state.langs);
   $('clearFilters').hidden = !anyFilter();
   const ne = Object.keys(edits).length;
@@ -1131,13 +1182,14 @@ document.addEventListener('click', e => {
   /* Set from the effective value, so the first click after a tag filter forces it open
      does the thing the label promises rather than silently flipping a hidden flag. */
   if (t.dataset.showtags !== undefined) { state.showTags = !showingTags(); render(); return; }
+  if (t.dataset.hasimg !== undefined) { state.hasImg = !state.hasImg; render(); return; }
   if (t.dataset.v) { state.v = t.dataset.v; document.querySelectorAll('.views button').forEach(b => b.classList.toggle('on', b === t)); render(); return; }
   if (DRAWERS[t.id]) { toggleDrawer(t.id); return; }
   if (t.dataset.set) { state.sets.has(t.dataset.set) ? state.sets.delete(t.dataset.set) : state.sets.add(t.dataset.set); render(); return; }
   if (t.dataset.tag) { state.tags.has(t.dataset.tag) ? state.tags.delete(t.dataset.tag) : state.tags.add(t.dataset.tag); render(); return; }
   if (t.dataset.lang) { state.langs.has(t.dataset.lang) ? state.langs.delete(t.dataset.lang) : state.langs.add(t.dataset.lang); render(); return; }
-  if (t.dataset.clear) { state[t.dataset.clear].clear(); render(); return; }
-  if (t.id === 'clearFilters') { state.sets.clear(); state.tags.clear(); state.langs.clear(); closeDrawers(); render(); return; }
+  if (t.dataset.clear) { state[t.dataset.clear].clear(); if (t.dataset.clear === 'tags') state.hasImg = false; render(); return; }
+  if (t.id === 'clearFilters') { state.sets.clear(); state.tags.clear(); state.langs.clear(); state.hasImg = false; closeDrawers(); render(); return; }
   if (t.classList.contains('vhead')) {
     if (t.classList.contains('v1')) { const k = t.closest('.vtest').dataset.t;
       state.shutT.has(k) ? state.shutT.delete(k) : state.shutT.add(k); }
