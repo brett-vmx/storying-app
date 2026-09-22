@@ -104,6 +104,62 @@ const STORY_IMG = {
   'Acts|The Apostles Persecuted': 'acts-apostles-persecuted.webp',
   'Acts|Philip and the Ethiopian': 'acts-philip-and-the-ethiopian.webp',
   'Mark|The Widow\'s Offering': 'mark-the-widows-offering.webp',
+  /* Sermon on the Mount (18) and Paul's Journeys (27): first sets to get a covers-as-a-
+     family treatment rather than one-off art. Each shares a fixed backdrop and palette
+     per set (a maroon hillside-teaching scene for SOTM, a navy Mediterranean-map scene for
+     Paul's Journeys, both matching those sets' own tile-border and icon colors) with a
+     distinct, text-free symbol pulled from that story's own passage -- e.g. birds and
+     lilies for Do Not Worry (Matt 6:26-28), a log in an eye for Judging Others (Matt 7:3-5),
+     Lydia's dye vat (Acts 16:14). Paul's Journeys covers also carry a plain numeral (1/2/3)
+     for which missionary journey the story belongs to -- a digit rather than a word, so it
+     doesn't need translation. Filenames get a -som/-pj suffix only where the same title
+     exists as a different story elsewhere (e.g. Luke's own "Love Your Enemies"), to keep
+     the file list legible; it has no effect on lookup, which is by "Book|Title". */
+  'Matthew|The Beatitudes': 'the-beatitudes.webp',
+  'Matthew|Salt and Light': 'salt-and-light.webp',
+  'Matthew|Jesus and the Law': 'jesus-and-the-law.webp',
+  'Matthew|Murder in the Heart': 'murder-in-the-heart.webp',
+  'Matthew|Adultery in the Heart': 'adultery-in-the-heart.webp',
+  'Matthew|Divorce and Remarriage': 'divorce-and-remarriage-som.webp',
+  'Matthew|Keeping Your Word': 'keeping-your-word.webp',
+  'Matthew|Turn the Other Cheek': 'turn-the-other-cheek.webp',
+  'Matthew|Love Your Enemies': 'love-your-enemies-som.webp',
+  'Matthew|Giving to the Needy': 'giving-to-the-needy.webp',
+  "Matthew|The Lord's Prayer": 'the-lords-prayer.webp',
+  'Matthew|Fasting': 'fasting.webp',
+  'Matthew|Treasures in Heaven': 'treasures-in-heaven-som.webp',
+  'Matthew|Do Not Worry': 'do-not-worry-som.webp',
+  'Matthew|Judging Others': 'judging-others.webp',
+  'Matthew|Ask, Seek, Knock': 'ask-seek-knock-som.webp',
+  'Matthew|Entering the Kingdom': 'entering-the-kingdom.webp',
+  'Matthew|Build Your House on the Rock': 'build-your-house-on-the-rock-som.webp',
+  'Acts|Paul and Barnabus Sent Out': 'paul-and-barnabas-sent-out.webp',
+  'Acts|Paul makes a Sorcerer Blind': 'paul-makes-a-sorcerer-blind.webp',
+  "Acts|Paul's Sermon to the Jews": 'pauls-sermon-to-the-jews.webp',
+  'Acts|Growth and Persecution': 'growth-and-persecution.webp',
+  'Acts|Mistaken for Gods': 'mistaken-for-gods.webp',
+  'Acts|Completing the Mission': 'completing-the-mission.webp',
+  'Acts|A Fight in the Church': 'a-fight-in-the-church.webp',
+  'Acts|Paul and Barnabus Part Ways': 'paul-and-barnabas-part-ways.webp',
+  'Acts|Paul Selects Timothy': 'paul-selects-timothy.webp',
+  'Acts|A Call to New Ministry': 'a-call-to-new-ministry.webp',
+  "Acts|Lydia's Conversion": 'lydias-conversion.webp',
+  'Acts|The Fortune Teller': 'the-fortune-teller.webp',
+  'Acts|Paul and Silas Escape from Prison': 'paul-and-silas-escape-from-prison.webp',
+  "Acts|The Attack of Jason's House": 'the-attack-of-jasons-house.webp',
+  'Acts|The Bereans Love the Bible!': 'the-bereans-love-the-bible.webp',
+  "Acts|Paul's Sermon to the Gentiles": 'pauls-sermon-to-the-gentiles.webp',
+  'Acts|"I have many people in this city"': 'i-have-many-people-in-this-city.webp',
+  'Acts|Paul Returns to Antioch': 'paul-returns-to-antioch.webp',
+  'Acts|The Eloquent Apollos': 'the-eloquent-apollos.webp',
+  'Acts|Baptism of the Holy Spirit': 'baptism-of-the-holy-spirit-pj.webp',
+  'Acts|All of Asia Hears': 'all-of-asia-hears.webp',
+  'Acts|Demons Defeated': 'demons-defeated.webp',
+  'Acts|The Riot': 'the-riot.webp',
+  'Acts|Paul in Macedonia': 'paul-in-macedonia.webp',
+  'Acts|A Midnight Resurrection': 'a-midnight-resurrection.webp',
+  "Acts|Paul's Goodbye to the Elders": 'pauls-goodbye-to-the-elders.webp',
+  "Acts|Paul's Return to Jerusalem": 'pauls-return-to-jerusalem.webp',
 };
 
 /* Alternate titles. Search matches them, the editor exposes them, and a tile only shows

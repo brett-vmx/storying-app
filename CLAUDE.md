@@ -199,6 +199,19 @@ folder, keyed by different, capitalized filenames — a numbered `lib/` file and
 `thumbs/` file are unrelated and only one may be safe to remove). Stories without art fall
 back to the book icon.
 
+A third generation covers all of Sermon on the Mount (18) and Paul's Journeys (27): rather
+than one bespoke scene per story, each set shares one fixed backdrop and palette (matching
+that set's own tile-border and icon colors — maroon hillside-teaching for SOTM, navy
+Mediterranean-map for Paul's Journeys) with a small, text-free, passage-grounded symbol per
+story swapped in on top (birds and lilies for Do Not Worry, Lydia's purple-dye vat, etc.).
+Paul's Journeys covers also carry a plain numeral for which missionary journey (1/2/3) the
+story belongs to — deliberately a digit, not a word, so nothing there needs translation. Source
+files arrived in `assets/stories/SOTM/` and `assets/stories/Paul's Journeys/`, numbered to
+match each set's own read order; `lib/` filenames drop the number and add a `-som`/`-pj`
+suffix only where the same title already exists as an unrelated story elsewhere (e.g. Luke's
+own "Love Your Enemies"), purely for human legibility — lookup is by `"Book|Title"`, not
+filename, so the suffix has no functional effect.
+
 **Watch for CSS collisions with the pitch page.** `build-stories.mjs` is handed the pitch
 page's whole CSS block, which styles some very generic selectors. `.chips span` there is a
 pink pill, and it silently turned every drawer count into one; that is why the filter chips
