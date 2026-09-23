@@ -99,6 +99,8 @@ const STORY_IMG = {
   'Matthew|The Resurrection': '13-resurrection.webp',
   'Exodus|The Ten Commandments': 'exodus-ten-commandments.webp',
   'Genesis|The First People': 'genesis-the-first-people.webp',
+  /* Replaced the original sunburst-themed cover with a new one in the flat-illustration
+     style, as part of the C2C Full art pass below. */
   'John|Lazarus Raised from the Dead': 'john-lazarus-raised.webp',
   'Luke|The Lost Son': 'luke-the-lost-son.webp',
   'Acts|The Apostles Persecuted': 'acts-apostles-persecuted.webp',
@@ -124,9 +126,9 @@ const STORY_IMG = {
   'Matthew|Keeping Your Word': 'keeping-your-word.webp',
   'Matthew|Turn the Other Cheek': 'turn-the-other-cheek.webp',
   'Matthew|Love Your Enemies': 'love-your-enemies-som.webp',
-  'Matthew|Giving to the Needy': 'giving-to-the-needy.webp',
-  "Matthew|The Lord's Prayer": 'the-lords-prayer.webp',
-  'Matthew|Fasting': 'fasting.webp',
+  'Matthew|How To Give': 'giving-to-the-needy.webp',
+  'Matthew|How To Pray': 'the-lords-prayer.webp',
+  'Matthew|How To Fast': 'fasting.webp',
   'Matthew|Treasures in Heaven': 'treasures-in-heaven-som.webp',
   'Matthew|Do Not Worry': 'do-not-worry-som.webp',
   'Matthew|Judging Others': 'judging-others.webp',
@@ -160,6 +162,43 @@ const STORY_IMG = {
   'Acts|A Midnight Resurrection': 'a-midnight-resurrection.webp',
   "Acts|Paul's Goodbye to the Elders": 'pauls-goodbye-to-the-elders.webp',
   "Acts|Paul's Return to Jerusalem": 'pauls-return-to-jerusalem.webp',
+  /* The rest of C2C Full's 50: one-off bespoke covers (own background/color per story, not
+     a shared family like SOTM/Paul's Journeys above), finishing out every story in the set
+     that didn't already have art. A few titles are also C2C Full members told from a
+     different book (e.g. Mark's own "The Great Commission" and "Jesus Enters Jerusalem"
+     exist too, but are not in this set) -- filenames get a -c2c suffix only where that
+     collision exists, purely for legibility; lookup is by "Book|Title", not filename. */
+  'Genesis|Noah and the Flood': 'noah-and-the-flood.webp',
+  'Genesis|The Tower of Babel': 'the-tower-of-babel.webp',
+  "Genesis|God's Promise to Abraham": 'gods-promise-to-abraham.webp',
+  'Genesis|Abraham Sacrifices His Son': 'abraham-sacrifices-his-son.webp',
+  'Genesis|Joseph': 'joseph.webp',
+  'Exodus|Moses and the Burning Bush': 'moses-and-the-burning-bush.webp',
+  'Exodus|The Plagues': 'the-plagues.webp',
+  'Exodus|The Passover + Escape Through the Sea': 'the-passover-and-escape-through-the-sea.webp',
+  'Exodus|The Golden Calf': 'the-golden-calf.webp',
+  '1 Samuel|The Choosing of David': 'the-choosing-of-david.webp',
+  '1 Samuel|David and Goliath': 'david-and-goliath.webp',
+  '1 Kings|Elijah and the False Prophets': 'elijah-and-the-false-prophets.webp',
+  'Jonah|Jonah and the Whale': 'jonah-and-the-whale.webp',
+  'Daniel|The Gold Statue': 'the-gold-statue.webp',
+  "Daniel|Daniel in the Lion's Den": 'daniel-in-the-lions-den.webp',
+  'Matthew|Baptism of Jesus': 'baptism-of-jesus-c2c.webp',
+  'Matthew|Temptation of Jesus': 'temptation-of-jesus-c2c.webp',
+  'Matthew|Jesus in the Garden': 'jesus-in-the-garden.webp',
+  'Matthew|The Great Commission': 'the-great-commission-c2c.webp',
+  'Mark|The Sower': 'the-sower.webp',
+  'Luke|The Rich Man and Lazarus': 'the-rich-man-and-lazarus.webp',
+  'Luke|Jesus Enters Jerusalem': 'jesus-enters-jerusalem-c2c.webp',
+  'Luke|The Last Supper': 'the-last-supper.webp',
+  'John|The Lamb of God': 'the-lamb-of-god.webp',
+  'John|Jesus and Nicodemus': 'jesus-and-nicodemus.webp',
+  'Acts|Jesus Ascends to Heaven': 'the-holy-spirit-and-ascension.webp',
+  'Acts|Pentecost': 'pentecost.webp',
+  'Acts|The Early Church': 'the-early-church.webp',
+  'Revelation|The Second Coming': 'the-second-coming.webp',
+  'Revelation|The 1,000 Year Reign + Satan Crushed': 'the-thousand-year-reign-and-satan-crushed.webp',
+  'Revelation|The New Creation': 'the-new-creation.webp',
 };
 
 /* Alternate titles. Search matches them, the editor exposes them, and a tile only shows
@@ -167,6 +206,7 @@ const STORY_IMG = {
 const ALT_NAMES = {
   'Genesis|The First Sin': ['The Fall of Man'],
   'Luke|The Paralyzed Man': ['The Paralytic Man'],
+  'Matthew|How To Pray': ["The Lord's Prayer"],
 };
 
 /* A handful of story sets have a real intended sequence -- a set someone reads or tells
@@ -187,22 +227,27 @@ const ALT_NAMES = {
    -- worth a second look against his actual intent. */
 const SET_ORDER = {
   'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
-  'C2C Full': [
-    'B4', 'B5', 'B100', 'B6', 'B8', 'B9', 'B10', 'B13', 'B16', 'B17', 'B18', 'B19', 'B23', 'B24',
-    'B34', 'B35', 'B37', 'B46', 'B47', 'B48',
-    'F5', 'F8', 'F9', 'F68', 'F69', 'F70', 'F71',
-    'I13', 'I17', 'I18', 'I19', 'I21', 'I35',
-    'F33', 'L47', 'L50', 'L57', 'L59', 'L62',
-    'O4', 'O7', 'O8', 'O14', 'O16',
-    'R4', 'R5', 'R6',
-    'T4', 'T5', 'T8',
-  ],
+  /* C2C Full deliberately has NO entry here, unlike Creation to Christ above. That 13-story
+     set is a hand-curated teaching sequence, reviewed 1:1 against the sheet's own "Stories
+     By Set" tab, genuinely distinct from Bible order. C2C Full is not that: its whole point
+     is "the Bible's own chronological sweep, Creation through New Creation," which is
+     exactly what orderedForDisplay()'s fallback already computes -- canonical position via
+     BASE_IDX, with the Gospels block re-sequenced by GOSPEL_ORDER below. An earlier version
+     of this file gave C2C Full its own SET_ORDER array built from the "Stories in Order"
+     tab's own row sequence (OT block, then all of Matthew, then all of Mark, ...); that is
+     book-position order, not narrative chronology, so it sorted the Gospels portion by
+     which book a story happened to be told from rather than what happened when -- the same
+     bug GOSPEL_ORDER exists to fix everywhere else. Removing the entry, rather than trying
+     to hand-fix that array, was the actual fix: falling through to the shared default gives
+     C2C Full the real chronological order for free, with no separate array to keep in sync
+     as more stories get tagged into the set. */
   /* Sheet order for the 7 command rows with a site match: Zacchaeus, Philip & the
      Ethiopian, The Apostles Persecuted, The Samaritan Woman, The Vine and the Branches,
      The Early Church, The Widow's Offering. (The sheet's Pray-and-Forgive and Love rows
-     point at The Lord's Prayer and Love Your Enemies, and its Give row's companion is
-     Giving to the Needy -- all three are Sermon on the Mount stories, deliberately not
-     members of this set, so those rows have no match here.) The other three members are
+     point at How To Pray (Matt 6:5-15, titled The Lord's Prayer when this was written) and
+     Love Your Enemies, and its Give row's companion is How To Give (was Giving to the
+     Needy) -- all three are Sermon on the Mount stories, deliberately not members of this
+     set, so those rows have no match here.) The other three members are
      paired with the command each best illustrates: Sends Out His Disciples next to Go and
      Tell's Samaritan Woman; the Greatest Commandment carries Love on its own now that Love
      Your Enemies is gone; the Great Commission last, as the set's own closing send-off
@@ -415,19 +460,13 @@ export const STORIES_CSS = `
 .talt{display:block;font-size:11.5px;color:#7E8F99;margin-top:2px;font-style:italic}
 .tctx{font-size:11.5px;line-height:1.45;color:#5E727C;margin-top:7px;padding-left:8px;border-left:2px solid #cfe6ec}
 mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
-/* Sermon on the Mount. On a tile it is an outline rather than a badge: 18 of them sit
-   consecutively in Matthew, and a badge on every one was more noise than signal. The list
-   row, which shows one story per line, keeps the words. Border color is a lighter tint of
-   the Sermon on the Mount set icon's own maroon background (assets/story-set-icons/
-   sermon-on-the-mount.webp), so the tile reads as "belongs to that set" at a glance. */
-.tile.issom{border-color:#c48483}
-.tile.issom:hover{border-color:#a44140}
+/* Sermon on the Mount and Paul's Journeys used to get a tinted tile outline here (maroon
+   and navy, matching each set's own icon) so a tile read as "belongs to that set" at a
+   glance. Dropped once both sets got their own consistent cover-art backdrop and palette
+   (see STORY_IMG's note above the SOTM/Paul's Journeys entries) -- the art now carries
+   that signal, so the extra border was redundant. The list row still shows the words. */
 .som{background:#e3f4f8;color:var(--teal);font-size:9.5px;font-weight:700;letter-spacing:.04em;
   border-radius:4px;padding:2px 5px;white-space:nowrap}
-/* Paul's Journeys: same tile-outline treatment as Sermon on the Mount, tinted to that set
-   icon's own navy background (assets/story-set-icons/pauls-journeys.webp) instead. */
-.tile.ispj{border-color:#638bab}
-.tile.ispj:hover{border-color:#0f4d7e}
 
 /* books view: one rail, 66 book columns, two levels of collapsible grouping.
    The rail runs to the right edge of the window rather than stopping at the 1180px wrap,
@@ -896,8 +935,7 @@ function inlineSets(s, cls){
 }
 /* One markup for both tile shapes; .cmp re-lays it out for the narrow book columns. */
 function tile(s, compact){
-  return '<button class="tile' + (compact ? ' cmp' : '') + (s.som ? ' issom' : '') +
-    (sets(s).includes("Paul's Journeys") ? ' ispj' : '') + '" data-id="' + s.id + '">' +
+  return '<button class="tile' + (compact ? ' cmp' : '') + '" data-id="' + s.id + '">' +
     art(s) +
     '<div class="tmain">' +
       '<div class="tt">' + esc(title(s)) + inlineSets(s) + '</div>' + altLine(s) +

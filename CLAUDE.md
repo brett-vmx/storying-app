@@ -201,16 +201,34 @@ back to the book icon.
 
 A third generation covers all of Sermon on the Mount (18) and Paul's Journeys (27): rather
 than one bespoke scene per story, each set shares one fixed backdrop and palette (matching
-that set's own tile-border and icon colors — maroon hillside-teaching for SOTM, navy
-Mediterranean-map for Paul's Journeys) with a small, text-free, passage-grounded symbol per
-story swapped in on top (birds and lilies for Do Not Worry, Lydia's purple-dye vat, etc.).
-Paul's Journeys covers also carry a plain numeral for which missionary journey (1/2/3) the
-story belongs to — deliberately a digit, not a word, so nothing there needs translation. Source
-files arrived in `assets/stories/SOTM/` and `assets/stories/Paul's Journeys/`, numbered to
-match each set's own read order; `lib/` filenames drop the number and add a `-som`/`-pj`
-suffix only where the same title already exists as an unrelated story elsewhere (e.g. Luke's
-own "Love Your Enemies"), purely for human legibility — lookup is by `"Book|Title"`, not
-filename, so the suffix has no functional effect.
+those sets' own icon colors — maroon hillside-teaching for SOTM, navy Mediterranean-map for
+Paul's Journeys) with a small, text-free, passage-grounded symbol per story swapped in on top
+(birds and lilies for Do Not Worry, Lydia's purple-dye vat, etc.). Paul's Journeys covers
+also carry a plain numeral for which missionary journey (1/2/3) the story belongs to —
+deliberately a digit, not a word, so nothing there needs translation. Source files arrived
+in `assets/stories/SOTM/` and `assets/stories/Paul's Journeys/`, numbered to match each
+set's own read order; `lib/` filenames drop the number and add a `-som`/`-pj` suffix only
+where the same title already exists as an unrelated story elsewhere (e.g. Luke's own "Love
+Your Enemies"), purely for human legibility — lookup is by `"Book|Title"`, not filename, so
+the suffix has no functional effect. Both sets originally also got a tinted tile outline
+(`.tile.issom`, `.tile.ispj` — maroon and navy, matching this same art) so a tile read as
+"belongs to that set" before the art itself existed; once the shared backdrops shipped, the
+border became redundant signal and was removed (the classes and their CSS are gone, not
+just hidden) — the consistent cover art carries that signal on its own now. The three
+consecutive Matthew 6 stories on money, prayer and fasting are named **How To Give**, **How
+To Pray** and **How To Fast** (not their sheet titles, Giving to the Needy / The Lord's
+Prayer / Fasting) specifically so the shared "How To" prefix reads as a matched set when
+they sit next to each other in Grid/List — "The Lord's Prayer" survives as an `ALT_NAMES`
+entry on How To Pray since it is likely to be searched by that name.
+
+**All 50 C2C Full stories now have cover art**, finished with one more one-off bespoke batch
+(own background/color per story, not a shared family the way SOTM/Paul's Journeys are) for
+the 31 members that had none plus a replacement for Lazarus Raised from the Dead's older
+sunburst-themed cover. A few of these titles are also told from a different book that is not
+a C2C Full member (Mark has its own "The Great Commission" and "Jesus Enters Jerusalem",
+Mark and Luke both have "Baptism of Jesus" and "Temptation of Jesus"); those four filenames
+get a `-c2c` suffix for legibility only, same as the `-som`/`-pj` suffixes above — lookup is
+always by `"Book|Title"`, never filename.
 
 **Watch for CSS collisions with the pitch page.** `build-stories.mjs` is handed the pitch
 page's whole CSS block, which styles some very generic selectors. `.chips span` there is a
@@ -236,8 +254,11 @@ Three stories got renamed/merged by hand to sync with decisions Brett already ma
 spreadsheet tab, not from anything visible in the app's own data: **The Passover** (`B19`)
 absorbed **Crossing the Red Sea** (`B20`, deleted, its own set memberships and theme tags
 folded into B19) to become "The Passover + Escape Through the Sea", `12:1-30, 13:17–14:31`;
-**The Holy Spirit** (`R4`) became "The Holy Spirit + Ascension", extended to `1:4-11` so it
-actually covers the ascension (Acts 1:9-11), not just the promise of it; and **Satan Bound**
+**The Holy Spirit** (`R4`) became "Jesus Ascends to Heaven" (briefly "The Holy Spirit +
+Ascension" in between), extended to `1:4-11` so it actually covers the ascension (Acts
+1:9-11), not just the promise of it -- Luke has its own separate "Jesus Ascends to Heaven"
+(`L68`, 24:50-53), so the title is shared across two books on purpose, disambiguated by
+`b`/`r` same as any other title collision in this file; and **Satan Bound**
 (`T5`) absorbed **The 1,000 Year Reign** (`T6`, deleted) to become "The 1,000 Year Reign +
 Satan Crushed", extended to `20:1-10`. If the spreadsheet ever regains a real generator script,
 these three merges need to happen on that side too, or a regenerate will split them back apart.
