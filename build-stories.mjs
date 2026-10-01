@@ -199,6 +199,133 @@ const STORY_IMG = {
   'Revelation|The Second Coming': 'the-second-coming.webp',
   'Revelation|The 1,000 Year Reign + Satan Crushed': 'the-thousand-year-reign-and-satan-crushed.webp',
   'Revelation|The New Creation': 'the-new-creation.webp',
+  /* Not a C2C Full pass: these 18 finish out art for the OTHER six defined story sets (7
+     Commands, Stories of Hope, Acts, OT Stories, Sacrifice Stories, Baptism Hammer), which
+     each had a handful of members still showing the book-icon fallback. One-off bespoke
+     covers, same as the rest of this map. */
+  'Luke|Jesus Sends Out His Disciples': 'jesus-sends-out-his-disciples.webp',
+  'Matthew|The Greatest Commandment': 'the-greatest-commandment.webp',
+  'John|The Vine and the Branches': 'the-vine-and-the-branches.webp',
+  'Luke|The Woman Who Wept at the Feet of Jesus': 'the-woman-who-wept-at-the-feet-of-jesus.webp',
+  'Luke|The Pharisee and the Tax Collector': 'the-pharisee-and-the-tax-collector.webp',
+  'Matthew|The Unforgiving Slave': 'the-unforgiving-slave.webp',
+  'Luke|The Risen Jesus': 'the-risen-jesus.webp',
+  'Acts|Healing a Lame Man': 'healing-a-lame-man.webp',
+  'Acts|Before the Jewish Leadership': 'before-the-jewish-leadership.webp',
+  'Acts|Stephen is Martyred': 'stephen-is-martyred.webp',
+  "Acts|Paul's Conversion": 'pauls-conversion.webp',
+  "Acts|Cornelius's Family is Saved": 'corneliuss-family-is-saved.webp',
+  'Acts|The Church at Antioch Begins': 'the-church-at-antioch-begins.webp',
+  'Judges|Gideon\'s Army': 'gideons-army.webp',
+  '2 Samuel|David Sins': 'david-sins.webp',
+  '2 Chronicles|Jehoshaphat': 'jehoshaphat.webp',
+  'Genesis|Cain and Abel': 'cain-and-abel.webp',
+  'Leviticus|Unintentional Sin': 'unintentional-sin.webp',
+  /* Backlog batch 1 of 4 (see CLAUDE.md): the 20 remaining Old Testament stories, Genesis
+     through the Exile, with no story set of their own driving priority -- just working
+     through what's left. */
+  'Genesis|Hagar and Ishmael': 'hagar-and-ishmael.webp',
+  'Genesis|Sodom and Gomorrah': 'sodom-and-gomorrah.webp',
+  'Genesis|Jacob and Esau': 'jacob-and-esau.webp',
+  'Genesis|Jacob Wrestles with God': 'jacob-wrestles-with-god.webp',
+  'Exodus|Manna': 'manna.webp',
+  'Exodus|Hands Held High': 'hands-held-high.webp',
+  "Exodus|Building God's Holy Tent": 'building-gods-holy-tent.webp',
+  'Numbers|The 12 Spies': 'the-12-spies.webp',
+  'Joshua|The Walls of Jericho': 'the-walls-of-jericho.webp',
+  'Joshua|Achan Steals Some Treasure': 'achan-steals-some-treasure.webp',
+  'Judges|Samson the Strong Man': 'samson-the-strong-man.webp',
+  'Ruth|Ruth and Naomi': 'ruth-and-naomi.webp',
+  "1 Samuel|Hannah's Prayer": 'hannahs-prayer.webp',
+  '1 Kings|God Provides for Elijah': 'god-provides-for-elijah.webp',
+  '2 Kings|Hezekiah is Healed': 'hezekiah-is-healed.webp',
+  '2 Kings|Josiah, the boy King': 'josiah-the-boy-king.webp',
+  'Nehemiah|Rebuilding the Wall (Nehemiah)': 'rebuilding-the-wall-nehemiah.webp',
+  'Esther|Esther': 'esther.webp',
+  'Job|Job': 'job.webp',
+  "Ezekiel|A New Heart for God's People (The Exile)": 'a-new-heart-for-gods-people.webp',
+  /* Backlog batch 3 of 4 (see CLAUDE.md): the remaining Matthew, Mark and John stories --
+     everything left in those three Gospels once Parables (batch 2) are done separately.
+     Luke, Acts and Revelation's remaining stories are batch 4, kept apart from these three
+     since Luke-Acts is one continuous work by the same author and Revelation is the
+     canon's own closing bookend. */
+  'Matthew|Genealogy of Jesus': 'genealogy-of-jesus.webp',
+  'Matthew|The Wise Men': 'the-wise-men.webp',
+  'Matthew|John the Baptist': 'john-the-baptist.webp',
+  'Matthew|Follow and Fish': 'follow-and-fish.webp',
+  'Matthew|Jesus Walks on Water': 'jesus-walks-on-water.webp',
+  'Matthew|Who did people say Jesus was?': 'who-did-people-say-jesus-was.webp',
+  'Matthew|Jesus Shines in Glorious Light': 'jesus-shines-in-glorious-light.webp',
+  'Matthew|Boy with an Unclean Spirit': 'boy-with-an-unclean-spirit.webp',
+  'Matthew|Finding a Coin in the Mouth of a Fish': 'finding-a-coin-in-the-mouth-of-a-fish.webp',
+  'Mark|The Man with the Paralyzed Hand': 'the-man-with-the-paralyzed-hand.webp',
+  'Mark|True Relationships': 'true-relationships.webp',
+  "Mark|A Gentile Mother's Faith": 'a-gentile-mothers-faith.webp',
+  'John|Water Into Wine': 'water-into-wine.webp',
+  'John|Cleansing the Temple': 'cleansing-the-temple.webp',
+  "John|Healing an Official's Son": 'healing-an-officials-son.webp',
+  'John|Man Healed After 38 Years': 'man-healed-after-38-years.webp',
+  'John|An Adulteress Forgiven': 'an-adulteress-forgiven.webp',
+  'John|The Good Shepherd': 'the-good-shepherd.webp',
+  "John|Oil Poured on Jesus's Feet": 'oil-poured-on-jesuss-feet.webp',
+  'John|Grain of Wheat': 'grain-of-wheat.webp',
+  'John|Jesus Washes His Disciples Feet': 'jesus-washes-his-disciples-feet.webp',
+  'John|The Way to the Father': 'the-way-to-the-father.webp',
+  'John|The Promise of the Holy Spirit': 'the-promise-of-the-holy-spirit.webp',
+  'John|Doubting Thomas': 'doubting-thomas.webp',
+  /* Backlog batch 2 of 4 (see CLAUDE.md): the 21 remaining parables, all sharing a common
+     "Kingdom of God" cover treatment (a consistent secondary background layer) so the set
+     reads as a family even though -- unlike SOTM/Paul's Journeys above -- there's no
+     dedicated story-set filter tying them together, just the shared Parables tag. The
+     Unforgiving Slave above is also part of this family; its entry was left in place and
+     only the file on disk was replaced. */
+  'Matthew|The Weeds': 'the-weeds.webp',
+  'Matthew|The Mustard Seed': 'the-mustard-seed.webp',
+  'Matthew|The Hidden Treasure': 'the-hidden-treasure.webp',
+  'Matthew|The Pearl of Great Price': 'the-pearl-of-great-price.webp',
+  'Matthew|The Fishing Net': 'the-fishing-net.webp',
+  'Matthew|The Vineyard Workers': 'the-vineyard-workers.webp',
+  'Matthew|The Two Sons': 'the-two-sons.webp',
+  'Matthew|The Vineyard Owner': 'the-vineyard-owner.webp',
+  'Matthew|The Great Banquet': 'the-great-banquet.webp',
+  'Matthew|The Ten Virgins': 'the-ten-virgins.webp',
+  'Matthew|The Talents': 'the-talents.webp',
+  'Matthew|The Sheep and the Goats': 'the-sheep-and-the-goats.webp',
+  'Mark|The Growing Seed': 'the-growing-seed.webp',
+  'Luke|The Good Samaritan': 'the-good-samaritan.webp',
+  'Luke|The Rich Fool': 'the-rich-fool.webp',
+  "Luke|Ready for the Master's Return": 'ready-for-the-masters-return.webp',
+  'Luke|The Lost Sheep': 'the-lost-sheep.webp',
+  'Luke|The Lost Coin': 'the-lost-coin.webp',
+  'Luke|The Dishonest Manager': 'the-dishonest-manager.webp',
+  'Luke|The Persistent Widow': 'the-persistent-widow.webp',
+  'Luke|The Bags of Gold': 'the-bags-of-gold.webp',
+  /* Backlog batch 4 of 4 (see CLAUDE.md): the remaining Luke, Acts and Revelation stories,
+     the last of the four backlog batches. Luke|Jesus Ascends to Heaven (L68) gets a
+     -luke suffix since Acts carries its own same-titled story (R4, see that story's own
+     note above on the deliberate title collision); Acts's file keeps its older name
+     (the-holy-spirit-and-ascension.webp) from before that story was renamed. */
+  'Luke|The Annunciation': 'the-annunciation.webp',
+  'Luke|The Shepherds and the Angels': 'the-shepherds-and-the-angels.webp',
+  'Luke|Young Jesus': 'young-jesus.webp',
+  'Luke|The Unclean Demonic Spirit': 'the-unclean-demonic-spirit.webp',
+  'Luke|Miraculous Catch of Fish': 'miraculous-catch-of-fish.webp',
+  'Luke|Cleansing a Leper': 'cleansing-a-leper.webp',
+  'Luke|The Faith of a Roman Military Official': 'faith-of-a-roman-military-official.webp',
+  "Luke|Widow's Son Raised": 'widows-son-raised.webp',
+  'Luke|Take up Your Cross': 'take-up-your-cross.webp',
+  'Luke|Mary and Martha': 'mary-and-martha.webp',
+  'Luke|Healing a Disabled Woman': 'healing-a-disabled-woman.webp',
+  'Luke|Counting the Cost': 'counting-the-cost.webp',
+  'Luke|Ten Lepers Healed': 'ten-lepers-healed.webp',
+  'Luke|Jesus and the Children': 'jesus-and-the-children.webp',
+  'Luke|The Rich Young Ruler': 'the-rich-young-ruler.webp',
+  'Luke|Blind Bartimaeus': 'blind-bartimaeus.webp',
+  'Luke|Jesus Appears to Men on the Road': 'jesus-appears-to-men-on-the-road.webp',
+  'Luke|Jesus Ascends to Heaven': 'jesus-ascends-to-heaven-luke.webp',
+  'Acts|Lying to the Holy Spirit': 'lying-to-the-holy-spirit.webp',
+  'Acts|A Growing Church': 'a-growing-church.webp',
+  'Revelation|The Great White Throne Judgment': 'the-great-white-throne-judgment.webp',
 };
 
 /* Alternate titles. Search matches them, the editor exposes them, and a tile only shows

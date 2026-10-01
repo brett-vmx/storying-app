@@ -1880,7 +1880,6 @@
 "7 Commands"
 ],
 "g": [
-"Parables",
 "Love",
 "Obedience"
 ],
@@ -1894,9 +1893,7 @@
 "par": [],
 "s": [],
 "g": [
-"Worship",
-"Women",
-"Teachings"
+"Parables"
 ],
 "som": false
 },
@@ -1917,7 +1914,9 @@
 "r": "12:13\u201321",
 "par": [],
 "s": [],
-"g": [],
+"g": [
+"Parables"
+],
 "som": false
 },
 {
@@ -1930,9 +1929,7 @@
 ],
 "s": [],
 "g": [
-"Miracles",
-"Healings",
-"Women"
+"Parables"
 ],
 "som": false
 },
@@ -2011,7 +2008,9 @@
 "r": "16:1-13",
 "par": [],
 "s": [],
-"g": [],
+"g": [
+"Parables"
+],
 "som": false
 },
 {
@@ -2039,7 +2038,6 @@
 "par": [],
 "s": [],
 "g": [
-"Parables",
 "Prayer",
 "Perseverance",
 "Women"
@@ -2088,7 +2086,8 @@
 "g": [
 "Money",
 "Obedience",
-"Teachings"
+"Teachings",
+"Kingdom of God"
 ],
 "som": false
 },
@@ -2139,7 +2138,6 @@
 "C2C Full"
 ],
 "g": [
-"Parables",
 "Obedience",
 "Money"
 ],
@@ -2153,8 +2151,7 @@
 "par": [],
 "s": [],
 "g": [
-"Worship",
-"Son"
+"Parables"
 ],
 "som": false
 },
