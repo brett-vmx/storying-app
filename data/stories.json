@@ -55,7 +55,9 @@
 "Sacrifice Stories",
 "Baptism Hammer",
 "Paul's Journeys",
-"Sermon on the Mount"
+"Sermon on the Mount",
+"7 Signs of John",
+"Kingdom of God"
 ],
 "stories": [
 {
@@ -1186,7 +1188,9 @@
 "b": "Matthew",
 "r": "13:24-30,36-43",
 "par": [],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God"
@@ -1202,7 +1206,9 @@
 "Mark 4:30-32",
 "Luke 13:18-19"
 ],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God",
@@ -1216,7 +1222,9 @@
 "b": "Matthew",
 "r": "13:44",
 "par": [],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God"
@@ -1229,7 +1237,9 @@
 "b": "Matthew",
 "r": "13:45-46",
 "par": [],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God"
@@ -1242,7 +1252,9 @@
 "b": "Matthew",
 "r": "13:47-50",
 "par": [],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God"
@@ -1258,7 +1270,9 @@
 "Mark 6:45-52",
 "John 6:16-21"
 ],
-"s": [],
+"s": [
+"7 Signs of John"
+],
 "g": [
 "Miracles",
 "Nature",
@@ -1334,7 +1348,8 @@
 "r": "18:21-35",
 "par": [],
 "s": [
-"Stories of Hope"
+"Stories of Hope",
+"Kingdom of God"
 ],
 "g": [
 "Parables",
@@ -1349,7 +1364,9 @@
 "b": "Matthew",
 "r": "20:1-16",
 "par": [],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God"
@@ -1392,7 +1409,9 @@
 "par": [
 "Luke 14:15-24"
 ],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God"
@@ -1423,7 +1442,9 @@
 "b": "Matthew",
 "r": "25:1\u201313",
 "par": [],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God",
@@ -1596,7 +1617,9 @@
 "b": "Mark",
 "r": "4:26-29",
 "par": [],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Parables",
 "Kingdom of God"
@@ -1677,7 +1700,8 @@
 ],
 "s": [
 "Creation to Christ",
-"C2C Full"
+"C2C Full",
+"7 Signs of John"
 ],
 "g": [
 "Miracles",
@@ -2082,7 +2106,9 @@
 "Matthew 19:13-15",
 "Mark 10:13-16"
 ],
-"s": [],
+"s": [
+"Kingdom of God"
+],
 "g": [
 "Money",
 "Obedience",
@@ -2251,7 +2277,9 @@
 "b": "John",
 "r": "2:1-11",
 "par": [],
-"s": [],
+"s": [
+"7 Signs of John"
+],
 "g": [
 "Miracles",
 "Provision",
@@ -2313,7 +2341,9 @@
 "b": "John",
 "r": "4:46-54",
 "par": [],
-"s": [],
+"s": [
+"7 Signs of John"
+],
 "g": [
 "Miracles",
 "Healings",
@@ -2327,7 +2357,9 @@
 "b": "John",
 "r": "5:1-15",
 "par": [],
-"s": [],
+"s": [
+"7 Signs of John"
+],
 "g": [
 "Miracles",
 "Healings"
@@ -2356,7 +2388,8 @@
 "par": [],
 "s": [
 "Creation to Christ",
-"C2C Full"
+"C2C Full",
+"7 Signs of John"
 ],
 "g": [
 "Miracles",
@@ -2386,7 +2419,8 @@
 "r": "11:1-44",
 "par": [],
 "s": [
-"C2C Full"
+"C2C Full",
+"7 Signs of John"
 ],
 "g": [
 "Miracles",

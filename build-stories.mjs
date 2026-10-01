@@ -57,6 +57,19 @@ const SET_ICON = {
   'Baptism Hammer': 'story-set-icons/baptism-hammer.webp',
   'Sermon on the Mount': 'story-set-icons/sermon-on-the-mount.webp',
   'C2C Full': 'story-set-icons/c2c-full.webp',
+  /* 7 Signs of John: the 7 miracles traditionally read as John's own "signs" structure
+     (water into wine, healing the official's son, healing at Bethesda, feeding the 5,000,
+     walking on water, healing the man born blind, raising Lazarus). Two of the seven are
+     filed under Matthew/Mark as their main account (Feeding the 5,000, Jesus Walks on
+     Water) with John as a par entry, same as everywhere else in this file; membership
+     doesn't care which book a story's primary account sits under. No SET_ORDER entry
+     needed: GOSPEL_ORDER already puts these 7 ids in exactly signs-1-through-7 order
+     (110, 150, 210, 560, 570, 680, 850), so the shared chronological default is correct
+     for free. Kingdom of God: every story tagged with that theme in `g`, gathered into its
+     own set per Brett's request -- no curated order yet, so it falls through to the
+     default too. */
+  '7 Signs of John': 'story-set-icons/7-signs-of-john.webp',
+  'Kingdom of God': 'story-set-icons/kingdom-of-god.webp',
 };
 
 /* The only real story art that exists today: the 13 covers running on creationtochrist.app,
