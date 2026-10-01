@@ -469,6 +469,13 @@ export const STORIES_CSS = `
 @media (max-width:820px){.ctrls{flex-direction:column;gap:15px}
   .cgrp{width:100%}.cgrp.csearch{flex:0 0 auto;max-width:none}.cgrp.cview{margin-left:0}
   #view{padding-top:12px}}
+/* Between the stacked layout and the width where all three groups fit on one line, the view
+   group used to wrap alone onto a second row. Instead, search takes the whole first row and
+   filter + view share the second, view pushed right by its own auto margin. The upper bound
+   is where search (260px basis) + filter + view + both gaps stops fitting the wrap, measured
+   with the Clear pill showing (it widens the filter group by 28px, and the page opens with a
+   filter on), so the layout does not jump when that pill appears or goes away. */
+@media (min-width:821px) and (max-width:1110px){.cgrp.csearch{flex:1 1 100%;max-width:none}}
 .srch{position:relative;width:100%;height:44px}
 .srch input{width:100%;height:44px;font:inherit;font-size:15px;padding:0 14px 0 38px;border-radius:10px;
   border:1px solid #d5dee2;background:#fff;color:var(--ink)}
@@ -497,7 +504,11 @@ export const STORIES_CSS = `
 .drawer{display:none;background:#fff;border:1px solid #e0e7ea;border-radius:12px;padding:16px 18px;margin-top:12px}
 .drawer.open{display:block}
 .dgrp+.dgrp{margin-top:14px;padding-top:14px;border-top:1px solid #eef2f4}
-.dgrp h4{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7E8F99;margin:0 0 9px}
+/* The Tags drawer has six stacked groups, so it gets roomier spacing and a slightly firmer rule
+   than the editor modal, which shares .dgrp and stays compact. */
+#dTags .dgrp+.dgrp{margin-top:24px;padding-top:24px;border-top-color:#dde6ea}
+#dTags .dgrp h4{margin-bottom:14px}
+.dgrp h4{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin:0 0 9px}
 /* .fchips, not .chips: the pitch page's shared CSS styles ".chips span" as a pink pill */
 .fchips{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px}
 .fchips.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -511,6 +522,16 @@ export const STORIES_CSS = `
 .chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
 .chip.on:hover{background:#178ca4;border-color:#178ca4}
 .fchips.g4 .chip{justify-content:flex-start}
+/* Story Sets drawer on a phone. Two columns left each chip about 150px wide, so longer names
+   wrapped to two lines while short ones stayed on one, and there was no room to enlarge the
+   icon. Below 560px it is one column instead: every name fits on one line and the icon can
+   grow. Scoped to #dSets so the story editor's own set chips (same markup) are untouched. */
+@media (max-width:640px){#dSets .fchips.g4 .chip img{width:32px;height:32px;border-radius:8px}}
+@media (max-width:560px){
+  #dSets .fchips.g4{grid-template-columns:minmax(0,1fr)}
+  #dSets .fchips.g4 .chip{min-height:56px;padding:8px 16px 8px 12px;gap:12px;font-size:15px}
+  #dSets .fchips.g4 .chip img{width:40px;height:40px;border-radius:10px}
+  #dSets .chip .cnt{font-size:13px}}
 .chip .cnt{margin-left:auto;padding-left:6px;background:none;border:0;font-size:12px;font-weight:700;
   font-variant-numeric:tabular-nums;color:var(--teal)}
 .chip:hover .cnt{color:#127e94}
