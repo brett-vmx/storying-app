@@ -10,7 +10,7 @@
 "Nature",
 "Provision"
 ],
-"Following Jesus": [
+"Following God": [
 "Forgiveness",
 "Faith",
 "Love",
@@ -24,7 +24,8 @@
 "Worship",
 "Prayer",
 "Leadership",
-"Mission"
+"Mission",
+"Women"
 ],
 "Hard Things": [
 "Spiritual Warfare",
@@ -41,8 +42,9 @@
 "Kingdom of God",
 "God's Word"
 ],
-"Women of the Bible": [
-"Women"
+"Bible": [
+"Old Testament",
+"New Testament"
 ]
 },
 "sets": [
@@ -73,7 +75,8 @@
 "g": [
 "Nature",
 "Father",
-"Worship"
+"Worship",
+"Old Testament"
 ],
 "som": false
 },
@@ -88,7 +91,9 @@
 ],
 "g": [
 "Father",
-"Nature"
+"Nature",
+"Women",
+"Old Testament"
 ],
 "som": false
 },
@@ -106,7 +111,9 @@
 "C2C Full"
 ],
 "g": [
-"Spiritual Warfare"
+"Spiritual Warfare",
+"New Testament",
+"Old Testament"
 ],
 "som": false
 },
@@ -123,7 +130,9 @@
 ],
 "g": [
 "Obedience",
-"Forgiveness"
+"Forgiveness",
+"Women",
+"Old Testament"
 ],
 "som": false
 },
@@ -138,7 +147,8 @@
 ],
 "g": [
 "Worship",
-"Obedience"
+"Obedience",
+"Old Testament"
 ],
 "som": false
 },
@@ -155,7 +165,9 @@
 "g": [
 "Obedience",
 "Faith",
-"Nature"
+"Nature",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -170,7 +182,9 @@
 ],
 "g": [
 "Mission",
-"Humility"
+"Humility",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -186,7 +200,10 @@
 ],
 "g": [
 "Faith",
-"Mission"
+"Mission",
+"Miracles",
+"Women",
+"Old Testament"
 ],
 "som": false
 },
@@ -200,7 +217,8 @@
 "g": [
 "Faith",
 "Women",
-"Grief"
+"Grief",
+"Old Testament"
 ],
 "som": false
 },
@@ -213,7 +231,9 @@
 "s": [],
 "g": [
 "Prayer",
-"Courage"
+"Courage",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -229,7 +249,8 @@
 ],
 "g": [
 "Faith",
-"Obedience"
+"Obedience",
+"Old Testament"
 ],
 "som": false
 },
@@ -241,7 +262,10 @@
 "par": [],
 "s": [],
 "g": [
-"Forgiveness"
+"Women",
+"Obedience",
+"Faith",
+"Old Testament"
 ],
 "som": false
 },
@@ -255,7 +279,9 @@
 "g": [
 "Perseverance",
 "Faith",
-"Prayer"
+"Prayer",
+"Forgiveness",
+"Old Testament"
 ],
 "som": false
 },
@@ -271,7 +297,8 @@
 "g": [
 "Forgiveness",
 "Perseverance",
-"Pain and Suffering"
+"Pain and Suffering",
+"Old Testament"
 ],
 "som": false
 },
@@ -287,7 +314,9 @@
 "g": [
 "Mission",
 "Obedience",
-"Courage"
+"Courage",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -304,7 +333,9 @@
 "g": [
 "Nature",
 "Courage",
-"Idolatry"
+"Idolatry",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -323,7 +354,9 @@
 "Obedience",
 "Faith",
 "Nature",
-"Courage"
+"Courage",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -336,8 +369,9 @@
 "s": [],
 "g": [
 "Provision",
-"Money",
-"Faith"
+"Faith",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -351,7 +385,8 @@
 "g": [
 "Spiritual Warfare",
 "Prayer",
-"Perseverance"
+"Perseverance",
+"Old Testament"
 ],
 "som": false
 },
@@ -366,7 +401,8 @@
 ],
 "g": [
 "Obedience",
-"God's Word"
+"God's Word",
+"Old Testament"
 ],
 "som": false
 },
@@ -381,7 +417,8 @@
 ],
 "g": [
 "Idolatry",
-"Worship"
+"Worship",
+"Old Testament"
 ],
 "som": false
 },
@@ -394,7 +431,8 @@
 "s": [],
 "g": [
 "Giving",
-"Worship"
+"Worship",
+"Old Testament"
 ],
 "som": false
 },
@@ -409,7 +447,8 @@
 ],
 "g": [
 "Forgiveness",
-"Obedience"
+"Obedience",
+"Old Testament"
 ],
 "som": false
 },
@@ -422,7 +461,8 @@
 "s": [],
 "g": [
 "Faith",
-"Courage"
+"Courage",
+"Old Testament"
 ],
 "som": false
 },
@@ -435,7 +475,9 @@
 "s": [],
 "g": [
 "Faith",
-"Obedience"
+"Obedience",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -448,7 +490,8 @@
 "s": [],
 "g": [
 "Obedience",
-"Money"
+"Money",
+"Old Testament"
 ],
 "som": false
 },
@@ -464,7 +507,9 @@
 "g": [
 "Faith",
 "Courage",
-"Humility"
+"Humility",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -477,7 +522,11 @@
 "s": [],
 "g": [
 "Obedience",
-"Perseverance"
+"Perseverance",
+"Miracles",
+"Women",
+"Holy Spirit",
+"Old Testament"
 ],
 "som": false
 },
@@ -491,7 +540,8 @@
 "g": [
 "Love",
 "Faith",
-"Women"
+"Women",
+"Old Testament"
 ],
 "som": false
 },
@@ -506,7 +556,8 @@
 "Prayer",
 "Faith",
 "Women",
-"Grief"
+"Grief",
+"Old Testament"
 ],
 "som": false
 },
@@ -522,7 +573,9 @@
 ],
 "g": [
 "Humility",
-"Leadership"
+"Leadership",
+"Holy Spirit",
+"Old Testament"
 ],
 "som": false
 },
@@ -538,7 +591,8 @@
 ],
 "g": [
 "Faith",
-"Courage"
+"Courage",
+"Old Testament"
 ],
 "som": false
 },
@@ -553,7 +607,8 @@
 ],
 "g": [
 "Forgiveness",
-"Obedience"
+"Obedience",
+"Old Testament"
 ],
 "som": false
 },
@@ -570,7 +625,9 @@
 "g": [
 "Idolatry",
 "Faith",
-"Courage"
+"Courage",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -583,9 +640,10 @@
 "s": [],
 "g": [
 "Provision",
-"Money",
 "Women",
-"Faith"
+"Faith",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -599,7 +657,9 @@
 "g": [
 "Healings",
 "Prayer",
-"Faith"
+"Faith",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -613,7 +673,8 @@
 "g": [
 "Leadership",
 "God's Word",
-"Obedience"
+"Obedience",
+"Old Testament"
 ],
 "som": false
 },
@@ -630,7 +691,9 @@
 "Prayer",
 "Faith",
 "Worship",
-"Leadership"
+"Leadership",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -644,7 +707,8 @@
 "g": [
 "Leadership",
 "Perseverance",
-"Prayer"
+"Prayer",
+"Old Testament"
 ],
 "som": false
 },
@@ -658,7 +722,8 @@
 "g": [
 "Courage",
 "Women",
-"Leadership"
+"Leadership",
+"Old Testament"
 ],
 "som": false
 },
@@ -672,7 +737,8 @@
 "g": [
 "Pain and Suffering",
 "Perseverance",
-"Grief"
+"Grief",
+"Old Testament"
 ],
 "som": false
 },
@@ -685,7 +751,8 @@
 "s": [],
 "g": [
 "Holy Spirit",
-"Forgiveness"
+"Forgiveness",
+"Old Testament"
 ],
 "som": false
 },
@@ -701,7 +768,9 @@
 "g": [
 "Obedience",
 "Mission",
-"Forgiveness"
+"Forgiveness",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -718,7 +787,9 @@
 "Idolatry",
 "Courage",
 "Faith",
-"Persecution"
+"Persecution",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -735,7 +806,9 @@
 "Faith",
 "Courage",
 "Prayer",
-"Persecution"
+"Persecution",
+"Miracles",
+"Old Testament"
 ],
 "som": false
 },
@@ -749,7 +822,8 @@
 ],
 "s": [],
 "g": [
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -767,7 +841,9 @@
 ],
 "g": [
 "Son",
-"Faith"
+"Faith",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -780,7 +856,8 @@
 "s": [],
 "g": [
 "Worship",
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -796,7 +873,8 @@
 "s": [],
 "g": [
 "Obedience",
-"Forgiveness"
+"Forgiveness",
+"New Testament"
 ],
 "som": false
 },
@@ -815,7 +893,10 @@
 "g": [
 "3 in 1",
 "Holy Spirit",
-"Obedience"
+"Obedience",
+"Father",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -833,7 +914,9 @@
 "g": [
 "Spiritual Warfare",
 "Obedience",
-"God's Word"
+"God's Word",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -848,7 +931,8 @@
 "s": [],
 "g": [
 "Mission",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -866,7 +950,8 @@
 "g": [
 "Teachings",
 "Humility",
-"Persecution"
+"Persecution",
+"New Testament"
 ],
 "som": true
 },
@@ -884,7 +969,8 @@
 ],
 "g": [
 "Teachings",
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": true
 },
@@ -900,7 +986,8 @@
 "g": [
 "Teachings",
 "God's Word",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": true
 },
@@ -915,7 +1002,8 @@
 ],
 "g": [
 "Teachings",
-"Forgiveness"
+"Forgiveness",
+"New Testament"
 ],
 "som": true
 },
@@ -930,7 +1018,8 @@
 ],
 "g": [
 "Teachings",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": true
 },
@@ -949,7 +1038,8 @@
 ],
 "g": [
 "Teachings",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": true
 },
@@ -964,7 +1054,8 @@
 ],
 "g": [
 "Teachings",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": true
 },
@@ -982,7 +1073,8 @@
 "g": [
 "Teachings",
 "Love",
-"Humility"
+"Humility",
+"New Testament"
 ],
 "som": true
 },
@@ -1000,7 +1092,9 @@
 "g": [
 "Teachings",
 "Love",
-"Forgiveness"
+"Forgiveness",
+"Father",
+"New Testament"
 ],
 "som": true
 },
@@ -1016,7 +1110,9 @@
 "g": [
 "Teachings",
 "Giving",
-"Money"
+"Money",
+"Father",
+"New Testament"
 ],
 "som": true
 },
@@ -1034,7 +1130,9 @@
 "g": [
 "Teachings",
 "Prayer",
-"Forgiveness"
+"Forgiveness",
+"Father",
+"New Testament"
 ],
 "som": true
 },
@@ -1050,7 +1148,9 @@
 "g": [
 "Teachings",
 "Worship",
-"Humility"
+"Humility",
+"Father",
+"New Testament"
 ],
 "som": true
 },
@@ -1067,7 +1167,8 @@
 ],
 "g": [
 "Teachings",
-"Money"
+"Money",
+"New Testament"
 ],
 "som": true
 },
@@ -1086,7 +1187,9 @@
 "Teachings",
 "Peace",
 "Faith",
-"Provision"
+"Provision",
+"Father",
+"New Testament"
 ],
 "som": true
 },
@@ -1105,7 +1208,8 @@
 "g": [
 "Teachings",
 "Humility",
-"Love"
+"Love",
+"New Testament"
 ],
 "som": true
 },
@@ -1123,7 +1227,9 @@
 "g": [
 "Teachings",
 "Prayer",
-"Faith"
+"Faith",
+"Father",
+"New Testament"
 ],
 "som": true
 },
@@ -1138,7 +1244,8 @@
 ],
 "g": [
 "Teachings",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": true
 },
@@ -1156,7 +1263,8 @@
 "g": [
 "Teachings",
 "Parables",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": true
 },
@@ -1178,7 +1286,9 @@
 "Miracles",
 "Healings",
 "Forgiveness",
-"Faith"
+"Faith",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -1193,7 +1303,8 @@
 ],
 "g": [
 "Parables",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1212,7 +1323,8 @@
 "g": [
 "Parables",
 "Kingdom of God",
-"Faith"
+"Faith",
+"New Testament"
 ],
 "som": false
 },
@@ -1227,7 +1339,8 @@
 ],
 "g": [
 "Parables",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1242,7 +1355,8 @@
 ],
 "g": [
 "Parables",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1257,7 +1371,8 @@
 ],
 "g": [
 "Parables",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1276,7 +1391,9 @@
 "g": [
 "Miracles",
 "Nature",
-"Faith"
+"Faith",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -1292,7 +1409,8 @@
 "s": [],
 "g": [
 "Son",
-"Teachings"
+"Teachings",
+"New Testament"
 ],
 "som": false
 },
@@ -1308,7 +1426,8 @@
 "g": [
 "Son",
 "Worship",
-"Father"
+"Father",
+"New Testament"
 ],
 "som": false
 },
@@ -1323,7 +1442,8 @@
 "Miracles",
 "Exorcisms",
 "Spiritual Warfare",
-"Faith"
+"Faith",
+"New Testament"
 ],
 "som": false
 },
@@ -1337,7 +1457,8 @@
 "g": [
 "Miracles",
 "Provision",
-"Money"
+"Money",
+"New Testament"
 ],
 "som": false
 },
@@ -1354,7 +1475,8 @@
 "g": [
 "Parables",
 "Forgiveness",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1369,7 +1491,8 @@
 ],
 "g": [
 "Parables",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1382,7 +1505,8 @@
 "s": [],
 "g": [
 "Parables",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -1397,7 +1521,8 @@
 ],
 "s": [],
 "g": [
-"Parables"
+"Parables",
+"New Testament"
 ],
 "som": false
 },
@@ -1414,7 +1539,8 @@
 ],
 "g": [
 "Parables",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1432,7 +1558,8 @@
 "g": [
 "Teachings",
 "Love",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -1448,7 +1575,8 @@
 "g": [
 "Parables",
 "Kingdom of God",
-"Perseverance"
+"Perseverance",
+"New Testament"
 ],
 "som": false
 },
@@ -1462,7 +1590,8 @@
 "g": [
 "Parables",
 "Obedience",
-"Money"
+"Money",
+"New Testament"
 ],
 "som": false
 },
@@ -1476,7 +1605,8 @@
 "g": [
 "Parables",
 "Love",
-"Giving"
+"Giving",
+"New Testament"
 ],
 "som": false
 },
@@ -1494,7 +1624,9 @@
 "g": [
 "Prayer",
 "Obedience",
-"Pain and Suffering"
+"Pain and Suffering",
+"Father",
+"New Testament"
 ],
 "som": false
 },
@@ -1516,7 +1648,8 @@
 "g": [
 "Son",
 "Forgiveness",
-"Pain and Suffering"
+"Pain and Suffering",
+"New Testament"
 ],
 "som": false
 },
@@ -1539,7 +1672,8 @@
 "Resurrections",
 "Son",
 "Faith",
-"Women"
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -1560,7 +1694,11 @@
 "g": [
 "Mission",
 "Obedience",
-"3 in 1"
+"3 in 1",
+"Father",
+"Son",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -1576,7 +1714,8 @@
 "s": [],
 "g": [
 "Miracles",
-"Healings"
+"Healings",
+"New Testament"
 ],
 "som": false
 },
@@ -1589,7 +1728,8 @@
 "s": [],
 "g": [
 "Teachings",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -1607,7 +1747,8 @@
 ],
 "g": [
 "Parables",
-"God's Word"
+"God's Word",
+"New Testament"
 ],
 "som": false
 },
@@ -1622,7 +1763,8 @@
 ],
 "g": [
 "Parables",
-"Kingdom of God"
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -1643,7 +1785,9 @@
 "Miracles",
 "Nature",
 "Faith",
-"Peace"
+"Peace",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -1663,7 +1807,8 @@
 "g": [
 "Miracles",
 "Exorcisms",
-"Spiritual Warfare"
+"Spiritual Warfare",
+"New Testament"
 ],
 "som": false
 },
@@ -1685,7 +1830,8 @@
 "Healings",
 "Resurrections",
 "Faith",
-"Women"
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -1706,7 +1852,8 @@
 "g": [
 "Miracles",
 "Provision",
-"Faith"
+"Faith",
+"New Testament"
 ],
 "som": false
 },
@@ -1724,7 +1871,8 @@
 "Exorcisms",
 "Faith",
 "Perseverance",
-"Women"
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -1744,7 +1892,8 @@
 "Giving",
 "Money",
 "Women",
-"Teachings"
+"Teachings",
+"New Testament"
 ],
 "som": false
 },
@@ -1759,7 +1908,11 @@
 "Faith",
 "Obedience",
 "Women",
-"Son"
+"Son",
+"3 in 1",
+"Father",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -1772,7 +1925,8 @@
 "s": [],
 "g": [
 "Son",
-"God's Word"
+"God's Word",
+"New Testament"
 ],
 "som": false
 },
@@ -1783,7 +1937,12 @@
 "r": "2:41-52",
 "par": [],
 "s": [],
-"g": [],
+"g": [
+"Son",
+"Obedience",
+"Father",
+"New Testament"
+],
 "som": false
 },
 {
@@ -1797,9 +1956,9 @@
 "s": [],
 "g": [
 "Miracles",
-"Provision",
-"Mission",
-"Obedience"
+"Exorcisms",
+"Spiritual Warfare",
+"New Testament"
 ],
 "som": false
 },
@@ -1812,8 +1971,10 @@
 "s": [],
 "g": [
 "Miracles",
-"Healings",
-"Faith"
+"Provision",
+"Mission",
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -1827,7 +1988,12 @@
 "Mark 1:40-45"
 ],
 "s": [],
-"g": [],
+"g": [
+"Miracles",
+"Healings",
+"Faith",
+"New Testament"
+],
 "som": false
 },
 {
@@ -1841,9 +2007,10 @@
 "s": [],
 "g": [
 "Miracles",
-"Resurrections",
-"Grief",
-"Women"
+"Healings",
+"Faith",
+"Humility",
+"New Testament"
 ],
 "som": false
 },
@@ -1855,10 +2022,11 @@
 "par": [],
 "s": [],
 "g": [
-"Forgiveness",
-"Love",
-"Worship",
-"Women"
+"Miracles",
+"Resurrections",
+"Grief",
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -1871,7 +2039,13 @@
 "s": [
 "Stories of Hope"
 ],
-"g": [],
+"g": [
+"Forgiveness",
+"Love",
+"Worship",
+"Women",
+"New Testament"
+],
 "som": false
 },
 {
@@ -1886,7 +2060,8 @@
 "s": [],
 "g": [
 "Teachings",
-"Mission"
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -1904,8 +2079,9 @@
 "7 Commands"
 ],
 "g": [
-"Love",
-"Obedience"
+"Teachings",
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -1917,7 +2093,10 @@
 "par": [],
 "s": [],
 "g": [
-"Parables"
+"Parables",
+"Love",
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -1928,7 +2107,12 @@
 "r": "10:38-42",
 "par": [],
 "s": [],
-"g": [],
+"g": [
+"Worship",
+"Women",
+"Teachings",
+"New Testament"
+],
 "som": false
 },
 {
@@ -1939,7 +2123,9 @@
 "par": [],
 "s": [],
 "g": [
-"Parables"
+"Parables",
+"Money",
+"New Testament"
 ],
 "som": false
 },
@@ -1953,7 +2139,9 @@
 ],
 "s": [],
 "g": [
-"Parables"
+"Parables",
+"Perseverance",
+"New Testament"
 ],
 "som": false
 },
@@ -1964,7 +2152,12 @@
 "r": "13:10-17",
 "par": [],
 "s": [],
-"g": [],
+"g": [
+"Miracles",
+"Healings",
+"Women",
+"New Testament"
+],
 "som": false
 },
 {
@@ -1974,7 +2167,11 @@
 "r": "14:25-33",
 "par": [],
 "s": [],
-"g": [],
+"g": [
+"Teachings",
+"Obedience",
+"New Testament"
+],
 "som": false
 },
 {
@@ -1990,7 +2187,7 @@
 "Parables",
 "Love",
 "Forgiveness",
-"Women"
+"New Testament"
 ],
 "som": false
 },
@@ -2003,9 +2200,10 @@
 "s": [],
 "g": [
 "Parables",
-"Forgiveness",
 "Love",
-"Father"
+"Forgiveness",
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -2021,7 +2219,10 @@
 ],
 "g": [
 "Parables",
-"Money"
+"Forgiveness",
+"Love",
+"Father",
+"New Testament"
 ],
 "som": false
 },
@@ -2033,7 +2234,9 @@
 "par": [],
 "s": [],
 "g": [
-"Parables"
+"Parables",
+"Money",
+"New Testament"
 ],
 "som": false
 },
@@ -2047,10 +2250,9 @@
 "C2C Full"
 ],
 "g": [
-"Miracles",
-"Healings",
-"Worship",
-"Faith"
+"Parables",
+"Money",
+"New Testament"
 ],
 "som": false
 },
@@ -2062,9 +2264,11 @@
 "par": [],
 "s": [],
 "g": [
-"Prayer",
-"Perseverance",
-"Women"
+"Miracles",
+"Healings",
+"Worship",
+"Faith",
+"New Testament"
 ],
 "som": false
 },
@@ -2077,8 +2281,10 @@
 "s": [],
 "g": [
 "Parables",
-"Humility",
-"Prayer"
+"Prayer",
+"Perseverance",
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -2092,8 +2298,10 @@
 "Stories of Hope"
 ],
 "g": [
-"Teachings",
-"Humility"
+"Parables",
+"Humility",
+"Prayer",
+"New Testament"
 ],
 "som": false
 },
@@ -2110,10 +2318,10 @@
 "Kingdom of God"
 ],
 "g": [
-"Money",
-"Obedience",
 "Teachings",
-"Kingdom of God"
+"Humility",
+"Kingdom of God",
+"New Testament"
 ],
 "som": false
 },
@@ -2128,9 +2336,10 @@
 ],
 "s": [],
 "g": [
-"Miracles",
-"Healings",
-"Faith"
+"Teachings",
+"Money",
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -2145,9 +2354,10 @@
 ],
 "s": [],
 "g": [
-"Forgiveness",
-"Money",
-"Giving"
+"Miracles",
+"Healings",
+"Faith",
+"New Testament"
 ],
 "som": false
 },
@@ -2164,8 +2374,10 @@
 "C2C Full"
 ],
 "g": [
-"Obedience",
-"Money"
+"Forgiveness",
+"Money",
+"Giving",
+"New Testament"
 ],
 "som": false
 },
@@ -2177,7 +2389,10 @@
 "par": [],
 "s": [],
 "g": [
-"Parables"
+"Parables",
+"Obedience",
+"Money",
+"New Testament"
 ],
 "som": false
 },
@@ -2194,7 +2409,11 @@
 "s": [
 "C2C Full"
 ],
-"g": [],
+"g": [
+"Worship",
+"Son",
+"New Testament"
+],
 "som": false
 },
 {
@@ -2209,7 +2428,11 @@
 "s": [
 "C2C Full"
 ],
-"g": [],
+"g": [
+"Son",
+"Worship",
+"New Testament"
+],
 "som": false
 },
 {
@@ -2224,7 +2447,8 @@
 "g": [
 "Resurrections",
 "Faith",
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2239,7 +2463,8 @@
 ],
 "g": [
 "Mission",
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2252,7 +2477,11 @@
 "Mark 16:19-20"
 ],
 "s": [],
-"g": [],
+"g": [
+"Son",
+"Worship",
+"New Testament"
+],
 "som": false
 },
 {
@@ -2267,7 +2496,9 @@
 ],
 "g": [
 "Son",
-"Forgiveness"
+"Forgiveness",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -2283,7 +2514,8 @@
 "g": [
 "Miracles",
 "Provision",
-"Nature"
+"Nature",
+"New Testament"
 ],
 "som": false
 },
@@ -2295,7 +2527,8 @@
 "par": [],
 "s": [],
 "g": [
-"Worship"
+"Worship",
+"New Testament"
 ],
 "som": false
 },
@@ -2311,7 +2544,10 @@
 "g": [
 "Teachings",
 "Holy Spirit",
-"3 in 1"
+"3 in 1",
+"Father",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2331,7 +2567,9 @@
 "Worship",
 "Mission",
 "Forgiveness",
-"Women"
+"Women",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2347,7 +2585,8 @@
 "g": [
 "Miracles",
 "Healings",
-"Faith"
+"Faith",
+"New Testament"
 ],
 "som": false
 },
@@ -2362,7 +2601,8 @@
 ],
 "g": [
 "Miracles",
-"Healings"
+"Healings",
+"New Testament"
 ],
 "som": false
 },
@@ -2376,7 +2616,8 @@
 "g": [
 "Forgiveness",
 "Humility",
-"Women"
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -2394,7 +2635,9 @@
 "g": [
 "Miracles",
 "Healings",
-"Faith"
+"Faith",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2408,7 +2651,8 @@
 "g": [
 "Teachings",
 "Love",
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2426,7 +2670,10 @@
 "Miracles",
 "Resurrections",
 "Grief",
-"Faith"
+"Faith",
+"Women",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2441,7 +2688,8 @@
 "Worship",
 "Love",
 "Giving",
-"Women"
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -2454,7 +2702,9 @@
 "s": [],
 "g": [
 "Teachings",
-"Obedience"
+"Obedience",
+"Father",
+"New Testament"
 ],
 "som": false
 },
@@ -2468,7 +2718,8 @@
 "g": [
 "Humility",
 "Love",
-"Obedience"
+"Obedience",
+"New Testament"
 ],
 "som": false
 },
@@ -2482,7 +2733,8 @@
 "g": [
 "Teachings",
 "Father",
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2496,7 +2748,10 @@
 "g": [
 "Holy Spirit",
 "3 in 1",
-"Teachings"
+"Teachings",
+"Father",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2512,7 +2767,9 @@
 "g": [
 "Teachings",
 "Obedience",
-"Love"
+"Love",
+"Father",
+"New Testament"
 ],
 "som": false
 },
@@ -2526,7 +2783,8 @@
 "g": [
 "Faith",
 "Resurrections",
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2542,7 +2800,9 @@
 ],
 "g": [
 "Holy Spirit",
-"Mission"
+"Mission",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2560,7 +2820,10 @@
 "g": [
 "Holy Spirit",
 "Mission",
-"3 in 1"
+"3 in 1",
+"Father",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2577,7 +2840,8 @@
 "g": [
 "Giving",
 "Love",
-"Worship"
+"Worship",
+"New Testament"
 ],
 "som": false
 },
@@ -2592,7 +2856,8 @@
 ],
 "g": [
 "Miracles",
-"Healings"
+"Healings",
+"New Testament"
 ],
 "som": false
 },
@@ -2607,7 +2872,9 @@
 ],
 "g": [
 "Courage",
-"Persecution"
+"Persecution",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -2621,7 +2888,9 @@
 "g": [
 "Holy Spirit",
 "Money",
-"Obedience"
+"Obedience",
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -2634,7 +2903,8 @@
 "s": [],
 "g": [
 "Healings",
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -2650,7 +2920,8 @@
 "g": [
 "Courage",
 "Persecution",
-"Perseverance"
+"Perseverance",
+"New Testament"
 ],
 "som": false
 },
@@ -2667,7 +2938,11 @@
 "Courage",
 "Persecution",
 "Forgiveness",
-"3 in 1"
+"3 in 1",
+"Father",
+"Son",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -2685,7 +2960,9 @@
 "g": [
 "Mission",
 "God's Word",
-"Obedience"
+"Obedience",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -2701,7 +2978,9 @@
 ],
 "g": [
 "Mission",
-"Forgiveness"
+"Forgiveness",
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -2717,7 +2996,8 @@
 ],
 "g": [
 "Mission",
-"Holy Spirit"
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -2732,7 +3012,8 @@
 ],
 "g": [
 "Mission",
-"Giving"
+"Giving",
+"New Testament"
 ],
 "som": false
 },
@@ -2747,7 +3028,8 @@
 ],
 "g": [
 "Mission",
-"Holy Spirit"
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -2762,7 +3044,8 @@
 ],
 "g": [
 "Spiritual Warfare",
-"Miracles"
+"Miracles",
+"New Testament"
 ],
 "som": false
 },
@@ -2777,7 +3060,8 @@
 ],
 "g": [
 "Mission",
-"God's Word"
+"God's Word",
+"New Testament"
 ],
 "som": false
 },
@@ -2793,7 +3077,8 @@
 "g": [
 "Persecution",
 "Perseverance",
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -2809,7 +3094,8 @@
 "g": [
 "Idolatry",
 "Humility",
-"Persecution"
+"Persecution",
+"New Testament"
 ],
 "som": false
 },
@@ -2824,7 +3110,8 @@
 ],
 "g": [
 "Mission",
-"Perseverance"
+"Perseverance",
+"New Testament"
 ],
 "som": false
 },
@@ -2839,7 +3126,8 @@
 ],
 "g": [
 "Humility",
-"Leadership"
+"Leadership",
+"New Testament"
 ],
 "som": false
 },
@@ -2854,7 +3142,8 @@
 ],
 "g": [
 "Leadership",
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -2869,7 +3158,8 @@
 ],
 "g": [
 "Mission",
-"Leadership"
+"Leadership",
+"New Testament"
 ],
 "som": false
 },
@@ -2884,7 +3174,8 @@
 ],
 "g": [
 "Mission",
-"Holy Spirit"
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -2901,7 +3192,8 @@
 "g": [
 "Mission",
 "Faith",
-"Women"
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -2917,7 +3209,8 @@
 "g": [
 "Spiritual Warfare",
 "Exorcisms",
-"Persecution"
+"Persecution",
+"New Testament"
 ],
 "som": false
 },
@@ -2934,7 +3227,8 @@
 "g": [
 "Courage",
 "Worship",
-"Persecution"
+"Persecution",
+"New Testament"
 ],
 "som": false
 },
@@ -2949,7 +3243,8 @@
 ],
 "g": [
 "Persecution",
-"Courage"
+"Courage",
+"New Testament"
 ],
 "som": false
 },
@@ -2964,7 +3259,8 @@
 ],
 "g": [
 "God's Word",
-"Faith"
+"Faith",
+"New Testament"
 ],
 "som": false
 },
@@ -2979,7 +3275,8 @@
 ],
 "g": [
 "Mission",
-"Idolatry"
+"Idolatry",
+"New Testament"
 ],
 "som": false
 },
@@ -2995,7 +3292,8 @@
 ],
 "g": [
 "Courage",
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -3009,7 +3307,8 @@
 "Paul's Journeys"
 ],
 "g": [
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -3024,7 +3323,9 @@
 ],
 "g": [
 "God's Word",
-"Humility"
+"Humility",
+"Women",
+"New Testament"
 ],
 "som": false
 },
@@ -3039,7 +3340,8 @@
 "Paul's Journeys"
 ],
 "g": [
-"Holy Spirit"
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -3053,7 +3355,8 @@
 "Paul's Journeys"
 ],
 "g": [
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -3069,7 +3372,8 @@
 ],
 "g": [
 "Spiritual Warfare",
-"Exorcisms"
+"Exorcisms",
+"New Testament"
 ],
 "som": false
 },
@@ -3085,7 +3389,8 @@
 "g": [
 "Idolatry",
 "Persecution",
-"Courage"
+"Courage",
+"New Testament"
 ],
 "som": false
 },
@@ -3099,7 +3404,8 @@
 "Paul's Journeys"
 ],
 "g": [
-"Mission"
+"Mission",
+"New Testament"
 ],
 "som": false
 },
@@ -3114,7 +3420,8 @@
 ],
 "g": [
 "Miracles",
-"Resurrections"
+"Resurrections",
+"New Testament"
 ],
 "som": false
 },
@@ -3130,7 +3437,8 @@
 "g": [
 "Love",
 "Leadership",
-"Perseverance"
+"Perseverance",
+"New Testament"
 ],
 "som": false
 },
@@ -3145,7 +3453,9 @@
 ],
 "g": [
 "Obedience",
-"Courage"
+"Courage",
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
@@ -3160,7 +3470,8 @@
 ],
 "g": [
 "Son",
-"Perseverance"
+"Perseverance",
+"New Testament"
 ],
 "som": false
 },
@@ -3176,7 +3487,8 @@
 "g": [
 "Spiritual Warfare",
 "Son",
-"Peace"
+"Peace",
+"New Testament"
 ],
 "som": false
 },
@@ -3189,7 +3501,8 @@
 "s": [],
 "g": [
 "Obedience",
-"Son"
+"Son",
+"New Testament"
 ],
 "som": false
 },
@@ -3205,7 +3518,8 @@
 "g": [
 "Peace",
 "Worship",
-"Nature"
+"Nature",
+"New Testament"
 ],
 "som": false
 }
