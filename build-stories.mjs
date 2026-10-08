@@ -1,9 +1,9 @@
 /* storying.app/stories -- the library browse page.
    Reads data/stories.json (generated from Misc/Story-Sets.xlsx) and renders three views of
    the same list: books (one horizontal scroll rail, one column per book of the Bible, with
-   two levels of collapsible grouping), list, and a four-column grid. Filtering, search and
-   tag/set editing all happen client side; edits are kept in localStorage and exported as
-   JSON, so the page stays static and account-free.
+   two levels of collapsible grouping), list, and a four-column grid. Filtering and search
+   happen client side, and opening a story shows its own detail page inside this same page, so
+   the whole thing stays static and account-free.
 
    This file only builds the page. It is handed the shared CSS and asset paths by
    build-site.mjs so the two pages cannot drift apart on palette or typography. Note that
@@ -98,7 +98,7 @@ const STORY_IMG = {
      replaced too, to match the newer flat-illustration style. */
   'Luke|The Paralyzed Man': 'the-paralyzed-man.webp',
   'Mark|Jesus Calms the Storm': '5-jesus-calms-the-storm.webp',
-  'Mark|The Demoniac': '6-the-man-with-many-demons.webp',
+  'Mark|The Man with Many Demons': '6-the-man-with-many-demons.webp',
   /* Replaced the original numbered cover with a new one in the flat-illustration style. */
   "Mark|Jairus' Daughter and the Bleeding Woman": 'jairus-daughter-bleeding-woman.webp',
   'Mark|Feeding the 5,000': '8-jesus-feeds-5000.webp',
@@ -158,7 +158,7 @@ const STORY_IMG = {
   'Acts|Paul and Barnabas Part Ways': 'paul-and-barnabas-part-ways.webp',
   'Acts|Paul Selects Timothy': 'paul-selects-timothy.webp',
   'Acts|A Call to New Ministry': 'a-call-to-new-ministry.webp',
-  "Acts|Lydia's Conversion": 'lydias-conversion.webp',
+  "Acts|Lydia Believes": 'lydia-believes.webp',
   'Acts|The Fortune Teller': 'the-fortune-teller.webp',
   'Acts|Paul and Silas Escape from Prison': 'paul-and-silas-escape-from-prison.webp',
   "Acts|The Attack of Jason's House": 'the-attack-of-jasons-house.webp',
@@ -349,6 +349,33 @@ const ALT_NAMES = {
   'Matthew|How To Pray': ["The Lord's Prayer"],
 };
 
+/* The 7 Commands set: ten commands, each a short phrase with the verse it comes from and the
+   library story that illustrates it. Copied from Misc/Story-Sets.xlsx's "Stories By Set" tab
+   (the "7 Commands" block: command in column D, its verse in E, story in F, the story's own
+   reference in G), in the sheet's row order. Column G is what ties a row to a library story:
+   the sheet's story names are looser than ours ("The Lord's Prayer" is How To Pray,
+   Matthew 6:5-15; "Samaritan Woman" is The Samaritan Woman, John 4:1-42).
+   One row needs a note: Endure Persecution's reference (Acts 5:12-42) spans two library
+   stories, A Growing Church (5:12-16) and The Apostles Persecuted (5:17-42); the sheet's own
+   title is the second one. (An earlier draft of the sheet had Pray and Forgive, Matthew 6:9,15,
+   and a Love row naming a second story, "Love for Enemies", Luke 6:27-36, which is the Luke
+   parallel of Love Your Enemies. Brett shortened the first to Pray and dropped the second on
+   8 October 2026.)
+   This list is the one source for both the set's order (SET_ORDER below is built from it) and
+   the command line shown above each story while 7 Commands is the active set filter. */
+const COMMANDS = [
+  { n: 'Repent and Believe', r: 'Mark 1:15', ids: ['L57'] },
+  { n: 'Be Baptized', r: 'Matthew 28:18-20', ids: ['R13'] },
+  { n: 'Endure Persecution', r: 'Luke 9:23-24', ids: ['R11'] },
+  { n: 'Pray', r: 'Matthew 6:9', ids: ['F21'] },
+  { n: 'Go and Tell', r: 'Mark 16:15', ids: ['O8'] },
+  { n: 'Love', r: 'Matthew 22:37-39', ids: ['L32'] },
+  { n: 'Abide', r: 'John 15:4', ids: ['O23'] },
+  { n: 'Gather', r: 'Hebrews 10:24-25', ids: ['R6'] },
+  { n: 'Give', r: 'Matthew 6:1-4', ids: ['I35'] },
+  { n: "Lord's Supper", r: 'Matthew 26:26-30', ids: ['L62'] },
+];
+
 /* A handful of story sets have a real intended sequence -- a set someone reads or tells
    start to finish, not just a bag of stories -- so List and Grid show them in this order
    instead of the library's default book order whenever exactly one of these sets is the
@@ -360,11 +387,8 @@ const ALT_NAMES = {
    listed here in that tab's own OT-then-Matthew-then-Mark-then-Luke-then-John-then-Acts-
    then-Revelation block order, not Creation to Christ's order, so the two arrays diverge
    past their shared first few ids on purpose. Expect this array to keep changing as Brett
-   and Todd keep working through that column. 7 Commands and Stories of Hope have grown past
-   that tab's own snapshot too (13 members there now vs. 11 distinct stories on the sheet's
-   10 command rows, and 8 vs. 5): members the sheet lists keep the sheet's order, and the
-   rest are interleaved by theme, a judgment call flagged to Brett rather than made silently
-   -- worth a second look against his actual intent. */
+   and Todd keep working through that column. 7 Commands and Stories of Hope both match
+   their sheet blocks exactly, with no extra members and no judgment-call ordering. */
 const SET_ORDER = {
   'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
   /* C2C Full deliberately has NO entry here, unlike Creation to Christ above. That 13-story
@@ -381,18 +405,12 @@ const SET_ORDER = {
      to hand-fix that array, was the actual fix: falling through to the shared default gives
      C2C Full the real chronological order for free, with no separate array to keep in sync
      as more stories get tagged into the set. */
-  /* Sheet order for the 7 command rows with a site match: Zacchaeus, Philip & the
-     Ethiopian, The Apostles Persecuted, The Samaritan Woman, The Vine and the Branches,
-     The Early Church, The Widow's Offering. (The sheet's Pray-and-Forgive and Love rows
-     point at How To Pray (Matt 6:5-15, titled The Lord's Prayer when this was written) and
-     Love Your Enemies, and its Give row's companion is How To Give (was Giving to the
-     Needy) -- all three are Sermon on the Mount stories, deliberately not members of this
-     set, so those rows have no match here.) The other three members are
-     paired with the command each best illustrates: Sends Out His Disciples next to Go and
-     Tell's Samaritan Woman; the Greatest Commandment carries Love on its own now that Love
-     Your Enemies is gone; the Great Commission last, as the set's own closing send-off
-     rather than squeezed into the Be Baptized slot its reference happens to share. */
-  '7 Commands': ['L57', 'R13', 'R11', 'O8', 'L31', 'F62', 'O23', 'R6', 'I35', 'F71'],
+  /* The sheet's ten command rows, one story each, in the sheet's order, built from COMMANDS
+     above. How To Pray is a Sermon on the Mount story, so it belongs to both sets: the sheet's
+     Pray row names it. An earlier version of this set left it out, to keep the two sets apart,
+     and carried three extras the sheet does not list (Jesus Sends Out His Disciples, the
+     Greatest Commandment, the Great Commission); the set now follows the sheet. */
+  '7 Commands': COMMANDS.flatMap(c => c.ids),
   /* The sheet's exact 8 rows, no judgment calls: Weeping Woman at Jesus' Feet, Pharisee &
      Tax Collector, Zacchaeus, Healing a Paralytic & Forgiving (Luke 5:17-26 -- the
      reference that made The Paralyzed Man's primary account Luke's rather than Matthew's,
@@ -608,6 +626,11 @@ export const STORIES_CSS = `
 .tile.cmp .tr{margin-top:2px}
 .tt{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
 .tr{font-size:12px;color:var(--ink-s);margin-top:3px;font-variant-numeric:tabular-nums}
+/* Command line above a title while 7 Commands is the active set: teal name, gray verse. */
+.tcmd{display:block;font-size:11.5px;font-weight:700;line-height:1.3;color:var(--teal);margin-bottom:3px}
+.tcmd .tcn{white-space:nowrap}
+.tcmd .tcr{font-weight:500;color:#7E8F99;white-space:nowrap}
+.tcmd.stk .tcn,.tcmd.stk .tcr{display:block}
 .tsets{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
 .tsets img{width:20px;height:20px;border-radius:5px;object-fit:cover}
 /* Two rows of tags, then clip. 19px row + 4px gap, so the cut never lands mid-row.
@@ -737,7 +760,7 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
 /* list view. Desktop is a six column table; below 860px the same markup is re-laid-out as
    a compact card, so there is only one row of HTML to keep in step. */
 .listv{margin-top:18px;background:#fff;border:1px solid #e2e8ea;border-radius:12px;overflow:hidden}
-.lrow{display:grid;grid-template-columns:34px 52px 1.6fr 1fr 1.1fr 1.4fr;gap:14px;align-items:center;
+.lrow{display:grid;grid-template-columns:34px 52px 1.6fr 1fr 70px 1.1fr 1.4fr;gap:14px;align-items:center;
   padding:10px 14px;border-bottom:1px solid #eef2f4;width:100%;background:none;border-left:0;border-right:0;
   border-top:0;font:inherit;text-align:left;color:inherit;cursor:pointer;position:relative}
 .lrow:last-child{border-bottom:0}
@@ -749,6 +772,10 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
 .lrow.h .lnum{color:inherit;font-size:inherit;font-weight:inherit}
 .lt2{font-size:14px;font-weight:700;letter-spacing:-.01em}
 .lref{font-size:12.5px;color:var(--ink-s);font-variant-numeric:tabular-nums}
+/* The Crafted column is the library's checklist: a green check once a story has reviewed
+   English text, blank until then. */
+.lcr{text-align:center;font-size:17px;line-height:1}
+.lrow.h .lcr{font-size:inherit}
 .lph{aspect-ratio:1;width:52px;border-radius:7px;overflow:hidden;background:linear-gradient(135deg,#e8eef1,#dbe5ea);
   display:flex;align-items:center;justify-content:center;color:#a8bcc7}
 .lph img{width:100%;height:100%;object-fit:cover;display:block}
@@ -766,6 +793,7 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
   .lt2{grid-column:2;grid-row:1}
   .lnum{grid-column:3;grid-row:1;justify-self:end;padding-top:2px}
   .lref{grid-column:2;grid-row:2}
+  .lcr{grid-column:3;grid-row:2;justify-self:end;align-self:start}
   .lsetcol{display:none}
   .lsets{display:inline-flex;gap:3px;vertical-align:-3px;margin-left:5px}
   .lsets img{width:15px;height:15px;border-radius:4px;object-fit:cover}
@@ -786,38 +814,133 @@ mark{background:#cdeef5;color:var(--ink);border-radius:3px;padding:0 2px}
 
 .none{padding:44px 0;text-align:center;color:var(--ink-s);font-size:15px}
 
-/* editor */
-.ed{position:fixed;inset:0;background:rgba(21,40,56,.55);display:none;align-items:flex-end;justify-content:center;z-index:80}
-.ed.open{display:flex}
-.edp{background:#fff;width:min(680px,100%);max-height:86vh;overflow-y:auto;border-radius:16px 16px 0 0;padding:22px}
-@media (min-width:700px){.ed{align-items:center}.edp{border-radius:16px}}
-.edh{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
-/* The shared stylesheet colours bare h3 for a dark section, which is near white. */
-.edh h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
-.edh .r{font-size:13px;color:var(--ink-s);margin-top:3px}
-.edf{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
-.edf label{display:flex;flex-direction:column;gap:5px;font-size:11.5px;font-weight:700;
-  letter-spacing:.07em;text-transform:uppercase;color:#7E8F99}
-.edf label.wide{grid-column:1/-1}
-.edf input{font:inherit;font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink);
-  padding:9px 11px;border:1px solid #d5dee2;border-radius:9px;background:#fff;width:100%}
-.edf input:focus{outline:2px solid var(--teal);outline-offset:-1px;border-color:transparent}
-.edf .hint{font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;color:#9fb3bd}
-@media (max-width:560px){.edf{grid-template-columns:1fr}}
-.edx{font:inherit;font-size:22px;line-height:1;background:none;border:0;cursor:pointer;color:#8fa4b0;padding:2px 6px}
-.edsave{margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.edsave .note{font-size:12.5px;color:#7E8F99}
-.btn.sm{font-size:14px;padding:9px 16px}
-.expbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid #e6edef}
-.expbar .note{font-size:12.5px;color:var(--ink-s);flex:1;min-width:200px}
+/* Story detail. It takes the page over from the list while a story is open (see showDetail),
+   so the filters, view and scroll position are exactly as they were when you come back.
+   Classes are sdv-prefixed because the shared stylesheet restyles bare h2 and a few other
+   generic selectors, and .sd already names something on the pitch page. */
+.lib.detailing .libhead,.lib.detailing .ctrls,.lib.detailing .drawer,.lib.detailing #view{display:none}
+#detail{display:none}
+.lib.detailing #detail{display:block}
+.sdvwrap{max-width:800px;margin:0 auto;padding:6px 0 48px}
+.sdvtop{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:start}
+.sdvback{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:16px;font-weight:500;color:var(--teal);
+  background:none;border:0;padding:10px 0;margin:10px 0 8px;cursor:pointer}
+.sdvback:hover{text-decoration:underline}
+.sdvcover{border-radius:10px;overflow:hidden;aspect-ratio:1;background:linear-gradient(135deg,#e8eef1,#dbe5ea);
+  box-shadow:0 1px 3px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;color:#a9bbc5}
+.sdvcover img{width:100%;height:100%;object-fit:cover;display:block}
+.sdvcover svg{width:34px;height:34px}
+.sdvhead{margin-top:0}
+.sdvhead .sdvlbl{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--teal);margin:20px 0 8px}
+.sdvhead .sdvchips{display:flex;flex-wrap:wrap;gap:8px}
+.sdvhead .tcmd{font-size:14px;margin:0 0 6px}
+.sdvhead h1{font-size:clamp(28px,6vw,36px);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin:0;color:var(--ink);max-width:none;text-align:left}
+.sdvhead h1:focus{outline:none}
+.sdvmeta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:10px}
+.sdvref{font-size:17px;color:var(--ink-s)}
+.sdvalso{font-size:14px;color:#7E8F99;margin-top:6px;line-height:1.45}
+.sdvpill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:4px 11px;border-radius:20px;
+  background:#eef2f4;color:#6b7f8b}
+.sdvpill.ok{background:#e4f6ea;color:#1d6b3a}
+.sdvc{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);padding:16px;margin-top:24px}
+.sdvc.read{padding:20px 20px 12px}
+.sdvlab{font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 12px;
+  line-height:1.3;max-width:none;text-align:left}
+.sdvlab small{font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;color:#7E8F99;margin-left:8px}
+.sdvlabout{margin:32px 0 12px;padding:0}
+.sdvlisthead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sdvlisthead .sdvlab{margin:0}
+.sdvdlbtn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(26,157,184,.12);color:var(--teal)}
+.sdvdlbtn:hover{background:rgba(26,157,184,.22)}
+.sdvdlbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sdvplay{display:flex;align-items:center;gap:16px}
+.sdvpp{width:56px;height:56px;border-radius:50%;border:0;background:#0D2D3D;color:#fff;flex:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;padding:0;transition:background .15s}
+.sdvpp:hover{background:#1c4a61}
+.sdvpp svg.sdvi1,.sdvpp svg.sdvi2{width:22px;height:22px;min-width:22px;fill:#fff;stroke:none;display:block}
+.sdvplay .sdvpp svg.sdvi2{display:none}
+.sdvplay.playing .sdvpp svg.sdvi1{display:none}
+.sdvplay.playing .sdvpp svg.sdvi2{display:block}
+.sdvpp:disabled{background:#c9d5db;cursor:default}
+.sdvtrk{flex:1;min-width:0;position:relative;height:56px;display:flex;align-items:center}
+.sdvseek{-webkit-appearance:none;appearance:none;display:block;width:100%;height:6px;margin:0;border-radius:3px;cursor:pointer;
+  background:linear-gradient(to right,var(--teal) var(--p,0%),#dbe4e8 var(--p,0%));outline-offset:8px}
+.sdvseek::-webkit-slider-runnable-track{height:6px;background:transparent}
+.sdvseek::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--teal);
+  border:0;box-shadow:0 1px 3px rgba(0,0,0,.3);margin-top:-7px}
+.sdvseek::-moz-range-track{height:6px;background:transparent}
+.sdvseek::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--teal);border:0;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.sdvseek:disabled{cursor:default;background:#dbe4e8}
+.sdvseek:disabled::-webkit-slider-thumb{background:#c9d5db;box-shadow:none}
+.sdvseek:disabled::-moz-range-thumb{background:#c9d5db;box-shadow:none}
+.sdvtimes{position:absolute;left:0;right:0;top:calc(50% + 13px);display:flex;justify-content:space-between;line-height:1.2;font-size:13px;color:#7E8F99;font-variant-numeric:tabular-nums}
+.sdvplay.off .sdvtimes{color:#a9bbc5}
+.sdvnote{font-size:14px;color:var(--ink-s);margin:12px 0 0;line-height:1.5}
+.sdvnote a,.sdvlink{color:var(--teal);font-weight:600;text-decoration:none}
+.sdvnote a:hover,.sdvlink:hover{text-decoration:underline}
+.sdvboard img{width:100%;display:block;border-radius:6px}
+.sdvboard .sdvlisthead{margin-bottom:12px}
+.sdvtext{font-size:19px;line-height:1.7;color:rgba(28,49,68,.92)}
+.sdvtext p{margin:0 0 1em;color:inherit;max-width:none;font-size:inherit;line-height:inherit}
+.sdvtext .sdvpass{font-size:16px;font-weight:700;color:var(--ink);margin:1.2em 0 .4em;letter-spacing:0;text-transform:none;line-height:1.3;max-width:none;text-align:left}
+.sdvtext .sdvpass:first-child{margin-top:0}
+.sdvbsb p{white-space:pre-line}
+.sdvn{font-size:.62em;font-weight:700;color:var(--teal);margin-right:.25em;vertical-align:super;line-height:0;user-select:none}
+.sdvclamp{max-height:7.5rem;overflow:hidden;position:relative}
+.sdvclamp.open{max-height:none}
+.sdvfade{position:relative;margin-top:-4rem;height:4rem;background:linear-gradient(rgba(255,255,255,0),#fff);pointer-events:none}
+.sdvfade.gone{display:none}
+.sdvmorewrap{display:flex;justify-content:center;padding:8px 0 4px}
+.sdvmore{font:inherit;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);
+  background:#e0f7fc;border:0;border-radius:20px;padding:6px 16px;cursor:pointer}
+.sdvmore:hover{background:#cdf0f8}
+.sdvmorewrap[hidden]{display:none}
+.sdvdet{margin-top:14px;border-top:1px solid #e6edef;padding-top:12px}
+.sdvdet summary{cursor:pointer;color:var(--teal);font-weight:600;font-size:14px}
+.sdvdet .sdvtext{margin-top:12px;font-size:17px}
+.sdvdl .sdvdet{border-top:0;padding-top:0;margin-top:8px}
+.sdvchips{display:flex;flex-wrap:wrap;gap:8px}
+.sdvdl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px 18px;font-size:15px;margin:0;line-height:1.5}
+.sdvdl dt{color:#7E8F99;font-weight:600}
+.sdvdl dd{margin:0;color:var(--ink)}
+.sdvlangs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sdvlang{font-size:12px;padding:3px 9px;border-radius:12px;background:#f1f4f6;color:#8fa4b0}
+.sdvlang.on{background:#e4f6ea;color:#1d6b3a;font-weight:700}
+.sdvnav{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:32px}
+.sdvnb.next{grid-column:2}
+.sdvnb{min-width:0;display:flex;align-items:center;gap:12px;text-align:left;font:inherit;background:#fff;
+  border:0;box-shadow:0 1px 3px rgba(0,0,0,.1);border-radius:10px;padding:10px 12px;color:var(--ink);cursor:pointer}
+.sdvnb:hover{box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.sdvnb .sdvnt{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.sdvnb.next .sdvnt{text-align:right;align-items:flex-end}
+.sdvnb .sdvnth{width:56px;height:56px;border-radius:8px;overflow:hidden;flex:none;background:#e3eaee;display:flex;align-items:center;justify-content:center;color:#a9bbc5}
+.sdvnb .sdvnth img{width:100%;height:100%;object-fit:cover;display:block}
+.sdvnb .sdvnth svg{width:22px;height:22px}
+.sdvnb .sdvchev{width:22px;height:22px;flex:none;fill:none;stroke:var(--teal);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sdvnb.prev .sdvchev{transform:scaleX(-1)}
+.sdvnb small{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#7E8F99;font-weight:700}
+.sdvnb b{font-size:14.5px;font-weight:700;line-height:1.3;max-width:100%}
+.sdvnb[hidden]{display:none}
+@media (max-width:720px){
+  .sdvtop{grid-template-columns:1fr;gap:24px}
+  .sdvnav{grid-template-columns:minmax(0,1fr);gap:12px}
+  .sdvnb.next{grid-column:1}
+  .sdvdl{grid-template-columns:1fr;gap:2px}
+  .sdvdl dd{margin-bottom:12px}
+  .sdvtext{font-size:18px}
+}
 `;
 
-export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap }) {
+export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, langNames, ic, ap }) {
   const counted = data.stories.filter(s => !s.som).length;
   const withSom = data.stories.length;
   /* Fail the build on a stale key rather than shipping a silently pictureless or
-     unsearchable story. All three maps are keyed "Book|Title". */
+     unsearchable story. STORY_IMG and ALT_NAMES are keyed "Book|Title"; the crafted-text map
+     and each story's detail file are keyed by its slug. */
   const known = new Set(data.stories.map(s => s.b + '|' + s.t));
+  const slugs = new Set(data.stories.map(s => s.slug));
+  if (slugs.size !== data.stories.length || slugs.has(undefined)) throw new Error('every story needs its own slug in data/stories.json');
+  for (const s of data.stories) ap(`assets/story-data/${s.slug}.json`);   // run `npm run story-data` if this fails
   const art = {};
   for (const [key, file] of Object.entries(STORY_IMG)) {
     if (!known.has(key)) throw new Error('story art key matches no story: ' + key);
@@ -828,12 +951,14 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap
     if (!known.has(key)) throw new Error('alternate name key matches no story: ' + key);
   }
   for (const key of Object.keys(text)) {
-    if (!known.has(key)) throw new Error('story text key matches no story: ' + key);
+    if (!slugs.has(key)) throw new Error('story text key matches no story slug: ' + key);
   }
   /* A SET_ORDER list and the set's actual membership must be the exact same set of ids in
      both directions -- one story added or removed from a set without updating its order
      here would either silently vanish from an ordered view or sort into an undefined
      position, and neither should happen quietly. */
+  const cmdIds = COMMANDS.flatMap(c => c.ids);
+  if (new Set(cmdIds).size !== cmdIds.length) throw new Error('COMMANDS lists a story under two commands');
   for (const [setName, order] of Object.entries(SET_ORDER)) {
     const actual = new Set(data.stories.filter(s => s.s.includes(setName)).map(s => s.id));
     const listed = new Set(order);
@@ -847,7 +972,8 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap
   for (const id of Object.keys(GOSPEL_ORDER)) if (!gospelIds.has(id)) throw new Error('GOSPEL_ORDER has ' + id + ', which is not a Gospel story');
   for (const id of gospelIds) if (!(id in GOSPEL_ORDER)) throw new Error('GOSPEL_ORDER is missing Gospel story ' + id);
   const payload = JSON.stringify({ ...data, groups: TESTAMENTS, abbr: ABBR, seticon: SET_ICON,
-    art, alt: ALT_NAMES, txt: text, setOrder: SET_ORDER, gospelOrder: GOSPEL_ORDER }).replace(/</g, '\\u003c');
+    art, alt: ALT_NAMES, txt: text, langNames, setOrder: SET_ORDER, gospelOrder: GOSPEL_ORDER,
+    commands: Object.fromEntries(COMMANDS.flatMap(c => c.ids.map(id => [id, { n: c.n, r: c.r }]))) }).replace(/</g, '\\u003c');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -931,15 +1057,9 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap
     <div class="drawer" id="dLangs"></div>
 
     <div id="view"></div>
-
-    <div class="expbar">
-      <span class="note" id="editnote">Tap any story to edit its sets and tags. Changes are saved in this browser only.</span>
-      <button class="fbtn" id="export">${ic('download', 15)} Export changes</button>
-      <button class="fbtn" id="reset">Reset edits</button>
-    </div>
+    <div id="detail"></div>
   </div>
 </main>
-<div class="ed" id="ed" role="dialog" aria-modal="true" aria-labelledby="edTitle"><div class="edp" id="edp"></div></div>
 <footer>
   <div class="wrap fbar">
     <div class="fm"><img src="../${LOGOSQ}" alt="" loading="lazy"><b>storying<span>.app</span></b></div>
@@ -949,21 +1069,18 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, ic, ap
 </footer>
 <script>
 const D = ${payload};
-const LS = 'storying-story-edits-v1';
-let edits = {};
-try { edits = JSON.parse(localStorage.getItem(LS) || '{}'); } catch (e) { edits = {}; }
-
-/* A story's live fields = what the build shipped, unless this browser has edited it.
-   Edits are stored under the ORIGINAL book|title key, so art, alt names and text keep
-   resolving after someone retitles a story in the editor. */
-function sets(s){ return (edits[s.id] && edits[s.id].s) || s.s; }
-function tags(s){ return (edits[s.id] && edits[s.id].g) || s.g; }
-function title(s){ const e = edits[s.id]; return (e && e.nt) || s.t; }
-function ref(s){ const e = edits[s.id]; return (e && e.nr) || s.r; }
-function alts(s){ const e = edits[s.id]; return (e && e.alt) || D.alt[key(s)] || []; }
-function body(s){ return D.txt[key(s)] || ''; }
+/* Sets, tags, titles and references are changed in data/stories.json, not in the browser.
+   (An earlier version let anyone edit them here and export the result; that is gone, and
+   whatever it left in localStorage is simply never read.) */
+const sets = s => s.s;
+const tags = s => s.g;
+const title = s => s.t;
+const ref = s => s.r;
+const alts = s => D.alt[key(s)] || [];
 const key = s => s.b + '|' + s.t;
-function edited(s){ return !!edits[s.id]; }
+/* Crafted English text, keyed by slug. Only stories with reviewed text are in here. */
+const body = s => D.txt[s.slug] || '';
+const crafted = s => !!D.txt[s.slug];
 
 /* Opening on all 202 stories in one expanded horizontal rail was the single biggest
    source of overwhelm in review. The page now starts on the grid, filtered to Creation to
@@ -1094,11 +1211,23 @@ function inlineSets(s, cls){
   return '<span class="' + (cls || 'tinline') + '">' + v.map(n => '<img src="' + seticon(n) +
     '" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">').join('') + '</span>';
 }
+/* The command a story illustrates, above its title: teal command name, gray verse. Shown only
+   while 7 Commands is one of the active set filters -- Zacchaeus is a story first and
+   illustrates "Repent and Believe" only when read through that set -- and only in Grid and
+   List, the two views where a set's own order applies. The grid tile is about 140px wide, so
+   there the verse always sits on its own line under the name; a line that wrapped only for
+   the longer commands would leave the titles in a row misaligned. The list row has room
+   for the one-line form, name then "- verse". */
+function cmdLine(s, stacked){
+  const c = state.sets.has('7 Commands') && D.commands[s.id];
+  return c ? '<span class="tcmd' + (stacked ? ' stk' : '') + '"><span class="tcn">' + esc(c.n) + '</span> <span class="tcr">' +
+    (stacked ? '' : '- ') + esc(c.r) + '</span></span>' : '';
+}
 /* One markup for both tile shapes; .cmp re-lays it out for the narrow book columns. */
 function tile(s, compact){
   return '<button class="tile' + (compact ? ' cmp' : '') + '" data-id="' + s.id + '">' +
     art(s) +
-    '<div class="tmain">' +
+    '<div class="tmain">' + (compact ? '' : cmdLine(s, true)) +
       '<div class="tt">' + esc(title(s)) + inlineSets(s) + '</div>' + altLine(s) +
       '<div class="tr">' + esc(abbr(s.b) + ' ' + ref(s)) + '</div>' +
     '</div>' + tagPills(s) + context(s) + '</button>';
@@ -1223,15 +1352,16 @@ function renderList(){
   if (!rows.length) return '<p class="none">No stories match those filters.</p>';
   /* The image column is deliberately unlabelled. */
   let h = '<div class="listv"><div class="lrow h"><span class="lnum">#</span><span></span><span>Story</span>' +
-    '<span>Reference</span><span>Story Sets</span><span>Tags</span></div>';
+    '<span>Reference</span><span class="lcr">Crafted</span><span>Story Sets</span><span>Tags</span></div>';
   rows.forEach((s, i) => {
     /* Set icons ride inline after the title on narrow screens, like emoji, and sit in
        their own column on desktop. Same markup, two layouts. */
     h += '<button class="lrow" data-id="' + s.id + '"><span class="lnum">' + (i + 1) + '</span>' +
       art(s, 'lph') +
-      '<span class="lt2">' + esc(title(s)) + (s.som ? ' <span class="som">SERMON</span>' : '') +
+      '<span class="lt2">' + cmdLine(s) + esc(title(s)) + (s.som ? ' <span class="som">SERMON</span>' : '') +
         inlineSets(s, 'lsets') + altLine(s) + '</span>' +
       '<span class="lref">' + esc(abbr(s.b) + ' ' + ref(s)) + '</span>' +
+      '<span class="lcr">' + (crafted(s) ? '<span role="img" aria-label="Crafted">✅</span>' : '') + '</span>' +
       '<span class="lsetcol">' + (setPills(s) || '<span class="lref">&mdash;</span>') + '</span>' +
       (tagPills(s, 'ltags') || '<span class="ltags"></span>') +
       context(s) + '</button>';
@@ -1299,10 +1429,6 @@ function render(){
   $('bTags').classList.toggle('on', !!tagN);
   badge('nLangs', 'bLangs', state.langs);
   $('clearFilters').hidden = !anyFilter();
-  const ne = Object.keys(edits).length;
-  $('editnote').textContent = ne
-    ? ne + (ne === 1 ? ' story edited' : ' stories edited') + ' in this browser. Export to send the changes on.'
-    : 'Tap any story to edit its sets and tags. Changes are saved in this browser only.';
   drawers();
 }
 
@@ -1367,59 +1493,201 @@ function toggleDrawer(which){
   if (open) { $(mine).classList.add('open'); $(which).setAttribute('aria-expanded', 'true'); }
 }
 
-/* ---- editor ---- */
-let cur = null;
-function openEd(id){
-  cur = D.stories.find(s => s.id === id); if (!cur) return;
-  const mySets = sets(cur), myTags = tags(cur);
-  $('edp').innerHTML = '<div class="edh"><div><h3 id="edTitle">' + esc(title(cur)) + '</h3>' +
-    '<div class="r">' + esc(cur.b) + (cur.par.length ? ' &middot; also ' + cur.par.map(esc).join('; ') : '') + '</div></div>' +
-    '<button class="edx" id="edClose" aria-label="Close">&times;</button></div>' +
-    '<div class="dgrp"><h4>Details</h4><div class="edf">' +
-      '<label>Title<input id="fTitle" value="' + esc(title(cur)) + '"></label>' +
-      '<label>Reference<input id="fRef" value="' + esc(ref(cur)) + '"></label>' +
-      '<label class="wide">Alternate names<input id="fAlt" value="' + esc(alts(cur).join(', ')) + '">' +
-      '<span class="hint">Separate several with commas. Searched, but only shown on a tile when a search matches one.</span></label>' +
+/* ---- story detail ----
+   Opening a story swaps the list for a full page of its own inside this same page: the filters,
+   the view and the scroll position stay in memory and come back exactly as you left them. The
+   address is "#slug" (so a story can be linked to, and the browser's Back button closes it),
+   and every slug is provisional until the story-title review is done. Everything heavy, the
+   Bible text above all, is fetched from assets/story-data/{slug}.json only when a story is
+   opened, so the library itself stays small. No client code in this block may use a
+   backtick, a dollar-brace or a backslash: the whole script is inside a template literal. */
+const bySlug = new Map(D.stories.map(s => [s.slug, s]));
+const detailCache = new Map();
+let detailSlug = null, listScroll = 0, openedFromList = false, lastFocusId = null;
+const baseTitle = document.title;
+
+function loadDetail(s){
+  if (detailCache.has(s.slug)) return Promise.resolve(detailCache.get(s.slug));
+  return fetch('../assets/story-data/' + s.slug + '.json')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(j => { detailCache.set(s.slug, j); return j; });
+}
+/* The stories either side of this one in the order the list is showing. A story reached from
+   a link that the current filters would hide falls back to the whole library in its default order. */
+function neighbours(s){
+  let rows = orderedForDisplay(shown());
+  if (!rows.some(r => r.id === s.id)) rows = D.stories.slice().sort((a, z) => defaultKey(a) - defaultKey(z));
+  const i = rows.findIndex(r => r.id === s.id);
+  return { prev: rows[i - 1] || null, next: rows[i + 1] || null };
+}
+function chipsBlock(label, names, attr, withIcon){
+  if (!names.length) return '';
+  return '<div class="sdvlbl">' + label + '</div><div class="sdvchips">' + names.map(n =>
+    '<button class="chip" data-' + attr + '="' + esc(n) + '">' +
+    (withIcon && seticon(n) ? '<img src="' + seticon(n) + '" alt="" loading="lazy">' : '') + esc(n) + '</button>').join('') + '</div>';
+}
+const CHEV = '<svg class="sdvchev" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>';
+function navBtn(s, dir){
+  if (!s) return '';
+  const f = D.art[key(s)];
+  const th = '<span class="sdvnth">' + (f ? '<img src="../assets/stories/lib/' + f + '" alt="" loading="lazy">' : NOART) + '</span>';
+  const tx = '<span class="sdvnt"><small>' + (dir === 'prev' ? 'Previous story' : 'Next story') + '</small><b>' + esc(title(s)) + '</b></span>';
+  return '<button class="sdvnb ' + dir + '" data-gostory="' + esc(s.slug) + '">' +
+    (dir === 'prev' ? CHEV + th + tx : tx + th + CHEV) + '</button>';
+}
+const DL_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+/* Cover and title side by side on wider screens, then one column of cards (listen, storyboard, read). The extras that only make sense in a library
+   (tags, details, previous and next) follow below them. */
+function detailShell(s){
+  const f = D.art[key(s)], alt = alts(s), nb = neighbours(s), ss = sets(s);
+  return '<div class="sdvwrap"><button class="sdvback" data-back>&larr; Back to stories</button>' +
+    '<div class="sdvtop"><div class="sdvcover">' + (f ? '<img src="../assets/stories/lib/' + f + '" alt="">' : NOART) + '</div>' +
+    '<div class="sdvhead">' +
+      cmdLine(s) + '<h1 id="sdvh1" tabindex="-1">' + esc(title(s)) + '</h1>' +
+      '<div class="sdvmeta"><span class="sdvref">' + esc(s.b + ' ' + ref(s)) + '</span>' + (crafted(s)
+        ? '<span class="sdvpill ok"><span aria-hidden="true">✅</span> Crafted</span>'
+        : '<span class="sdvpill">Not yet crafted</span>') + '</div>' +
+      (alt.length ? '<div class="sdvalso">Also called ' + alt.map(esc).join(', ') + '</div>' : '') +
+      (s.par.length ? '<div class="sdvalso">Also see ' + s.par.map(esc).join('; ') + '</div>' : '') +
+      chipsBlock('Story sets', ss, 'goset', true) + chipsBlock('Tags', tags(s), 'gotag', false) +
     '</div></div>' +
-    '<div class="dgrp"><h4>Story Sets</h4><div class="fchips g4">' + D.sets.map(n =>
-      '<button class="chip' + (mySets.includes(n) ? ' on' : '') + '" data-eset="' + esc(n) + '">' +
-      (seticon(n) ? '<img src="' + seticon(n) + '" alt="" loading="lazy">' : '') + esc(n) + '</button>').join('') + '</div></div>' +
-    Object.entries(D.vocab).map(([g, list]) => '<div class="dgrp"><h4>' + esc(g) + '</h4><div class="fchips">' +
-      list.map(t => '<button class="chip' + (myTags.includes(t) ? ' on' : '') + '" data-etag="' + esc(t) + '">' + esc(t) + '</button>').join('') +
-      '</div></div>').join('') +
-    '<div class="edsave"><button class="btn primary sm" id="edDone">Done</button>' +
-    (edited(cur) ? '<button class="fbtn" id="edRevert">Revert this story</button>' : '') +
-    '<span class="note">Saved in this browser as you click.</span></div>';
-  const commit = () => saveCur({
-    nt: $('fTitle').value.trim() || cur.t,
-    nr: $('fRef').value.trim() || cur.r,
-    alt: $('fAlt').value.split(',').map(x => x.trim()).filter(Boolean),
+    '<div id="sdvbody"><p class="sdvnote">Loading&hellip;</p></div>' +
+    '<nav class="sdvnav" aria-label="More stories">' + navBtn(nb.prev, 'prev') + navBtn(nb.next, 'next') + '</nav></div>';
+}
+/* Verse numbers are small raised numbers inside the running text. A passage that crosses
+   chapters writes "c:v" at the first verse of each new chapter. */
+function bsbHtml(sections){
+  return sections.map(sec => {
+    let lastC = null, p = '';
+    sec.v.forEach(v => {
+      const mark = (v[0] !== null && v[0] !== lastC) ? v[0] + ':' + v[1] : String(v[1]);
+      if (v[0] !== null) lastC = v[0];
+      p += '<sup class="sdvn">' + mark + '</sup>' + esc(v[2]) + ' ';
+    });
+    return (sec.h ? '<h3 class="sdvpass">' + esc(sec.h) + '</h3>' : '') + '<p>' + p.trim() + '</p>';
+  }).join('');
+}
+function fmtT(t){ t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ':' + ('0' + (t % 60)).slice(-2); }
+/* The player is our own markup over a hidden audio element, so it looks the same in every browser. */
+function initPlayer(){
+  const box = document.querySelector('#sdvbody .sdvplay'); if (!box) return;
+  const au = box.querySelector('audio'); if (!au) return;
+  const seek = box.querySelector('.sdvseek'), cur = box.querySelector('[data-cur]'), dur = box.querySelector('[data-dur]'), pp = box.querySelector('[data-pp]');
+  const paint = () => {
+    const d = au.duration, p = d ? (au.currentTime / d) * 100 : 0;
+    seek.value = d ? Math.round((au.currentTime / d) * 1000) : 0;
+    seek.style.setProperty('--p', p + '%'); cur.textContent = fmtT(au.currentTime);
+    if (d) dur.textContent = fmtT(d);
+  };
+  const state = () => { const on = !au.paused; box.classList.toggle('playing', on); pp.setAttribute('aria-label', (on ? 'Pause ' : 'Play ') + au.getAttribute('aria-label')); };
+  au.setAttribute('aria-label', document.querySelector('#sdvh1').textContent);
+  pp.setAttribute('aria-label', 'Play ' + au.getAttribute('aria-label'));
+  pp.addEventListener('click', () => { au.paused ? au.play().catch(() => {}) : au.pause(); });
+  seek.addEventListener('input', () => { if (au.duration) au.currentTime = (seek.value / 1000) * au.duration; paint(); });
+  ['timeupdate', 'loadedmetadata', 'durationchange', 'seeked'].forEach(ev => au.addEventListener(ev, paint));
+  ['play', 'pause', 'ended'].forEach(ev => au.addEventListener(ev, state));
+}
+function fillDetail(s, j){
+  const cr = !!j.text;
+  const PLAY = '<svg class="sdvi1" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><svg class="sdvi2" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+  const player = (on, src, dur) => '<div class="sdvplay' + (on ? '' : ' off') + '">' + (on ? '<audio preload="metadata" src="' + src + '"></audio>' : '') +
+    '<button class="sdvpp" data-pp aria-label="' + (on ? 'Play ' + esc(title(s)) : 'Audio not available') + '"' + (on ? '' : ' disabled') + '>' + PLAY + '</button>' +
+    '<div class="sdvtrk"><input class="sdvseek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek"' + (on ? '' : ' disabled') + '>' +
+    '<div class="sdvtimes"><span data-cur>0:00</span><span data-dur>' + (on && dur ? esc(dur) : '0:00') + '</span></div></div></div>';
+  let h = '<section class="sdvc"><div class="sdvlisthead"><h2 class="sdvlab">Listen</h2>';
+  if (j.audio) {
+    const src = '../assets/' + esc(j.audio.src);
+    h += '<a class="sdvdlbtn" href="' + src + '" download="' + esc(s.slug) + '.mp3" aria-label="Download audio">' + DL_ICON + '</a></div>' +
+      player(true, src, j.audio.dur) + '<p class="sdvnote">English</p>';
+  } else {
+    h += '</div>' + player(false) + '<p class="sdvnote">Audio is not available for this story yet.</p>';
+  }
+  h += '</section>';
+  if (j.board) {
+    const bs = '../assets/' + esc(j.board.src);
+    h += '<section class="sdvc sdvboard"><div class="sdvlisthead"><h2 class="sdvlab">Storyboard</h2>' +
+      '<a class="sdvdlbtn" href="' + bs + '" download="' + esc(s.slug) + '-storyboard.webp" aria-label="Download storyboard">' + DL_ICON + '</a></div>' +
+      '<img src="' + bs + '" alt="Storyboard for ' + esc(title(s)) + '" loading="lazy"></section>';
+  }
+  const moreBtn = '<div class="sdvfade"></div><div class="sdvmorewrap"><button class="sdvmore" data-more aria-expanded="false">Read more &darr;</button></div>';
+  if (cr) {
+    h += '<section class="sdvc read"><h2 class="sdvlab">Read <small>English</small></h2><div class="sdvtext sdvclamp">' +
+      j.text.paras.map(p => '<p>' + esc(p) + '</p>').join('') + '</div>' + moreBtn +
+      '<details class="sdvdet"><summary>Bible text (Berean Standard Bible)</summary><div class="sdvtext sdvbsb">' + bsbHtml(j.bsb) + '</div></details></section>';
+  } else {
+    h += '<section class="sdvc read"><h2 class="sdvlab">Read <small>Bible text, Berean Standard Bible</small></h2>' +
+      '<p class="sdvnote" style="margin:0 0 14px">The crafted oral story for this passage is not ready yet. This is the passage it will be drawn from.</p>' +
+      '<div class="sdvtext sdvbsb sdvclamp">' + bsbHtml(j.bsb) + '</div>' + moreBtn + '</section>';
+  }
+  h += '<section class="sdvc"><h2 class="sdvlab">Details</h2><dl class="sdvdl">' +
+    '<dt>Audio</dt><dd>' + (j.audio ? 'English' : 'Not available yet') + '</dd>' +
+    '<dt>Storyboard</dt><dd>' + (j.board ? 'Available' : 'Not drawn yet') + '</dd>' +
+    '<dt>Languages</dt><dd>' + (cr ? 'English (1 of ' + D.langNames.length + ')' : 'Not available in any language yet') +
+      '<details class="sdvdet"><summary>All ' + D.langNames.length + ' languages</summary><div class="sdvlangs">' +
+      D.langNames.map(n => '<span class="sdvlang' + (cr && n === 'English' ? ' on' : '') + '">' + esc(n) + '</span>').join('') + '</div></details></dd>' +
+    '<dt>Bible text</dt><dd>Berean Standard Bible (public domain)</dd>' +
+    '<dt>Suggest a change</dt><dd><a class="sdvlink" href="mailto:brett@vmx.media?subject=' + encodeURIComponent('Story: ' + title(s)) + '">Email a correction</a></dd>' +
+    '</dl></section>';
+  $('sdvbody').innerHTML = h;
+  initPlayer();
+  /* A passage short enough to fit the clamp needs no Read more. */
+  document.querySelectorAll('#sdvbody .sdvclamp').forEach(el => {
+    if (el.scrollHeight <= el.clientHeight + 6) {
+      el.classList.add('open'); el.nextElementSibling.classList.add('gone'); el.nextElementSibling.nextElementSibling.hidden = true;
+    }
   });
-  ['fTitle', 'fRef', 'fAlt'].forEach(id => $(id).addEventListener('change', commit));
-  $('ed').classList.add('open');
 }
-function closeEd(){
-  if (cur && $('fTitle')) $('fTitle').blur(), $('fRef').blur(), $('fAlt').blur();
-  $('ed').classList.remove('open'); cur = null; render();
+function showDetail(s){
+  detailSlug = s.slug;
+  document.querySelector('main.lib').classList.add('detailing');
+  document.title = s.t + ' · storying.app';
+  $('detail').innerHTML = detailShell(s);
+  /* "instant" because the shared stylesheet sets scroll-behavior:smooth on the whole page,
+     and opening a story should jump to its top, not glide there from wherever the list was. */
+  scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  $('sdvh1').focus({ preventScroll: true });
+  loadDetail(s).then(j => { if (detailSlug === s.slug) fillDetail(s, j); }).catch(() => {
+    if (detailSlug === s.slug) $('sdvbody').innerHTML = '<p class="sdvnote">This story could not be loaded. Check your connection and <button class="sdvmore" data-retry>try again</button>.</p>';
+  });
 }
-/* One record per story: original title for readability, then whatever differs from the
-   build. A record that matches the build in every field is deleted, so the edit count and
-   the export only ever carry real changes. */
-function saveCur(patch){
-  const o = D.stories.find(x => x.id === cur.id);
-  const rec = Object.assign({ t: o.t, s: sets(cur), g: tags(cur), nt: title(cur), nr: ref(cur), alt: alts(cur) },
-    edits[cur.id], patch);
-  const baseAlt = D.alt[key(o)] || [];
-  const same = JSON.stringify(rec.s) === JSON.stringify(o.s) && JSON.stringify(rec.g) === JSON.stringify(o.g)
-    && rec.nt === o.t && rec.nr === o.r && JSON.stringify(rec.alt) === JSON.stringify(baseAlt);
-  if (same) delete edits[cur.id]; else edits[cur.id] = rec;
-  try { localStorage.setItem(LS, JSON.stringify(edits)); } catch (e) {}
+function hideDetail(){
+  if (!detailSlug) return;
+  detailSlug = null;
+  document.querySelector('main.lib').classList.remove('detailing');
+  document.title = baseTitle;
+  $('detail').innerHTML = '';
+  /* The list was only hidden, never rebuilt, so it can be scrolled and focused straight away. */
+  scrollTo({ top: listScroll, left: 0, behavior: 'instant' });
+  const t = lastFocusId && document.querySelector('[data-id="' + lastFocusId + '"]');
+  if (t) t.focus({ preventScroll: true });
 }
+function route(){
+  const s = bySlug.get(decodeURIComponent(location.hash.slice(1)));
+  s ? showDetail(s) : hideDetail();
+}
+function openStory(id){
+  const s = D.stories.find(x => x.id === id); if (!s) return;
+  listScroll = scrollY; lastFocusId = id; openedFromList = true;
+  location.hash = s.slug;
+}
+/* Back goes to the list the visitor came from; a story opened straight from a link has no list
+   behind it, so the hash is just cleared. */
+function closeDetail(){
+  if (openedFromList) history.back();
+  else { history.replaceState(null, '', location.pathname + location.search); hideDetail(); }
+}
+/* Leave a story for the list with one filter applied, such as a tag or a set clicked on its page. */
+function goFilter(apply){
+  state.sets.clear(); state.tags.clear(); state.langs.clear(); state.hasImg = false; state.q = ''; $('q').value = '';
+  apply(); listScroll = 0; lastFocusId = null; closeDrawers(); render(); closeDetail();
+}
+addEventListener('hashchange', route);
+history.scrollRestoration = 'manual';
 
 document.addEventListener('click', e => {
   /* Anywhere outside a drawer or its own toggle closes the open drawer. */
   if (!e.target.closest('.drawer') && !e.target.closest('#bSets') && !e.target.closest('#bTags')
-      && !e.target.closest('#bLangs') && !e.target.closest('.ed')) closeDrawers();
+      && !e.target.closest('#bLangs')) closeDrawers();
   /* Inside the group header button, so it has to be caught first. A span rather than a
      nested <button>, which browsers will not nest. */
   const dw = e.target.closest('.dupsw');
@@ -1459,32 +1727,24 @@ document.addEventListener('click', e => {
       state.shut.has(g) ? state.shut.delete(g) : state.shut.add(g); }
     render(); return;
   }
-  if (t.classList.contains('tile') && !t.classList.contains('dup')) { openEd(t.dataset.id); return; }
-  if (t.classList.contains('lrow') && t.dataset.id) { openEd(t.dataset.id); return; }
-  if (t.id === 'edClose' || t.id === 'edDone') { closeEd(); return; }
-  if (t.id === 'edRevert') { delete edits[cur.id]; try { localStorage.setItem(LS, JSON.stringify(edits)); } catch (e) {} openEd(cur.id); return; }
-  if (t.dataset.eset || t.dataset.etag) {
-    const s = sets(cur).slice(), g = tags(cur).slice();
-    if (t.dataset.eset) { const i = s.indexOf(t.dataset.eset); i < 0 ? s.push(t.dataset.eset) : s.splice(i, 1); }
-    else { const i = g.indexOf(t.dataset.etag); i < 0 ? g.push(t.dataset.etag) : g.splice(i, 1); }
-    saveCur({ s: s, g: g }); t.classList.toggle('on'); return;
+  if (t.classList.contains('tile') && !t.classList.contains('dup')) { openStory(t.dataset.id); return; }
+  if (t.classList.contains('lrow') && t.dataset.id) { openStory(t.dataset.id); return; }
+  if (t.dataset.back !== undefined) { closeDetail(); return; }
+  if (t.dataset.gostory) { location.replace('#' + t.dataset.gostory); return; }
+  if (t.dataset.goset) { goFilter(() => state.sets.add(t.dataset.goset)); return; }
+  if (t.dataset.gotag) { goFilter(() => state.tags.add(t.dataset.gotag)); return; }
+  if (t.dataset.retry !== undefined) { const s = bySlug.get(detailSlug); if (s) showDetail(s); return; }
+  if (t.dataset.more !== undefined) {
+    const wrap = t.closest('.sdvmorewrap'), el = wrap.previousElementSibling.previousElementSibling, open = !el.classList.contains('open');
+    el.classList.toggle('open', open); wrap.previousElementSibling.classList.toggle('gone', open); t.setAttribute('aria-expanded', String(open));
+    t.innerHTML = open ? 'Read less &uarr;' : 'Read more &darr;'; return;
   }
-  if (t.id === 'export') {
-    const out = D.stories.map(s => ({ id: s.id, story: title(s), originalStory: s.t, book: s.b,
-      reference: ref(s), altNames: alts(s), sets: sets(s), tags: tags(s), changed: edited(s) }));
-    const blob = new Blob([JSON.stringify({ exported: new Date().toISOString(), changed: Object.keys(edits).length, stories: out }, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-    a.download = 'storying-stories-' + new Date().toISOString().slice(0, 10) + '.json';
-    a.click(); URL.revokeObjectURL(a.href); return;
-  }
-  if (t.id === 'reset') { if (confirm('Discard all edits made in this browser?')) {
-    edits = {}; try { localStorage.removeItem(LS); } catch (e) {} render(); } return; }
 });
-$('ed').addEventListener('click', e => { if (e.target.id === 'ed') closeEd(); });
-addEventListener('keydown', e => { if (e.key !== 'Escape') return; if (cur) closeEd(); else closeDrawers(); });
+addEventListener('keydown', e => { if (e.key !== 'Escape') return; if (detailSlug) closeDetail(); else closeDrawers(); });
 let qt; $('q').addEventListener('input', e => { clearTimeout(qt);
   qt = setTimeout(() => { state.q = e.target.value.trim().toLowerCase(); render(); }, 140); });
 render();
+route();
 </script>
 <script>
 (function(){

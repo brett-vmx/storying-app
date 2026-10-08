@@ -1164,7 +1164,10 @@ console.log('site:', (html.length / 1024 / 1024).toFixed(2) + 'MB · sections:',
 
 /* The library browse page at /stories. It shares this file's CSS and nav so the two pages
    cannot drift apart; its own markup and behaviour live in build-stories.mjs. */
-const stories = storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data: storyData, text: storyText, ic, ap });
+/* Names only: the library page has no use for the other language fields, and some of them
+   (the 10/40 flag, StoryRunners coverage) must not leave the data file. */
+const stories = storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data: storyData, text: storyText,
+  langNames: langs.map(l => l.name), ic, ap });
 fs.mkdirSync('dist/stories', { recursive: true });
 fs.writeFileSync('dist/stories/index.html', stories);
 console.log('stories:', (stories.length / 1024).toFixed(0) + 'KB ·',

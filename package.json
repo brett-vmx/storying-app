@@ -9,7 +9,7 @@
     "assets": "node gen-assets.mjs",
     "shots": "node shoot-site.mjs",
     "serve": "npx --yes serve dist",
-    "story-text": "node gen-story-text.mjs"
+    "story-data": "node gen-story-data.mjs"
   },
   "dependencies": {
     "d3-geo": "^3.1.1",

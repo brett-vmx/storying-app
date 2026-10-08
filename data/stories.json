@@ -64,6 +64,7 @@
 "stories": [
 {
 "id": "B4",
+"slug": "the-creation",
 "t": "Creation",
 "b": "Genesis",
 "r": "1-2:3",
@@ -82,6 +83,7 @@
 },
 {
 "id": "B5",
+"slug": "the-first-people",
 "t": "The First People",
 "b": "Genesis",
 "r": "2:4-25",
@@ -99,6 +101,7 @@
 },
 {
 "id": "B100",
+"slug": "satans-rebellion",
 "t": "Satan's Rebellion",
 "b": "Revelation",
 "r": "12:7-9",
@@ -119,6 +122,7 @@
 },
 {
 "id": "B6",
+"slug": "the-man-and-woman-sin",
 "t": "The First Sin",
 "b": "Genesis",
 "r": "3",
@@ -138,6 +142,7 @@
 },
 {
 "id": "B7",
+"slug": "cain-and-abel",
 "t": "Cain and Abel",
 "b": "Genesis",
 "r": "4:1-16",
@@ -154,6 +159,7 @@
 },
 {
 "id": "B8",
+"slug": "noah-and-the-flood",
 "t": "Noah and the Flood",
 "b": "Genesis",
 "r": "6:9\u20139:17",
@@ -173,6 +179,7 @@
 },
 {
 "id": "B9",
+"slug": "the-tower-of-babel",
 "t": "The Tower of Babel",
 "b": "Genesis",
 "r": "11:1-9",
@@ -190,9 +197,10 @@
 },
 {
 "id": "B10",
+"slug": "gods-promise-to-abraham",
 "t": "God's Promise to Abraham",
 "b": "Genesis",
-"r": "12:1-5,15:1-6,17,21:1-7",
+"r": "12:1-5,15:1-6,17:1-27,21:1-7",
 "par": [],
 "s": [
 "OT Stories",
@@ -209,6 +217,7 @@
 },
 {
 "id": "B11",
+"slug": "hagar-and-ishmael",
 "t": "Hagar and Ishmael",
 "b": "Genesis",
 "r": "16",
@@ -224,6 +233,7 @@
 },
 {
 "id": "B12",
+"slug": "sodom-and-gomorrah",
 "t": "Sodom and Gomorrah",
 "b": "Genesis",
 "r": "18:16-33,19:1-29",
@@ -239,6 +249,7 @@
 },
 {
 "id": "B13",
+"slug": "abraham-sacrifices-his-son",
 "t": "Abraham Sacrifices His Son",
 "b": "Genesis",
 "r": "22:1-18",
@@ -256,6 +267,7 @@
 },
 {
 "id": "B14",
+"slug": "jacob-and-esau",
 "t": "Jacob and Esau",
 "b": "Genesis",
 "r": "25:19-34, 27:1-45",
@@ -271,6 +283,7 @@
 },
 {
 "id": "B15",
+"slug": "jacob-wrestles-with-god",
 "t": "Jacob Wrestles with God",
 "b": "Genesis",
 "r": "32-33",
@@ -287,6 +300,7 @@
 },
 {
 "id": "B16",
+"slug": "joseph",
 "t": "Joseph",
 "b": "Genesis",
 "r": "37-50",
@@ -304,6 +318,7 @@
 },
 {
 "id": "B17",
+"slug": "moses-and-the-burning-bush",
 "t": "Moses and the Burning Bush",
 "b": "Exodus",
 "r": "3",
@@ -322,6 +337,7 @@
 },
 {
 "id": "B18",
+"slug": "the-plagues",
 "t": "The Plagues",
 "b": "Exodus",
 "r": "7:14\u201312:30",
@@ -341,6 +357,7 @@
 },
 {
 "id": "B19",
+"slug": "the-passover-escape-through-the-sea",
 "t": "The Passover + Escape Through the Sea",
 "b": "Exodus",
 "r": "12:1-30, 13:17\u201314:31",
@@ -362,6 +379,7 @@
 },
 {
 "id": "B21",
+"slug": "manna",
 "t": "Manna",
 "b": "Exodus",
 "r": "16:1-36",
@@ -377,6 +395,7 @@
 },
 {
 "id": "B22",
+"slug": "hands-held-high",
 "t": "Hands Held High",
 "b": "Exodus",
 "r": "17:8-16",
@@ -392,6 +411,7 @@
 },
 {
 "id": "B23",
+"slug": "the-ten-commandments",
 "t": "The Ten Commandments",
 "b": "Exodus",
 "r": "20:1-21",
@@ -408,6 +428,7 @@
 },
 {
 "id": "B24",
+"slug": "the-golden-calf",
 "t": "The Golden Calf",
 "b": "Exodus",
 "r": "32:1-35",
@@ -424,6 +445,7 @@
 },
 {
 "id": "B25",
+"slug": "building-gods-holy-tent",
 "t": "Building God's Holy Tent",
 "b": "Exodus",
 "r": "35:4\u201336:7",
@@ -438,6 +460,7 @@
 },
 {
 "id": "B26",
+"slug": "unintentional-sin",
 "t": "Unintentional Sin",
 "b": "Leviticus",
 "r": "5:17-19",
@@ -454,6 +477,7 @@
 },
 {
 "id": "B27",
+"slug": "the-12-spies",
 "t": "The 12 Spies",
 "b": "Numbers",
 "r": "13:1\u201314:38",
@@ -468,6 +492,7 @@
 },
 {
 "id": "B28",
+"slug": "the-walls-of-jericho",
 "t": "The Walls of Jericho",
 "b": "Joshua",
 "r": "6:1-21",
@@ -483,6 +508,7 @@
 },
 {
 "id": "B29",
+"slug": "achan-steals-some-treasure",
 "t": "Achan Steals Some Treasure",
 "b": "Joshua",
 "r": "7:1-26",
@@ -497,6 +523,7 @@
 },
 {
 "id": "B30",
+"slug": "gideons-army",
 "t": "Gideon's Army",
 "b": "Judges",
 "r": "7:1-25",
@@ -515,6 +542,7 @@
 },
 {
 "id": "B31",
+"slug": "samson-the-strong-man",
 "t": "Samson the Strong Man",
 "b": "Judges",
 "r": "13:1\u201316:31",
@@ -532,6 +560,7 @@
 },
 {
 "id": "B32",
+"slug": "ruth-and-naomi",
 "t": "Ruth and Naomi",
 "b": "Ruth",
 "r": "1:1\u20134:22",
@@ -547,6 +576,7 @@
 },
 {
 "id": "B33",
+"slug": "hannahs-prayer",
 "t": "Hannah's Prayer",
 "b": "1 Samuel",
 "r": "1:1\u20132:11",
@@ -563,6 +593,7 @@
 },
 {
 "id": "B34",
+"slug": "the-choosing-of-david",
 "t": "The Choosing of David",
 "b": "1 Samuel",
 "r": "16:1-13",
@@ -581,6 +612,7 @@
 },
 {
 "id": "B35",
+"slug": "david-and-goliath",
 "t": "David and Goliath",
 "b": "1 Samuel",
 "r": "17:1-58",
@@ -598,6 +630,7 @@
 },
 {
 "id": "B36",
+"slug": "david-sins",
 "t": "David Sins",
 "b": "2 Samuel",
 "r": "11:1\u201312:25",
@@ -614,6 +647,7 @@
 },
 {
 "id": "B37",
+"slug": "elijah-and-the-false-prophets",
 "t": "Elijah and the False Prophets",
 "b": "1 Kings",
 "r": "18:16-46",
@@ -633,6 +667,7 @@
 },
 {
 "id": "B38",
+"slug": "god-provides-for-elijah",
 "t": "God Provides for Elijah",
 "b": "1 Kings",
 "r": "17:1-16",
@@ -649,6 +684,7 @@
 },
 {
 "id": "B39",
+"slug": "hezekiah-is-healed",
 "t": "Hezekiah is Healed",
 "b": "2 Kings",
 "r": "20:1-11",
@@ -665,6 +701,7 @@
 },
 {
 "id": "B40",
+"slug": "josiah-the-boy-king",
 "t": "Josiah, the boy King",
 "b": "2 Kings",
 "r": "22:1\u201323:25",
@@ -680,6 +717,7 @@
 },
 {
 "id": "B41",
+"slug": "jehoshaphat",
 "t": "Jehoshaphat",
 "b": "2 Chronicles",
 "r": "20:1-30",
@@ -699,6 +737,7 @@
 },
 {
 "id": "B42",
+"slug": "rebuilding-the-wall-nehemiah",
 "t": "Rebuilding the Wall (Nehemiah)",
 "b": "Nehemiah",
 "r": "1:1\u20136:16",
@@ -714,6 +753,7 @@
 },
 {
 "id": "B43",
+"slug": "esther",
 "t": "Esther",
 "b": "Esther",
 "r": "2:1\u20139:17",
@@ -729,6 +769,7 @@
 },
 {
 "id": "B44",
+"slug": "job",
 "t": "Job",
 "b": "Job",
 "r": "1:1\u20132:13, 42:1-17",
@@ -744,6 +785,7 @@
 },
 {
 "id": "B45",
+"slug": "a-new-heart-for-gods-people-the-exile",
 "t": "A New Heart for God's People (The Exile)",
 "b": "Ezekiel",
 "r": "36:22-38",
@@ -758,6 +800,7 @@
 },
 {
 "id": "B46",
+"slug": "jonah-and-the-whale",
 "t": "Jonah and the Whale",
 "b": "Jonah",
 "r": "1:1\u20134:11",
@@ -776,6 +819,7 @@
 },
 {
 "id": "B47",
+"slug": "the-gold-statue",
 "t": "The Gold Statue",
 "b": "Daniel",
 "r": "3:1-30",
@@ -795,6 +839,7 @@
 },
 {
 "id": "B48",
+"slug": "daniel-in-the-lions-den",
 "t": "Daniel in the Lion's Den",
 "b": "Daniel",
 "r": "6:1-28",
@@ -814,6 +859,7 @@
 },
 {
 "id": "F4",
+"slug": "genealogy-of-jesus",
 "t": "Genealogy of Jesus",
 "b": "Matthew",
 "r": "1:1-17",
@@ -829,6 +875,7 @@
 },
 {
 "id": "F5",
+"slug": "the-birth-of-jesus",
 "t": "Birth of Jesus",
 "b": "Matthew",
 "r": "1:18-25",
@@ -849,6 +896,7 @@
 },
 {
 "id": "F6",
+"slug": "the-wise-men",
 "t": "The Wise Men",
 "b": "Matthew",
 "r": "2:1-12",
@@ -863,6 +911,7 @@
 },
 {
 "id": "F7",
+"slug": "john-the-baptist",
 "t": "John the Baptist",
 "b": "Matthew",
 "r": "3:1-12",
@@ -880,6 +929,7 @@
 },
 {
 "id": "F8",
+"slug": "baptism-of-jesus",
 "t": "Baptism of Jesus",
 "b": "Matthew",
 "r": "3:13-17",
@@ -902,6 +952,7 @@
 },
 {
 "id": "F9",
+"slug": "temptation-of-jesus",
 "t": "Temptation of Jesus",
 "b": "Matthew",
 "r": "4:1-11",
@@ -922,6 +973,7 @@
 },
 {
 "id": "F10",
+"slug": "follow-and-fish",
 "t": "Follow and Fish",
 "b": "Matthew",
 "r": "4:18-22",
@@ -938,6 +990,7 @@
 },
 {
 "id": "F11",
+"slug": "the-beatitudes",
 "t": "The Beatitudes",
 "b": "Matthew",
 "r": "5:1\u201312",
@@ -957,6 +1010,7 @@
 },
 {
 "id": "F12",
+"slug": "salt-and-light",
 "t": "Salt and Light",
 "b": "Matthew",
 "r": "5:13\u201316",
@@ -976,6 +1030,7 @@
 },
 {
 "id": "F13",
+"slug": "jesus-and-the-law",
 "t": "Jesus and the Law",
 "b": "Matthew",
 "r": "5:17\u201320",
@@ -993,6 +1048,7 @@
 },
 {
 "id": "F14",
+"slug": "murder-in-the-heart",
 "t": "Murder in the Heart",
 "b": "Matthew",
 "r": "5:21\u201326",
@@ -1009,6 +1065,7 @@
 },
 {
 "id": "F15",
+"slug": "adultery-in-the-heart",
 "t": "Adultery in the Heart",
 "b": "Matthew",
 "r": "5:27\u201330",
@@ -1025,6 +1082,7 @@
 },
 {
 "id": "F16",
+"slug": "divorce-and-remarriage",
 "t": "Divorce and Remarriage",
 "b": "Matthew",
 "r": "5:31\u201332",
@@ -1045,6 +1103,7 @@
 },
 {
 "id": "F17",
+"slug": "keeping-your-word",
 "t": "Keeping Your Word",
 "b": "Matthew",
 "r": "5:33\u201337",
@@ -1061,6 +1120,7 @@
 },
 {
 "id": "F18",
+"slug": "turn-the-other-cheek",
 "t": "Turn the Other Cheek",
 "b": "Matthew",
 "r": "5:38\u201342",
@@ -1080,6 +1140,7 @@
 },
 {
 "id": "F19",
+"slug": "love-your-enemies",
 "t": "Love Your Enemies",
 "b": "Matthew",
 "r": "5:43\u201348",
@@ -1100,6 +1161,7 @@
 },
 {
 "id": "F20",
+"slug": "how-to-give",
 "t": "How To Give",
 "b": "Matthew",
 "r": "6:1\u20134",
@@ -1118,6 +1180,7 @@
 },
 {
 "id": "F21",
+"slug": "how-to-pray",
 "t": "How To Pray",
 "b": "Matthew",
 "r": "6:5\u201315",
@@ -1125,6 +1188,7 @@
 "Luke 11:1\u20134"
 ],
 "s": [
+"7 Commands",
 "Sermon on the Mount"
 ],
 "g": [
@@ -1138,6 +1202,7 @@
 },
 {
 "id": "F22",
+"slug": "how-to-fast",
 "t": "How To Fast",
 "b": "Matthew",
 "r": "6:16\u201318",
@@ -1156,6 +1221,7 @@
 },
 {
 "id": "F23",
+"slug": "treasures-in-heaven",
 "t": "Treasures in Heaven",
 "b": "Matthew",
 "r": "6:19\u201324",
@@ -1174,6 +1240,7 @@
 },
 {
 "id": "F24",
+"slug": "do-not-worry",
 "t": "Do Not Worry",
 "b": "Matthew",
 "r": "6:25\u201334",
@@ -1195,6 +1262,7 @@
 },
 {
 "id": "F25",
+"slug": "judging-others",
 "t": "Judging Others",
 "b": "Matthew",
 "r": "7:1\u20136",
@@ -1215,6 +1283,7 @@
 },
 {
 "id": "F26",
+"slug": "ask-seek-knock",
 "t": "Ask, Seek, Knock",
 "b": "Matthew",
 "r": "7:7\u201312",
@@ -1235,6 +1304,7 @@
 },
 {
 "id": "F27",
+"slug": "entering-the-kingdom",
 "t": "Entering the Kingdom",
 "b": "Matthew",
 "r": "7:13\u201323",
@@ -1251,6 +1321,7 @@
 },
 {
 "id": "F28",
+"slug": "build-your-house-on-the-rock",
 "t": "Build Your House on the Rock",
 "b": "Matthew",
 "r": "7:24\u201329",
@@ -1270,6 +1341,7 @@
 },
 {
 "id": "F33",
+"slug": "the-paralytic-man",
 "t": "The Paralyzed Man",
 "b": "Luke",
 "r": "5:17-26",
@@ -1294,6 +1366,7 @@
 },
 {
 "id": "F39",
+"slug": "the-weeds",
 "t": "The Weeds",
 "b": "Matthew",
 "r": "13:24-30,36-43",
@@ -1310,6 +1383,7 @@
 },
 {
 "id": "F40",
+"slug": "the-mustard-seed",
 "t": "The Mustard Seed",
 "b": "Matthew",
 "r": "13:31\u201332",
@@ -1330,6 +1404,7 @@
 },
 {
 "id": "F41",
+"slug": "the-hidden-treasure",
 "t": "The Hidden Treasure",
 "b": "Matthew",
 "r": "13:44",
@@ -1346,6 +1421,7 @@
 },
 {
 "id": "F42",
+"slug": "the-pearl-of-great-price",
 "t": "The Pearl of Great Price",
 "b": "Matthew",
 "r": "13:45-46",
@@ -1362,6 +1438,7 @@
 },
 {
 "id": "F43",
+"slug": "the-fishing-net",
 "t": "The Fishing Net",
 "b": "Matthew",
 "r": "13:47-50",
@@ -1378,6 +1455,7 @@
 },
 {
 "id": "F45",
+"slug": "jesus-walks-on-water",
 "t": "Jesus Walks on Water",
 "b": "Matthew",
 "r": "14:22-33",
@@ -1399,6 +1477,7 @@
 },
 {
 "id": "F47",
+"slug": "who-did-people-say-jesus-was",
 "t": "Who did people say Jesus was?",
 "b": "Matthew",
 "r": "16:13-20",
@@ -1416,6 +1495,7 @@
 },
 {
 "id": "F48",
+"slug": "jesus-shines-in-glorious-light",
 "t": "Jesus Shines in Glorious Light",
 "b": "Matthew",
 "r": "17:1-13",
@@ -1433,6 +1513,7 @@
 },
 {
 "id": "F49",
+"slug": "boy-with-an-unclean-spirit",
 "t": "Boy with an Unclean Spirit",
 "b": "Matthew",
 "r": "17:14-20",
@@ -1449,6 +1530,7 @@
 },
 {
 "id": "F50",
+"slug": "finding-a-coin-in-the-mouth-of-a-fish",
 "t": "Finding a Coin in the Mouth of a Fish",
 "b": "Matthew",
 "r": "17:24-27",
@@ -1464,6 +1546,7 @@
 },
 {
 "id": "F52",
+"slug": "the-unforgiving-slave",
 "t": "The Unforgiving Slave",
 "b": "Matthew",
 "r": "18:21-35",
@@ -1482,6 +1565,7 @@
 },
 {
 "id": "F56",
+"slug": "the-vineyard-workers",
 "t": "The Vineyard Workers",
 "b": "Matthew",
 "r": "20:1-16",
@@ -1498,6 +1582,7 @@
 },
 {
 "id": "F59",
+"slug": "the-two-sons",
 "t": "The Two Sons",
 "b": "Matthew",
 "r": "21:28\u201332",
@@ -1512,6 +1597,7 @@
 },
 {
 "id": "F60",
+"slug": "the-vineyard-owner",
 "t": "The Vineyard Owner",
 "b": "Matthew",
 "r": "21:33\u201346",
@@ -1528,6 +1614,7 @@
 },
 {
 "id": "F61",
+"slug": "the-great-banquet",
 "t": "The Great Banquet",
 "b": "Matthew",
 "r": "22:1-14",
@@ -1546,15 +1633,14 @@
 },
 {
 "id": "F62",
+"slug": "the-greatest-commandment",
 "t": "The Greatest Commandment",
 "b": "Matthew",
 "r": "22:34-40",
 "par": [
 "Mark 12:28-34"
 ],
-"s": [
-"7 Commands"
-],
+"s": [],
 "g": [
 "Teachings",
 "Love",
@@ -1565,6 +1651,7 @@
 },
 {
 "id": "F64",
+"slug": "the-ten-virgins",
 "t": "The Ten Virgins",
 "b": "Matthew",
 "r": "25:1\u201313",
@@ -1582,6 +1669,7 @@
 },
 {
 "id": "F65",
+"slug": "the-talents",
 "t": "The Talents",
 "b": "Matthew",
 "r": "25:14\u201330",
@@ -1597,6 +1685,7 @@
 },
 {
 "id": "F66",
+"slug": "the-sheep-and-the-goats",
 "t": "The Sheep and the Goats",
 "b": "Matthew",
 "r": "25:31-46",
@@ -1612,6 +1701,7 @@
 },
 {
 "id": "F68",
+"slug": "jesus-in-the-garden",
 "t": "Jesus in the Garden",
 "b": "Matthew",
 "r": "26:36-56",
@@ -1632,6 +1722,7 @@
 },
 {
 "id": "F69",
+"slug": "the-death-of-jesus",
 "t": "The Death of Jesus",
 "b": "Matthew",
 "r": "27:32-66",
@@ -1655,6 +1746,7 @@
 },
 {
 "id": "F70",
+"slug": "the-resurrection",
 "t": "The Resurrection",
 "b": "Matthew",
 "r": "28:1-10",
@@ -1679,6 +1771,7 @@
 },
 {
 "id": "F71",
+"slug": "the-great-commission",
 "t": "The Great Commission",
 "b": "Matthew",
 "r": "28:16-20",
@@ -1687,7 +1780,6 @@
 "John 20:19-23"
 ],
 "s": [
-"7 Commands",
 "Baptism Hammer",
 "C2C Full"
 ],
@@ -1704,6 +1796,7 @@
 },
 {
 "id": "I11",
+"slug": "the-man-with-the-paralyzed-hand",
 "t": "The Man with the Paralyzed Hand",
 "b": "Mark",
 "r": "3:1-6",
@@ -1721,6 +1814,7 @@
 },
 {
 "id": "I12",
+"slug": "true-relationships",
 "t": "True Relationships",
 "b": "Mark",
 "r": "3:31-35",
@@ -1735,6 +1829,7 @@
 },
 {
 "id": "I13",
+"slug": "the-sower",
 "t": "The Sower",
 "b": "Mark",
 "r": "4:1-20",
@@ -1754,6 +1849,7 @@
 },
 {
 "id": "I15",
+"slug": "the-growing-seed",
 "t": "The Growing Seed",
 "b": "Mark",
 "r": "4:26-29",
@@ -1770,6 +1866,7 @@
 },
 {
 "id": "I17",
+"slug": "jesus-calms-the-storm",
 "t": "Jesus Calms the Storm",
 "b": "Mark",
 "r": "4:35-41",
@@ -1793,7 +1890,8 @@
 },
 {
 "id": "I18",
-"t": "The Demoniac",
+"slug": "the-man-with-many-demons",
+"t": "The Man with Many Demons",
 "b": "Mark",
 "r": "5:1-20",
 "par": [
@@ -1814,6 +1912,7 @@
 },
 {
 "id": "I19",
+"slug": "jairus-daughter-and-the-bleeding-woman",
 "t": "Jairus' Daughter and the Bleeding Woman",
 "b": "Mark",
 "r": "5:21-43",
@@ -1837,6 +1936,7 @@
 },
 {
 "id": "I21",
+"slug": "jesus-feeds-5000",
 "t": "Feeding the 5,000",
 "b": "Mark",
 "r": "6:30-44",
@@ -1859,6 +1959,7 @@
 },
 {
 "id": "I23",
+"slug": "a-gentile-mothers-faith",
 "t": "A Gentile Mother's Faith",
 "b": "Mark",
 "r": "7:24-30",
@@ -1878,6 +1979,7 @@
 },
 {
 "id": "I35",
+"slug": "the-widows-offering",
 "t": "The Widow's Offering",
 "b": "Mark",
 "r": "12:41-44",
@@ -1899,6 +2001,7 @@
 },
 {
 "id": "L4",
+"slug": "the-annunciation",
 "t": "The Annunciation",
 "b": "Luke",
 "r": "1:26-38",
@@ -1918,6 +2021,7 @@
 },
 {
 "id": "L6",
+"slug": "the-shepherds-and-the-angels",
 "t": "The Shepherds and the Angels",
 "b": "Luke",
 "r": "2:8-20",
@@ -1932,6 +2036,7 @@
 },
 {
 "id": "L7",
+"slug": "young-jesus",
 "t": "Young Jesus",
 "b": "Luke",
 "r": "2:41-52",
@@ -1947,6 +2052,7 @@
 },
 {
 "id": "L11",
+"slug": "the-unclean-demonic-spirit",
 "t": "The Unclean Demonic Spirit",
 "b": "Luke",
 "r": "4:31-37",
@@ -1964,6 +2070,7 @@
 },
 {
 "id": "L12",
+"slug": "miraculous-catch-of-fish",
 "t": "Miraculous Catch of Fish",
 "b": "Luke",
 "r": "5:1\u201311",
@@ -1980,6 +2087,7 @@
 },
 {
 "id": "L13",
+"slug": "cleansing-a-leper",
 "t": "Cleansing a Leper",
 "b": "Luke",
 "r": "5:12-16",
@@ -1998,6 +2106,7 @@
 },
 {
 "id": "L21",
+"slug": "the-faith-of-a-roman-military-official",
 "t": "The Faith of a Roman Military Official",
 "b": "Luke",
 "r": "7:1-10",
@@ -2016,6 +2125,7 @@
 },
 {
 "id": "L22",
+"slug": "widows-son-raised",
 "t": "Widow's Son Raised",
 "b": "Luke",
 "r": "7:11-17",
@@ -2032,6 +2142,7 @@
 },
 {
 "id": "L23",
+"slug": "the-woman-who-wept-at-the-feet-of-jesus",
 "t": "The Woman Who Wept at the Feet of Jesus",
 "b": "Luke",
 "r": "7:36-50",
@@ -2050,6 +2161,7 @@
 },
 {
 "id": "L30",
+"slug": "take-up-your-cross",
 "t": "Take up Your Cross",
 "b": "Luke",
 "r": "9:23-27",
@@ -2067,6 +2179,7 @@
 },
 {
 "id": "L31",
+"slug": "jesus-sends-out-his-disciples",
 "t": "Jesus Sends Out His Disciples",
 "b": "Luke",
 "r": "10:1-12",
@@ -2075,9 +2188,7 @@
 "Mark 6:7-13",
 "Luke 9:1-6"
 ],
-"s": [
-"7 Commands"
-],
+"s": [],
 "g": [
 "Teachings",
 "Mission",
@@ -2087,11 +2198,14 @@
 },
 {
 "id": "L32",
+"slug": "the-good-samaritan",
 "t": "The Good Samaritan",
 "b": "Luke",
 "r": "10:25-37",
 "par": [],
-"s": [],
+"s": [
+"7 Commands"
+],
 "g": [
 "Parables",
 "Love",
@@ -2102,6 +2216,7 @@
 },
 {
 "id": "L33",
+"slug": "mary-and-martha",
 "t": "Mary and Martha",
 "b": "Luke",
 "r": "10:38-42",
@@ -2117,6 +2232,7 @@
 },
 {
 "id": "L36",
+"slug": "the-rich-fool",
 "t": "The Rich Fool",
 "b": "Luke",
 "r": "12:13\u201321",
@@ -2131,6 +2247,7 @@
 },
 {
 "id": "L39",
+"slug": "ready-for-the-masters-return",
 "t": "Ready for the Master's Return",
 "b": "Luke",
 "r": "12:35\u201340",
@@ -2147,6 +2264,7 @@
 },
 {
 "id": "L40",
+"slug": "healing-a-disabled-woman",
 "t": "Healing a Disabled Woman",
 "b": "Luke",
 "r": "13:10-17",
@@ -2162,6 +2280,7 @@
 },
 {
 "id": "L43",
+"slug": "counting-the-cost",
 "t": "Counting the Cost",
 "b": "Luke",
 "r": "14:25-33",
@@ -2176,6 +2295,7 @@
 },
 {
 "id": "L45",
+"slug": "the-lost-sheep",
 "t": "The Lost Sheep",
 "b": "Luke",
 "r": "15:1-7",
@@ -2193,6 +2313,7 @@
 },
 {
 "id": "L46",
+"slug": "the-lost-coin",
 "t": "The Lost Coin",
 "b": "Luke",
 "r": "15:8-10",
@@ -2209,6 +2330,7 @@
 },
 {
 "id": "L47",
+"slug": "the-lost-son",
 "t": "The Lost Son",
 "b": "Luke",
 "r": "15:11-32",
@@ -2228,6 +2350,7 @@
 },
 {
 "id": "L48",
+"slug": "the-dishonest-manager",
 "t": "The Dishonest Manager",
 "b": "Luke",
 "r": "16:1-13",
@@ -2242,6 +2365,7 @@
 },
 {
 "id": "L50",
+"slug": "the-rich-man-and-lazarus",
 "t": "The Rich Man and Lazarus",
 "b": "Luke",
 "r": "16:19\u201331",
@@ -2258,6 +2382,7 @@
 },
 {
 "id": "L51",
+"slug": "ten-lepers-healed",
 "t": "Ten Lepers Healed",
 "b": "Luke",
 "r": "17:11-19",
@@ -2274,6 +2399,7 @@
 },
 {
 "id": "L52",
+"slug": "the-persistent-widow",
 "t": "The Persistent Widow",
 "b": "Luke",
 "r": "18:1-8",
@@ -2290,6 +2416,7 @@
 },
 {
 "id": "L53",
+"slug": "the-pharisee-and-the-tax-collector",
 "t": "The Pharisee and the Tax Collector",
 "b": "Luke",
 "r": "18:9\u201314",
@@ -2307,6 +2434,7 @@
 },
 {
 "id": "L54",
+"slug": "jesus-and-the-children",
 "t": "Jesus and the Children",
 "b": "Luke",
 "r": "18:15-17",
@@ -2327,6 +2455,7 @@
 },
 {
 "id": "L55",
+"slug": "the-rich-young-ruler",
 "t": "The Rich Young Ruler",
 "b": "Luke",
 "r": "18:18-23",
@@ -2345,6 +2474,7 @@
 },
 {
 "id": "L56",
+"slug": "blind-bartimaeus",
 "t": "Blind Bartimaeus",
 "b": "Luke",
 "r": "18:35-43",
@@ -2363,6 +2493,7 @@
 },
 {
 "id": "L57",
+"slug": "zacchaeus",
 "t": "Zacchaeus",
 "b": "Luke",
 "r": "19:1-10",
@@ -2383,6 +2514,7 @@
 },
 {
 "id": "L58",
+"slug": "the-bags-of-gold",
 "t": "The Bags of Gold",
 "b": "Luke",
 "r": "19:11-27",
@@ -2398,6 +2530,7 @@
 },
 {
 "id": "L59",
+"slug": "jesus-enters-jerusalem",
 "t": "Jesus Enters Jerusalem",
 "b": "Luke",
 "r": "19:28-44",
@@ -2418,6 +2551,7 @@
 },
 {
 "id": "L62",
+"slug": "the-last-supper",
 "t": "The Last Supper",
 "b": "Luke",
 "r": "22:7-20",
@@ -2426,6 +2560,7 @@
 "Mark 14:22-25"
 ],
 "s": [
+"7 Commands",
 "C2C Full"
 ],
 "g": [
@@ -2437,6 +2572,7 @@
 },
 {
 "id": "L66",
+"slug": "jesus-appears-to-men-on-the-road",
 "t": "Jesus Appears to Men on the Road",
 "b": "Luke",
 "r": "24:13-35",
@@ -2454,6 +2590,7 @@
 },
 {
 "id": "L67",
+"slug": "the-risen-jesus",
 "t": "The Risen Jesus",
 "b": "Luke",
 "r": "24:36-49",
@@ -2470,6 +2607,7 @@
 },
 {
 "id": "L68",
+"slug": "jesus-ascends-to-heaven-luke",
 "t": "Jesus Ascends to Heaven",
 "b": "Luke",
 "r": "24:50-53",
@@ -2486,6 +2624,7 @@
 },
 {
 "id": "O4",
+"slug": "the-lamb-of-god",
 "t": "The Lamb of God",
 "b": "John",
 "r": "1:19-36",
@@ -2504,6 +2643,7 @@
 },
 {
 "id": "O5",
+"slug": "water-into-wine",
 "t": "Water Into Wine",
 "b": "John",
 "r": "2:1-11",
@@ -2521,6 +2661,7 @@
 },
 {
 "id": "O6",
+"slug": "cleansing-the-temple",
 "t": "Cleansing the Temple",
 "b": "John",
 "r": "2:13-25",
@@ -2534,6 +2675,7 @@
 },
 {
 "id": "O7",
+"slug": "jesus-and-nicodemus",
 "t": "Jesus and Nicodemus",
 "b": "John",
 "r": "3:1-21",
@@ -2553,6 +2695,7 @@
 },
 {
 "id": "O8",
+"slug": "the-woman-at-the-well",
 "t": "The Samaritan Woman",
 "b": "John",
 "r": "4:1-42",
@@ -2575,6 +2718,7 @@
 },
 {
 "id": "O9",
+"slug": "healing-an-officials-son",
 "t": "Healing an Official's Son",
 "b": "John",
 "r": "4:46-54",
@@ -2592,6 +2736,7 @@
 },
 {
 "id": "O10",
+"slug": "man-healed-after-38-years",
 "t": "Man Healed After 38 Years",
 "b": "John",
 "r": "5:1-15",
@@ -2608,6 +2753,7 @@
 },
 {
 "id": "O13",
+"slug": "an-adulteress-forgiven",
 "t": "An Adulteress Forgiven",
 "b": "John",
 "r": "8:1-11",
@@ -2623,6 +2769,7 @@
 },
 {
 "id": "O14",
+"slug": "the-blind-man",
 "t": "Man Born Blind",
 "b": "John",
 "r": "9:1-41",
@@ -2643,6 +2790,7 @@
 },
 {
 "id": "O15",
+"slug": "the-good-shepherd",
 "t": "The Good Shepherd",
 "b": "John",
 "r": "10:1-18",
@@ -2658,6 +2806,7 @@
 },
 {
 "id": "O16",
+"slug": "lazarus-raised-from-the-dead",
 "t": "Lazarus Raised from the Dead",
 "b": "John",
 "r": "11:1-44",
@@ -2679,6 +2828,7 @@
 },
 {
 "id": "O17",
+"slug": "oil-poured-on-jesus-feet",
 "t": "Oil Poured on Jesus's Feet",
 "b": "John",
 "r": "12:1-8",
@@ -2695,6 +2845,7 @@
 },
 {
 "id": "O19",
+"slug": "grain-of-wheat",
 "t": "Grain of Wheat",
 "b": "John",
 "r": "12:23-28",
@@ -2710,6 +2861,7 @@
 },
 {
 "id": "O20",
+"slug": "jesus-washes-his-disciples-feet",
 "t": "Jesus Washes His Disciples Feet",
 "b": "John",
 "r": "13:1-20",
@@ -2725,6 +2877,7 @@
 },
 {
 "id": "O21",
+"slug": "the-way-to-the-father",
 "t": "The Way to the Father",
 "b": "John",
 "r": "14:1-6",
@@ -2740,6 +2893,7 @@
 },
 {
 "id": "O22",
+"slug": "the-promise-of-the-holy-spirit",
 "t": "The Promise of the Holy Spirit",
 "b": "John",
 "r": "14:15-26",
@@ -2757,6 +2911,7 @@
 },
 {
 "id": "O23",
+"slug": "the-vine-and-the-branches",
 "t": "The Vine and the Branches",
 "b": "John",
 "r": "15:1-17",
@@ -2775,6 +2930,7 @@
 },
 {
 "id": "O27",
+"slug": "doubting-thomas",
 "t": "Doubting Thomas",
 "b": "John",
 "r": "20:24-29",
@@ -2790,6 +2946,7 @@
 },
 {
 "id": "R4",
+"slug": "jesus-ascends-to-heaven-acts",
 "t": "Jesus Ascends to Heaven",
 "b": "Acts",
 "r": "1:4-11",
@@ -2808,6 +2965,7 @@
 },
 {
 "id": "R5",
+"slug": "pentecost",
 "t": "Pentecost",
 "b": "Acts",
 "r": "2:1-41",
@@ -2829,6 +2987,7 @@
 },
 {
 "id": "R6",
+"slug": "the-early-church",
 "t": "The Early Church",
 "b": "Acts",
 "r": "2:42-47",
@@ -2847,6 +3006,7 @@
 },
 {
 "id": "R7",
+"slug": "healing-a-lame-man",
 "t": "Healing a Lame Man",
 "b": "Acts",
 "r": "3:1\u201326",
@@ -2863,6 +3023,7 @@
 },
 {
 "id": "R8",
+"slug": "before-the-jewish-leadership",
 "t": "Before the Jewish Leadership",
 "b": "Acts",
 "r": "4:1-31",
@@ -2880,6 +3041,7 @@
 },
 {
 "id": "R9",
+"slug": "lying-to-the-holy-spirit",
 "t": "Lying to the Holy Spirit",
 "b": "Acts",
 "r": "5:1-11",
@@ -2896,6 +3058,7 @@
 },
 {
 "id": "R10",
+"slug": "a-growing-church",
 "t": "A Growing Church",
 "b": "Acts",
 "r": "5:12-16",
@@ -2910,6 +3073,7 @@
 },
 {
 "id": "R11",
+"slug": "the-apostles-persecuted",
 "t": "The Apostles Persecuted",
 "b": "Acts",
 "r": "5:17-42",
@@ -2927,6 +3091,7 @@
 },
 {
 "id": "R12",
+"slug": "stephen-is-martyred",
 "t": "Stephen is Martyred",
 "b": "Acts",
 "r": "6:8\u20137:60",
@@ -2948,6 +3113,7 @@
 },
 {
 "id": "R13",
+"slug": "philip-and-the-ethiopian",
 "t": "Philip and the Ethiopian",
 "b": "Acts",
 "r": "8:26\u201340",
@@ -2968,6 +3134,7 @@
 },
 {
 "id": "R14",
+"slug": "pauls-conversion",
 "t": "Paul's Conversion",
 "b": "Acts",
 "r": "9:1\u201331",
@@ -2986,6 +3153,7 @@
 },
 {
 "id": "R15",
+"slug": "cornelius-family-is-saved",
 "t": "Cornelius's Family is Saved",
 "b": "Acts",
 "r": "10:1-48",
@@ -3003,6 +3171,7 @@
 },
 {
 "id": "R16",
+"slug": "the-church-at-antioch-begins",
 "t": "The Church at Antioch Begins",
 "b": "Acts",
 "r": "11:19-30",
@@ -3019,6 +3188,7 @@
 },
 {
 "id": "R17",
+"slug": "paul-and-barnabas-sent-out",
 "t": "Paul and Barnabas Sent Out",
 "b": "Acts",
 "r": "13:1-3",
@@ -3035,6 +3205,7 @@
 },
 {
 "id": "R18",
+"slug": "paul-makes-a-sorcerer-blind",
 "t": "Paul makes a Sorcerer Blind",
 "b": "Acts",
 "r": "13:4-12",
@@ -3051,6 +3222,7 @@
 },
 {
 "id": "R19",
+"slug": "pauls-sermon-to-the-jews",
 "t": "Paul's Sermon to the Jews",
 "b": "Acts",
 "r": "13:13-52",
@@ -3067,6 +3239,7 @@
 },
 {
 "id": "R20",
+"slug": "growth-and-persecution",
 "t": "Growth and Persecution",
 "b": "Acts",
 "r": "14:1-7",
@@ -3084,6 +3257,7 @@
 },
 {
 "id": "R21",
+"slug": "mistaken-for-gods",
 "t": "Mistaken for Gods",
 "b": "Acts",
 "r": "14:8-20",
@@ -3101,6 +3275,7 @@
 },
 {
 "id": "R22",
+"slug": "completing-the-mission",
 "t": "Completing the Mission",
 "b": "Acts",
 "r": "14:21-28",
@@ -3117,6 +3292,7 @@
 },
 {
 "id": "R23",
+"slug": "a-fight-in-the-church",
 "t": "A Fight in the Church",
 "b": "Acts",
 "r": "15:1-35",
@@ -3133,6 +3309,7 @@
 },
 {
 "id": "R24",
+"slug": "paul-and-barnabas-part-ways",
 "t": "Paul and Barnabas Part Ways",
 "b": "Acts",
 "r": "15:36-41",
@@ -3149,6 +3326,7 @@
 },
 {
 "id": "R25",
+"slug": "paul-selects-timothy",
 "t": "Paul Selects Timothy",
 "b": "Acts",
 "r": "16:1-5",
@@ -3165,6 +3343,7 @@
 },
 {
 "id": "R26",
+"slug": "a-call-to-new-ministry",
 "t": "A Call to New Ministry",
 "b": "Acts",
 "r": "16:6-10",
@@ -3181,7 +3360,8 @@
 },
 {
 "id": "R27",
-"t": "Lydia's Conversion",
+"slug": "lydias-conversion",
+"t": "Lydia Believes",
 "b": "Acts",
 "r": "16:11-15",
 "par": [],
@@ -3199,6 +3379,7 @@
 },
 {
 "id": "R28",
+"slug": "the-fortune-teller",
 "t": "The Fortune Teller",
 "b": "Acts",
 "r": "16:16-24",
@@ -3216,6 +3397,7 @@
 },
 {
 "id": "R29",
+"slug": "paul-and-silas-escape-from-prison",
 "t": "Paul and Silas Escape from Prison",
 "b": "Acts",
 "r": "16:16-40",
@@ -3234,6 +3416,7 @@
 },
 {
 "id": "R30",
+"slug": "the-attack-of-jasons-house",
 "t": "The Attack of Jason's House",
 "b": "Acts",
 "r": "17:1-9",
@@ -3250,6 +3433,7 @@
 },
 {
 "id": "R31",
+"slug": "the-bereans-love-the-bible",
 "t": "The Bereans Love the Bible!",
 "b": "Acts",
 "r": "17:10-16",
@@ -3266,6 +3450,7 @@
 },
 {
 "id": "R32",
+"slug": "pauls-sermon-to-the-gentiles",
 "t": "Paul's Sermon to the Gentiles",
 "b": "Acts",
 "r": "17:16-34",
@@ -3282,6 +3467,7 @@
 },
 {
 "id": "R33",
+"slug": "i-have-many-people-in-this-city",
 "t": "\"I have many people in this city\"",
 "b": "Acts",
 "r": "18:1\u201317",
@@ -3299,6 +3485,7 @@
 },
 {
 "id": "R34",
+"slug": "paul-returns-to-antioch",
 "t": "Paul Returns to Antioch",
 "b": "Acts",
 "r": "18:18-23",
@@ -3314,6 +3501,7 @@
 },
 {
 "id": "R35",
+"slug": "the-eloquent-apollos",
 "t": "The Eloquent Apollos",
 "b": "Acts",
 "r": "18:24-28",
@@ -3331,6 +3519,7 @@
 },
 {
 "id": "R36",
+"slug": "baptism-of-the-holy-spirit",
 "t": "Baptism of the Holy Spirit",
 "b": "Acts",
 "r": "19:1-7",
@@ -3347,6 +3536,7 @@
 },
 {
 "id": "R37",
+"slug": "all-of-asia-hears",
 "t": "All of Asia Hears",
 "b": "Acts",
 "r": "19:8-10",
@@ -3362,6 +3552,7 @@
 },
 {
 "id": "R38",
+"slug": "demons-defeated",
 "t": "Demons Defeated",
 "b": "Acts",
 "r": "19:11-20",
@@ -3379,6 +3570,7 @@
 },
 {
 "id": "R39",
+"slug": "the-riot",
 "t": "The Riot",
 "b": "Acts",
 "r": "19:21-41",
@@ -3396,6 +3588,7 @@
 },
 {
 "id": "R40",
+"slug": "paul-in-macedonia",
 "t": "Paul in Macedonia",
 "b": "Acts",
 "r": "20:1-6",
@@ -3411,6 +3604,7 @@
 },
 {
 "id": "R41",
+"slug": "a-midnight-resurrection",
 "t": "A Midnight Resurrection",
 "b": "Acts",
 "r": "20:7-12",
@@ -3427,6 +3621,7 @@
 },
 {
 "id": "R42",
+"slug": "pauls-goodbye-to-the-elders",
 "t": "Paul's Goodbye to the Elders",
 "b": "Acts",
 "r": "20:13-38",
@@ -3444,6 +3639,7 @@
 },
 {
 "id": "R43",
+"slug": "pauls-return-to-jerusalem",
 "t": "Paul's Return to Jerusalem",
 "b": "Acts",
 "r": "21:1-19",
@@ -3461,6 +3657,7 @@
 },
 {
 "id": "T4",
+"slug": "the-second-coming",
 "t": "The Second Coming",
 "b": "Revelation",
 "r": "19:11-21",
@@ -3477,6 +3674,7 @@
 },
 {
 "id": "T5",
+"slug": "the-1000-year-reign-satan-crushed",
 "t": "The 1,000 Year Reign + Satan Crushed",
 "b": "Revelation",
 "r": "20:1-10",
@@ -3494,6 +3692,7 @@
 },
 {
 "id": "T7",
+"slug": "the-great-white-throne-judgment",
 "t": "The Great White Throne Judgment",
 "b": "Revelation",
 "r": "20:11-15",
@@ -3508,6 +3707,7 @@
 },
 {
 "id": "T8",
+"slug": "the-new-creation",
 "t": "The New Creation",
 "b": "Revelation",
 "r": "21:1-27,22:1-5",
@@ -3544,7 +3744,7 @@
 "of": "I17"
 },
 {
-"t": "The Demoniac",
+"t": "The Man with Many Demons",
 "b": "Matthew",
 "r": "8:28-34",
 "of": "I18"
@@ -3898,7 +4098,7 @@
 "of": "I17"
 },
 {
-"t": "The Demoniac",
+"t": "The Man with Many Demons",
 "b": "Luke",
 "r": "8:26-39",
 "of": "I18"
