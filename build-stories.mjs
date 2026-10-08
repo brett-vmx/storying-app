@@ -56,7 +56,7 @@ const SET_ICON = {
   "Paul's Journeys": 'story-set-icons/pauls-journeys.webp',
   'Baptism Hammer': 'story-set-icons/baptism-hammer.webp',
   'Sermon on the Mount': 'story-set-icons/sermon-on-the-mount.webp',
-  'C2C Full': 'story-set-icons/c2c-full.webp',
+  'Creation to Revelation': 'story-set-icons/c2c-full.webp',
   /* 7 Signs of John: the 7 miracles traditionally read as John's own "signs" structure
      (water into wine, healing the official's son, healing at Bethesda, feeding the 5,000,
      walking on water, healing the man born blind, raising Lazarus). Two of the seven are
@@ -83,7 +83,7 @@ const STORY_IMG = {
      filed under Revelation 12:7-9 as its primary account (the other three as par[]) since
      that is the only one of the four that is an actual narrated event rather than a poetic
      oracle or a single aside, even though the story's narrative POSITION is meant to be
-     right before The First Sin (see its id's placement in SET_ORDER's 'C2C Full' array and
+     right before The First Sin (see its id's placement in SET_ORDER's 'Creation to Revelation' array and
      in the data/stories.json array itself, both independent of this `b`/`r` choice) -- so it
      shows up in Books view under Revelation, not Genesis, on purpose. Brett's own addition,
      not sourced from Misc/Story-Sets.xlsx's Master List tab like every other story in this
@@ -113,7 +113,7 @@ const STORY_IMG = {
   'Exodus|The Ten Commandments': 'exodus-ten-commandments.webp',
   'Genesis|The First People': 'genesis-the-first-people.webp',
   /* Replaced the original sunburst-themed cover with a new one in the flat-illustration
-     style, as part of the C2C Full art pass below. */
+     style, as part of the Creation to Revelation art pass below. */
   'John|Lazarus Raised from the Dead': 'john-lazarus-raised.webp',
   'Luke|The Lost Son': 'luke-the-lost-son.webp',
   'Acts|The Apostles Persecuted': 'acts-apostles-persecuted.webp',
@@ -175,9 +175,9 @@ const STORY_IMG = {
   'Acts|A Midnight Resurrection': 'a-midnight-resurrection.webp',
   "Acts|Paul's Goodbye to the Elders": 'pauls-goodbye-to-the-elders.webp',
   "Acts|Paul's Return to Jerusalem": 'pauls-return-to-jerusalem.webp',
-  /* The rest of C2C Full's 50: one-off bespoke covers (own background/color per story, not
+  /* The rest of Creation to Revelation's 50: one-off bespoke covers (own background/color per story, not
      a shared family like SOTM/Paul's Journeys above), finishing out every story in the set
-     that didn't already have art. A few titles are also C2C Full members told from a
+     that didn't already have art. A few titles are also Creation to Revelation members told from a
      different book (e.g. Mark's own "The Great Commission" and "Jesus Enters Jerusalem"
      exist too, but are not in this set) -- filenames get a -c2c suffix only where that
      collision exists, purely for legibility; lookup is by "Book|Title", not filename. */
@@ -212,7 +212,7 @@ const STORY_IMG = {
   'Revelation|The Second Coming': 'the-second-coming.webp',
   'Revelation|The 1,000 Year Reign + Satan Crushed': 'the-thousand-year-reign-and-satan-crushed.webp',
   'Revelation|The New Creation': 'the-new-creation.webp',
-  /* Not a C2C Full pass: these 18 finish out art for the OTHER six defined story sets (7
+  /* Not a Creation to Revelation pass: these 18 finish out art for the OTHER six defined story sets (7
      Commands, Stories of Hope, Acts, OT Stories, Sacrifice Stories, Baptism Hammer), which
      each had a handful of members still showing the book-icon fallback. One-off bespoke
      covers, same as the rest of this map. */
@@ -389,7 +389,7 @@ const COMMANDS = [
    active filter. Keyed by id, not "Book|Title": within one set, id is unique and stable
    even across a title edit, and it is what orderedForDisplay() looks up by.
    Creation to Christ comes straight from Misc/Story-Sets.xlsx's "Stories By Set" tab, an
-   exact 1:1 match with that set's 13 members. C2C Full is the "Stories in Order" tab's own
+   exact 1:1 match with that set's 13 members. Creation to Revelation is the "Stories in Order" tab's own
    C2C Full? column, currently a 50-story sweep from Creation through the New Creation --
    listed here in that tab's own OT-then-Matthew-then-Mark-then-Luke-then-John-then-Acts-
    then-Revelation block order, not Creation to Christ's order, so the two arrays diverge
@@ -398,19 +398,19 @@ const COMMANDS = [
    their sheet blocks exactly, with no extra members and no judgment-call ordering. */
 const SET_ORDER = {
   'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
-  /* C2C Full deliberately has NO entry here, unlike Creation to Christ above. That 13-story
+  /* Creation to Revelation deliberately has NO entry here, unlike Creation to Christ above. That 13-story
      set is a hand-curated teaching sequence, reviewed 1:1 against the sheet's own "Stories
-     By Set" tab, genuinely distinct from Bible order. C2C Full is not that: its whole point
+     By Set" tab, genuinely distinct from Bible order. Creation to Revelation is not that: its whole point
      is "the Bible's own chronological sweep, Creation through New Creation," which is
      exactly what orderedForDisplay()'s fallback already computes -- canonical position via
      BASE_IDX, with the Gospels block re-sequenced by GOSPEL_ORDER below. An earlier version
-     of this file gave C2C Full its own SET_ORDER array built from the "Stories in Order"
+     of this file gave Creation to Revelation its own SET_ORDER array built from the "Stories in Order"
      tab's own row sequence (OT block, then all of Matthew, then all of Mark, ...); that is
      book-position order, not narrative chronology, so it sorted the Gospels portion by
      which book a story happened to be told from rather than what happened when -- the same
      bug GOSPEL_ORDER exists to fix everywhere else. Removing the entry, rather than trying
      to hand-fix that array, was the actual fix: falling through to the shared default gives
-     C2C Full the real chronological order for free, with no separate array to keep in sync
+     Creation to Revelation the real chronological order for free, with no separate array to keep in sync
      as more stories get tagged into the set. */
   /* The sheet's ten command rows, one story each, in the sheet's order, built from COMMANDS
      above. How To Pray is a Sermon on the Mount story, so it belongs to both sets: the sheet's
