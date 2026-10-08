@@ -394,7 +394,9 @@ two are keyed by id rather than by book and title in the first place.
 position are exactly as they were when you come back; Back (the browser's, the page's own button,
 or Escape) restores them and puts focus back on the story you opened. The address is `#slug`,
 so a story can be linked to, and **every slug is provisional until the story-title review is
-done.** The layout borrows from the story pages on creationtochrist.app: on screens wider than a
+done.** When a slug changes, the new one must match the story's folder name in `storying-content`
+(`npm run story-data` stops otherwise), and the old one goes into `OLD_SLUGS` in `build-stories.mjs`
+so links already shared keep working. The layout borrows from the story pages on creationtochrist.app: on screens wider than a
 phone the square cover sits beside the title, the reference with a Crafted pill, "also see"
 passages, the story sets (pills with the set's icon) and the tags (each pill links back to the
 library filtered by it); below that it is one column of white cards: Listen, Storyboard (eyebrow

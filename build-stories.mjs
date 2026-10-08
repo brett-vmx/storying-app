@@ -363,6 +363,13 @@ const ALT_NAMES = {
    8 October 2026.)
    This list is the one source for both the set's order (SET_ORDER below is built from it) and
    the command line shown above each story while 7 Commands is the active set filter. */
+/* Story addresses ("#slug") that were shared before a retitle, and where they go now. Add a line
+   whenever a slug changes during the title review; never remove one. */
+const OLD_SLUGS = {
+  'the-creation': 'creation', 'the-man-and-woman-sin': 'the-first-sin', 'the-birth-of-jesus': 'birth-of-jesus',
+  'the-paralytic-man': 'the-paralyzed-man', 'jesus-feeds-5000': 'feeding-the-5000',
+  'the-woman-at-the-well': 'the-samaritan-woman', 'the-blind-man': 'man-born-blind', 'lydias-conversion': 'lydia-believes',
+};
 const COMMANDS = [
   { n: 'Repent and Believe', r: 'Mark 1:15', ids: ['L57'] },
   { n: 'Be Baptized', r: 'Matthew 28:18-20', ids: ['R13'] },
@@ -972,7 +979,7 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, langNa
   for (const id of Object.keys(GOSPEL_ORDER)) if (!gospelIds.has(id)) throw new Error('GOSPEL_ORDER has ' + id + ', which is not a Gospel story');
   for (const id of gospelIds) if (!(id in GOSPEL_ORDER)) throw new Error('GOSPEL_ORDER is missing Gospel story ' + id);
   const payload = JSON.stringify({ ...data, groups: TESTAMENTS, abbr: ABBR, seticon: SET_ICON,
-    art, alt: ALT_NAMES, txt: text, langNames, setOrder: SET_ORDER, gospelOrder: GOSPEL_ORDER,
+    art, alt: ALT_NAMES, txt: text, langNames, oldSlugs: OLD_SLUGS, setOrder: SET_ORDER, gospelOrder: GOSPEL_ORDER,
     commands: Object.fromEntries(COMMANDS.flatMap(c => c.ids.map(id => [id, { n: c.n, r: c.r }]))) }).replace(/</g, '\\u003c');
 
   return `<!DOCTYPE html>
@@ -1662,7 +1669,9 @@ function hideDetail(){
   if (t) t.focus({ preventScroll: true });
 }
 function route(){
-  const s = bySlug.get(decodeURIComponent(location.hash.slice(1)));
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (D.oldSlugs[h]) { location.replace('#' + D.oldSlugs[h]); return; }
+  const s = bySlug.get(h);
   s ? showDetail(s) : hideDetail();
 }
 function openStory(id){

@@ -64,7 +64,7 @@
 "stories": [
 {
 "id": "B4",
-"slug": "the-creation",
+"slug": "creation",
 "t": "Creation",
 "b": "Genesis",
 "r": "1-2:3",
@@ -122,7 +122,7 @@
 },
 {
 "id": "B6",
-"slug": "the-man-and-woman-sin",
+"slug": "the-first-sin",
 "t": "The First Sin",
 "b": "Genesis",
 "r": "3",
@@ -875,7 +875,7 @@
 },
 {
 "id": "F5",
-"slug": "the-birth-of-jesus",
+"slug": "birth-of-jesus",
 "t": "Birth of Jesus",
 "b": "Matthew",
 "r": "1:18-25",
@@ -1341,7 +1341,7 @@
 },
 {
 "id": "F33",
-"slug": "the-paralytic-man",
+"slug": "the-paralyzed-man",
 "t": "The Paralyzed Man",
 "b": "Luke",
 "r": "5:17-26",
@@ -1936,7 +1936,7 @@
 },
 {
 "id": "I21",
-"slug": "jesus-feeds-5000",
+"slug": "feeding-the-5000",
 "t": "Feeding the 5,000",
 "b": "Mark",
 "r": "6:30-44",
@@ -2695,7 +2695,7 @@
 },
 {
 "id": "O8",
-"slug": "the-woman-at-the-well",
+"slug": "the-samaritan-woman",
 "t": "The Samaritan Woman",
 "b": "John",
 "r": "4:1-42",
@@ -2769,7 +2769,7 @@
 },
 {
 "id": "O14",
-"slug": "the-blind-man",
+"slug": "man-born-blind",
 "t": "Man Born Blind",
 "b": "John",
 "r": "9:1-41",
@@ -3360,7 +3360,7 @@
 },
 {
 "id": "R27",
-"slug": "lydias-conversion",
+"slug": "lydia-believes",
 "t": "Lydia Believes",
 "b": "Acts",
 "r": "16:11-15",
