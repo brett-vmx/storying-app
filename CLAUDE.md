@@ -105,11 +105,10 @@ deck. Nothing may scroll horizontally.
 `build-stories.mjs` renders every story four ways off one dataset: **grid**, **list**, and
 books either **side by side** or **stacked**.
 
-**The page opens on the grid, filtered to Creation to Christ.** Both defaults come from
-review: opening on 202 stories in one fully expanded horizontal rail was the single biggest
-source of overwhelm, and a horizontal layout read as less natural than a vertical one. The
-filter chrome shows the filter is on and offers to clear it, so the other 189 stories are one
-click away rather than hidden. Don't "fix" either default back without that conversation.
+**The page opens on the grid with every story showing, no filter on.** It used to open filtered to
+Creation to Christ, to avoid opening on 200 stories at once; that default was dropped on 24 October
+2026 so the whole library is what people see first. The stacked Books view still opens with both
+testaments open and every section inside them closed, so it starts as a short outline.
 
 Both books views share their data prep (`bookData`) and their column contents
 (`bookColumn`), so a change to how a book's stories are ordered or drawn lands in both.

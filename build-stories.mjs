@@ -1092,7 +1092,7 @@ const crafted = s => !!D.txt[s.slug];
 /* Opening on all 202 stories in one expanded horizontal rail was the single biggest
    source of overwhelm in review. The page now starts on the grid, filtered to Creation to
    Christ, with the filter chrome showing that a filter is on and offering to clear it. */
-const state = { v:'grid', q:'', sets:new Set(['Creation to Christ']), tags:new Set(), langs:new Set(),
+const state = { v:'grid', q:'', sets:new Set(), tags:new Set(), langs:new Set(),
                 shut:new Set(), shutT:new Set(), showTags:false, showDups:true, hasImg:false };
 /* Stacked books open with the sections closed, so the first thing you see is an outline.
    Kept separate from the side-by-side view's collapse state: a rail of eight narrow
