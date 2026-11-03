@@ -17,8 +17,11 @@
                   public domain)
      Crafted text storying-content/stories/{slug}/text/eng.md     used only when its status is
                   reviewed or locked; an unreviewed draft is never shown
-     Audio, storyboard  the file names in that folder's meta.yml `legacy:` block, read from
-                  `C2C Stories - Original/` until the content port moves the media
+     Audio        story-audio/{slug}/eng--{content_hash}.mp3 (beside storying-content, made by that
+                  repo's scripts/generate-audio.mjs); a clip only counts if its hash matches the
+                  story's current text. Failing that, the `audio_eng` file name in meta.yml's
+                  `legacy:` block, read from `C2C Stories - Original/`
+     Storyboard   the `storyboard_raster` file name in that same `legacy:` block
 
    A story is "crafted" when it has reviewed or locked English text. That drives the Crafted
    column in the list view, which is the checklist for the whole library.
@@ -32,6 +35,7 @@ import { execFileSync } from 'child_process';
 const LIB = '../..';
 const CONTENT = `${LIB}/storying-content/stories`;
 const C2C = `${LIB}/C2C Stories - Original`;
+const MASTER_AUDIO = `${LIB}/story-audio`;
 const SHOWN = new Set(['reviewed', 'locked']);
 
 const stories = JSON.parse(fs.readFileSync('data/stories.json', 'utf8')).stories;
@@ -87,7 +91,14 @@ for (const s of stories) {
       crafted++;
       const meta = fs.readFileSync(`${dir}/meta.yml`, 'utf8');
       const mp3 = yamlValue(meta, 'audio_eng'), dur = yamlValue(meta, 'audio_eng_duration'), png = yamlValue(meta, 'storyboard_raster');
-      if (mp3 && fs.existsSync(`${C2C}/Audio/${mp3}`)) {
+      const hash = (fm.match(/^content_hash:\s*(\S+)/m) || [])[1];
+      const master = `${MASTER_AUDIO}/${s.slug}/eng--${hash}.mp3`;
+      if (hash && fs.existsSync(master)) {
+        fs.copyFileSync(master, `assets/story-audio/${s.slug}.mp3`);
+        const sec = parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'default=nw=1:nk=1', master]).toString());
+        out.audio = { src: `story-audio/${s.slug}.mp3`, dur: `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, '0')}` };
+        audio++;
+      } else if (mp3 && fs.existsSync(`${C2C}/Audio/${mp3}`)) {
         fs.copyFileSync(`${C2C}/Audio/${mp3}`, `assets/story-audio/${s.slug}.mp3`);
         out.audio = { src: `story-audio/${s.slug}.mp3`, dur };
         audio++;
