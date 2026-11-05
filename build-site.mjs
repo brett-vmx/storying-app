@@ -88,7 +88,7 @@ const t10labels = W.top10.map(t => {
    secured yet), and whether the set is live. */
 const SETS = [
   ['C2CLOGO', 'Creation to Christ', 'creationtochrist.app', true],
-  ['7-commands.webp', '7 Commands', '7commands.app'],
+  ['commands-of-christ.webp', 'Commands of Christ', '7commands.app'],
   ['stories-of-hope.webp', 'Stories of Hope', 'storiesofhope.app'],
   ['acts.webp', 'Acts', ''],
   ['old-testament.webp', 'Old Testament Stories', ''],

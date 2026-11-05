@@ -48,7 +48,7 @@ const ABBR = {
 /* Each set's tile art, so a set reads the same here as it does on the home page. */
 const SET_ICON = {
   'Creation to Christ': 'c2c-app-logo-icon.webp',
-  '7 Commands': 'story-set-icons/7-commands.webp',
+  'Commands of Christ': 'story-set-icons/commands-of-christ.webp',
   'Stories of Hope': 'story-set-icons/stories-of-hope.webp',
   'Acts': 'story-set-icons/acts.webp',
   'OT Stories': 'story-set-icons/old-testament.webp',
@@ -59,10 +59,10 @@ const SET_ICON = {
   'Creation to Revelation': 'story-set-icons/c2c-full.webp',
   /* 7 Signs of John: the 7 miracles traditionally read as John's own "signs" structure
      (water into wine, healing the official's son, healing at Bethesda, feeding the 5,000,
-     walking on water, healing the man born blind, raising Lazarus). Two of the seven are
-     filed under Matthew/Mark as their main account (Feeding the 5,000, Jesus Walks on
-     Water) with John as a par entry, same as everywhere else in this file; membership
-     doesn't care which book a story's primary account sits under. No SET_ORDER entry
+     walking on water, healing the man born blind, raising Lazarus). Feeding the 5,000 and
+     Jesus Walks on Water used to be filed under Mark and Matthew; on 5 November 2026 their
+     main account became John (the other Gospels moved into par) so all seven read as John's.
+     Membership doesn't care which book a story's primary account sits under. No SET_ORDER entry
      needed: GOSPEL_ORDER already puts these 7 ids in exactly signs-1-through-7 order
      (110, 150, 210, 560, 570, 680, 850), so the shared chronological default is correct
      for free. Kingdom of God: every story tagged with that theme in `g`, gathered into its
@@ -101,7 +101,7 @@ const STORY_IMG = {
   'Mark|The Man with Many Demons': '6-the-man-with-many-demons.webp',
   /* Replaced the original numbered cover with a new one in the flat-illustration style. */
   "Mark|Jairus' Daughter and the Bleeding Woman": 'jairus-daughter-bleeding-woman.webp',
-  'Mark|Feeding the 5,000': '8-jesus-feeds-5000.webp',
+  'John|Feeding the 5,000': '8-jesus-feeds-5000.webp',
   /* Replaced the original numbered cover with a new one in the flat-illustration style. */
   'John|The Samaritan Woman': 'the-samaritan-woman.webp',
   /* Replaced the original numbered cover with a new one in the flat-illustration style. */
@@ -266,7 +266,7 @@ const STORY_IMG = {
   'Matthew|The Wise Men': 'the-wise-men.webp',
   'Matthew|John the Baptist': 'john-the-baptist.webp',
   'Matthew|Follow and Fish': 'follow-and-fish.webp',
-  'Matthew|Jesus Walks on Water': 'jesus-walks-on-water.webp',
+  'John|Jesus Walks on Water': 'jesus-walks-on-water.webp',
   'Matthew|Who did people say Jesus was?': 'who-did-people-say-jesus-was.webp',
   'Matthew|Jesus Shines in Glorious Light': 'jesus-shines-in-glorious-light.webp',
   'Matthew|Boy with an Unclean Spirit': 'boy-with-an-unclean-spirit.webp',
@@ -349,7 +349,7 @@ const ALT_NAMES = {
   'Matthew|How To Pray': ["The Lord's Prayer"],
 };
 
-/* The 7 Commands set: ten commands, each a short phrase with the verse it comes from and the
+/* The Commands of Christ set (the sheet's "7 Commands" block): ten commands, each a short phrase with the verse it comes from and the
    library story that illustrates it. Copied from Misc/Story-Sets.xlsx's "Stories By Set" tab
    (the "7 Commands" block: command in column D, its verse in E, story in F, the story's own
    reference in G), in the sheet's row order. Column G is what ties a row to a library story:
@@ -362,7 +362,7 @@ const ALT_NAMES = {
    parallel of Love Your Enemies. Brett shortened the first to Pray and dropped the second on
    8 October 2026.)
    This list is the one source for both the set's order (SET_ORDER below is built from it) and
-   the command line shown above each story while 7 Commands is the active set filter. */
+   the command line shown above each story while Commands of Christ is the active set filter. */
 /* Story addresses ("#slug") that were shared before a retitle, and where they go now. Add a line
    whenever a slug changes during the title review; never remove one. */
 const OLD_SLUGS = {
@@ -394,7 +394,7 @@ const COMMANDS = [
    listed here in that tab's own OT-then-Matthew-then-Mark-then-Luke-then-John-then-Acts-
    then-Revelation block order, not Creation to Christ's order, so the two arrays diverge
    past their shared first few ids on purpose. Expect this array to keep changing as Brett
-   and Todd keep working through that column. 7 Commands and Stories of Hope both match
+   and Todd keep working through that column. Commands of Christ and Stories of Hope both match
    their sheet blocks exactly, with no extra members and no judgment-call ordering. */
 const SET_ORDER = {
   'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
@@ -417,7 +417,7 @@ const SET_ORDER = {
      Pray row names it. An earlier version of this set left it out, to keep the two sets apart,
      and carried three extras the sheet does not list (Jesus Sends Out His Disciples, the
      Greatest Commandment, the Great Commission); the set now follows the sheet. */
-  '7 Commands': COMMANDS.flatMap(c => c.ids),
+  'Commands of Christ': COMMANDS.flatMap(c => c.ids),
   /* The sheet's exact 8 rows, no judgment calls: Weeping Woman at Jesus' Feet, Pharisee &
      Tax Collector, Zacchaeus, Healing a Paralytic & Forgiving (Luke 5:17-26 -- the
      reference that made The Paralyzed Man's primary account Luke's rather than Matthew's,
@@ -633,7 +633,7 @@ export const STORIES_CSS = `
 .tile.cmp .tr{margin-top:2px}
 .tt{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
 .tr{font-size:12px;color:var(--ink-s);margin-top:3px;font-variant-numeric:tabular-nums}
-/* Command line above a title while 7 Commands is the active set: teal name, gray verse. */
+/* Command line above a title while Commands of Christ is the active set: teal name, gray verse. */
 .tcmd{display:block;font-size:11.5px;font-weight:700;line-height:1.3;color:var(--teal);margin-bottom:3px}
 .tcmd .tcn{white-space:nowrap}
 .tcmd .tcr{font-weight:500;color:#7E8F99;white-space:nowrap}
@@ -1219,14 +1219,14 @@ function inlineSets(s, cls){
     '" alt="' + esc(n) + '" title="' + esc(n) + '" loading="lazy">').join('') + '</span>';
 }
 /* The command a story illustrates, above its title: teal command name, gray verse. Shown only
-   while 7 Commands is one of the active set filters -- Zacchaeus is a story first and
+   while Commands of Christ is one of the active set filters -- Zacchaeus is a story first and
    illustrates "Repent and Believe" only when read through that set -- and only in Grid and
    List, the two views where a set's own order applies. The grid tile is about 140px wide, so
    there the verse always sits on its own line under the name; a line that wrapped only for
    the longer commands would leave the titles in a row misaligned. The list row has room
    for the one-line form, name then "- verse". */
 function cmdLine(s, stacked){
-  const c = state.sets.has('7 Commands') && D.commands[s.id];
+  const c = state.sets.has('Commands of Christ') && D.commands[s.id];
   return c ? '<span class="tcmd' + (stacked ? ' stk' : '') + '"><span class="tcn">' + esc(c.n) + '</span> <span class="tcr">' +
     (stacked ? '' : '- ') + esc(c.r) + '</span></span>' : '';
 }

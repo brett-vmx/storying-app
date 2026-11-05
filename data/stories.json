@@ -50,7 +50,7 @@
 "sets": [
 "Creation to Christ",
 "Creation to Revelation",
-"7 Commands",
+"Commands of Christ",
 "Stories of Hope",
 "Acts",
 "OT Stories",
@@ -1188,7 +1188,7 @@
 "Luke 11:1\u20134"
 ],
 "s": [
-"7 Commands",
+"Commands of Christ",
 "Sermon on the Mount"
 ],
 "g": [
@@ -1457,11 +1457,11 @@
 "id": "F45",
 "slug": "jesus-walks-on-water",
 "t": "Jesus Walks on Water",
-"b": "Matthew",
-"r": "14:22-33",
+"b": "John",
+"r": "6:16-21",
 "par": [
-"Mark 6:45-52",
-"John 6:16-21"
+"Matthew 14:22-33",
+"Mark 6:45-52"
 ],
 "s": [
 "7 Signs of John"
@@ -1939,11 +1939,11 @@
 "id": "I21",
 "slug": "feeding-the-5000",
 "t": "Feeding the 5,000",
-"b": "Mark",
-"r": "6:30-44",
+"b": "John",
+"r": "6:1-15",
 "par": [
 "Matthew 14:13-21",
-"John 6:1-15"
+"Mark 6:30-44"
 ],
 "s": [
 "Creation to Christ",
@@ -1988,7 +1988,7 @@
 "Luke 21:1-4"
 ],
 "s": [
-"7 Commands",
+"Commands of Christ",
 "Creation to Revelation"
 ],
 "g": [
@@ -2205,7 +2205,7 @@
 "r": "10:25-37",
 "par": [],
 "s": [
-"7 Commands"
+"Commands of Christ"
 ],
 "g": [
 "Parables",
@@ -2501,7 +2501,7 @@
 "par": [],
 "s": [
 "Creation to Christ",
-"7 Commands",
+"Commands of Christ",
 "Stories of Hope",
 "Creation to Revelation"
 ],
@@ -2561,7 +2561,7 @@
 "Mark 14:22-25"
 ],
 "s": [
-"7 Commands",
+"Commands of Christ",
 "Creation to Revelation"
 ],
 "g": [
@@ -2703,7 +2703,7 @@
 "par": [],
 "s": [
 "Creation to Christ",
-"7 Commands",
+"Commands of Christ",
 "Baptism Hammer",
 "Creation to Revelation"
 ],
@@ -2918,7 +2918,7 @@
 "r": "15:1-17",
 "par": [],
 "s": [
-"7 Commands"
+"Commands of Christ"
 ],
 "g": [
 "Teachings",
@@ -2994,7 +2994,7 @@
 "r": "2:42-47",
 "par": [],
 "s": [
-"7 Commands",
+"Commands of Christ",
 "Creation to Revelation"
 ],
 "g": [
@@ -3080,7 +3080,7 @@
 "r": "5:17-42",
 "par": [],
 "s": [
-"7 Commands"
+"Commands of Christ"
 ],
 "g": [
 "Courage",
@@ -3120,7 +3120,7 @@
 "r": "8:26\u201340",
 "par": [],
 "s": [
-"7 Commands",
+"Commands of Christ",
 "Acts",
 "Baptism Hammer"
 ],
@@ -4202,14 +4202,14 @@
 },
 {
 "t": "Feeding the 5,000",
-"b": "John",
-"r": "6:1-15",
+"b": "Mark",
+"r": "6:30-44",
 "of": "I21"
 },
 {
 "t": "Jesus Walks on Water",
-"b": "John",
-"r": "6:16-21",
+"b": "Matthew",
+"r": "14:22-33",
 "of": "F45"
 },
 {

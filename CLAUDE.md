@@ -246,7 +246,7 @@ set is left alone on those 13, so a story can carry both — and is tracked sepa
 against the "Stories in Order" tab's own `C2C Full?` column, currently 50 stories; expect this
 count to keep moving as Brett and Todd work through it). Icons for both live at
 `assets/story-set-icons/sermon-on-the-mount.webp` and `assets/story-set-icons/c2c-full.webp`,
-wired into `SET_ICON` in `build-stories.mjs` next to the rest.
+wired into `SET_ICON` in `build-stories.mjs` next to the rest. The Commands of Christ icon is `assets/story-set-icons/commands-of-christ.webp` (160px, made from the master `story-set-images/Final/commands-of-christ.jpg`); it replaced `7-commands.webp` on 5 November 2026, which is kept but unused.
 
 Three stories got renamed/merged by hand to sync with decisions Brett already made in that
 spreadsheet tab, not from anything visible in the app's own data: **The Passover** (`B19`)
@@ -334,7 +334,7 @@ inside the header button, caught by the click handler before the header.
 
 **List and Grid have a display order layered on top of filtering**, in `orderedForDisplay()`.
 When exactly one Story Set filter is active and that set has a curated sequence in
-`SET_ORDER` (Creation to Christ, 7 Commands, Stories of Hope today), the stories
+`SET_ORDER` (Creation to Christ, Commands of Christ, Stories of Hope today), the stories
 show in that sequence rather than book order -- these are sets someone actually reads or
 tells start to finish, and the library's book/reference order cannot express that. Otherwise,
 the library's default order applies, except inside the Gospels: `GOSPEL_ORDER` gives every
@@ -355,24 +355,24 @@ entry while every entry needs a real Gospel story. A story added to or dropped f
 these four sets, or a Gospel story added to the library, fails the build immediately instead
 of silently sorting into an undefined position.
 
-`SET_ORDER`'s Creation to Christ, 7 Commands and Stories of Hope come straight from
+`SET_ORDER`'s Creation to Christ, Commands of Christ and Stories of Hope come straight from
 `Misc/Story-Sets.xlsx`'s "Stories By Set" tab, an exact match for each set's current
 membership, in the sheet's row order. Creation to Revelation has no entry and uses the chronological default.
 
-**7 Commands** is the sheet's 10 command rows (command in column D, its verse in E, story in F,
+**Commands of Christ** (called Commands of Christ until 5 November 2026; the spreadsheet tab still says Commands of Christ) is the sheet's 10 command rows (command in column D, its verse in E, story in F,
 the story's own reference in G), held in the `COMMANDS` list in `build-stories.mjs`; the set's
 order is built from that list. That is 10 stories, one per command. Column G is what ties a row
 to a library story, since the sheet's story names are looser than ours ("The Lord's Prayer" is
 How To Pray). One of the 10, How To Pray, is a Sermon on the Mount story and so belongs to both
 sets. An earlier version of the set left it out to avoid that overlap and carried three members
 the sheet doesn't list (Jesus Sends Out His Disciples, the Greatest Commandment, the Great
-Commission); it now follows the sheet. While 7 Commands is one
+Commission); it now follows the sheet. While Commands of Christ is one
 of the active set filters, Grid and List show each story's command above its title: the
 command in teal, its verse in gray (`cmdLine()`). The grid tile stacks the two lines, since it
 is about 140px wide and a line that wrapped for only the longer commands would misalign the
 titles in a row; the list row has room for "Command - Verse" on one line. The Books views
 don't show it. It's keyed to the set filter because a story illustrates a command only when
-read through this set: Zacchaeus carries "Repent and Believe" under 7 Commands and nothing
+read through this set: Zacchaeus carries "Repent and Believe" under Commands of Christ and nothing
 under Stories of Hope. That matches the content repo's design (`storying-content/commands/
 README.md`). A story can't sit under two commands, which the build checks.
 
@@ -403,7 +403,7 @@ and download button inside the card) and Read (clamped, with a Read more pill), 
 (audio, storyboard, which of the 40 languages exist) and Previous and Next story buttons that
 carry the cover and a chevron, in two equal columns (a lone one keeps its column). On a phone everything stacks. The audio player is our own (`initPlayer()`: a
 navy play and pause button, a teal progress bar with a dot, times) over a hidden audio element,
-because the browser's own control looks different in every browser. The 7 Commands command shows above the title only while that set is the
+because the browser's own control looks different in every browser. The Commands of Christ command shows above the title only while that set is the
 active filter, the same rule as on the tiles.
 
 Only the Bible text and these details are fetched, per story, from `assets/story-data/{slug}.json`
@@ -414,7 +414,7 @@ there; with no audio it is a greyed-out player and the words "Audio is not avail
 story yet." A story counts as **Crafted** when `storying-content` holds English text for it
 with status `reviewed` or `locked`; an unreviewed draft is never shown and does not count. That
 is what the green check in the list view's **Crafted** column means, and the column is the
-project's checklist. Today it is 17: the 13 Creation to Christ stories plus four 7 Commands stories reviewed in November 2026.
+project's checklist. Today it is 17: the 13 Creation to Christ stories plus four Commands of Christ stories reviewed in November 2026.
 
 Sets, tags, titles and references are changed in `data/stories.json`, not in the browser. An
 earlier version had an editor and an Export button for this, with edits kept in `localStorage`;
