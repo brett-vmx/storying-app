@@ -359,7 +359,7 @@ of silently sorting into an undefined position.
 `Misc/Story-Sets.xlsx`'s "Stories By Set" tab, an exact match for each set's current
 membership, in the sheet's row order. Creation to Revelation has no entry and uses the chronological default.
 
-**Commands of Christ** (called Commands of Christ until 5 November 2026; the spreadsheet tab still says Commands of Christ) is the sheet's 10 command rows (command in column D, its verse in E, story in F,
+**Commands of Christ** (called 7 Commands until 5 November 2026; the spreadsheet tab still says 7 Commands) is the sheet's 10 command rows, except that on 6 November 2026 "Abide" (John 15:4, The Vine and the Branches) became "Read God's Word" (John 15:7, Daniel Reads God's Word and Prays, id `B101`) (command in column D, its verse in E, story in F,
 the story's own reference in G), held in the `COMMANDS` list in `build-stories.mjs`; the set's
 order is built from that list. That is 10 stories, one per command. Column G is what ties a row
 to a library story, since the sheet's story names are looser than ours ("The Lord's Prayer" is
@@ -414,7 +414,7 @@ there; with no audio it is a greyed-out player and the words "Audio is not avail
 story yet." A story counts as **Crafted** when `storying-content` holds English text for it
 with status `reviewed` or `locked`; an unreviewed draft is never shown and does not count. That
 is what the green check in the list view's **Crafted** column means, and the column is the
-project's checklist. Today it is 17: the 13 Creation to Christ stories plus four Commands of Christ stories reviewed in November 2026.
+project's checklist. Today it is 21: the 13 Creation to Christ stories plus eight more reviewed in November 2026.
 
 Sets, tags, titles and references are changed in `data/stories.json`, not in the browser. An
 earlier version had an editor and an Export button for this, with edits kept in `localStorage`;

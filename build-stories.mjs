@@ -79,6 +79,7 @@ const SET_ICON = {
    of quietly dropping its picture. */
 const STORY_IMG = {
   'Genesis|Creation': '1-creation-of-the-physical-world.webp',
+  "Daniel|Daniel Reads God's Word and Prays": 'daniel-reads-gods-word-and-prays.webp',
   /* A composite of Isaiah 14:12-15, Ezekiel 28:12-19, Luke 10:18 and Revelation 12:7-9 --
      filed under Revelation 12:7-9 as its primary account (the other three as par[]) since
      that is the only one of the four that is an actual narrated event rather than a poetic
@@ -377,7 +378,7 @@ const COMMANDS = [
   { n: 'Pray', r: 'Matthew 6:9', ids: ['F21'] },
   { n: 'Go and Tell', r: 'Mark 16:15', ids: ['O8'] },
   { n: 'Love', r: 'Matthew 22:37-39', ids: ['L32'] },
-  { n: 'Abide', r: 'John 15:4', ids: ['O23'] },
+  { n: "Read God's Word", r: 'John 15:7', ids: ['B101'] },
   { n: 'Gather', r: 'Hebrews 10:24-25', ids: ['R6'] },
   { n: 'Give', r: 'Matthew 6:1-4', ids: ['I35'] },
   { n: "Lord's Supper", r: 'Matthew 26:26-30', ids: ['L62'] },

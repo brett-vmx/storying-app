@@ -858,6 +858,24 @@
 "som": false
 },
 {
+"id": "B101",
+"slug": "daniel-reads-gods-word-and-prays",
+"t": "Daniel Reads God's Word and Prays",
+"b": "Daniel",
+"r": "9:2-27",
+"par": [],
+"s": [
+"Commands of Christ"
+],
+"g": [
+"Prayer",
+"Faith",
+"God's Word",
+"Old Testament"
+],
+"som": false
+},
+{
 "id": "F4",
 "slug": "genealogy-of-jesus",
 "t": "Genealogy of Jesus",
@@ -2917,9 +2935,7 @@
 "b": "John",
 "r": "15:1-17",
 "par": [],
-"s": [
-"Commands of Christ"
-],
+"s": [],
 "g": [
 "Teachings",
 "Obedience",
