@@ -222,7 +222,7 @@ const STORY_IMG = {
   'John|The Vine and the Branches': 'the-vine-and-the-branches.webp',
   'Luke|The Woman Who Wept at the Feet of Jesus': 'the-woman-who-wept-at-the-feet-of-jesus.webp',
   'Luke|The Pharisee and the Tax Collector': 'the-pharisee-and-the-tax-collector.webp',
-  'Matthew|The Unforgiving Slave': 'the-unforgiving-slave.webp',
+  'Matthew|The Unforgiving Servant': 'the-unforgiving-servant.webp',
   'Luke|The Risen Jesus': 'the-risen-jesus.webp',
   'Acts|Healing a Lame Man': 'healing-a-lame-man.webp',
   'Acts|Before the Jewish Leadership': 'before-the-jewish-leadership.webp',
@@ -348,6 +348,7 @@ const ALT_NAMES = {
   'Genesis|The First Sin': ['The Fall of Man'],
   'Luke|The Paralyzed Man': ['The Paralytic Man'],
   'Matthew|How To Pray': ["The Lord's Prayer"],
+  'Luke|Jesus Appears to Men on the Road': ['The Road to Emmaus'],
 };
 
 /* The Commands of Christ set (the sheet's "7 Commands" block): ten commands, each a short phrase with the verse it comes from and the
@@ -370,6 +371,7 @@ const OLD_SLUGS = {
   'the-creation': 'creation', 'the-man-and-woman-sin': 'the-first-sin', 'the-birth-of-jesus': 'birth-of-jesus',
   'the-paralytic-man': 'the-paralyzed-man', 'jesus-feeds-5000': 'feeding-the-5000',
   'the-woman-at-the-well': 'the-samaritan-woman', 'the-blind-man': 'man-born-blind', 'lydias-conversion': 'lydia-believes',
+  'the-unforgiving-slave': 'the-unforgiving-servant',
 };
 const COMMANDS = [
   { n: 'Repent and Believe', r: 'Mark 1:15', ids: ['L57'] },

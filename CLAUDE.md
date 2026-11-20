@@ -414,7 +414,7 @@ there; with no audio it is a greyed-out player and the words "Audio is not avail
 story yet." A story counts as **Crafted** when `storying-content` holds English text for it
 with status `reviewed` or `locked`; an unreviewed draft is never shown and does not count. That
 is what the green check in the list view's **Crafted** column means, and the column is the
-project's checklist. Today it is 21: the 13 Creation to Christ stories plus eight more reviewed in November 2026.
+project's checklist. Today it is 25: the 13 Creation to Christ stories plus twelve more reviewed in November 2026.
 
 Sets, tags, titles and references are changed in `data/stories.json`, not in the browser. An
 earlier version had an editor and an Export button for this, with edits kept in `localStorage`;
