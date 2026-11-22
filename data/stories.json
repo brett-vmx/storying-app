@@ -88,9 +88,7 @@
 "b": "Genesis",
 "r": "2:4-25",
 "par": [],
-"s": [
-"Creation to Revelation"
-],
+"s": [],
 "g": [
 "Father",
 "Nature",
@@ -337,8 +335,8 @@
 },
 {
 "id": "B18",
-"slug": "the-plagues",
-"t": "The Plagues",
+"slug": "the-plagues-passover",
+"t": "The Plagues + Passover",
 "b": "Exodus",
 "r": "7:14\u201312:30",
 "par": [],
@@ -358,10 +356,10 @@
 },
 {
 "id": "B19",
-"slug": "the-passover-escape-through-the-sea",
-"t": "The Passover + Escape Through the Sea",
+"slug": "escape-through-the-sea",
+"t": "Escape Through the Sea",
 "b": "Exodus",
-"r": "12:1-30, 13:17\u201314:31",
+"r": "13:17\u201314:31",
 "par": [],
 "s": [
 "OT Stories",
@@ -411,10 +409,10 @@
 },
 {
 "id": "B23",
-"slug": "the-ten-commandments",
-"t": "The Ten Commandments",
+"slug": "the-ten-commandments-the-golden-calf",
+"t": "The Ten Commandments + The Golden Calf",
 "b": "Exodus",
-"r": "20:1-21",
+"r": "20:1-21, 32:1-35",
 "par": [],
 "s": [
 "Creation to Revelation"
@@ -422,23 +420,6 @@
 "g": [
 "Obedience",
 "God's Word",
-"Old Testament"
-],
-"som": false
-},
-{
-"id": "B24",
-"slug": "the-golden-calf",
-"t": "The Golden Calf",
-"b": "Exodus",
-"r": "32:1-35",
-"par": [],
-"s": [
-"Creation to Revelation"
-],
-"g": [
-"Idolatry",
-"Worship",
 "Old Testament"
 ],
 "som": false
@@ -492,12 +473,14 @@
 },
 {
 "id": "B28",
-"slug": "the-walls-of-jericho",
-"t": "The Walls of Jericho",
+"slug": "entering-the-promised-land",
+"t": "Entering the Promised Land",
 "b": "Joshua",
-"r": "6:1-21",
+"r": "6",
 "par": [],
-"s": [],
+"s": [
+"Creation to Revelation"
+],
 "g": [
 "Faith",
 "Obedience",
@@ -723,7 +706,8 @@
 "r": "20:1-30",
 "par": [],
 "s": [
-"OT Stories"
+"OT Stories",
+"Creation to Revelation"
 ],
 "g": [
 "Prayer",
@@ -805,9 +789,7 @@
 "b": "Jonah",
 "r": "1:1\u20134:11",
 "par": [],
-"s": [
-"Creation to Revelation"
-],
+"s": [],
 "g": [
 "Obedience",
 "Mission",
@@ -865,7 +847,8 @@
 "r": "9:2-27",
 "par": [],
 "s": [
-"Commands of Christ"
+"Commands of Christ",
+"Creation to Revelation"
 ],
 "g": [
 "Prayer",
@@ -1207,7 +1190,8 @@
 ],
 "s": [
 "Commands of Christ",
-"Sermon on the Mount"
+"Sermon on the Mount",
+"Creation to Revelation"
 ],
 "g": [
 "Teachings",
@@ -1571,7 +1555,8 @@
 "par": [],
 "s": [
 "Stories of Hope",
-"Kingdom of God"
+"Kingdom of God",
+"Creation to Revelation"
 ],
 "g": [
 "Parables",
@@ -1726,9 +1711,7 @@
 "par": [
 "Luke 22:39-53"
 ],
-"s": [
-"Creation to Revelation"
-],
+"s": [],
 "g": [
 "Prayer",
 "Obedience",
@@ -1790,17 +1773,18 @@
 },
 {
 "id": "F71",
-"slug": "the-great-commission",
-"t": "The Great Commission",
+"slug": "the-great-commission-ascension",
+"t": "The Great Commission + Ascension",
 "b": "Matthew",
-"r": "28:16-20",
+"r": "28:16-20; Acts 1:1-11",
 "par": [
 "Mark 16:14-18",
 "John 20:19-23"
 ],
 "s": [
 "Baptism Hammer",
-"Creation to Revelation"
+"Creation to Revelation",
+"Acts"
 ],
 "g": [
 "Mission",
@@ -1856,9 +1840,7 @@
 "Matthew 13:1-23",
 "Luke 8:4-15"
 ],
-"s": [
-"Creation to Revelation"
-],
+"s": [],
 "g": [
 "Parables",
 "God's Word",
@@ -2223,7 +2205,8 @@
 "r": "10:25-37",
 "par": [],
 "s": [
-"Commands of Christ"
+"Commands of Christ",
+"Creation to Revelation"
 ],
 "g": [
 "Parables",
@@ -2389,9 +2372,7 @@
 "b": "Luke",
 "r": "16:19\u201331",
 "par": [],
-"s": [
-"Creation to Revelation"
-],
+"s": [],
 "g": [
 "Parables",
 "Money",
@@ -2558,9 +2539,7 @@
 "Mark 11:1-11",
 "John 12:12-19"
 ],
-"s": [
-"Creation to Revelation"
-],
+"s": [],
 "g": [
 "Worship",
 "Son",
@@ -2699,9 +2678,7 @@
 "b": "John",
 "r": "3:1-21",
 "par": [],
-"s": [
-"Creation to Revelation"
-],
+"s": [],
 "g": [
 "Teachings",
 "Holy Spirit",
@@ -2962,25 +2939,6 @@
 "som": false
 },
 {
-"id": "R4",
-"slug": "jesus-ascends-to-heaven-acts",
-"t": "Jesus Ascends to Heaven",
-"b": "Acts",
-"r": "1:4-11",
-"par": [],
-"s": [
-"Acts",
-"Creation to Revelation"
-],
-"g": [
-"Holy Spirit",
-"Mission",
-"Son",
-"New Testament"
-],
-"som": false
-},
-{
 "id": "R5",
 "slug": "pentecost",
 "t": "Pentecost",
@@ -3096,7 +3054,8 @@
 "r": "5:17-42",
 "par": [],
 "s": [
-"Commands of Christ"
+"Commands of Christ",
+"Creation to Revelation"
 ],
 "g": [
 "Courage",
@@ -3138,7 +3097,8 @@
 "s": [
 "Commands of Christ",
 "Acts",
-"Baptism Hammer"
+"Baptism Hammer",
+"Creation to Revelation"
 ],
 "g": [
 "Mission",
@@ -3165,6 +3125,25 @@
 "Forgiveness",
 "Son",
 "New Testament"
+],
+"som": false
+},
+{
+"id": "R44",
+"slug": "pauls-conversion-first-missionary-journey",
+"t": "Paul's Conversion + First Missionary Journey",
+"b": "Acts",
+"r": "9, 13-14",
+"par": [],
+"s": [
+"Creation to Revelation"
+],
+"g": [
+"Mission",
+"Forgiveness",
+"Son",
+"New Testament",
+"Holy Spirit"
 ],
 "som": false
 },
@@ -3413,6 +3392,29 @@
 "som": false
 },
 {
+"id": "R45",
+"slug": "philippian-church",
+"t": "Philippian Church",
+"b": "Acts",
+"r": "16:11-40",
+"par": [],
+"s": [
+"Creation to Revelation"
+],
+"g": [
+"Mission",
+"Faith",
+"Women",
+"New Testament",
+"Spiritual Warfare",
+"Exorcisms",
+"Persecution",
+"Courage",
+"Worship"
+],
+"som": false
+},
+{
 "id": "R29",
 "slug": "paul-and-silas-escape-from-prison",
 "t": "Paul and Silas Escape from Prison",
@@ -3572,11 +3574,12 @@
 "slug": "demons-defeated",
 "t": "Demons Defeated",
 "b": "Acts",
-"r": "19:11-20",
+"r": "19:8-20",
 "par": [],
 "s": [
 "Acts",
-"Paul's Journeys"
+"Paul's Journeys",
+"Creation to Revelation"
 ],
 "g": [
 "Spiritual Warfare",
@@ -3673,41 +3676,6 @@
 "som": false
 },
 {
-"id": "T4",
-"slug": "the-second-coming",
-"t": "The Second Coming",
-"b": "Revelation",
-"r": "19:11-21",
-"par": [],
-"s": [
-"Creation to Revelation"
-],
-"g": [
-"Son",
-"Perseverance",
-"New Testament"
-],
-"som": false
-},
-{
-"id": "T5",
-"slug": "the-1000-year-reign-satan-crushed",
-"t": "The 1,000 Year Reign + Satan Crushed",
-"b": "Revelation",
-"r": "20:1-10",
-"par": [],
-"s": [
-"Creation to Revelation"
-],
-"g": [
-"Spiritual Warfare",
-"Son",
-"Peace",
-"New Testament"
-],
-"som": false
-},
-{
 "id": "T7",
 "slug": "the-great-white-throne-judgment",
 "t": "The Great White Throne Judgment",
@@ -3724,10 +3692,10 @@
 },
 {
 "id": "T8",
-"slug": "the-new-creation",
-"t": "The New Creation",
+"slug": "the-second-coming-new-creation",
+"t": "The Second Coming + New Creation",
 "b": "Revelation",
-"r": "21:1-27,22:1-5",
+"r": "19:11-22:5",
 "par": [],
 "s": [
 "Creation to Revelation"

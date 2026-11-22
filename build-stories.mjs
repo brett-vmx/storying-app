@@ -45,6 +45,24 @@ const ABBR = {
   '2 Timothy': '2 Tim', Philemon: 'Phlm', Hebrews: 'Heb', Revelation: 'Rev',
 };
 
+/* One-line set descriptions, approved by Brett on 22 November 2026. They show as a hover tip on the
+   set chips in the filter drawer. The counts are typed in: update them when a set's membership
+   changes. Same wording as storying-content/NOTES-open-decisions.md, "Story set descriptions". */
+const SET_DESC = {
+  'Creation to Christ': '13 stories that tell the core story of the Bible.',
+  'Creation to Revelation': '50 stories that give a broad overview of the Bible.',
+  'Commands of Christ': '10 commands Jesus gives His followers, each paired with a story that shows it.',
+  'Sermon on the Mount': "Jesus' best-known teaching, told in 18 short sections.",
+  'Kingdom of God': "11 of Jesus' parables and stories about what God's kingdom is like.",
+  '7 Signs of John': '7 miracles from John\'s Gospel, each showing who Jesus is.',
+  'Acts': '11 stories of the first days of the church.',
+  "Paul's Journeys": '27 stories of Paul and his companions spreading the good news throughout the Roman world.',
+  'Baptism Hammer': '10 stories of people who believed and were baptized.',
+  'OT Stories': "10 stories of God's promises, rescue and faithfulness.",
+  'Stories of Hope': '8 stories of forgiveness and mercy, for anyone carrying guilt or hardship.',
+  'Sacrifice Stories': '7 stories that tell why a sacrifice for sin was needed, and who provided it.',
+};
+
 /* Each set's tile art, so a set reads the same here as it does on the home page. */
 const SET_ICON = {
   'Creation to Christ': 'c2c-app-logo-icon.webp',
@@ -111,7 +129,7 @@ const STORY_IMG = {
   'Luke|Zacchaeus': 'zacchaeus.webp',
   'Matthew|The Death of Jesus': '12-the-death-of-jesus.webp',
   'Matthew|The Resurrection': '13-resurrection.webp',
-  'Exodus|The Ten Commandments': 'exodus-ten-commandments.webp',
+  'Exodus|The Ten Commandments + The Golden Calf': 'exodus-ten-commandments.webp',
   'Genesis|The First People': 'genesis-the-first-people.webp',
   /* Replaced the original sunburst-themed cover with a new one in the flat-illustration
      style, as part of the Creation to Revelation art pass below. */
@@ -188,9 +206,8 @@ const STORY_IMG = {
   'Genesis|Abraham Sacrifices His Son': 'abraham-sacrifices-his-son.webp',
   'Genesis|Joseph': 'joseph.webp',
   'Exodus|Moses and the Burning Bush': 'moses-and-the-burning-bush.webp',
-  'Exodus|The Plagues': 'the-plagues.webp',
-  'Exodus|The Passover + Escape Through the Sea': 'the-passover-and-escape-through-the-sea.webp',
-  'Exodus|The Golden Calf': 'the-golden-calf.webp',
+  'Exodus|The Plagues + Passover': 'the-plagues.webp',
+  'Exodus|Escape Through the Sea': 'the-passover-and-escape-through-the-sea.webp',
   '1 Samuel|The Choosing of David': 'the-choosing-of-david.webp',
   '1 Samuel|David and Goliath': 'david-and-goliath.webp',
   '1 Kings|Elijah and the False Prophets': 'elijah-and-the-false-prophets.webp',
@@ -200,19 +217,16 @@ const STORY_IMG = {
   'Matthew|Baptism of Jesus': 'baptism-of-jesus-c2c.webp',
   'Matthew|Temptation of Jesus': 'temptation-of-jesus-c2c.webp',
   'Matthew|Jesus in the Garden': 'jesus-in-the-garden.webp',
-  'Matthew|The Great Commission': 'the-great-commission-c2c.webp',
+  'Matthew|The Great Commission + Ascension': 'the-great-commission-c2c.webp',
   'Mark|The Sower': 'the-sower.webp',
   'Luke|The Rich Man and Lazarus': 'the-rich-man-and-lazarus.webp',
   'Luke|Jesus Enters Jerusalem': 'jesus-enters-jerusalem-c2c.webp',
   'Luke|The Last Supper': 'the-last-supper.webp',
   'John|The Lamb of God': 'the-lamb-of-god.webp',
   'John|Jesus and Nicodemus': 'jesus-and-nicodemus.webp',
-  'Acts|Jesus Ascends to Heaven': 'the-holy-spirit-and-ascension.webp',
   'Acts|Pentecost': 'pentecost.webp',
   'Acts|The Early Church': 'the-early-church.webp',
-  'Revelation|The Second Coming': 'the-second-coming.webp',
-  'Revelation|The 1,000 Year Reign + Satan Crushed': 'the-thousand-year-reign-and-satan-crushed.webp',
-  'Revelation|The New Creation': 'the-new-creation.webp',
+  'Revelation|The Second Coming + New Creation': 'the-new-creation.webp',
   /* Not a Creation to Revelation pass: these 18 finish out art for the OTHER six defined story sets (7
      Commands, Stories of Hope, Acts, OT Stories, Sacrifice Stories, Baptism Hammer), which
      each had a handful of members still showing the book-icon fallback. One-off bespoke
@@ -246,7 +260,7 @@ const STORY_IMG = {
   'Exodus|Hands Held High': 'hands-held-high.webp',
   "Exodus|Building God's Holy Tent": 'building-gods-holy-tent.webp',
   'Numbers|The 12 Spies': 'the-12-spies.webp',
-  'Joshua|The Walls of Jericho': 'the-walls-of-jericho.webp',
+  'Joshua|Entering the Promised Land': 'the-walls-of-jericho.webp',
   'Joshua|Achan Steals Some Treasure': 'achan-steals-some-treasure.webp',
   'Judges|Samson the Strong Man': 'samson-the-strong-man.webp',
   'Ruth|Ruth and Naomi': 'ruth-and-naomi.webp',
@@ -372,6 +386,13 @@ const OLD_SLUGS = {
   'the-paralytic-man': 'the-paralyzed-man', 'jesus-feeds-5000': 'feeding-the-5000',
   'the-woman-at-the-well': 'the-samaritan-woman', 'the-blind-man': 'man-born-blind', 'lydias-conversion': 'lydia-believes',
   'the-unforgiving-slave': 'the-unforgiving-servant',
+  /* Creation to Revelation pass, 22 November 2026 */
+  'the-plagues': 'the-plagues-passover', 'the-passover-escape-through-the-sea': 'escape-through-the-sea',
+  'the-ten-commandments': 'the-ten-commandments-the-golden-calf', 'the-golden-calf': 'the-ten-commandments-the-golden-calf',
+  'the-walls-of-jericho': 'entering-the-promised-land',
+  'the-great-commission': 'the-great-commission-ascension', 'jesus-ascends-to-heaven-acts': 'the-great-commission-ascension',
+  'the-second-coming': 'the-second-coming-new-creation', 'the-1000-year-reign-satan-crushed': 'the-second-coming-new-creation',
+  'the-new-creation': 'the-second-coming-new-creation',
 };
 const COMMANDS = [
   { n: 'Repent and Believe', r: 'Mark 1:15', ids: ['L57'] },
@@ -401,20 +422,13 @@ const COMMANDS = [
    their sheet blocks exactly, with no extra members and no judgment-call ordering. */
 const SET_ORDER = {
   'Creation to Christ': ['B4', 'B6', 'F5', 'F33', 'I17', 'I18', 'I19', 'I21', 'O8', 'O14', 'L57', 'F69', 'F70'],
-  /* Creation to Revelation deliberately has NO entry here, unlike Creation to Christ above. That 13-story
-     set is a hand-curated teaching sequence, reviewed 1:1 against the sheet's own "Stories
-     By Set" tab, genuinely distinct from Bible order. Creation to Revelation is not that: its whole point
-     is "the Bible's own chronological sweep, Creation through New Creation," which is
-     exactly what orderedForDisplay()'s fallback already computes -- canonical position via
-     BASE_IDX, with the Gospels block re-sequenced by GOSPEL_ORDER below. An earlier version
-     of this file gave Creation to Revelation its own SET_ORDER array built from the "Stories in Order"
-     tab's own row sequence (OT block, then all of Matthew, then all of Mark, ...); that is
-     book-position order, not narrative chronology, so it sorted the Gospels portion by
-     which book a story happened to be told from rather than what happened when -- the same
-     bug GOSPEL_ORDER exists to fix everywhere else. Removing the entry, rather than trying
-     to hand-fix that array, was the actual fix: falling through to the shared default gives
-     Creation to Revelation the real chronological order for free, with no separate array to keep in sync
-     as more stories get tagged into the set. */
+  /* Creation to Revelation is now a hand-ordered, single narrative (22 November 2026), so it has its own
+     entry. Until then it deliberately fell through to the shared Bible-order default; that no longer
+     fits, because the set follows Brett and Todd's own order (Satan's Rebellion second, the Gospels in
+     their story order, Revelation last) from Misc/Updated Creation to Revelation.csv. Members and this
+     list must match exactly, in both directions, or the build fails. Lamb of God was added on 22 November;
+     Gideon was cut to make room (he stays in OT Stories). */
+  'Creation to Revelation': ['B4', 'B100', 'B6', 'B8', 'B9', 'B10', 'B13', 'B16', 'B17', 'B18', 'B19', 'B23', 'B28', 'B34', 'B35', 'B37', 'B41', 'B47', 'B48', 'B101', 'F5', 'F8', 'F9', 'O4', 'O8', 'F21', 'F33', 'I17', 'I18', 'I19', 'I21', 'F52', 'L32', 'O14', 'L47', 'O16', 'L57', 'I35', 'L62', 'F69', 'F70', 'F71', 'R5', 'R6', 'R11', 'R13', 'R44', 'R45', 'R38', 'T8'],
   /* The sheet's ten command rows, one story each, in the sheet's order, built from COMMANDS
      above. How To Pray is a Sermon on the Mount story, so it belongs to both sets: the sheet's
      Pray row names it. An earlier version of this set left it out, to keep the two sets apart,
@@ -981,7 +995,7 @@ export function storiesPage({ CSS, LOGO, LOGOSQ, OG_URL, NAV, data, text, langNa
   const gospelIds = new Set(data.stories.filter(s => ['Matthew', 'Mark', 'Luke', 'John'].includes(s.b)).map(s => s.id));
   for (const id of Object.keys(GOSPEL_ORDER)) if (!gospelIds.has(id)) throw new Error('GOSPEL_ORDER has ' + id + ', which is not a Gospel story');
   for (const id of gospelIds) if (!(id in GOSPEL_ORDER)) throw new Error('GOSPEL_ORDER is missing Gospel story ' + id);
-  const payload = JSON.stringify({ ...data, groups: TESTAMENTS, abbr: ABBR, seticon: SET_ICON,
+  const payload = JSON.stringify({ ...data, groups: TESTAMENTS, abbr: ABBR, seticon: SET_ICON, setdesc: SET_DESC,
     art, alt: ALT_NAMES, txt: text, langNames, oldSlugs: OLD_SLUGS, setOrder: SET_ORDER, gospelOrder: GOSPEL_ORDER,
     commands: Object.fromEntries(COMMANDS.flatMap(c => c.ids.map(id => [id, { n: c.n, r: c.r }]))) }).replace(/</g, '\\u003c');
 
@@ -1389,7 +1403,7 @@ function drawers(){
   D.stories.forEach(s => { sets(s).forEach(x => setCount[x] = (setCount[x] || 0) + 1);
                            tags(s).forEach(x => tagCount[x] = (tagCount[x] || 0) + 1); });
   $('dSets').innerHTML = '<div class="dgrp"><h4>Story Sets</h4><div class="fchips g4">' +
-    D.sets.map(n => '<button class="chip' + (state.sets.has(n) ? ' on' : '') + '" data-set="' + esc(n) + '">' +
+    D.sets.map(n => '<button class="chip' + (state.sets.has(n) ? ' on' : '') + '" data-set="' + esc(n) + '"' + (D.setdesc[n] ? ' title="' + esc(D.setdesc[n]) + '"' : '') + '>' +
       (seticon(n) ? '<img src="' + seticon(n) + '" alt="" loading="lazy">' : '') + esc(n) +
       '<span class="cnt">' + (setCount[n] || 0) + '</span></button>').join('') +
     '</div></div><div style="margin-top:12px"><button class="clearall" data-clear="sets">Clear story sets</button></div>';
