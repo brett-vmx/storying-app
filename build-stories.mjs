@@ -214,7 +214,7 @@ const STORY_IMG = {
   'Jonah|Jonah and the Whale': 'jonah-and-the-whale.webp',
   'Daniel|The Gold Statue': 'the-gold-statue.webp',
   "Daniel|Daniel in the Lion's Den": 'daniel-in-the-lions-den.webp',
-  'Matthew|Baptism of Jesus': 'baptism-of-jesus-c2c.webp',
+  'Matthew|Baptism of Jesus + The Lamb of God': 'baptism-of-jesus-the-lamb-of-god.webp',
   'Matthew|Temptation of Jesus': 'temptation-of-jesus-c2c.webp',
   'Matthew|Jesus in the Garden': 'jesus-in-the-garden.webp',
   'Matthew|The Great Commission + Ascension': 'the-great-commission-c2c.webp',
@@ -222,7 +222,6 @@ const STORY_IMG = {
   'Luke|The Rich Man and Lazarus': 'the-rich-man-and-lazarus.webp',
   'Luke|Jesus Enters Jerusalem': 'jesus-enters-jerusalem-c2c.webp',
   'Luke|The Last Supper': 'the-last-supper.webp',
-  'John|The Lamb of God': 'the-lamb-of-god.webp',
   'John|Jesus and Nicodemus': 'jesus-and-nicodemus.webp',
   'Acts|Pentecost': 'pentecost.webp',
   'Acts|The Early Church': 'the-early-church.webp',
@@ -235,13 +234,14 @@ const STORY_IMG = {
   'Matthew|The Greatest Commandment': 'the-greatest-commandment.webp',
   'John|The Vine and the Branches': 'the-vine-and-the-branches.webp',
   'Luke|The Woman Who Wept at the Feet of Jesus': 'the-woman-who-wept-at-the-feet-of-jesus.webp',
-  'Luke|The Pharisee and the Tax Collector': 'the-pharisee-and-the-tax-collector.webp',
+  'Luke|Two Men Who Prayed': 'the-pharisee-and-the-tax-collector.webp',
   'Matthew|The Unforgiving Servant': 'the-unforgiving-servant.webp',
   'Luke|The Risen Jesus': 'the-risen-jesus.webp',
   'Acts|Healing a Lame Man': 'healing-a-lame-man.webp',
   'Acts|Before the Jewish Leadership': 'before-the-jewish-leadership.webp',
   'Acts|Stephen is Martyred': 'stephen-is-martyred.webp',
   "Acts|Paul's Conversion": 'pauls-conversion.webp',
+  "Acts|Paul's First Journey": 'pauls-first-journey.webp',
   "Acts|Cornelius's Family is Saved": 'corneliuss-family-is-saved.webp',
   'Acts|The Church at Antioch Begins': 'the-church-at-antioch-begins.webp',
   'Judges|Gideon\'s Army': 'gideons-army.webp',
@@ -362,6 +362,7 @@ const ALT_NAMES = {
   'Genesis|The First Sin': ['The Fall of Man'],
   'Luke|The Paralyzed Man': ['The Paralytic Man'],
   'Matthew|How To Pray': ["The Lord's Prayer"],
+  'Luke|Two Men Who Prayed': ['The Pharisee and the Tax Collector'],
   'Luke|Jesus Appears to Men on the Road': ['The Road to Emmaus'],
 };
 
@@ -393,6 +394,9 @@ const OLD_SLUGS = {
   'the-great-commission': 'the-great-commission-ascension', 'jesus-ascends-to-heaven-acts': 'the-great-commission-ascension',
   'the-second-coming': 'the-second-coming-new-creation', 'the-1000-year-reign-satan-crushed': 'the-second-coming-new-creation',
   'the-new-creation': 'the-second-coming-new-creation',
+  'pauls-conversion-first-missionary-journey': 'pauls-first-journey',
+  'the-pharisee-and-the-tax-collector': 'two-men-who-prayed',
+  'baptism-of-jesus': 'baptism-of-jesus-the-lamb-of-god', 'the-lamb-of-god': 'baptism-of-jesus-the-lamb-of-god',   // split in two, 24 November 2026 (Paul's Conversion is its own story)
 };
 const COMMANDS = [
   { n: 'Repent and Believe', r: 'Mark 1:15', ids: ['L57'] },
@@ -428,7 +432,7 @@ const SET_ORDER = {
      their story order, Revelation last) from Misc/Updated Creation to Revelation.csv. Members and this
      list must match exactly, in both directions, or the build fails. Lamb of God was added on 22 November;
      Gideon was cut to make room (he stays in OT Stories). */
-  'Creation to Revelation': ['B4', 'B100', 'B6', 'B8', 'B9', 'B10', 'B13', 'B16', 'B17', 'B18', 'B19', 'B23', 'B28', 'B34', 'B35', 'B37', 'B41', 'B47', 'B48', 'B101', 'F5', 'F8', 'F9', 'O4', 'O8', 'F21', 'F33', 'I17', 'I18', 'I19', 'I21', 'F52', 'L32', 'O14', 'L47', 'O16', 'L57', 'I35', 'L62', 'F69', 'F70', 'F71', 'R5', 'R6', 'R11', 'R13', 'R44', 'R45', 'R38', 'T8'],
+  'Creation to Revelation': ['B4', 'B100', 'B6', 'B8', 'B9', 'B10', 'B13', 'B16', 'B17', 'B18', 'B19', 'B23', 'B28', 'B34', 'B35', 'B37', 'B41', 'B47', 'B48', 'B101', 'F5', 'F8', 'F9', 'O8', 'F21', 'F33', 'I17', 'I18', 'I19', 'I21', 'F52', 'L32', 'O14', 'L47', 'O16', 'L57', 'I35', 'L62', 'F69', 'F70', 'F71', 'R5', 'R6', 'R11', 'R13', 'R14', 'R44', 'R45', 'R38', 'T8'],
   /* The sheet's ten command rows, one story each, in the sheet's order, built from COMMANDS
      above. How To Pray is a Sermon on the Mount story, so it belongs to both sets: the sheet's
      Pray row names it. An earlier version of this set left it out, to keep the two sets apart,
@@ -461,7 +465,7 @@ const SET_ORDER = {
    tighter insertion can fall back to a decimal. Applies only inside the Gospels block's own
    position in the default order -- see orderedForDisplay. */
 const GOSPEL_ORDER = {
-  F4: 10, L4: 20, F5: 30, L6: 40, F6: 50, L7: 60, O4: 70, F7: 80, F8: 90, F9: 100,
+  F4: 10, L4: 20, F5: 30, L6: 40, F6: 50, L7: 60, F7: 80, F8: 90, F9: 100,
   O5: 110, O6: 120, O7: 130, O8: 140, O9: 150, F10: 160, L12: 170, L11: 180, L13: 190, F33: 200,
   O10: 210, I11: 220, F11: 230, F12: 240, F13: 250, F14: 260, F15: 270, F16: 280, F17: 290, F18: 300,
   F19: 310, F20: 320, F21: 330, F22: 340, F23: 350, F24: 360, F25: 370, F26: 380, F27: 390, F28: 400,

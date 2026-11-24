@@ -930,16 +930,17 @@
 },
 {
 "id": "F8",
-"slug": "baptism-of-jesus",
-"t": "Baptism of Jesus",
+"slug": "baptism-of-jesus-the-lamb-of-god",
+"t": "Baptism of Jesus + The Lamb of God",
 "b": "Matthew",
-"r": "3:13-17",
+"r": "3:13-17; John 1:19-36",
 "par": [
 "Mark 1:9-11",
 "Luke 3:21-22"
 ],
 "s": [
-"Creation to Revelation"
+"Creation to Revelation",
+"Sacrifice Stories"
 ],
 "g": [
 "3 in 1",
@@ -947,7 +948,8 @@
 "Obedience",
 "Father",
 "Son",
-"New Testament"
+"New Testament",
+"Forgiveness"
 ],
 "som": false
 },
@@ -2416,8 +2418,8 @@
 },
 {
 "id": "L53",
-"slug": "the-pharisee-and-the-tax-collector",
-"t": "The Pharisee and the Tax Collector",
+"slug": "two-men-who-prayed",
+"t": "Two Men Who Prayed",
 "b": "Luke",
 "r": "18:9\u201314",
 "par": [],
@@ -2616,25 +2618,6 @@
 "g": [
 "Son",
 "Worship",
-"New Testament"
-],
-"som": false
-},
-{
-"id": "O4",
-"slug": "the-lamb-of-god",
-"t": "The Lamb of God",
-"b": "John",
-"r": "1:19-36",
-"par": [],
-"s": [
-"Sacrifice Stories",
-"Creation to Revelation"
-],
-"g": [
-"Son",
-"Forgiveness",
-"Holy Spirit",
 "New Testament"
 ],
 "som": false
@@ -3118,7 +3101,8 @@
 "par": [],
 "s": [
 "Acts",
-"Baptism Hammer"
+"Baptism Hammer",
+"Creation to Revelation"
 ],
 "g": [
 "Mission",
@@ -3130,20 +3114,18 @@
 },
 {
 "id": "R44",
-"slug": "pauls-conversion-first-missionary-journey",
-"t": "Paul's Conversion + First Missionary Journey",
+"slug": "pauls-first-journey",
+"t": "Paul's First Journey",
 "b": "Acts",
-"r": "9, 13-14",
+"r": "13-14",
 "par": [],
 "s": [
 "Creation to Revelation"
 ],
 "g": [
 "Mission",
-"Forgiveness",
-"Son",
-"New Testament",
-"Holy Spirit"
+"Holy Spirit",
+"New Testament"
 ],
 "som": false
 },
