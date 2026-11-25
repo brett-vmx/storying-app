@@ -57,7 +57,7 @@ const SET_DESC = {
   '7 Signs of John': '7 miracles from John\'s Gospel, each showing who Jesus is.',
   'Acts': '11 stories of the first days of the church.',
   "Paul's Journeys": '27 stories of Paul and his companions spreading the good news throughout the Roman world.',
-  'Baptism Hammer': '10 stories of people who believed and were baptized.',
+  'Baptism Hammer': '9 stories of people who believed and were baptized.',
   'OT Stories': "10 stories of God's promises, rescue and faithfulness.",
   'Stories of Hope': '8 stories of forgiveness and mercy, for anyone carrying guilt or hardship.',
   'Sacrifice Stories': '7 stories that tell why a sacrifice for sin was needed, and who provided it.',
